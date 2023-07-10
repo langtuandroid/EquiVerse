@@ -6,18 +6,21 @@ public class ObjectSpawner : MonoBehaviour
 {
     public LayerMask groundLayer;
 
+    [Header("SpawnPrefabs")]
     public GameObject[] grassPrefabs;  // Prefab for the grass object
     public GameObject rabbitPrefab;
 
-    private float grassCost = 2f;
-    private float rabbitCost = 5f;
+    [Header ("SpawnCost")]
+    public float grassCost = 5f;
+    public float rabbitCost = 25f;
 
     [HideInInspector]
     public static float generationValue = 0f;
     
     private float grassGenerateValue = 0.1f;
-    private float rabbitGenerateValue = 1.2f;
+    private float rabbitGenerateValue = 0.5f;
 
+    public Transform planeTransform;
 
     private Camera mainCamera;
 
@@ -40,7 +43,7 @@ public class ObjectSpawner : MonoBehaviour
             // Raycast to detect the ground
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer))
             {
-                if (grassSelected && ECManager.totalPoints >= grassCost)
+                if (ECManager.totalPoints >= grassCost && grassPrefabs.Length < 5)
                 {
                     int randomIndex = Random.Range(0, grassPrefabs.Length);
                     GameObject randomPrefab = grassPrefabs[randomIndex];
@@ -48,13 +51,39 @@ public class ObjectSpawner : MonoBehaviour
                     GameObject spawnedPrefab = Instantiate(randomPrefab, hit.point, Quaternion.identity);
                     ECManager.totalPoints -= grassCost;
                     generationValue += grassGenerateValue;
-                }else if (rabbitSelected && ECManager.totalPoints >= rabbitCost)
-                {
-                    GameObject spawnedPrefab = Instantiate(rabbitPrefab, hit.point, Quaternion.identity);
-                    ECManager.totalPoints -= rabbitCost;
-                    generationValue += rabbitGenerateValue;
                 }
             }
+        }
+    }
+
+    public void SpawnRabbit()
+    {
+        if (ECManager.totalPoints >= rabbitCost)
+        {
+            ECManager.totalPoints -= rabbitCost;
+            generationValue += rabbitGenerateValue;
+
+            // Get the bounds of the plane
+            Renderer planeRenderer = planeTransform.GetComponent<Renderer>();
+            Vector3 planeCenter = planeRenderer.bounds.center;
+            Vector3 planeExtents = planeRenderer.bounds.extents;
+
+            // Calculate the random position within the plane bounds
+            Vector3 randomPosition = new Vector3(
+                Random.Range(planeCenter.x - planeExtents.x, planeCenter.x + planeExtents.x),
+                planeCenter.y,
+                Random.Range(planeCenter.z - planeExtents.z, planeCenter.z + planeExtents.z)
+            );
+
+            // Perform a raycast to find the actual ground position at the random position
+            RaycastHit hit;
+            if (Physics.Raycast(randomPosition + Vector3.up * 10f, Vector3.down, out hit, Mathf.Infinity))
+            {
+                randomPosition = hit.point;
+            }
+
+            // Instantiate the rabbit prefab at the random position
+            Instantiate(rabbitPrefab, randomPosition, Quaternion.identity);
         }
     }
 }

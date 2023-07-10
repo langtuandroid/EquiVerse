@@ -10,22 +10,23 @@ public class ECManager : MonoBehaviour
     [HideInInspector]
     public static float totalPoints;
 
-    private float addScoreInterval = 2f;
+    public float startingPoints = 10f;
+
+    private float addScoreInterval = 0.25f;
 
     private void Start()
     {
-        totalPoints += 4;    
-    }
-
-    private void FixedUpdate()
-    {
+        totalPoints += startingPoints;
         StartCoroutine(AddScore());
     }
 
     private IEnumerator AddScore()
     {
-        totalPoints += ObjectSpawner.generationValue;
-        totalPointsText.text = totalPoints.ToString();
-        yield return new WaitForSeconds(addScoreInterval);
+        while (true)
+        {
+            yield return new WaitForSeconds(addScoreInterval);
+            totalPoints += ObjectSpawner.generationValue;
+            totalPointsText.text = totalPoints.ToString("F1");
+        }
     }
 }

@@ -14,7 +14,7 @@ public class Plant : MonoBehaviour
         {
             // Reduce the plant's health
             plantHealth -= rabbit.GetEatingPower();
-
+            rabbit.ReduceHunger(20f);
             // Check if the plant's health is depleted
             if (plantHealth <= 0)
             {
