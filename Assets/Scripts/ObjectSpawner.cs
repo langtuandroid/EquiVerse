@@ -11,14 +11,13 @@ public class ObjectSpawner : MonoBehaviour
     public GameObject rabbitPrefab;
 
     [Header ("SpawnCost")]
-    public float grassCost = 5f;
-    public float rabbitCost = 25f;
+    public float rabbitCost = 100f;
+    public float grassCost = 20f;
 
     [HideInInspector]
     public static float generationValue = 0f;
     
-    private float grassGenerateValue = 0.1f;
-    private float rabbitGenerateValue = 0.5f;
+    private float rabbitGenerateValue = 1f;
 
     public Transform planeTransform;
 
@@ -50,7 +49,6 @@ public class ObjectSpawner : MonoBehaviour
                     // Instantiate the grass prefab at the clicked position
                     GameObject spawnedPrefab = Instantiate(randomPrefab, hit.point, Quaternion.identity);
                     ECManager.totalPoints -= grassCost;
-                    generationValue += grassGenerateValue;
                 }
             }
         }

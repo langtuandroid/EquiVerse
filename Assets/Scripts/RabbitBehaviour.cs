@@ -1,34 +1,38 @@
 using UnityEngine;
 using UnityEngine.AI;
+using Polyperfect.Animals;
+using System.Collections;
 
 public class RabbitBehaviour : MonoBehaviour
 {
-    public float startingHunger = 0f; // The initial hunger level
-    public float hungerIncreaseRate = 1f; // The rate at which hunger increases per second
-    public float eatingPower = 10f; // The amount of hunger reduced when the rabbit eats from a plant
+    public float startingHunger = 0f;
+    public float hungerIncreaseRate = 1f;
 
-    private float currentHunger; // The current hunger level
-    private bool isHungry = false;
+    private float currentHunger;
+    public bool isHungry;
+    public float hungerThreshold = 50;
+    public float starvationThreshold = 150;
     private GameObject targetPlant;
     private NavMeshAgent navMeshAgent;
+    private Animal_WanderScript animal_wander;
 
     private void Start()
     {
         currentHunger = startingHunger;
         navMeshAgent = GetComponent<NavMeshAgent>();
+        animal_wander = GetComponent<Animal_WanderScript>();
+        navMeshAgent.stoppingDistance = 0;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // Check if the collider is a plant
-        Plant plant = other.GetComponent<Plant>();
-        if (plant != null)
+        if (isHungry && targetPlant == null)
         {
-            // Check if the rabbit is hungry and there is no current target plant
-            if (isHungry && targetPlant == null)
+            Plant plant = other.GetComponent<Plant>();
+            if (plant != null)
             {
-                // Set the plant as the target plant
                 targetPlant = other.gameObject;
+                navMeshAgent.isStopped = true;
                 MoveToTargetPlant();
             }
         }
@@ -36,52 +40,39 @@ public class RabbitBehaviour : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        // Check if the collider is the current target plant
         if (other.gameObject == targetPlant)
         {
-            // Reset the target plant
             targetPlant = null;
+            MoveToNextClosestPlant();
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         print(currentHunger);
-        // Increase hunger over time
-        currentHunger += hungerIncreaseRate * Time.deltaTime;
+        currentHunger += hungerIncreaseRate * Time.fixedDeltaTime;
 
-        // Check the rabbit's hunger level
         if (isHungry)
         {
-            // If there is no target plant, find the closest plant and set it as the target plant
             if (targetPlant == null)
             {
                 FindClosestPlant();
-                if (targetPlant != null)
-                {
-                    MoveToTargetPlant();
-                }
+                MoveToTargetPlant();
             }
-            else
+            else if (!navMeshAgent.hasPath || navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
             {
-                // If there is a target plant, move towards it using the NavMeshAgent
-                if (!navMeshAgent.hasPath || navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
-                {
-                    // The rabbit has reached the destination or has no path, so reset the target plant
-                    targetPlant = null;
-                }
+                targetPlant = null;
+                MoveToNextClosestPlant();
             }
-        }
-        else
-        {
-            // The rabbit is not hungry, no need to search for plants
-            // You can implement other behaviors for the rabbit here
         }
 
-        // Check if the rabbit is hungry based on the current hunger level
-        if (currentHunger >= 50f)
+        if (currentHunger >= hungerThreshold)
         {
             SetHungry(true);
+            if (currentHunger >= starvationThreshold)
+            {
+                StartCoroutine(Death());
+            }
         }
     }
 
@@ -91,35 +82,46 @@ public class RabbitBehaviour : MonoBehaviour
 
         if (isHungry)
         {
-            // Reset the target plant when the rabbit gets hungry
             targetPlant = null;
             FindClosestPlant();
-            if (targetPlant != null)
-            {
-                MoveToTargetPlant();
-            }
+            MoveToTargetPlant();
         }
-    }
-
-    public float GetEatingPower()
-    {
-        return eatingPower;
     }
 
     public void ReduceHunger(float amount)
     {
-        currentHunger -= amount;
-
-        if (currentHunger < 0f)
-        {
-            currentHunger = 0f;
-        }
+        currentHunger = Mathf.Max(0f, currentHunger - amount);
     }
 
     private void MoveToTargetPlant()
     {
-        navMeshAgent.SetDestination(targetPlant.transform.position);
-        navMeshAgent.isStopped = false; // Ensure the NavMeshAgent is not stopped
+        if (targetPlant != null)
+        {
+            navMeshAgent.isStopped = false;
+            navMeshAgent.SetDestination(targetPlant.transform.position);
+            StartCoroutine(MonitorMovement()); // Start coroutine to monitor movement towards the target plant
+        }
+    }
+
+    private IEnumerator MonitorMovement()
+    {
+        while (targetPlant != null && navMeshAgent.pathPending)
+        {
+            yield return null;
+        }
+
+        // Rabbit has reached the destination or has no path, so reset the target plant
+        targetPlant = null;
+        MoveToNextClosestPlant();
+    }
+
+    private void MoveToNextClosestPlant()
+    {
+        if (isHungry && targetPlant == null)
+        {
+            FindClosestPlant();
+            MoveToTargetPlant();
+        }
     }
 
     private void FindClosestPlant()
@@ -136,5 +138,12 @@ public class RabbitBehaviour : MonoBehaviour
                 targetPlant = plant.gameObject;
             }
         }
+    }
+
+    private IEnumerator Death()
+    {
+        animal_wander.Die();
+        yield return new WaitForSeconds(3f);
+        Destroy(gameObject);
     }
 }

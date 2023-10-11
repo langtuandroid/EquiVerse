@@ -26,7 +26,7 @@ public class ECManager : MonoBehaviour
         {
             yield return new WaitForSeconds(addScoreInterval);
             totalPoints += ObjectSpawner.generationValue;
-            totalPointsText.text = totalPoints.ToString("F1");
+            totalPointsText.text = totalPoints.ToString("F0");
         }
     }
 }

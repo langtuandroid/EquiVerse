@@ -325,6 +325,7 @@ GameObject:
   - component: {fileID: 195360568403518646}
   - component: {fileID: 5743189738134366709}
   - component: {fileID: -3461418797173679848}
+  - component: {fileID: -884888433142011303}
   m_Layer: 0
   m_Name: Rabbit White
   m_TagString: Untagged
@@ -413,6 +414,11 @@ MonoBehaviour:
     maxStateTime: 5
     moveSpeed: 6
     turnSpeed: 200
+  - stateName: Run
+    animationBool: isRunning
+    maxStateTime: 5
+    moveSpeed: 6
+    turnSpeed: 200
   attackingStates: []
   deathStates:
   - stateName: Dead_1
@@ -456,7 +462,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.25
-  m_Speed: 10
+  m_Speed: 100
   m_Acceleration: 12
   avoidancePriority: 50
   m_AngularSpeed: 270
@@ -481,8 +487,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHunger: 0
-  hungerIncreaseRate: 5
-  eatingPower: 10
+  hungerIncreaseRate: 4
+  isHungry: 0
+  hungerThreshold: 50
+  starvationThreshold: 150
 --- !u!136 &-3461418797173679848
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -497,6 +505,22 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!54 &-884888433142011303
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262440479064932}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1275589145405808
 GameObject:
   m_ObjectHideFlags: 0

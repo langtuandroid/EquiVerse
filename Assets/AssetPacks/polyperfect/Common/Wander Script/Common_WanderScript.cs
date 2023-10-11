@@ -736,7 +736,6 @@ namespace Polyperfect.Common
             var previousState = CurrentState;
             if (previousState == WanderState.Dead)
             {
-                Debug.LogError("Attempting to set a state to a dead animal.");
                 return;
             }
             //if (state != previousState)

@@ -6,6 +6,15 @@ public class CameraMovement : MonoBehaviour
 {
     public Transform target; // The object around which the camera rotates
     public float rotationSpeed = 10f; // Speed of rotation
+    public float zoomSpeed = 10f;
+
+    private Camera camera;
+    private float maxDistance = 2f;
+
+    private void Start()
+    {
+        camera = GetComponent<Camera>();
+    }
 
     private void Update()
     {
@@ -16,6 +25,17 @@ public class CameraMovement : MonoBehaviour
         else if (Input.GetKey(KeyCode.D))
         {
             RotateCamera(1f); // Rotate right
+        }
+        if (camera.fieldOfView <= maxDistance || camera.fieldOfView >= -maxDistance)
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                ZoomCamera(-1f);
+            }
+            else if (Input.GetKey(KeyCode.S))
+            {
+                ZoomCamera(1f);
+            }
         }
     }
 
@@ -29,4 +49,12 @@ public class CameraMovement : MonoBehaviour
         // Rotate the camera around the target object
         transform.RotateAround(target.position, yAxis, angle);
     }
+
+    private void ZoomCamera(float direction)
+    {
+        float zoomDirection = direction * zoomSpeed * Time.deltaTime;
+        camera.fieldOfView += zoomDirection;
+
+    }
 }
+
