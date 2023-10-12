@@ -5,144 +5,80 @@ using System.Collections;
 
 public class RabbitBehaviour : MonoBehaviour
 {
-    public float startingHunger = 0f;
-    public float hungerIncreaseRate = 1f;
+    public float searchRange = 10f;  // The range in which the rabbit can detect plants.
+    public float hungerThreshold = 50f; // The threshold at which the rabbit becomes hungry.
+    public float deathThreshold = 100f; // The threshold at which the rabbit dies.
 
-    private float currentHunger;
-    public bool isHungry;
-    public float hungerThreshold = 50;
-    public float starvationThreshold = 150;
-    private GameObject targetPlant;
-    private NavMeshAgent navMeshAgent;
-    private Animal_WanderScript animal_wander;
+    private Animal_WanderScript animalWander;
+    private NavMeshAgent agent;
+    private bool isHungry = false;
+    private float currentHunger = 0f;
 
-    private void Start()
+    void Start()
     {
-        currentHunger = startingHunger;
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        animal_wander = GetComponent<Animal_WanderScript>();
-        navMeshAgent.stoppingDistance = 0;
+        agent = GetComponent<NavMeshAgent>();
+        animalWander = GetComponent<Animal_WanderScript>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    void FixedUpdate()
     {
-        if (isHungry && targetPlant == null)
-        {
-            Plant plant = other.GetComponent<Plant>();
-            if (plant != null)
-            {
-                targetPlant = other.gameObject;
-                navMeshAgent.isStopped = true;
-                MoveToTargetPlant();
-            }
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject == targetPlant)
-        {
-            targetPlant = null;
-            MoveToNextClosestPlant();
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        print(currentHunger);
-        currentHunger += hungerIncreaseRate * Time.fixedDeltaTime;
-
-        if (isHungry)
-        {
-            if (targetPlant == null)
-            {
-                FindClosestPlant();
-                MoveToTargetPlant();
-            }
-            else if (!navMeshAgent.hasPath || navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
-            {
-                targetPlant = null;
-                MoveToNextClosestPlant();
-            }
-        }
+        currentHunger += 0f * Time.fixedDeltaTime;
 
         if (currentHunger >= hungerThreshold)
         {
-            SetHungry(true);
-            if (currentHunger >= starvationThreshold)
+            isHungry = true;
+        }
+        
+        if (isHungry)
+        {
+            FindClosestPlant();
+            if (currentHunger >= deathThreshold)
             {
-                StartCoroutine(Death());
+                StartCoroutine(Die());
             }
         }
     }
 
-    public void SetHungry(bool hungry)
+    void FindClosestPlant()
     {
-        isHungry = hungry;
+        GameObject[] plants = GameObject.FindGameObjectsWithTag("Plant");
 
-        if (isHungry)
+        if (plants.Length == 0)
         {
-            targetPlant = null;
-            FindClosestPlant();
-            MoveToTargetPlant();
-        }
-    }
-
-    public void ReduceHunger(float amount)
-    {
-        currentHunger = Mathf.Max(0f, currentHunger - amount);
-    }
-
-    private void MoveToTargetPlant()
-    {
-        if (targetPlant != null)
-        {
-            navMeshAgent.isStopped = false;
-            navMeshAgent.SetDestination(targetPlant.transform.position);
-            StartCoroutine(MonitorMovement()); // Start coroutine to monitor movement towards the target plant
-        }
-    }
-
-    private IEnumerator MonitorMovement()
-    {
-        while (targetPlant != null && navMeshAgent.pathPending)
-        {
-            yield return null;
+            Debug.Log("No plants found.");
+            return;
         }
 
-        // Rabbit has reached the destination or has no path, so reset the target plant
-        targetPlant = null;
-        MoveToNextClosestPlant();
-    }
-
-    private void MoveToNextClosestPlant()
-    {
-        if (isHungry && targetPlant == null)
-        {
-            FindClosestPlant();
-            MoveToTargetPlant();
-        }
-    }
-
-    private void FindClosestPlant()
-    {
-        Plant[] plants = GameObject.FindObjectsOfType<Plant>();
+        Transform closestPlant = null;
         float closestDistance = Mathf.Infinity;
 
-        foreach (Plant plant in plants)
+        foreach (GameObject plant in plants)
         {
             float distance = Vector3.Distance(transform.position, plant.transform.position);
             if (distance < closestDistance)
             {
                 closestDistance = distance;
-                targetPlant = plant.gameObject;
+                closestPlant = plant.transform;
+            }
+        }
+
+        if (closestPlant != null)
+        {
+            Debug.Log("Closest plant found. Distance: " + closestDistance);
+            agent.SetDestination(closestPlant.position);
+
+            if (closestDistance < 1f) // Assuming the rabbit eats the plant when very close.
+            {
+                Destroy(closestPlant.gameObject);
+                currentHunger = 0f;
+                isHungry = false;
             }
         }
     }
-
-    private IEnumerator Death()
+   
+    private IEnumerator Die()
     {
-        animal_wander.Die();
+        animalWander.Die();
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }

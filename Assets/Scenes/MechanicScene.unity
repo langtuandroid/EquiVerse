@@ -2373,6 +2373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 443613164}
   rotationSpeed: 30
+  zoomSpeed: 10
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3544,6 +3545,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1777924706}
   - component: {fileID: 1777924705}
+  - component: {fileID: 1777924707}
   m_Layer: 0
   m_Name: ObjectSpawner
   m_TagString: Untagged
@@ -3563,14 +3565,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593b989ae15585d4d99cbe67df93f619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  grassPrefabs:
-  - {fileID: 1658363313306210, guid: c0fe8f954046e4b4d845f9f33c99548e, type: 3}
-  rabbitPrefab: {fileID: 1262440479064932, guid: 69b122cc19161bc47908c71cd75dc515, type: 3}
-  rabbitCost: 100
-  grassCost: 20
+  rabbitPrefab: {fileID: 1262440479064932, guid: 8d880e7275556104cbae14a0cb6975bd, type: 3}
+  rabbitCost: 50
   planeTransform: {fileID: 443613164}
 --- !u!4 &1777924706
 Transform:
@@ -3586,6 +3582,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1777924707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777924704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3feced6b2e252e64bbf4cc5ce8b28460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  grassPrefabs:
+  - {fileID: 1658363313306210, guid: dc98e9e3b3beb834fbaf6cdc0d3e5deb, type: 3}
+  - {fileID: 1762627254017038, guid: 3cb280681edcff14cbf4e5da2a48d10f, type: 3}
+  - {fileID: 1188032362689352, guid: 55c9dd9d35fbbf24d9c218bcc92de4cc, type: 3}
+  grassCost: 10
 --- !u!1001 &1820069908
 PrefabInstance:
   m_ObjectHideFlags: 0
