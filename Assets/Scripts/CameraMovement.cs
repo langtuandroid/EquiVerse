@@ -8,7 +8,7 @@ public class CameraMovement : MonoBehaviour
     public float rotationSpeed = 10f; // Speed of rotation
     public float zoomSpeed = 10f;
 
-    private Camera camera;
+    private new Camera camera;
     private float maxDistance = 2f;
 
     private void Start()

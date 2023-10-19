@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class ECManager : MonoBehaviour
     [HideInInspector]
     public static float totalPoints;
     public float startingPoints = 10f;
+    public float lowValuePoints = 10f;
     
     private void Start()
     {
@@ -22,5 +24,9 @@ public class ECManager : MonoBehaviour
         totalPointsText.text = totalPoints.ToString();
     }
 
+    public void AddLowValuePoints()
+    {
+        totalPoints += lowValuePoints;
+    }
 
 }

@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.2
+    agentRadius: 0.1
     agentHeight: 1
     agentSlope: 45
     agentClimb: 0.4
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.06666667
+    cellSize: 0.033333335
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -1009,6 +1009,7 @@ GameObject:
   m_Component:
   - component: {fileID: 446018290}
   - component: {fileID: 446018289}
+  - component: {fileID: 446018291}
   m_Layer: 0
   m_Name: ECManager
   m_TagString: Untagged
@@ -1030,6 +1031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalPointsText: {fileID: 405089428}
   startingPoints: 100
+  lowValuePoints: 10
 --- !u!4 &446018290
 Transform:
   m_ObjectHideFlags: 0
@@ -1044,6 +1046,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &446018291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446018288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05b40dad47b220a49bf750ce0f179c19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &472169087
 GameObject:
   m_ObjectHideFlags: 0
