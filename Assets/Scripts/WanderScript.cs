@@ -36,7 +36,17 @@ public class WanderScript : MonoBehaviour
     void Update()
     {
         HandleHunger();
-        HandleWanderAndIdle();
+
+        if (isHungry)
+        {
+            FindClosestPlant();
+        }
+        else
+        {
+            HandleWanderAndIdle();
+        }
+        
+        print(agent.speed);
     }
 
     void HandleHunger()
@@ -55,15 +65,11 @@ public class WanderScript : MonoBehaviour
         {
             newMaterial.SetColor("_EmissionColor", Color.black); // Reset emission when not hungry.
         }
-
-        if (isHungry)
-        {
-            FindClosestPlant();
-            if (currentHunger >= deathThreshold)
-            {
-                StartCoroutine(Die());
-            }
+        if (currentHunger >= deathThreshold)
+        { 
+            StartCoroutine(Die());
         }
+        
     }
 
     void HandleWanderAndIdle()
@@ -141,10 +147,13 @@ public class WanderScript : MonoBehaviour
         {
             if (closestDistance > 1f)
             {
+                agent.speed = 1.3f;
                 agent.SetDestination(closestPlant.position);
+                animator.SetBool("isRunning", true);
             }
             else
             {
+                animator.SetBool("isRunning", false);
                 Destroy(closestPlant.gameObject);
                 currentHunger = 0f;
                 isHungry = false;
