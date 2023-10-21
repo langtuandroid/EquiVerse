@@ -33,7 +33,7 @@ public class WanderScript : MonoBehaviour
         Wander();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         HandleHunger();
 
@@ -51,7 +51,7 @@ public class WanderScript : MonoBehaviour
 
     void HandleHunger()
     {
-        currentHunger += 5f * Time.deltaTime;
+        currentHunger += 5f * Time.fixedDeltaTime;
 
         Material newMaterial = Instantiate(skinnedMeshRenderer.material);
         skinnedMeshRenderer.material = newMaterial;
@@ -76,7 +76,7 @@ public class WanderScript : MonoBehaviour
     {
         if (isIdling)
         {
-            idleDuration -= Time.deltaTime;
+            idleDuration -= Time.fixedDeltaTime;
 
             if (idleDuration <= 0f)
             {
@@ -86,7 +86,7 @@ public class WanderScript : MonoBehaviour
         }
         else
         {
-            stateTimer -= Time.deltaTime;
+            stateTimer -= Time.fixedDeltaTime;
 
             if (stateTimer <= 0f)
             {
