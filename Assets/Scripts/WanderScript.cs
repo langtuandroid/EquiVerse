@@ -30,7 +30,7 @@ public class WanderScript : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
-        Wander();
+        Idle();
     }
 
     void FixedUpdate()
@@ -82,6 +82,7 @@ public class WanderScript : MonoBehaviour
             {
                 isIdling = false;
                 Wander();
+                animator.SetBool("isJumping", true);
             }
         }
         else
@@ -92,10 +93,9 @@ public class WanderScript : MonoBehaviour
             {
                 isIdling = true;
                 Idle();
+                animator.SetBool("isJumping", false);
             }
         }
-
-        animator.SetBool("isJumping", !isIdling);
     }
 
     void Wander()
@@ -145,7 +145,7 @@ public class WanderScript : MonoBehaviour
 
         if (closestPlant != null)
         {
-            if (closestDistance > 1f)
+            if (closestDistance > 0.2f)
             {
                 agent.speed = 1.3f;
                 agent.SetDestination(closestPlant.position);

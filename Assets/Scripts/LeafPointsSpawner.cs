@@ -1,13 +1,21 @@
+using System;
 using UnityEngine;
 using DG.Tweening;
+using Random = UnityEngine.Random;
 
 public class LeafPointsSpawner : MonoBehaviour
 {
     public GameObject leafPointPrefab;
     private float spawnTimer = 0f;
-    private float timeBetweenLeafSpawn = 5f;
-    private float desiredHeight = 5f; // Adjust this value for the desired height
-    private float duration = 5f; // Adjust the move speed as needed
+    private float timeBetweenLeafSpawn;
+    public Vector2 timeBetweenLeafSpawnRange = new Vector2(10f, 18f);
+    private float desiredHeight = 5f;
+    private float duration = 5f; 
+
+    private void Start()
+    {
+        timeBetweenLeafSpawn = Random.Range(timeBetweenLeafSpawnRange.x, timeBetweenLeafSpawnRange.y);
+    }
 
     private void FixedUpdate()
     {
@@ -21,6 +29,7 @@ public class LeafPointsSpawner : MonoBehaviour
             newLeaf.transform.DOMoveY(desiredHeight, duration).SetEase(Ease.OutSine).OnComplete(() => FadeAndDestroy(newLeaf));
 
             spawnTimer = 0f;
+            timeBetweenLeafSpawn = Random.Range(timeBetweenLeafSpawnRange.x, timeBetweenLeafSpawnRange.y);
         }
     }
 

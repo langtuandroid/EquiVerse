@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public Transform target; // The object around which the camera rotates
-    public float rotationSpeed = 10f; // Speed of rotation
-    public float zoomSpeed = 10f;
+    public float rotationSpeed = 13f; // Speed of rotation
+    public float zoomSpeed = 13f;
 
     private new Camera camera;
     private float maxDistance = 2f;
