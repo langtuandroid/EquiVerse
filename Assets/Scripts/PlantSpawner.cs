@@ -13,6 +13,8 @@ public class PlantSpawner : MonoBehaviour
     [Header("GrassCost")]
     public float grassCost = 20f;
 
+    public GameObject tutorialStep;
+    
     private void Start()
     {
         mainCamera = Camera.main;
@@ -36,6 +38,7 @@ public class PlantSpawner : MonoBehaviour
                     // Instantiate the grass prefab at the clicked position
                     GameObject spawnedPrefab = Instantiate(randomPrefab, hit.point, Quaternion.identity);
                     ECManager.totalPoints -= grassCost;
+                    tutorialStep.SetActive(false);
                 }
             }
         } 

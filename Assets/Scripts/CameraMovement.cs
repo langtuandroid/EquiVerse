@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
@@ -10,6 +12,12 @@ public class CameraMovement : MonoBehaviour
 
     private new Camera camera;
     private float maxDistance = 2f;
+    private bool movedLeft = false, movedRight = false, movedUp = false, movedDown = false;
+    
+    [HideInInspector]
+    public static bool cameraLocked = true;
+
+    public static bool cameraMovedInAllDirections = false;
 
     private void Start()
     {
@@ -18,27 +26,40 @@ public class CameraMovement : MonoBehaviour
 
     private void Update()
     {
+        if (!cameraLocked)
+        {
+            MoveCamera();
+            CheckCameraTutorial();
+        }
+    }
+
+    private void MoveCamera()
+    {
         if (Input.GetKey(KeyCode.A))
         {
             RotateCamera(-1f); // Rotate left
+            movedLeft = true;
         }
         else if (Input.GetKey(KeyCode.D))
         {
             RotateCamera(1f); // Rotate right
+            movedRight = true;
         }
         if (camera.fieldOfView <= maxDistance || camera.fieldOfView >= -maxDistance)
         {
             if (Input.GetKey(KeyCode.W))
             {
                 ZoomCamera(-1f);
+                movedUp = true;
             }
             else if (Input.GetKey(KeyCode.S))
             {
                 ZoomCamera(1f);
+                movedDown = true;
             }
         }
     }
-
+    
     private void RotateCamera(float direction)
     {
         Vector3 yAxis = Vector3.up; // Axis of rotation (vertical axis)
@@ -54,7 +75,15 @@ public class CameraMovement : MonoBehaviour
     {
         float zoomDirection = direction * zoomSpeed * Time.deltaTime;
         camera.fieldOfView += zoomDirection;
-
     }
+
+    private void CheckCameraTutorial()
+    {
+        if (movedLeft && movedRight && movedUp && movedDown)
+        {
+            cameraMovedInAllDirections = true;
+        }
+    }
+    
 }
 

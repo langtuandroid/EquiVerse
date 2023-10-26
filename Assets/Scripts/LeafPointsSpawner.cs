@@ -10,7 +10,7 @@ public class LeafPointsSpawner : MonoBehaviour
     private float timeBetweenLeafSpawn;
     public Vector2 timeBetweenLeafSpawnRange = new Vector2(10f, 18f);
     private float desiredHeight = 5f;
-    private float duration = 5f; 
+    private float duration = 5f;
 
     private void Start()
     {
@@ -24,7 +24,7 @@ public class LeafPointsSpawner : MonoBehaviour
         {
             Vector3 spawnPosition = transform.position + new Vector3(0,0.5f,0); // Use the position of the object
             GameObject newLeaf = Instantiate(leafPointPrefab, spawnPosition, Quaternion.identity);
-
+            
             // Use DoTween to move the object to the desired height
             newLeaf.transform.DOMoveY(desiredHeight, duration).SetEase(Ease.OutSine).OnComplete(() => FadeAndDestroy(newLeaf));
 

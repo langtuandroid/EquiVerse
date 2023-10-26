@@ -434,12 +434,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wanderRadius: 10
-  wanderTimerRange: {x: 2, y: 5}
-  idleDurationRange: {x: 4, y: 9}
+  wanderTimerRange: {x: 4, y: 9}
+  idleDurationRange: {x: 2, y: 5}
   speedRange: {x: 0.55, y: 0.7}
   searchRange: 10
-  hungerThreshold: 50
-  deathThreshold: 100
+  hungerThreshold: 100
+  deathThreshold: 150
   hungryMaterial: {fileID: 2100000, guid: 5122b494eeaec444b8f2170e42864f4a, type: 2}
 --- !u!114 &1476735967646812560
 MonoBehaviour:
@@ -454,7 +454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leafPointPrefab: {fileID: 5271623836368792421, guid: de1ea59a051e68b41906b9cbb7d59dd4, type: 3}
-  timeBetweenLeafSpawnRange: {x: 8, y: 12}
+  timeBetweenLeafSpawnRange: {x: 15, y: 20}
 --- !u!1 &1275589145405808
 GameObject:
   m_ObjectHideFlags: 0
