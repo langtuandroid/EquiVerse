@@ -9,13 +9,16 @@ public class WanderScript : MonoBehaviour
     public Vector2 wanderTimerRange = new Vector2(3f, 7f);
     public Vector2 idleDurationRange = new Vector2(2f, 5f);
     public Vector2 speedRange = new Vector2(0.5f, 1.0f);
+    public float searchRange = 10f;
+    public float hungerThreshold = 50f;
+    public float deathThreshold = 100f;
+    public Material hungryMaterial;
 
-    public float searchRange = 10f;  // The range in which the rabbit can detect plants.
-    public float hungerThreshold = 50f; // The threshold at which the rabbit becomes hungry.
-    public float deathThreshold = 100f; // The threshold at which the rabbit dies;
-    
     private SkinnedMeshRenderer skinnedMeshRenderer;
     private NavMeshAgent agent;
+    private Animator animator;
+    private Material rabbitMaterial;
+
     private float wanderTimer;
     private float idleDuration;
     private float speed;
@@ -23,62 +26,50 @@ public class WanderScript : MonoBehaviour
     private bool isIdling = false;
     private bool isHungry = false;
     private float currentHunger = 0f;
-    private Animator animator;
 
-    void Start()
+    private void Start()
+    {
+        InitializeComponents();
+        Idle();
+    }
+
+    private void FixedUpdate()
+    {
+        MaterialChanger();
+        HandleHunger();
+
+        if (isHungry)
+            FindClosestPlant();
+        else
+            HandleWanderAndIdle();
+    }
+
+    private void InitializeComponents()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
-        Idle();
+        rabbitMaterial = skinnedMeshRenderer.material;
     }
 
-    void FixedUpdate()
-    {
-        HandleHunger();
-
-        if (isHungry)
-        {
-            FindClosestPlant();
-        }
-        else
-        {
-            HandleWanderAndIdle();
-        }
-        
-        print(agent.speed);
-    }
-
-    void HandleHunger()
+    private void HandleHunger()
     {
         currentHunger += 5f * Time.fixedDeltaTime;
-
-        Material newMaterial = Instantiate(skinnedMeshRenderer.material);
-        skinnedMeshRenderer.material = newMaterial;
+        
+        if (currentHunger >= deathThreshold)
+            StartCoroutine(Die());
         
         if (currentHunger >= hungerThreshold)
-        {
             isHungry = true;
-            newMaterial.DOColor(Color.red * 0.5f, "_EmissionColor", 0.1f).SetLoops(-1, LoopType.Yoyo);
-        }
-        else
-        {
-            newMaterial.SetColor("_EmissionColor", Color.black); // Reset emission when not hungry.
-        }
-        if (currentHunger >= deathThreshold)
-        { 
-            StartCoroutine(Die());
-        }
-        
     }
 
-    void HandleWanderAndIdle()
+    private void HandleWanderAndIdle()
     {
         if (isIdling)
         {
-            idleDuration -= Time.fixedDeltaTime;
+            stateTimer -= Time.fixedDeltaTime;
 
-            if (idleDuration <= 0f)
+            if (stateTimer <= 0f)
             {
                 isIdling = false;
                 Wander();
@@ -98,7 +89,7 @@ public class WanderScript : MonoBehaviour
         }
     }
 
-    void Wander()
+    private void Wander()
     {
         wanderTimer = Random.Range(wanderTimerRange.x, wanderTimerRange.y);
         idleDuration = 0f;
@@ -114,21 +105,19 @@ public class WanderScript : MonoBehaviour
         agent.speed = speed;
     }
 
-    void Idle()
+    private void Idle()
     {
         agent.speed = 0;
         idleDuration = Random.Range(idleDurationRange.x, idleDurationRange.y);
         stateTimer = idleDuration;
     }
 
-    void FindClosestPlant()
+    private void FindClosestPlant()
     {
         GameObject[] plants = GameObject.FindGameObjectsWithTag("Plant");
 
         if (plants.Length == 0)
-        {
             return;
-        }
 
         Transform closestPlant = null;
         float closestDistance = Mathf.Infinity;
@@ -161,14 +150,17 @@ public class WanderScript : MonoBehaviour
         }
     }
 
+    private void MaterialChanger()
+    {
+        skinnedMeshRenderer.material = isHungry ? hungryMaterial : rabbitMaterial;
+    }
+
     private IEnumerator Die()
     {
-        // Handle the die behavior
         agent.speed = 0;
         animator.SetBool("isJumping", false);
-        animator.SetBool("isDead_1", true);
+        animator.SetBool("isDead_0", true);
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
 }
-

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ObjectSpawner : MonoBehaviour
 {
@@ -14,31 +15,46 @@ public class ObjectSpawner : MonoBehaviour
 
     public void SpawnRabbit()
     {
-        if (ECManager.totalPoints >= rabbitCost)
+        if (ECManager.totalPoints < rabbitCost)
         {
-            ECManager.totalPoints -= rabbitCost;
+            return;
+        }
 
-            // Get the bounds of the plane
-            Renderer planeRenderer = planeTransform.GetComponent<Renderer>();
-            Vector3 planeCenter = planeRenderer.bounds.center;
-            Vector3 planeExtents = planeRenderer.bounds.extents;
+        ECManager.totalPoints -= rabbitCost;
 
-            // Calculate the random position within the plane bounds
-            Vector3 randomPosition = new Vector3(
-                Random.Range(planeCenter.x - planeExtents.x, planeCenter.x + planeExtents.x),
-                planeCenter.y,
-                Random.Range(planeCenter.z - planeExtents.z, planeCenter.z + planeExtents.z)
-            );
+        Vector3 randomPosition = GetRandomPositionOnNavigationMesh();
 
-            // Perform a raycast to find the actual ground position at the random position
-            RaycastHit hit;
-            if (Physics.Raycast(randomPosition + Vector3.up * 10f, Vector3.down, out hit, Mathf.Infinity))
-            {
-                randomPosition = hit.point;
-            }
-
-            // Instantiate the rabbit prefab at the random position
+        if (randomPosition != Vector3.zero)
+        {
             Instantiate(rabbitPrefab, randomPosition, Quaternion.identity);
         }
+        else
+        {
+            Debug.LogError("Failed to find a valid position for the rabbit.");
+        }
     }
+
+    private Vector3 GetRandomPositionOnNavigationMesh()
+    {
+        NavMeshHit hit;
+        Vector3 randomPosition = Vector3.zero;
+        int maxAttempts = 10;
+
+        for (int attempts = 0; attempts < maxAttempts; attempts++)
+        {
+            randomPosition = new Vector3(
+                Random.Range(planeTransform.position.x - planeTransform.localScale.x / 2, planeTransform.position.x + planeTransform.localScale.x / 2),
+                planeTransform.position.y,
+                Random.Range(planeTransform.position.z - planeTransform.localScale.z / 2, planeTransform.position.z + planeTransform.localScale.z / 2)
+            );
+
+            if (NavMesh.SamplePosition(randomPosition, out hit, 1.0f, NavMesh.AllAreas))
+            {
+                return hit.position;
+            }
+        }
+
+        return Vector3.zero;
+    }
+
 }

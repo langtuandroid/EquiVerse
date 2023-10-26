@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlantSpawner : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class PlantSpawner : MonoBehaviour
     public LayerMask groundLayer;
     public GameObject[] grassPrefabs;  // Prefab for the grass object
 
-    [Header ("GrassCost")]
+    [Header("GrassCost")]
     public float grassCost = 20f;
 
     private void Start()
@@ -27,7 +28,8 @@ public class PlantSpawner : MonoBehaviour
             // Raycast to detect the ground
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer))
             {
-                if (ECManager.totalPoints >= grassCost && grassPrefabs.Length < 5)
+                // Check if the hit point is on the NavMesh
+                if (IsPointOnNavMesh(hit.point) && ECManager.totalPoints >= grassCost && grassPrefabs.Length < 5)
                 {
                     int randomIndex = Random.Range(0, grassPrefabs.Length);
                     GameObject randomPrefab = grassPrefabs[randomIndex];
@@ -38,4 +40,12 @@ public class PlantSpawner : MonoBehaviour
             }
         } 
     }
+
+    // Check if a given point is on the NavMesh
+    bool IsPointOnNavMesh(Vector3 point)
+    {
+        NavMeshHit hit;
+        return NavMesh.SamplePosition(point, out hit, 0.1f, NavMesh.AllAreas);
+    }
 }
+
