@@ -144,6 +144,7 @@ public class WanderScript : MonoBehaviour
             {
                 animator.SetBool("isRunning", false);
                 Destroy(closestPlant.gameObject);
+                PlantSpawner.RemovePlant();
                 currentHunger = 0f;
                 isHungry = false;
             }

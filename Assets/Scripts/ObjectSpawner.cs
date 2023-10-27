@@ -53,7 +53,6 @@ public class ObjectSpawner : MonoBehaviour
                 return hit.position;
             }
         }
-
         return Vector3.zero;
     }
 
