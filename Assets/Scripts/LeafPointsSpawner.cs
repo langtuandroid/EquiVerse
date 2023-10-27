@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using DG.Tweening;
+using UnityEditor;
 using Random = UnityEngine.Random;
 
 public class LeafPointsSpawner : MonoBehaviour
@@ -12,6 +13,8 @@ public class LeafPointsSpawner : MonoBehaviour
     private float desiredHeight = 5f;
     private float duration = 5f;
 
+    public static bool spawnLeafPoints = true;
+
     private void Start()
     {
         timeBetweenLeafSpawn = Random.Range(timeBetweenLeafSpawnRange.x, timeBetweenLeafSpawnRange.y);
@@ -19,17 +22,21 @@ public class LeafPointsSpawner : MonoBehaviour
 
     private void FixedUpdate()
     {
-        spawnTimer += Time.fixedDeltaTime;
-        if (spawnTimer >= timeBetweenLeafSpawn)
+        if (spawnLeafPoints)
         {
-            Vector3 spawnPosition = transform.position + new Vector3(0,0.5f,0); // Use the position of the object
-            GameObject newLeaf = Instantiate(leafPointPrefab, spawnPosition, Quaternion.identity);
-            
-            // Use DoTween to move the object to the desired height
-            newLeaf.transform.DOMoveY(desiredHeight, duration).SetEase(Ease.OutSine).OnComplete(() => FadeAndDestroy(newLeaf));
+            spawnTimer += Time.fixedDeltaTime;
+            if (spawnTimer >= timeBetweenLeafSpawn)
+            {
+                Vector3 spawnPosition = transform.position + new Vector3(0, 0.5f, 0); // Use the position of the object
+                GameObject newLeaf = Instantiate(leafPointPrefab, spawnPosition, Quaternion.identity);
 
-            spawnTimer = 0f;
-            timeBetweenLeafSpawn = Random.Range(timeBetweenLeafSpawnRange.x, timeBetweenLeafSpawnRange.y);
+                // Use DoTween to move the object to the desired height
+                newLeaf.transform.DOMoveY(desiredHeight, duration).SetEase(Ease.OutSine)
+                    .OnComplete(() => FadeAndDestroy(newLeaf));
+
+                spawnTimer = 0f;
+                timeBetweenLeafSpawn = Random.Range(timeBetweenLeafSpawnRange.x, timeBetweenLeafSpawnRange.y);
+            }
         }
     }
 

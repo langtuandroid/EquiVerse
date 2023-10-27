@@ -58,9 +58,12 @@ public class WanderScript : MonoBehaviour
         
         if (currentHunger >= deathThreshold)
             StartCoroutine(Die());
-        
+
         if (currentHunger >= hungerThreshold)
+        {
             isHungry = true;
+            LeafPointsSpawner.spawnLeafPoints = false;
+        }
     }
 
     private void HandleWanderAndIdle()
@@ -146,6 +149,7 @@ public class WanderScript : MonoBehaviour
                 Destroy(closestPlant.gameObject);
                 PlantSpawner.RemovePlant();
                 currentHunger = 0f;
+                LeafPointsSpawner.spawnLeafPoints = true;
                 isHungry = false;
             }
         }
