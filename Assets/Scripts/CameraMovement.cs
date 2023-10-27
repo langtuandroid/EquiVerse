@@ -37,12 +37,12 @@ public class CameraMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            RotateCamera(-1f); // Rotate left
+            RotateCamera(1f); // Rotate left
             movedLeft = true;
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            RotateCamera(1f); // Rotate right
+            RotateCamera(-1f); // Rotate right
             movedRight = true;
         }
         if (camera.fieldOfView <= maxDistance || camera.fieldOfView >= -maxDistance)
