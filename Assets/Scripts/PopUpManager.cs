@@ -8,4 +8,13 @@ public class PopUpManager : MonoBehaviour
     {
         targetPopUp.SetActive(false);
     }
+
+    public void GivePoints(int amountOfPoints)
+    {
+        ECManager.totalPoints = amountOfPoints;
+    }
+    
+    public void ActivateObject(GameObject objectToActive){
+        objectToActive.SetActive(true);
+    }
 }

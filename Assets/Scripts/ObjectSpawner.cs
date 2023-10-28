@@ -13,10 +13,20 @@ public class ObjectSpawner : MonoBehaviour
 
     public Transform planeTransform;
 
+    private int amountOfRabbits;
+
+    public GameObject gameOverPopUp;
+
     public void SpawnRabbit()
     {
         if (ECManager.totalPoints < rabbitCost)
         {
+            FindAliveRabbits();
+            if (amountOfRabbits <= 0)
+            {
+                gameOverPopUp.SetActive(true);
+                this.gameObject.SetActive(false);
+            }
             return;
         }
 
@@ -56,4 +66,10 @@ public class ObjectSpawner : MonoBehaviour
         return Vector3.zero;
     }
 
+    private void FindAliveRabbits()
+    {
+        GameObject[] rabbits;
+        rabbits = GameObject.FindGameObjectsWithTag("Rabbit");
+        amountOfRabbits = rabbits.Length;
+    }
 }
