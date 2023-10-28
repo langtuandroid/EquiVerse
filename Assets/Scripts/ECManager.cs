@@ -40,9 +40,9 @@ public class ECManager : MonoBehaviour
         {
             totalPoints -= endOfLevelCost;
             slider.value += 1; 
-            if (slider.value == slider.maxValue)
+            if ((int)slider.value == (int)slider.maxValue)
             {
-                print("level completed");
+               //logic when level is completed
             }
         }
     }

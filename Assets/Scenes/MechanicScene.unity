@@ -3225,7 +3225,7 @@ GameObject:
   - component: {fileID: 534822418}
   - component: {fileID: 534822417}
   m_Layer: 5
-  m_Name: PopUp_GameOver
+  m_Name: PopUp_GameOver_Rabbit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9437,6 +9437,7 @@ MonoBehaviour:
   tutorialStep: {fileID: 389900779}
   maxPlants: 2
   maxPlantPopUp: {fileID: 328576647}
+  gameOverPopUp: {fileID: 0}
 --- !u!1 &1818449481
 GameObject:
   m_ObjectHideFlags: 0

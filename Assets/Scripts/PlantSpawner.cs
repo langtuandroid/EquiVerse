@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -50,6 +51,7 @@ public class PlantSpawner : MonoBehaviour
                     else if (!maxPlantPopUp.activeInHierarchy)
                     {
                         maxPlantPopUp.SetActive(true);
+                        PopInAnimation(maxPlantPopUp);
                     }
                 }
             }
@@ -69,6 +71,17 @@ public class PlantSpawner : MonoBehaviour
         if (currentPlantCount > 0)
         {
             currentPlantCount--; // Decrement the plant count
+        }
+    }
+    
+    private void PopInAnimation(GameObject gameObject)
+    {
+        RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
+
+        if (rectTransform != null)
+        {
+            rectTransform.localScale = new Vector3(0f, 0f, 0f);
+            rectTransform.DOScale(1, 0.5f).SetEase(Ease.OutExpo);
         }
     }
 }

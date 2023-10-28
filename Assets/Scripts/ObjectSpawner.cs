@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -25,6 +26,7 @@ public class ObjectSpawner : MonoBehaviour
             if (amountOfRabbits <= 0)
             {
                 gameOverPopUp.SetActive(true);
+                PopInAnimation(gameOverPopUp);
                 this.gameObject.SetActive(false);
             }
             return;
@@ -71,5 +73,16 @@ public class ObjectSpawner : MonoBehaviour
         GameObject[] rabbits;
         rabbits = GameObject.FindGameObjectsWithTag("Rabbit");
         amountOfRabbits = rabbits.Length;
+    }
+    
+    private void PopInAnimation(GameObject gameObject)
+    {
+        RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
+
+        if (rectTransform != null)
+        {
+            rectTransform.localScale = new Vector3(0f, 0f, 0f);
+            rectTransform.DOScale(1, 0.5f).SetEase(Ease.OutExpo);
+        }
     }
 }

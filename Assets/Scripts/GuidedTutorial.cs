@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
@@ -17,6 +18,7 @@ public class GuidedTutorial : MonoBehaviour
 
     private int stepIndex = 0;
     private bool cameraStepCompleted = false;
+    private bool finishLevelStepCompleted = false;
     private bool buttonPressed = false;
 
     private void Start()
@@ -26,6 +28,8 @@ public class GuidedTutorial : MonoBehaviour
         GameUI.SetActive(false);
         objectSpawner.SetActive(false);
         finishLevelButton.SetActive(false);
+        
+        PopInAnimation(guidedTutorial);
     }
 
     private void FixedUpdate()
@@ -35,14 +39,17 @@ public class GuidedTutorial : MonoBehaviour
             GameUI.SetActive(true);
             tutorialSteps[stepIndex].SetActive(false);
             tutorialSteps[stepIndex + 1].SetActive(true);
+            PopInAnimation(tutorialSteps[stepIndex + 1]);
             stepIndex += 1;
             cameraStepCompleted = true;
         }
 
-        if (ECManager.totalPoints >= 150)
+        if (ECManager.totalPoints >= 150 && !finishLevelStepCompleted)
         {
             finishLevelButton.SetActive(true);
             finishLevelStep.SetActive(true);
+            PopInAnimation(finishLevelStep);
+            finishLevelStepCompleted = true;
         }
     }
 
@@ -50,6 +57,7 @@ public class GuidedTutorial : MonoBehaviour
     {
         tutorialSteps[stepIndex].SetActive(false);
         tutorialSteps[stepIndex + 1].SetActive(true);
+        PopInAnimation(tutorialSteps[stepIndex + 1]);
         stepIndex += 1;
         
         if (stepIndex == 2)
@@ -70,6 +78,7 @@ public class GuidedTutorial : MonoBehaviour
         {
             tutorialSteps[stepIndex].SetActive(false);
             tutorialSteps[stepIndex + 1].SetActive(true);
+            PopInAnimation(tutorialSteps[stepIndex + 1]);
             stepIndex += 1;
             buttonPressed = true;
             objectSpawner.SetActive(true);
@@ -79,5 +88,16 @@ public class GuidedTutorial : MonoBehaviour
     public void FinishTutorial()
     {
         finishLevelStep.SetActive(false);
+    }
+
+    private void PopInAnimation(GameObject gameObject)
+    {
+        RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
+
+        if (rectTransform != null)
+        {
+            rectTransform.localScale = new Vector3(0f, 0f, 0f);
+            rectTransform.DOScale(1, 0.5f).SetEase(Ease.OutExpo);
+        }
     }
 }
