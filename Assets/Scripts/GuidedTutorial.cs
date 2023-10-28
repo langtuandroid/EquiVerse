@@ -28,17 +28,6 @@ public class GuidedTutorial : MonoBehaviour
         finishLevelButton.SetActive(false);
     }
 
-    public void SkipTutorial()
-    {
-        screenOverlay.SetActive(false);
-        guidedTutorial.SetActive(false);
-        GameUI.SetActive(true);
-        objectSpawner.SetActive(true);
-        rabbitButton.SetActive(true);
-        finishLevelButton.SetActive(true);
-        CameraMovement.cameraLocked = false;
-    }
-
     private void FixedUpdate()
     {
         if (CameraMovement.cameraMovedInAllDirections && !cameraStepCompleted)
