@@ -68,7 +68,7 @@ public class PlantSpawner : MonoBehaviour
     // You should call this method when a plant is removed or destroyed.
     public static void RemovePlant()
     {
-        if (currentPlantCount > 0)
+        if (currentPlantCount >= 0)
         {
             currentPlantCount--; // Decrement the plant count
         }
