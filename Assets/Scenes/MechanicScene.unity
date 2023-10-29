@@ -1629,7 +1629,7 @@ MonoBehaviour:
   m_text: 'This is Equiverse
 
 
-    A game in which you try to balance a small ecosystem 
+    A game in which you try to balance a small ecosystem
     by letting flora and fauna live in harmony'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1b0ec1ad4045ad45a6c18649ee01dca, type: 2}
@@ -5830,13 +5830,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.42660013, y: -0.33944437, z: 0.17670354, w: 0.8194912}
-  m_LocalPosition: {x: 7, y: 12, z: -7}
+  m_LocalRotation: {x: 0.19996412, y: -0.3736123, z: 0.08282785, w: 0.90198}
+  m_LocalPosition: {x: 8, y: 8, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 55, y: -45, z: 0}
+  m_LocalEulerAnglesHint: {x: 25, y: -45, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5850,8 +5850,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 443613164}
-  rotationSpeed: 30
-  zoomSpeed: 10
+  rotationSpeed: 50
+  zoomSpeed: 25
+  maxDistance: 80
+  minDistance: 30
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0

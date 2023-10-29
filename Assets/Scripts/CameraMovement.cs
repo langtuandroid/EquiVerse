@@ -9,15 +9,16 @@ public class CameraMovement : MonoBehaviour
     public Transform target; // The object around which the camera rotates
     public float rotationSpeed = 13f; // Speed of rotation
     public float zoomSpeed = 13f;
-
-    private new Camera camera;
-    private float maxDistance = 2f;
+    public float maxDistance = 80f;
+    public float minDistance = 20f; // Added minimum zoom distance
     private bool movedLeft = false, movedRight = false, movedUp = false, movedDown = false;
     
     [HideInInspector]
     public static bool cameraLocked = true;
 
     public static bool cameraMovedInAllDirections = false;
+
+    private new Camera camera;
 
     private void Start()
     {
@@ -45,7 +46,11 @@ public class CameraMovement : MonoBehaviour
             RotateCamera(-1f); // Rotate right
             movedRight = true;
         }
-        if (camera.fieldOfView <= maxDistance || camera.fieldOfView >= -maxDistance)
+        
+        // Clamp zoom within the defined limits
+        camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, minDistance, maxDistance);
+
+        if (camera.fieldOfView <= maxDistance && camera.fieldOfView >= minDistance)
         {
             if (Input.GetKey(KeyCode.W))
             {
@@ -84,6 +89,6 @@ public class CameraMovement : MonoBehaviour
             cameraMovedInAllDirections = true;
         }
     }
-    
 }
+
 
