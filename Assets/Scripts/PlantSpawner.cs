@@ -16,18 +16,21 @@ public class PlantSpawner : MonoBehaviour
     public GameObject tutorialStep;
 
     public int maxPlants = 2; // Maximum number of allowed plants
-    private static int currentPlantCount = 0; // Track the number of plants in the scene
+    private static int currentPlantCount; // Track the number of plants in the scene
     public GameObject maxPlantPopUp;
 
     private void Start()
     {
         mainCamera = Camera.main;
+
+        currentPlantCount = 0;
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            print(currentPlantCount);
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
@@ -37,7 +40,7 @@ public class PlantSpawner : MonoBehaviour
                 // Check if the hit point is on the NavMesh
                 if (IsPointOnNavMesh(hit.point) && ECManager.totalPoints >= grassCost)
                 {
-                    if (currentPlantCount <= maxPlants)
+                    if (currentPlantCount < maxPlants)
                     {
                         int randomIndex = Random.Range(0, grassPrefabs.Length);
                         GameObject randomPrefab = grassPrefabs[randomIndex];
@@ -68,7 +71,7 @@ public class PlantSpawner : MonoBehaviour
     // You should call this method when a plant is removed or destroyed.
     public static void RemovePlant()
     {
-        if (currentPlantCount >= 0)
+        if (currentPlantCount > 0)
         {
             currentPlantCount--; // Decrement the plant count
         }

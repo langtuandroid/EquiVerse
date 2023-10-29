@@ -1,48 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
+using DG.Tweening;
 
 public class ObjectSpawner : MonoBehaviour
 {
     [Header("SpawnPrefabs")]
     public GameObject rabbitPrefab;
 
-    [Header ("SpawnCost")]
+    [Header("SpawnCost")]
     public float rabbitCost = 100f;
 
     public Transform planeTransform;
 
     private int amountOfRabbits;
-
     public GameObject gameOverPopUp;
 
-    public void SpawnRabbit()
+    private void FixedUpdate()
     {
         if (ECManager.totalPoints < rabbitCost)
         {
             FindAliveRabbits();
             if (amountOfRabbits <= 0)
             {
-                gameOverPopUp.SetActive(true);
-                PopInAnimation(gameOverPopUp);
-                this.gameObject.SetActive(false);
+                ShowGameOverPopUp();
             }
             return;
         }
+    }
 
-        ECManager.totalPoints -= rabbitCost;
-
-        Vector3 randomPosition = GetRandomPositionOnNavigationMesh();
-
-        if (randomPosition != Vector3.zero)
+    public void SpawnRabbit()
+    {
+        if (ECManager.totalPoints >= rabbitCost)
         {
-            Instantiate(rabbitPrefab, randomPosition, Quaternion.identity);
-        }
-        else
-        {
-            Debug.LogError("Failed to find a valid position for the rabbit.");
+            ECManager.totalPoints -= rabbitCost;
+            Vector3 randomPosition = GetRandomPositionOnNavigationMesh();
+
+            if (randomPosition != Vector3.zero)
+            {
+                Instantiate(rabbitPrefab, randomPosition, Quaternion.identity);
+            }
+            else
+            {
+                Debug.LogError("Failed to find a valid position for the rabbit.");
+            }
         }
     }
 
@@ -70,19 +73,26 @@ public class ObjectSpawner : MonoBehaviour
 
     private void FindAliveRabbits()
     {
-        GameObject[] rabbits;
-        rabbits = GameObject.FindGameObjectsWithTag("Rabbit");
+        GameObject[] rabbits = GameObject.FindGameObjectsWithTag("Rabbit");
         amountOfRabbits = rabbits.Length;
     }
-    
+
+    private void ShowGameOverPopUp()
+    {
+        gameOverPopUp.SetActive(true);
+        PopInAnimation(gameOverPopUp);
+        gameObject.SetActive(false);
+    }
+
     private void PopInAnimation(GameObject gameObject)
     {
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
 
         if (rectTransform != null)
         {
-            rectTransform.localScale = new Vector3(0f, 0f, 0f);
-            rectTransform.DOScale(1, 0.5f).SetEase(Ease.OutExpo);
+            rectTransform.localScale = Vector3.zero;
+            rectTransform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutExpo);
         }
     }
 }
+
