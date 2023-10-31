@@ -26,6 +26,7 @@ public class WanderScript : MonoBehaviour
     private bool isIdling = false;
     private bool isHungry = false;
     private float currentHunger = 0f;
+    private bool isLookingOut = false;
 
     private void Start()
     {
@@ -55,7 +56,7 @@ public class WanderScript : MonoBehaviour
     private void HandleHunger()
     {
         currentHunger += 5f * Time.fixedDeltaTime;
-        
+
         if (currentHunger >= deathThreshold)
             StartCoroutine(Die());
 
@@ -68,32 +69,29 @@ public class WanderScript : MonoBehaviour
 
     private void HandleWanderAndIdle()
     {
+        stateTimer -= Time.fixedDeltaTime;
+
         if (isIdling)
         {
-            stateTimer -= Time.fixedDeltaTime;
-
             if (stateTimer <= 0f)
             {
                 isIdling = false;
                 Wander();
-                animator.SetBool("isJumping", true);
             }
         }
         else
         {
-            stateTimer -= Time.fixedDeltaTime;
-
             if (stateTimer <= 0f)
             {
                 isIdling = true;
                 Idle();
-                animator.SetBool("isJumping", false);
             }
         }
     }
 
     private void Wander()
     {
+        animator.SetBool("isJumping", true);
         wanderTimer = Random.Range(wanderTimerRange.x, wanderTimerRange.y);
         idleDuration = 0f;
         stateTimer = wanderTimer;
@@ -110,6 +108,19 @@ public class WanderScript : MonoBehaviour
 
     private void Idle()
     {
+        animator.SetBool("isJumping", false);
+
+        if (!isLookingOut)
+        {
+            int randomNumber = Random.Range(0, 2);
+            if (randomNumber == 1)
+            {
+                // Set the "LookOutTrigger" to trigger the lookout animation
+                animator.SetTrigger("LookOutTrigger");
+                isLookingOut = true; // Set the flag to true when lookout animation starts
+            }
+        }
+
         agent.speed = 0;
         idleDuration = Random.Range(idleDurationRange.x, idleDurationRange.y);
         stateTimer = idleDuration;
@@ -146,6 +157,7 @@ public class WanderScript : MonoBehaviour
             else
             {
                 animator.SetBool("isRunning", false);
+                animator.SetBool("isJumping", false);
                 Destroy(closestPlant.gameObject);
                 PlantSpawner.RemovePlant();
                 currentHunger = 0f;
