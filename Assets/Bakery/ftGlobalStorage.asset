@@ -14,25 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modifiedAssetPathList:
   - Assets/Bakery/examples/content/sponza/sponza.FBX
-  - Assets/AssetPacks/PolygonNature/Models/SM_Rock_Pile_03.fbx
-  - Assets/AssetPacks/PolygonNature/Models/SM_Rock_Wall_02.fbx
   - Assets/AssetPacks/PolygonNature/Models/SM_Rock_CaveEntrance_01.fbx
-  - Assets/AssetPacks/PolygonNature/Models/SM_Rock_Cluster_Large_02.fbx
-  - Assets/AssetPacks/PolygonNature/Models/SM_Prop_Pillar_Broken_Moss_02.fbx
-  - Assets/AssetPacks/PolygonNature/Models/SM_Rock_Cluster_Large_03.fbx
   - Assets/AssetPacks/PolygonNature/Models/SM_Terrain_Rubble_Pebbles_03.fbx
-  - Assets/AssetPacks/PolygonNature/Models/SM_Rock_Pile_02.fbx
-  - Assets/AssetPacks/PolygonNature/Models/SM_Terrain_GrassEdge_04.fbx
-  - Assets/AssetPacks/PolygonNature/Models/SM_Rock_Cluster_Large_01.fbx
-  - Assets/AssetPacks/PolygonNature/Models/SM_Rock_Tile_01.fbx
-  - Assets/AssetPacks/PolygonNature/Models/SM_Rock_Pile_01.fbx
+  - Assets/AssetPacks/PolygonNature/Models/SM_Rock_Wall_02.fbx
+  - Assets/AssetPacks/PolygonNature/Models/SM_Rock_Pile_03.fbx
+  - Assets/AssetPacks/PolygonNature/Models/SM_Rock_Cluster_Large_02.fbx
   - Assets/AssetPacks/PolygonNature/Models/SM_Rock_Pile_04.fbx
-  - Assets/AssetPacks/PolygonNature/Models/SM_Rock_Boulder_01.fbx
+  - Assets/AssetPacks/PolygonNature/Models/SM_Rock_Pile_01.fbx
+  - Assets/AssetPacks/PolygonNature/Models/SM_Prop_Pillar_Broken_Moss_02.fbx
+  - Assets/AssetPacks/PolygonNature/Models/SM_Rock_Cluster_Large_01.fbx
+  - Assets/AssetPacks/PolygonNature/Models/SM_Rock_Cluster_Large_03.fbx
   - Assets/AssetPacks/PolygonNature/Models/SM_Prop_Pillar_Arch_Broken_Moss_02.fbx
-  - Assets/AssetPacks/PolygonNature/Models/SM_Tree_Pine_01.fbx
+  - Assets/AssetPacks/PolygonNature/Models/SM_Terrain_GrassEdge_04.fbx
+  - Assets/AssetPacks/PolygonNature/Models/SM_Rock_Pile_02.fbx
+  - Assets/AssetPacks/PolygonNature/Models/SM_Rock_Boulder_01.fbx
+  - Assets/AssetPacks/PolygonNature/Models/SM_Rock_Tile_01.fbx
   - Assets/AssetPacks/PolygonNature/Models/SM_Tree_Birch_01.fbx
+  - Assets/AssetPacks/PolygonNature/Models/SM_Tree_Pine_01.fbx
   - Assets/AssetPacks/PolygonNature/Models/SM_Tree_Pine_02.fbx
-  modifiedAssetPaddingHash: d6a958ff80c5d890567e9363af67e2a814f33a062009ecc0f1f23a0613a3ddde1b3a8033383fd3d9f1f23a06af67e2a8377e93638109ecc0c25031ee2bf43a06d7c2a693e55031ee3c4efff0
+  - Assets/AssetPacks/PolygonNature/Models/SM_Tree_Log_01.fbx
+  modifiedAssetPaddingHash: d6a958ffaf67e2a813a3ddde567e936380c5d89027dc894b8109ecc0377e93632009ecc0f1f23a06f1f23a062bf43a061b3a80331b3a8033c25031eeaf67e2a8e55031eed7c2a6933c4efff03367e2a8
   modifiedMeshList: []
   modifiedMeshPaddingList: 
   modifiedAssets:
@@ -416,86 +417,92 @@ MonoBehaviour:
     padding: 2e000000460000002a000000110000000e0000000c0000000400000033000000330000003300000033000000330000003300000033000000330000000a00000007000000060000002b0000002b00000011000000140000001400000014000000140000002a0000001d000000320000003200000032000000320000002a000000080000000d0000000500000087000000fa00000087000000fa00000087000000fa00000087000000fa00000087000000fb00000087000000fb00000087000000fb00000087000000fb00000087000000fb00000051000000510000005100000051000000510000005100000051000000510000005100000051000000510000000c00000006000000060000002700000028000000390000002b000000150000002700000000010000ba0000009b0000009b000000b70000009d000000b7000000b7000000b70000009b000000b70000009d000000b7000000b7000000b70000009b0000009b0000009b00000083000000ba00000000010000ba0000009b0000009b000000b70000009d000000b7000000b7000000b70000009b000000b70000009d000000b7000000b7000000b70000009b0000009b0000009b00000083000000000100002700000006000000270000002700000027000000270000002d0000001000000010000000230000006a000000000100006a000000000100006a000000000100006a000000000100001e0000002c000000210000005c000000000100005c000000000100005c000000000100005c000000000100001a00000026000000210000005c000000000100005c000000000100005c000000000100005c000000000100001a00000026000000210000005c000000000100005c000000000100005c000000000100005c000000000100001a00000026000000210000005c000000000100005c000000000100005c000000000100005c000000000100001a00000026000000210000005c000000000100005c000000000100005c000000000100005c000000000100001a00000026000000210000005c000000000100005c000000000100005c000000000100005c000000000100001a00000026000000210000005c000000000100005c000000000100005c000000000100005c000000000100001a00000026000000210000005c000000000100005c000000000100005c000000000100005c000000000100001a00000026000000210000005c000000000100005c000000000100005c000000000100005c000000000100001a00000026000000210000005c000000000100005c000000000100005c000000000100005c000000000100001a00000026000000230000006a000000000100006a000000000100006a000000000100006a000000000100001e0000002c000000630000004300000000010000000100004300000000010000430000000001000043000000430000009400000094000000430000009400000043000000940000004300000024000000270000004600000030000000360000002d000000360000001d0000001d0000001d0000001d0000001d0000001d0000001d0000001d00000000010000ad0000000001000000010000ad0000000001000000010000ad0000000001000000010000ad0000000001000000010000ad0000000001000000010000ad0000000001000000010000ad0000000001000000010000ad0000000001000000010000ad0000000001000000010000ad000000000100001b0000001b0000001b0000001b0000001b0000001b0000001b0000001b0000001b0000001b000000000100000001000000010000000100008c00000000010000000100000001000000010000000100000001000000010000000100008c00000000010000000100000001000000010000000100000001000000010000000100008c00000000010000000100000001000000010000000100000001000000010000000100008c000000000100000001000000010000000100004600000046000000460000004900000049000000490000004900000024000000240000002400000024000000220000001800000004000000
     unwrapper: 
   - meshName:
-    - SM_Rock_Pile_03
-    padding: 0e000000
-    unwrapper: 01000000
-  - meshName:
-    - SM_Rock_Wall_02
-    padding: 17000000
-    unwrapper: 01000000
-  - meshName:
     - SM_Rock_CaveEntrance_01
     padding: 0b000000
-    unwrapper: 01000000
-  - meshName:
-    - SM_Rock_Cluster_Large_02
-    padding: 0a000000
-    unwrapper: 01000000
-  - meshName:
-    - SM_Prop_Pillar_Broken_Moss_02
-    padding: 48000000
-    unwrapper: 01000000
-  - meshName:
-    - SM_Rock_Cluster_Large_03
-    padding: 14000000
     unwrapper: 01000000
   - meshName:
     - SM_Terrain_Rubble_Pebbles_03
     padding: 95000000
     unwrapper: 01000000
   - meshName:
-    - SM_Rock_Pile_02
-    padding: 0f000000
+    - SM_Rock_Wall_02
+    padding: 17000000
     unwrapper: 01000000
   - meshName:
-    - SM_Terrain_GrassEdge_04
-    padding: 03000000
+    - SM_Rock_Pile_03
+    padding: 0e000000
     unwrapper: 01000000
   - meshName:
-    - SM_Rock_Cluster_Large_01
-    padding: 14000000
-    unwrapper: 01000000
-  - meshName:
-    - SM_Rock_Tile_01
-    padding: 0b000000
-    unwrapper: 01000000
-  - meshName:
-    - SM_Rock_Pile_01
-    padding: 21000000
+    - SM_Rock_Cluster_Large_02
+    padding: 1a000000
     unwrapper: 01000000
   - meshName:
     - SM_Rock_Pile_04
     padding: 2a000000
     unwrapper: 01000000
   - meshName:
-    - SM_Rock_Boulder_01
-    padding: 1b000000
+    - SM_Rock_Pile_01
+    padding: 21000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Prop_Pillar_Broken_Moss_02
+    padding: 48000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Rock_Cluster_Large_01
+    padding: 14000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Rock_Cluster_Large_03
+    padding: 14000000
     unwrapper: 01000000
   - meshName:
     - SM_Prop_Pillar_Arch_Broken_Moss_02
     padding: 50000000
     unwrapper: 01000000
   - meshName:
-    - SM_Tree_Pine_01
-    padding: 13000000
+    - SM_Terrain_GrassEdge_04
+    padding: 0f000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Rock_Pile_02
+    padding: 0f000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Rock_Boulder_01
+    padding: 1b000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Rock_Tile_01
+    padding: 0b000000
     unwrapper: 01000000
   - meshName:
     - SM_Tree_Birch_01
     padding: 11000000
     unwrapper: 01000000
   - meshName:
+    - SM_Tree_Pine_01
+    padding: 13000000
+    unwrapper: 01000000
+  - meshName:
     - SM_Tree_Pine_02
     padding: 12000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Tree_Log_01
+    padding: 33000000
     unwrapper: 01000000
   assetList:
   - Assets/Bakery/examples/content/sponza/bush.FBX
   - Assets/Bakery/examples/content/floor_lamp.FBX
-  uvOverlapAssetList: 00000000ffffffff
-  xatlasWarningShown: 1
+  - Assets/Magic Light Probes/Examples/Models/HandfulOfCrystals.obj
+  - Assets/Magic Light Probes/Examples/Models/RocksAndTree.FBX
+  uvOverlapAssetList: 00000000ffffffff0101000001010000
+  xatlasWarningShown: 0
   foundCompatibleSetup: 1
-  gpuName: NVIDIA GeForce GTX 1080 Ti
-  runsNonRTX: 1
-  runsOptix5: 1
+  gpuName: NVIDIA GeForce RTX 3090
+  runsNonRTX: 0
+  runsOptix5: 0
   runsOptix6: 1
   runsOptix7: 1
   runsOIDN: 1
@@ -562,12 +569,12 @@ MonoBehaviour:
   renderSettingsHoleFilling: 0
   renderSettingsBeepOnFinish: 0
   renderSettingsExportTerrainAsHeightmap: 1
-  renderSettingsRTXMode: 0
+  renderSettingsRTXMode: 1
   renderSettingsLightProbeMode: 1
   renderSettingsClientMode: 0
   renderSettingsServerAddress: 127.0.0.1
   renderSettingsUnwrapper: 0
-  renderSettingsDenoiserType: 5
+  renderSettingsDenoiserType: 100
   renderSettingsExportTerrainTrees: 0
   renderSettingsShowPerf: 1
   renderSettingsSampleDiv: 1
@@ -580,7 +587,7 @@ MonoBehaviour:
   renderSettingsRTPVWidth: 640
   renderSettingsRTPVHeight: 360
   tagOverrides: []
-  modifiedMeshPaddingArray: 12000000
+  modifiedMeshPaddingArray: 33000000
   modifiedMeshUnwrapperArray: 01000000
   texSettingsKey: []
   texSettingsVal: []
