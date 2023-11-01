@@ -146,6 +146,7 @@ public class WanderScript : MonoBehaviour
             else
             {
                 animator.SetBool("isRunning", false);
+                animator.SetBool("isLookingOut", true);
                 Destroy(closestPlant.gameObject);
                 PlantSpawner.RemovePlant();
                 currentHunger = 0f;
