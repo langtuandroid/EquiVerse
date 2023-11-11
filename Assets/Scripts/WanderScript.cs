@@ -68,6 +68,7 @@ public class WanderScript : MonoBehaviour
 
     private void HandleWanderAndIdle()
     {
+        animator.SetBool("isLookingOut", false);
         if (isIdling)
         {
             stateTimer -= Time.fixedDeltaTime;
@@ -137,7 +138,7 @@ public class WanderScript : MonoBehaviour
 
         if (closestPlant != null)
         {
-            if (closestDistance > 0.2f)
+            if (closestDistance > 0.15f)
             {
                 agent.speed = 1.3f;
                 agent.SetDestination(closestPlant.position);
@@ -146,12 +147,12 @@ public class WanderScript : MonoBehaviour
             else
             {
                 animator.SetBool("isRunning", false);
-                animator.SetBool("isLookingOut", true);
                 Destroy(closestPlant.gameObject);
                 PlantSpawner.RemovePlant();
                 currentHunger = 0f;
                 LeafPointsSpawner.spawnLeafPoints = true;
                 isHungry = false;
+                animator.SetBool("isLookingOut", true);
             }
         }
     }
