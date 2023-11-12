@@ -9,6 +9,7 @@ public class GuidedTutorial : MonoBehaviour
 {
     public GameObject screenOverlay;
     public GameObject guidedTutorial;
+    public GameObject plantSpawner;
     public GameObject GameUI;
     public GameObject[] tutorialSteps;
     public GameObject objectSpawner;
@@ -28,6 +29,7 @@ public class GuidedTutorial : MonoBehaviour
         GameUI.SetActive(false);
         objectSpawner.SetActive(false);
         finishLevelButton.SetActive(false);
+        plantSpawner.SetActive(false);
         
         PopInAnimation(guidedTutorial);
     }
@@ -69,6 +71,11 @@ public class GuidedTutorial : MonoBehaviour
         if (stepIndex == 5)
         {
             rabbitButton.SetActive(true);
+        }
+
+        if (stepIndex == 7)
+        {
+            plantSpawner.SetActive(true);
         }
     }
 

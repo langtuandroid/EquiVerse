@@ -5,14 +5,14 @@ using UnityEngine.AI;
 
 public class WanderScript : MonoBehaviour
 {
-    public float wanderRadius = 10f;
-    public Vector2 wanderTimerRange = new Vector2(3f, 7f);
-    public Vector2 idleDurationRange = new Vector2(2f, 5f);
-    public Vector2 speedRange = new Vector2(0.5f, 1.0f);
-    public float searchRange = 10f;
-    public float hungerThreshold = 50f;
-    public float deathThreshold = 100f;
-    public Material hungryMaterial;
+    [SerializeField] private float wanderRadius = 10f;
+    [SerializeField] private Vector2 wanderTimerRange = new Vector2(3f, 7f);
+    [SerializeField] private Vector2 idleDurationRange = new Vector2(2f, 5f);
+    [SerializeField] private Vector2 speedRange = new Vector2(0.5f, 1.0f);
+    [SerializeField] private float searchRange = 10f;
+    [SerializeField] private float hungerThreshold = 50f;
+    [SerializeField] private float deathThreshold = 100f;
+    [SerializeField] private Material hungryMaterial;
 
     private SkinnedMeshRenderer skinnedMeshRenderer;
     private NavMeshAgent agent;
@@ -26,6 +26,10 @@ public class WanderScript : MonoBehaviour
     private bool isIdling = false;
     private bool isHungry = false;
     private float currentHunger = 0f;
+
+    private const float LEAF_SPAWN_DISTANCE_THRESHOLD = 0.15f;
+    private const float SMOOTHING_FACTOR = 5f;
+    private const float ROTATION_SPEED = 360f;
 
     private void Start()
     {
@@ -42,11 +46,18 @@ public class WanderScript : MonoBehaviour
             FindClosestPlant();
         else
             HandleWanderAndIdle();
+
+        SmoothMovement();
+        AlignRotation();
     }
 
     private void InitializeComponents()
     {
         agent = GetComponent<NavMeshAgent>();
+        agent.angularSpeed = 120f;
+        agent.acceleration = 8f;
+        agent.stoppingDistance = 0.2f;
+
         animator = GetComponent<Animator>();
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         rabbitMaterial = skinnedMeshRenderer.material;
@@ -55,7 +66,7 @@ public class WanderScript : MonoBehaviour
     private void HandleHunger()
     {
         currentHunger += 5f * Time.fixedDeltaTime;
-        
+
         if (currentHunger >= deathThreshold)
             StartCoroutine(Die());
 
@@ -69,6 +80,7 @@ public class WanderScript : MonoBehaviour
     private void HandleWanderAndIdle()
     {
         animator.SetBool("isLookingOut", false);
+
         if (isIdling)
         {
             stateTimer -= Time.fixedDeltaTime;
@@ -123,22 +135,11 @@ public class WanderScript : MonoBehaviour
         if (plants.Length == 0)
             return;
 
-        Transform closestPlant = null;
-        float closestDistance = Mathf.Infinity;
-
-        foreach (GameObject plant in plants)
-        {
-            float distance = Vector3.Distance(transform.position, plant.transform.position);
-            if (distance < closestDistance)
-            {
-                closestDistance = distance;
-                closestPlant = plant.transform;
-            }
-        }
+        Transform closestPlant = FindClosestPlantTransform(plants);
 
         if (closestPlant != null)
         {
-            if (closestDistance > 0.15f)
+            if (Vector3.Distance(transform.position, closestPlant.position) > LEAF_SPAWN_DISTANCE_THRESHOLD)
             {
                 agent.speed = 1.3f;
                 agent.SetDestination(closestPlant.position);
@@ -157,9 +158,42 @@ public class WanderScript : MonoBehaviour
         }
     }
 
+    private Transform FindClosestPlantTransform(GameObject[] plants)
+    {
+        Transform closestPlant = null;
+        float closestDistance = Mathf.Infinity;
+
+        foreach (GameObject plant in plants)
+        {
+            float distance = Vector3.Distance(transform.position, plant.transform.position);
+
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestPlant = plant.transform;
+            }
+        }
+
+        return closestPlant;
+    }
+
     private void MaterialChanger()
     {
         skinnedMeshRenderer.material = isHungry ? hungryMaterial : rabbitMaterial;
+    }
+
+    private void SmoothMovement()
+    {
+        transform.position = Vector3.Lerp(transform.position, agent.nextPosition, Time.deltaTime * SMOOTHING_FACTOR);
+    }
+
+    private void AlignRotation()
+    {
+        if (agent.velocity != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(agent.velocity.normalized);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, ROTATION_SPEED * Time.deltaTime);
+        }
     }
 
     private IEnumerator Die()
@@ -171,3 +205,4 @@ public class WanderScript : MonoBehaviour
         Destroy(gameObject);
     }
 }
+

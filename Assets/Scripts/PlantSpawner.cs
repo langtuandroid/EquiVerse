@@ -22,7 +22,6 @@ public class PlantSpawner : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
-
         currentPlantCount = 0;
     }
 
