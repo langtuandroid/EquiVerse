@@ -5,13 +5,13 @@ using UnityEngine.AI;
 
 public class WanderScript : MonoBehaviour
 {
-    [SerializeField] private float wanderRadius = 10f;
+    [SerializeField] private float wanderRadius;
     [SerializeField] private Vector2 wanderTimerRange = new Vector2(3f, 7f);
     [SerializeField] private Vector2 idleDurationRange = new Vector2(2f, 5f);
     [SerializeField] private Vector2 speedRange = new Vector2(0.5f, 1.0f);
-    [SerializeField] private float searchRange = 10f;
-    [SerializeField] private float hungerThreshold = 50f;
-    [SerializeField] private float deathThreshold = 100f;
+    [SerializeField] private float hungerThreshold;
+    [SerializeField] private float warningThreshold;
+    [SerializeField] private float deathThreshold;
     [SerializeField] private Material hungryMaterial;
 
     private SkinnedMeshRenderer skinnedMeshRenderer;
@@ -25,6 +25,7 @@ public class WanderScript : MonoBehaviour
     private float stateTimer;
     private bool isIdling = false;
     private bool isHungry = false;
+    private bool inWarningState = false;
     private float currentHunger = 0f;
 
     private const float LEAF_SPAWN_DISTANCE_THRESHOLD = 0.15f;
@@ -65,6 +66,7 @@ public class WanderScript : MonoBehaviour
 
     private void HandleHunger()
     {
+        print(currentHunger);
         currentHunger += 5f * Time.fixedDeltaTime;
 
         if (currentHunger >= deathThreshold)
@@ -74,6 +76,11 @@ public class WanderScript : MonoBehaviour
         {
             isHungry = true;
             LeafPointsSpawner.spawnLeafPoints = false;
+
+            if (currentHunger >= warningThreshold)
+            {
+                inWarningState = true;
+            }
         }
     }
 
@@ -81,22 +88,17 @@ public class WanderScript : MonoBehaviour
     {
         animator.SetBool("isLookingOut", false);
 
-        if (isIdling)
-        {
-            stateTimer -= Time.fixedDeltaTime;
+        stateTimer -= Time.fixedDeltaTime;
 
-            if (stateTimer <= 0f)
+        if (stateTimer <= 0f)
+        {
+            if (isIdling)
             {
                 isIdling = false;
                 Wander();
                 animator.SetBool("isJumping", true);
             }
-        }
-        else
-        {
-            stateTimer -= Time.fixedDeltaTime;
-
-            if (stateTimer <= 0f)
+            else
             {
                 isIdling = true;
                 Idle();
@@ -150,10 +152,12 @@ public class WanderScript : MonoBehaviour
                 animator.SetBool("isRunning", false);
                 Destroy(closestPlant.gameObject);
                 PlantSpawner.RemovePlant();
-                currentHunger = 0f;
+                currentHunger -= 100f;
                 LeafPointsSpawner.spawnLeafPoints = true;
                 isHungry = false;
+                inWarningState = false;
                 animator.SetBool("isLookingOut", true);
+                animator.SetBool("isJumping", false);
             }
         }
     }
@@ -179,7 +183,7 @@ public class WanderScript : MonoBehaviour
 
     private void MaterialChanger()
     {
-        skinnedMeshRenderer.material = isHungry ? hungryMaterial : rabbitMaterial;
+        skinnedMeshRenderer.material = inWarningState ? hungryMaterial : rabbitMaterial;
     }
 
     private void SmoothMovement()

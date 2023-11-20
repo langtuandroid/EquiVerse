@@ -29,7 +29,6 @@ public class PlantSpawner : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            print(currentPlantCount);
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
