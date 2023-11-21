@@ -35,7 +35,7 @@ public class WanderScript : MonoBehaviour
     private void Start()
     {
         InitializeComponents();
-        Idle();
+        SwitchToIdle();
     }
 
     private void FixedUpdate()
@@ -203,6 +203,7 @@ public class WanderScript : MonoBehaviour
     {
         animator.SetBool("isRunning", false);
         animator.SetBool("isJumping", false);
+        isIdling = true;
         HandleWanderAndIdle();
     }
 
