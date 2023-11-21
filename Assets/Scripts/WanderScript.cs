@@ -88,8 +88,6 @@ public class WanderScript : MonoBehaviour
 
     private void HandleWanderAndIdle()
     {
-        animator.SetBool("isLookingOut", false);
-
         stateTimer -= Time.fixedDeltaTime;
 
         if (stateTimer <= 0f)
@@ -203,9 +201,9 @@ public class WanderScript : MonoBehaviour
 
     private void SetIdleAnimation()
     {
-        animator.SetBool("isLookingOut", true);
+        animator.SetBool("isRunning", false);
         animator.SetBool("isJumping", false);
-        agent.speed = 0;
+        HandleWanderAndIdle();
     }
 
     private Transform FindClosestPlantTransform(GameObject[] plants)
