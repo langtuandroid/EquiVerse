@@ -43,10 +43,10 @@ public class WanderScript : MonoBehaviour
         MaterialChanger();
         HandleHunger();
 
-            if (isHungry)
-                FindClosestPlant();
-            else
-                HandleWanderAndIdle();
+        if (isHungry)
+            FindClosestPlant();
+        else
+            HandleWanderAndIdle();
 
         SmoothMovement();
         AlignRotation();
@@ -55,13 +55,18 @@ public class WanderScript : MonoBehaviour
     private void InitializeComponents()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.angularSpeed = 120f;
-        agent.acceleration = 8f;
-        agent.stoppingDistance = 0.2f;
+        InitializeAgentParameters();
 
         animator = GetComponent<Animator>();
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         rabbitMaterial = skinnedMeshRenderer.material;
+    }
+
+    private void InitializeAgentParameters()
+    {
+        agent.angularSpeed = 120f;
+        agent.acceleration = 8f;
+        agent.stoppingDistance = 0.2f;
     }
 
     private void HandleHunger()
@@ -77,9 +82,7 @@ public class WanderScript : MonoBehaviour
             LeafPointsSpawner.spawnLeafPoints = false;
 
             if (currentHunger >= warningThreshold)
-            {
                 inWarningState = true;
-            }
         }
     }
 
@@ -92,39 +95,55 @@ public class WanderScript : MonoBehaviour
         if (stateTimer <= 0f)
         {
             if (isIdling)
-            {
-                isIdling = false;
-                Wander();
-                animator.SetBool("isJumping", true);
-            }
+                SwitchToWander();
             else
-            {
-                isIdling = true;
-                Idle();
-                animator.SetBool("isJumping", false);
-            }
+                SwitchToIdle();
         }
+    }
+
+    private void SwitchToWander()
+    {
+        isIdling = false;
+        animator.SetBool("isJumping", true);
+        Wander();
+    }
+
+    private void SwitchToIdle()
+    {
+        isIdling = true;
+        animator.SetBool("isJumping", false);
+        Idle();
     }
 
     private void Wander()
     {
-        wanderTimer = Random.Range(wanderTimerRange.x, wanderTimerRange.y);
-        idleDuration = 0f;
-        stateTimer = wanderTimer;
+        SetWanderParameters();
 
         Vector3 randomDirection = Random.insideUnitSphere * wanderRadius;
         randomDirection += transform.position;
         NavMeshHit navHit;
         NavMesh.SamplePosition(randomDirection, out navHit, wanderRadius, -1);
         agent.SetDestination(navHit.position);
+    }
 
+    private void SetWanderParameters()
+    {
+        wanderTimer = Random.Range(wanderTimerRange.x, wanderTimerRange.y);
+        idleDuration = 0f;
+        stateTimer = wanderTimer;
+
+        SetRandomSpeed();
+    }
+
+    private void SetRandomSpeed()
+    {
         speed = Random.Range(speedRange.x, speedRange.y);
         agent.speed = speed;
     }
 
     private void Idle()
     {
-        agent.speed = 0;
+        agent.speed = 0f;
         idleDuration = Random.Range(idleDurationRange.x, idleDurationRange.y);
         stateTimer = idleDuration;
     }
@@ -133,39 +152,60 @@ public class WanderScript : MonoBehaviour
     {
         GameObject[] plants = GameObject.FindGameObjectsWithTag("Plant");
 
-        print(plants.Length);
         if (plants.Length == 0)
         {
-            animator.SetBool("isRunning", false);
-            agent.SetDestination(transform.position);
-            HandleWanderAndIdle();
-            //If no plants have been found and if the bunny already has a goal, reset running state and goto idle state
+            HandleNoPlantsFound();
             return;
         }
 
         Transform closestPlant = FindClosestPlantTransform(plants);
 
         if (closestPlant != null)
+            HandleClosestPlant(closestPlant);
+    }
+
+    private void HandleNoPlantsFound()
+    {
+        animator.SetBool("isRunning", false);
+        HandleWanderAndIdle();
+    }
+
+    private void HandleClosestPlant(Transform closestPlant)
+    {
+        if (Vector3.Distance(transform.position, closestPlant.position) > LEAF_SPAWN_DISTANCE_THRESHOLD)
         {
-            if (Vector3.Distance(transform.position, closestPlant.position) > LEAF_SPAWN_DISTANCE_THRESHOLD)
-            {
-                agent.speed = 1.3f;
-                agent.SetDestination(closestPlant.position);
-                animator.SetBool("isRunning", true);
-            }
-            else
-            {
-                animator.SetBool("isRunning", false);
-                Destroy(closestPlant.gameObject);
-                PlantSpawner.RemovePlant();
-                currentHunger -= 100f;
-                LeafPointsSpawner.spawnLeafPoints = true;
-                isHungry = false;
-                inWarningState = false;
-                animator.SetBool("isLookingOut", true);
-                animator.SetBool("isJumping", false);
-            }
+            MoveTowardsPlant(closestPlant);
         }
+        else
+        {
+            EatPlant(closestPlant);
+        }
+    }
+
+    private void MoveTowardsPlant(Transform closestPlant)
+    {
+        agent.speed = 1.3f;
+        agent.SetDestination(closestPlant.position);
+        animator.SetBool("isRunning", true);
+    }
+
+    private void EatPlant(Transform closestPlant)
+    {
+        animator.SetBool("isRunning", false);
+        Destroy(closestPlant.gameObject);
+        PlantSpawner.RemovePlant();
+        currentHunger -= 100f;
+        LeafPointsSpawner.spawnLeafPoints = true;
+        isHungry = false;
+        inWarningState = false;
+        SetIdleAnimation();
+    }
+
+    private void SetIdleAnimation()
+    {
+        animator.SetBool("isLookingOut", true);
+        animator.SetBool("isJumping", false);
+        agent.speed = 0;
     }
 
     private Transform FindClosestPlantTransform(GameObject[] plants)
@@ -215,4 +255,5 @@ public class WanderScript : MonoBehaviour
         Destroy(gameObject);
     }
 }
+
 
