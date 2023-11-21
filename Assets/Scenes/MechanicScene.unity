@@ -106,15 +106,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.25
-    agentHeight: 0.2
+    agentRadius: 0.22
+    agentHeight: 1
     agentSlope: 0
-    agentClimb: 0.06
+    agentClimb: 0.01
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.083333336
+    cellSize: 0.07333333
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -3218,7 +3218,7 @@ MonoBehaviour:
   totalPointsText: {fileID: 405089428}
   endOfLevelText: {fileID: 405535193}
   slider: {fileID: 8757231977867629531}
-  startingPoints: 120
+  startingPoints: 600
   lowValuePoints: 20
   endOfLevelCost: 150
 --- !u!4 &446018290
@@ -3586,7 +3586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4330353087650538, guid: ad1aa46afd04a6942bb772aa5c443642, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 1.022
       objectReference: {fileID: 0}
     - target: {fileID: 4330353087650538, guid: ad1aa46afd04a6942bb772aa5c443642, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3622,11 +3622,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198905374007765354, guid: ad1aa46afd04a6942bb772aa5c443642, type: 3}
       propertyPath: ShapeModule.type
-      value: 2
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 198905374007765354, guid: ad1aa46afd04a6942bb772aa5c443642, type: 3}
       propertyPath: NoiseModule.frequency
       value: 1.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 198905374007765354, guid: ad1aa46afd04a6942bb772aa5c443642, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198905374007765354, guid: ad1aa46afd04a6942bb772aa5c443642, type: 3}
       propertyPath: NoiseModule.strength.scalar
@@ -3638,15 +3642,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198905374007765354, guid: ad1aa46afd04a6942bb772aa5c443642, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.6
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 198905374007765354, guid: ad1aa46afd04a6942bb772aa5c443642, type: 3}
       propertyPath: NoiseModule.scrollSpeed.scalar
       value: 1.44
       objectReference: {fileID: 0}
     - target: {fileID: 198905374007765354, guid: ad1aa46afd04a6942bb772aa5c443642, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198905374007765354, guid: ad1aa46afd04a6942bb772aa5c443642, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 2
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 198905374007765354, guid: ad1aa46afd04a6942bb772aa5c443642, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 198905374007765354, guid: ad1aa46afd04a6942bb772aa5c443642, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
@@ -3661,12 +3673,16 @@ PrefabInstance:
       value: 0.6994958
       objectReference: {fileID: 0}
     - target: {fileID: 198905374007765354, guid: ad1aa46afd04a6942bb772aa5c443642, type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198905374007765354, guid: ad1aa46afd04a6942bb772aa5c443642, type: 3}
       propertyPath: InitialModule.startColor.minMaxState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 198905374007765354, guid: ad1aa46afd04a6942bb772aa5c443642, type: 3}
       propertyPath: InitialModule.startLifetime.minScalar
-      value: 0.6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 198905374007765354, guid: ad1aa46afd04a6942bb772aa5c443642, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key0.b

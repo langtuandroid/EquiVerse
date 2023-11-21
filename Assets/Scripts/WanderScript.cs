@@ -28,7 +28,7 @@ public class WanderScript : MonoBehaviour
     private bool inWarningState = false;
     private float currentHunger = 0f;
 
-    private const float LEAF_SPAWN_DISTANCE_THRESHOLD = 0.15f;
+    private const float LEAF_SPAWN_DISTANCE_THRESHOLD = 0.2f;
     private const float SMOOTHING_FACTOR = 5f;
     private const float ROTATION_SPEED = 360f;
 
