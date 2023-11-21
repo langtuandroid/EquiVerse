@@ -43,10 +43,10 @@ public class WanderScript : MonoBehaviour
         MaterialChanger();
         HandleHunger();
 
-        if (isHungry)
-            FindClosestPlant();
-        else
-            HandleWanderAndIdle();
+            if (isHungry)
+                FindClosestPlant();
+            else
+                HandleWanderAndIdle();
 
         SmoothMovement();
         AlignRotation();
@@ -66,7 +66,6 @@ public class WanderScript : MonoBehaviour
 
     private void HandleHunger()
     {
-        print(currentHunger);
         currentHunger += 5f * Time.fixedDeltaTime;
 
         if (currentHunger >= deathThreshold)
@@ -134,8 +133,15 @@ public class WanderScript : MonoBehaviour
     {
         GameObject[] plants = GameObject.FindGameObjectsWithTag("Plant");
 
+        print(plants.Length);
         if (plants.Length == 0)
+        {
+            animator.SetBool("isRunning", false);
+            agent.SetDestination(transform.position);
+            HandleWanderAndIdle();
+            //If no plants have been found and if the bunny already has a goal, reset running state and goto idle state
             return;
+        }
 
         Transform closestPlant = FindClosestPlantTransform(plants);
 
