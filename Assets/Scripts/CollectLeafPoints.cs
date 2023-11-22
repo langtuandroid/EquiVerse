@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CollectLeafPoints : MonoBehaviour
 {
+    public GameObject particleEffectPrefab;
+    
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -23,10 +25,18 @@ public class CollectLeafPoints : MonoBehaviour
                     if (ecManager != null)
                     {
                         ecManager.AddLowValuePoints();
-                        Destroy((hitObject));
+                        StartCoroutine(DestroyObjectWithEffect(hitObject));
                     }
                 }
             }
         }
+    }
+    
+    private IEnumerator DestroyObjectWithEffect(GameObject obj)
+    {
+        Destroy(obj);
+        GameObject particleEffect = Instantiate(particleEffectPrefab, obj.transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(1.0f);
+        Destroy(particleEffect);
     }
 }
