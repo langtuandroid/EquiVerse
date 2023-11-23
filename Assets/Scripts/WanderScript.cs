@@ -13,6 +13,7 @@ public class WanderScript : MonoBehaviour
     [SerializeField] private float warningThreshold;
     [SerializeField] private float deathThreshold;
     [SerializeField] private Material hungryMaterial;
+    [SerializeField] private ParticleSystem landingParticleSystem;
 
     private SkinnedMeshRenderer skinnedMeshRenderer;
     private NavMeshAgent agent;
@@ -252,6 +253,11 @@ public class WanderScript : MonoBehaviour
         animator.SetBool("isDead_0", true);
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);
+    }
+
+    public void JumpLandEvent()
+    {
+        landingParticleSystem.Play();
     }
 }
 
