@@ -1438,8 +1438,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 959.1111, y: -128}
-  m_SizeDelta: {x: 861.19, y: 0}
+  m_AnchoredPosition: {x: 880, y: -128}
+  m_SizeDelta: {x: 993.7, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &223974228
 MonoBehaviour:
@@ -1461,11 +1461,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'This little piece of nature is called an Equiverse.
-
-
-    Have a better
-    look by using the WASD keys! '
+  m_text: "This little piece of nature is called an Equiverse.\n\nHave a better look
+    around by using the <sprite index=32> <sprite index=28> <sprite index=10> <sprite
+    index=13> keys! \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1b0ec1ad4045ad45a6c18649ee01dca, type: 2}
   m_sharedMaterial: {fileID: -5554273155930248582, guid: e1b0ec1ad4045ad45a6c18649ee01dca, type: 2}
@@ -1484,7 +1482,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 31dee43c090afa543973e37e18bfacc5, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -6350,7 +6348,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 500, y: -219}
-  m_SizeDelta: {x: 744, y: 263.31}
+  m_SizeDelta: {x: 744, y: 219.43}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &915926003
 MonoBehaviour:
@@ -6375,9 +6373,10 @@ MonoBehaviour:
   m_text: 'Animals in your Equiverse generate Leaf points for you to pick up!
 
 
-
     Left
-    Click on Leaf points to pick them up!'
+    Click (<sprite index= 1>) on Leaf points to pick them up!
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1b0ec1ad4045ad45a6c18649ee01dca, type: 2}
   m_sharedMaterial: {fileID: -5554273155930248582, guid: e1b0ec1ad4045ad45a6c18649ee01dca, type: 2}
@@ -6396,7 +6395,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 09ff40741a6f5ad40ad303645ec7679a, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -9134,8 +9133,8 @@ MonoBehaviour:
   m_text: 'Grass costs 5 Leaf Points
 
 
-    Right Click anywhere on the ground in
-    your Equiverse to place some grass!'
+    Right Click (<sprite index= 2>) anywhere
+    on the ground in your Equiverse to place some grass!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1b0ec1ad4045ad45a6c18649ee01dca, type: 2}
   m_sharedMaterial: {fileID: -5554273155930248582, guid: e1b0ec1ad4045ad45a6c18649ee01dca, type: 2}
@@ -9154,7 +9153,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 09ff40741a6f5ad40ad303645ec7679a, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -12743,7 +12742,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 500, y: -455.655}
+  m_AnchoredPosition: {x: 500, y: -433.715}
   m_SizeDelta: {x: 744, y: 114}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1970021919
