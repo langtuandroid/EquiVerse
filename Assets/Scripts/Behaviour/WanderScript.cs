@@ -80,9 +80,9 @@ public class WanderScript : MonoBehaviour
         if (currentHunger >= hungerThreshold)
         {
             isHungry = true;
-            LeafPointsSpawner.spawnLeafPoints = false;
 
             if (currentHunger >= warningThreshold)
+                LeafPointsSpawner.spawnLeafPoints = false;
                 inWarningState = true;
         }
     }
