@@ -20,7 +20,7 @@ public class MainMenuBehaviour : MonoBehaviour
     
     public void ClickPlay(int sceneIndex)
     {
-        transitionOverlay.DOFade(1f, 2.0f).SetEase(Ease.InCubic).OnComplete((() =>
+        transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
         {
             StartCoroutine(LoadAsynchronously(sceneIndex));
         }));

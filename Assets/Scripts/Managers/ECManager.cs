@@ -20,6 +20,7 @@ public class ECManager : MonoBehaviour
     
     private void Start()
     {
+        totalPoints = 0;
         totalPoints += startingPoints;
     }
 

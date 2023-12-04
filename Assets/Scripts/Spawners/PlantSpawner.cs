@@ -27,32 +27,40 @@ public class PlantSpawner : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            // Raycast to detect the ground
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
-                // Check if the hit point is on the NavMesh
-                if (IsPointOnNavMesh(hit.point) && ECManager.totalPoints >= grassCost)
+                // Check if the clicked object is a collectable
+                if (IsCollectable(hit.collider.gameObject))
                 {
-                    if (currentPlantCount < maxPlants)
+                    // Handle the case when a collectable object is clicked (e.g., play a sound or show a message)
+                    Debug.Log("Collectable object clicked!");
+                }
+                else
+                {
+                    // Check if the hit point is on the NavMesh
+                    if (IsPointOnNavMesh(hit.point) && ECManager.totalPoints >= grassCost)
                     {
-                        int randomIndex = Random.Range(0, grassPrefabs.Length);
-                        GameObject randomPrefab = grassPrefabs[randomIndex];
-                        // Instantiate the grass prefab at the clicked position
-                        GameObject spawnedPrefab = Instantiate(randomPrefab, hit.point, Quaternion.identity);
-                        ECManager.totalPoints -= grassCost;
-                        tutorialStep.SetActive(false);
+                        if (currentPlantCount < maxPlants)
+                        {
+                            int randomIndex = Random.Range(0, grassPrefabs.Length);
+                            GameObject randomPrefab = grassPrefabs[randomIndex];
+                            // Instantiate the grass prefab at the clicked position
+                            GameObject spawnedPrefab = Instantiate(randomPrefab, hit.point, Quaternion.identity);
+                            ECManager.totalPoints -= grassCost;
+                            tutorialStep.SetActive(false);
 
-                        currentPlantCount++; // Increment the plant count
-                    }
-                    else if (!maxPlantPopUp.activeInHierarchy)
-                    {
-                        maxPlantPopUp.SetActive(true);
-                        PopInAnimation(maxPlantPopUp);
+                            currentPlantCount++; // Increment the plant count
+                        }
+                        else if (!maxPlantPopUp.activeInHierarchy)
+                        {
+                            maxPlantPopUp.SetActive(true);
+                            PopInAnimation(maxPlantPopUp);
+                        }
                     }
                 }
             }
@@ -74,7 +82,7 @@ public class PlantSpawner : MonoBehaviour
             currentPlantCount--; // Decrement the plant count
         }
     }
-    
+
     private void PopInAnimation(GameObject gameObject)
     {
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
@@ -84,5 +92,11 @@ public class PlantSpawner : MonoBehaviour
             rectTransform.localScale = new Vector3(0f, 0f, 0f);
             rectTransform.DOScale(1, 0.5f).SetEase(Ease.OutExpo);
         }
+    }
+
+    bool IsCollectable(GameObject obj)
+    {
+        // Replace "CollectableLayer" with the actual layer of your collectable objects
+        return obj.layer == LayerMask.NameToLayer("CollectableLayer");
     }
 }
