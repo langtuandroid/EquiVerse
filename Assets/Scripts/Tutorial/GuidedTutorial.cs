@@ -1,9 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 
 public class GuidedTutorial : MonoBehaviour
 {
@@ -21,16 +21,29 @@ public class GuidedTutorial : MonoBehaviour
     private bool cameraStepCompleted = false;
     private bool finishLevelStepCompleted = false;
     private bool buttonPressed = false;
-
+    
     private void Start()
     {
+        print(stepIndex);
+        // Reset all relevant variables and game objects
+        stepIndex = 0;
+        cameraStepCompleted = false;
+        finishLevelStepCompleted = false;
+        buttonPressed = false;
+
         screenOverlay.SetActive(true);
-        guidedTutorial.SetActive(true);
         GameUI.SetActive(false);
         objectSpawner.SetActive(false);
         finishLevelButton.SetActive(false);
         plantSpawner.SetActive(false);
-        
+
+        // Ensure all tutorial steps are deactivated
+        foreach (var step in tutorialSteps)
+        {
+            step.SetActive(false);
+        }
+
+        tutorialSteps[0].SetActive(true);
         PopInAnimation(guidedTutorial);
     }
 
@@ -61,7 +74,7 @@ public class GuidedTutorial : MonoBehaviour
         tutorialSteps[stepIndex + 1].SetActive(true);
         PopInAnimation(tutorialSteps[stepIndex + 1]);
         stepIndex += 1;
-        
+
         if (stepIndex == 2)
         {
             screenOverlay.SetActive(false);

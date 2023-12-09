@@ -23,7 +23,7 @@ public class MainMenuBehaviour : MonoBehaviour
         transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
         {
             StartCoroutine(LoadAsynchronously(sceneIndex));
-        }));
+        })).SetUpdate(true);
     }
 
     public void ClickQuit()
@@ -34,7 +34,7 @@ public class MainMenuBehaviour : MonoBehaviour
     IEnumerator LoadAsynchronously(int sceneIndex)
     {
         loadingScreen.SetActive(true);
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Single);
         yield return operation;
         loadingScreen.SetActive(false);
     }

@@ -60,13 +60,13 @@ public class PauseMenuBehaviour : MonoBehaviour
         {
             guidedTutorialManager.enabled = false;
             StartCoroutine(LoadAsynchronously(0));
-        }));
+        })).SetUpdate(true);
     }
     
     IEnumerator LoadAsynchronously(int sceneIndex)
     {
         loadingScreen.SetActive(true);
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Single);
         yield return operation;
         loadingScreen.SetActive(false);
     }

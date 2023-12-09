@@ -23,6 +23,8 @@ public class CameraMovement : MonoBehaviour
     private void Start()
     {
         camera = GetComponent<Camera>();
+        cameraMovedInAllDirections = false;
+        cameraLocked = true;
     }
 
     private void Update()
