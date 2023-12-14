@@ -728,7 +728,6 @@ GameObject:
   - component: {fileID: 123737241}
   - component: {fileID: 123737244}
   - component: {fileID: 123737243}
-  - component: {fileID: 123737242}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -750,20 +749,6 @@ Transform:
   m_Father: {fileID: 1203185193}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &123737242
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 123737240}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &123737243
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4953,7 +4938,7 @@ Transform:
   - {fileID: 443613164}
   - {fileID: 472169088}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &701051662
 PrefabInstance:
@@ -14751,7 +14736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 204462515822114002, guid: f4c53e50c91cdd944989823dc140282c, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 204462515822114002, guid: f4c53e50c91cdd944989823dc140282c, type: 3}
       propertyPath: m_LocalPosition.x
