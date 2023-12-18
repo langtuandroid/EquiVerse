@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using TMPro;
 using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ECManager : MonoBehaviour
@@ -17,6 +19,11 @@ public class ECManager : MonoBehaviour
     public float startingPoints = 10f;
     public float lowValuePoints = 10f;
     public float endOfLevelCost = 100f;
+    
+    [Header("SceneTransition")]
+    public Image transitionOverlay;
+    public GameObject loadingScreen;
+    public GuidedTutorial guidedTutorialManager;
     
     private void Start()
     {
@@ -39,13 +46,32 @@ public class ECManager : MonoBehaviour
         
         if (totalPoints >= endOfLevelCost)
         {
-            totalPoints -= endOfLevelCost;
-            slider.value += 1; 
             if ((int)slider.value == (int)slider.maxValue)
             {
-               //logic when level is completed
+                LevelCompleted();
+            }
+            else
+            {
+                totalPoints -= endOfLevelCost;
+                slider.value += 1; 
             }
         }
     }
 
+    private void LevelCompleted()
+    {
+        transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
+        {
+            guidedTutorialManager.enabled = false;
+            StartCoroutine(LoadAsynchronously("NewCompanionScene"));
+        })).SetUpdate(true);
+    }
+    
+    IEnumerator LoadAsynchronously(string sceneIndex)
+    {
+        loadingScreen.SetActive(true);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Single);
+        yield return operation;
+        loadingScreen.SetActive(false);
+    }
 }

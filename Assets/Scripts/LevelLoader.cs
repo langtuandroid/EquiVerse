@@ -1,43 +1,24 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Color = System.Drawing.Color;
-using TMPro;
 
-public class MainMenuBehaviour : MonoBehaviour
+public class LevelLoader : MonoBehaviour
 {
     [Header("SceneTransition")]
     public Image transitionOverlay;
     public GameObject loadingScreen;
-
-    [Header("ToggleMenu's")] 
-    public GameObject mainMenu;
-    public GameObject optionsMenu;
-
-    private void Start()
+    
+    public void LoadNextLevel()
     {
-        GameManager.WORLD_INDEX = 1;
-        GameManager.LEVEL_INDEX = 1;
-    }
-
-    public void ClickPlay()
-    {
+        GameManager.LEVEL_INDEX++;
         transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
         {
             StartCoroutine(LoadAsynchronously("Level " + GameManager.WORLD_INDEX.ToString() + "-" + GameManager.LEVEL_INDEX.ToString()));
         }));
     }
-
-    public void ClickQuit()
-    {
-        Application.Quit();
-    }
-
     IEnumerator LoadAsynchronously(string levelIndex)
     {
         loadingScreen.SetActive(true);
@@ -45,18 +26,5 @@ public class MainMenuBehaviour : MonoBehaviour
         yield return operation;
         loadingScreen.SetActive(false);
     }
-
-    public void ToggleOptionsMenu()
-    {
-        if (!optionsMenu.activeInHierarchy)
-        {
-            optionsMenu.SetActive(true);
-            mainMenu.SetActive(false);
-        }
-        else
-        {
-            optionsMenu.SetActive(false);
-            mainMenu.SetActive(true);
-        }
-    }
+    
 }
