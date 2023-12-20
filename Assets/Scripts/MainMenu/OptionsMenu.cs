@@ -2,10 +2,12 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
+using System.Linq;
 
 public class OptionsMenu : MonoBehaviour
 {
     public TMP_Dropdown resolutionDropdown;
+    public TMP_Dropdown refreshRateDropdown;
     public TMP_Dropdown qualityDropdown;
     public TMP_Dropdown screenModeDropdown;
 
@@ -28,33 +30,42 @@ public class OptionsMenu : MonoBehaviour
     {
         resolutions = Screen.resolutions;
         filteredResolutions = new List<Resolution>();
-        
+        HashSet<int> uniqueRefreshRates = new HashSet<int>();
+
         resolutionDropdown.ClearOptions();
+        refreshRateDropdown.ClearOptions(); 
         currentRefreshRate = Screen.currentResolution.refreshRate;
 
-        for (int i = 0; i < resolutions.Length; i++)
-        {
-            if (resolutions[i].refreshRate == currentRefreshRate)
-            {
-                filteredResolutions.Add(resolutions[i]);
+        foreach (var res in resolutions) {
+            uniqueRefreshRates.Add(res.refreshRate);
+            if (res.refreshRate == currentRefreshRate) {
+                filteredResolutions.Add(res);
             }
         }
 
-        List<string> options = new List<string>();
-        for (int i = 0; i < filteredResolutions.Count; i++)
-        {
-            string resolutionOption = filteredResolutions[i].width + "x" + filteredResolutions[i].height + " " +
-                                      filteredResolutions[i].refreshRate + "Hz";
-            options.Add(resolutionOption);
-            if (filteredResolutions[i].width == Screen.width && filteredResolutions[i].height == Screen.height)
-            {
+        List<string> resolutionOptions = new List<string>();
+        for (int i = 0; i < filteredResolutions.Count; i++) {
+            string resolutionOption = filteredResolutions[i].width + "x" + filteredResolutions[i].height;
+            resolutionOptions.Add(resolutionOption);
+            if (filteredResolutions[i].width == Screen.width && filteredResolutions[i].height == Screen.height) {
                 currentResolutionIndex = i;
             }
         }
-        
-        resolutionDropdown.AddOptions(options);
+        resolutionDropdown.AddOptions(resolutionOptions);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+
+        List<string> refreshRateOptions = new List<string>();
+        List<int> sortedRefreshRates = uniqueRefreshRates.ToList();
+        sortedRefreshRates.Sort();
+
+        foreach (int rate in sortedRefreshRates) {
+            refreshRateOptions.Add(rate + "Hz");
+        }
+
+        refreshRateDropdown.AddOptions(refreshRateOptions);
+        refreshRateDropdown.value = refreshRateDropdown.options.FindIndex(option => option.text == currentRefreshRate + "Hz");
+        refreshRateDropdown.RefreshShownValue();
     }
 
     void PopulateQualityDropdown()
@@ -129,7 +140,12 @@ public class OptionsMenu : MonoBehaviour
     public void OnResolutionChanged(int index)
     {
         Resolution selectedResolution = filteredResolutions[index];
-        Screen.SetResolution(selectedResolution.width, selectedResolution.height, true);
+
+        string selectedRefreshRateString = refreshRateDropdown.options[refreshRateDropdown.value].text;
+        int selectedRefreshRate = int.Parse(selectedRefreshRateString.Replace("Hz", ""));
+
+
+        Screen.SetResolution(selectedResolution.width, selectedResolution.height, true, selectedRefreshRate );
     }
 
     public void OnQualityChanged(int index)
