@@ -3726,7 +3726,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1867044103681414285, guid: c31e18edd6162e5459fba48cac4f5fcb, type: 3}
   m_PrefabInstance: {fileID: 921965933}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 642273461}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -4883,6 +4883,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 633987594}
   m_CullTransparentMesh: 1
+--- !u!1 &642273461 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1867044103681414287, guid: c31e18edd6162e5459fba48cac4f5fcb, type: 3}
+  m_PrefabInstance: {fileID: 921965933}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &645558489
 GameObject:
   m_ObjectHideFlags: 0
@@ -6902,7 +6907,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1867044103681414287, guid: c31e18edd6162e5459fba48cac4f5fcb, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c31e18edd6162e5459fba48cac4f5fcb, type: 3}
@@ -14570,6 +14575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionOverlay: {fileID: 509203782}
+  transitionOverlayObject: {fileID: 642273461}
   guidedTutorial: {fileID: 427199156}
 --- !u!114 &2100261343
 MonoBehaviour:

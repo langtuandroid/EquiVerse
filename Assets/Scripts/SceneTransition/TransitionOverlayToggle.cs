@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace UI
@@ -7,20 +8,22 @@ namespace UI
     public class TransitionOverlayToggle : MonoBehaviour
     {
         public Image transitionOverlay;
-
+        public GameObject transitionOverlayObject;
+        
         public GameObject guidedTutorial;
 
         private void Start()
         {
             guidedTutorial.SetActive(false);
+            transitionOverlayObject.SetActive(true);
             FadeSceneOpen();
         }
 
         private void FadeSceneOpen()
         {
-            transitionOverlay.DOFade(0f, 5f).SetEase(Ease.InCubic).OnComplete((() =>
+            transitionOverlay.DOFade(0f, 3f).SetEase(Ease.InCubic).OnComplete((() =>
             {
-                guidedTutorial.SetActive(true);
+                    guidedTutorial.SetActive(true);
             }));
         }
 
