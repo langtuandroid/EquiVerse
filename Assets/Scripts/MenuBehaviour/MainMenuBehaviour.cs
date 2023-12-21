@@ -1,5 +1,4 @@
 using System.Collections;
-using AssetPacks.Plugins.Demigiant.DOTween.Modules;
 using DG.Tweening;
 using Managers;
 using UnityEngine;

@@ -1,4 +1,3 @@
-using AssetPacks.Plugins.Demigiant.DOTween.Modules;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
