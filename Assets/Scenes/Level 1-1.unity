@@ -367,10 +367,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03c69b377ab7094da95d3a04337ebb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   screenOverlay: {fileID: 126064323}
   guidedTutorial: {fileID: 427199156}
   plantSpawner: {fileID: 1375087982}
-  GameUI: {fileID: 1983304909}
+  GameUI: {fileID: 0}
+  objectSpawner: {fileID: 1777924704}
+  rabbitButton: {fileID: 489798214}
+  finishLevelButton: {fileID: 981940608}
+  finishLevelStep: {fileID: 1730641062}
   tutorialSteps:
   - {fileID: 1232956409}
   - {fileID: 633987594}
@@ -380,10 +385,6 @@ MonoBehaviour:
   - {fileID: 991321414}
   - {fileID: 1634916144}
   - {fileID: 389900779}
-  objectSpawner: {fileID: 1777924704}
-  rabbitButton: {fileID: 489798214}
-  finishLevelButton: {fileID: 981940608}
-  finishLevelStep: {fileID: 1730641062}
 --- !u!4 &30172507
 Transform:
   m_ObjectHideFlags: 0
@@ -6382,6 +6383,7 @@ Transform:
   - {fileID: 301018839}
   - {fileID: 1375087984}
   - {fileID: 216405055}
+  - {fileID: 1008966263}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7482,6 +7484,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4750298048767830, guid: 3f5c1fbf9d80c004582c417d17255b6d, type: 3}
   m_PrefabInstance: {fileID: 1008904243}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1008966262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1008966263}
+  - component: {fileID: 1008966264}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1008966263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008966262}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 863825023}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1008966264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008966262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4da11612e17154743bb22150df576269, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialActivated: 1
 --- !u!1001 &1054072406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14577,6 +14623,7 @@ MonoBehaviour:
   transitionOverlay: {fileID: 509203782}
   transitionOverlayObject: {fileID: 642273461}
   guidedTutorial: {fileID: 427199156}
+  gameManager: {fileID: 0}
 --- !u!114 &2100261343
 MonoBehaviour:
   m_ObjectHideFlags: 0

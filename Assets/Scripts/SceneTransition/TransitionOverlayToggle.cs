@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Managers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,6 +13,8 @@ namespace UI
         
         public GameObject guidedTutorial;
 
+        public GameManager gameManager;
+
         private void Start()
         {
             guidedTutorial.SetActive(false);
@@ -23,7 +26,10 @@ namespace UI
         {
             transitionOverlay.DOFade(0f, 3f).SetEase(Ease.InCubic).OnComplete((() =>
             {
+                if (gameManager.tutorialActivated)
+                {
                     guidedTutorial.SetActive(true);
+                }
             }));
         }
 

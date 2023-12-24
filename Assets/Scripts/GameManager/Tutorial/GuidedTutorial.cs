@@ -7,88 +7,70 @@ namespace Tutorial
 {
     public class GuidedTutorial : MonoBehaviour
     {
-        public GameObject screenOverlay;
-        public GameObject guidedTutorial;
-        public GameObject plantSpawner;
-        public GameObject GameUI;
+        public GameManager gameManager;
+        public GameObject screenOverlay, guidedTutorial, plantSpawner, GameUI, objectSpawner, rabbitButton, finishLevelButton, finishLevelStep;
         public GameObject[] tutorialSteps;
-        public GameObject objectSpawner;
-        public GameObject rabbitButton;
-        public GameObject finishLevelButton;
-        public GameObject finishLevelStep;
 
         private int stepIndex = 0;
-        private bool cameraStepCompleted = false;
-        private bool finishLevelStepCompleted = false;
-        private bool buttonPressed = false;
-    
+        private bool cameraStepCompleted, finishLevelStepCompleted, buttonPressed;
+
         private void Start()
         {
-            print(stepIndex);
-            // Reset all relevant variables and game objects
-            stepIndex = 0;
-            cameraStepCompleted = false;
-            finishLevelStepCompleted = false;
-            buttonPressed = false;
-
-            screenOverlay.SetActive(true);
-            GameUI.SetActive(false);
-            objectSpawner.SetActive(false);
-            finishLevelButton.SetActive(false);
-            plantSpawner.SetActive(false);
-
-            // Ensure all tutorial steps are deactivated
-            foreach (var step in tutorialSteps)
+            if (!gameManager.tutorialActivated)
             {
-                step.SetActive(false);
+                SetupNonTutorialMode();
             }
-
-            tutorialSteps[0].SetActive(true);
-            PopInAnimation(guidedTutorial);
+            else
+            {
+                ResetTutorialState();
+                SetupTutorialMode();
+            }
         }
 
         private void FixedUpdate()
         {
-            if (CameraMovement.cameraMovedInAllDirections && !cameraStepCompleted)
-            {
-                GameUI.SetActive(true);
-                tutorialSteps[stepIndex].SetActive(false);
-                tutorialSteps[stepIndex + 1].SetActive(true);
-                PopInAnimation(tutorialSteps[stepIndex + 1]);
-                stepIndex += 1;
-                cameraStepCompleted = true;
-            }
+            if (CheckCameraStepCompletion() && gameManager.tutorialActivated)
+                HandleCameraStepCompletion();
 
-            if (ECManager.totalPoints >= 150 && !finishLevelStepCompleted)
-            {
-                finishLevelButton.SetActive(true);
-                finishLevelStep.SetActive(true);
-                PopInAnimation(finishLevelStep);
-                finishLevelStepCompleted = true;
-            }
+            if (CheckFinishLevelStepCompletion() && gameManager.tutorialActivated)
+                HandleFinishLevelStepCompletion();
         }
 
         public void NextStep()
         {
+            print(stepIndex);
+            print(tutorialSteps.Length);
+            //if (buttonPressed || stepIndex >= tutorialSteps.Length) return;
+
             tutorialSteps[stepIndex].SetActive(false);
-            tutorialSteps[stepIndex + 1].SetActive(true);
-            PopInAnimation(tutorialSteps[stepIndex + 1]);
-            stepIndex += 1;
+            stepIndex++;
 
-            if (stepIndex == 2)
+            if (stepIndex <= tutorialSteps.Length)
             {
-                screenOverlay.SetActive(false);
-                CameraMovement.cameraLocked = false;
-            }
+                tutorialSteps[stepIndex].SetActive(true);
+                PopInAnimation(tutorialSteps[stepIndex]);
 
-            if (stepIndex == 5)
-            {
-                rabbitButton.SetActive(true);
-            }
+                // Step-specific logic
+                if (stepIndex == 2)
+                {
+                    screenOverlay.SetActive(false);
+                    CameraMovement.cameraLocked = false;
+                }
 
-            if (stepIndex == 7)
-            {
-                plantSpawner.SetActive(true);
+                if (stepIndex == 5)
+                {
+                    rabbitButton.SetActive(true);
+                }
+                
+                if (stepIndex == 6)
+                {
+                    print("test");
+                }
+
+                if (stepIndex == 7)
+                {
+                    plantSpawner.SetActive(true);
+                }
             }
         }
 
@@ -97,11 +79,15 @@ namespace Tutorial
             if (!buttonPressed)
             {
                 tutorialSteps[stepIndex].SetActive(false);
-                tutorialSteps[stepIndex + 1].SetActive(true);
-                PopInAnimation(tutorialSteps[stepIndex + 1]);
-                stepIndex += 1;
+                stepIndex++;
                 buttonPressed = true;
                 objectSpawner.SetActive(true);
+
+                if (stepIndex < tutorialSteps.Length)
+                {
+                    tutorialSteps[stepIndex].SetActive(true);
+                    PopInAnimation(tutorialSteps[stepIndex]);
+                }
             }
         }
 
@@ -113,11 +99,79 @@ namespace Tutorial
         private void PopInAnimation(GameObject gameObject)
         {
             RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
+            rectTransform?.DOScale(1, 0.5f).SetEase(Ease.OutExpo);
+        }
 
-            if (rectTransform != null)
+        private void SetupNonTutorialMode()
+        {
+            CameraMovement.cameraLocked = false;
+            GameUI.SetActive(true);
+            screenOverlay.SetActive(false);
+            objectSpawner.SetActive(true);
+            rabbitButton.SetActive(true);
+            plantSpawner.SetActive(true);
+            finishLevelButton.SetActive(false);
+            finishLevelStep.SetActive(false);
+        }
+
+        private void ResetTutorialState()
+        {
+            stepIndex = 0;
+            cameraStepCompleted = false;
+            finishLevelStepCompleted = false;
+            buttonPressed = false;
+        }
+
+        private void SetupTutorialMode()
+        {
+            screenOverlay.SetActive(true);
+            GameUI.SetActive(false);
+            objectSpawner.SetActive(false);
+            finishLevelButton.SetActive(false);
+            plantSpawner.SetActive(false);
+
+            foreach (var step in tutorialSteps)
             {
-                rectTransform.localScale = new Vector3(0f, 0f, 0f);
-                rectTransform.DOScale(1, 0.5f).SetEase(Ease.OutExpo);
+                step.SetActive(false);
+            }
+
+            tutorialSteps[0].SetActive(true);
+            PopInAnimation(guidedTutorial);
+        }
+
+        private bool CheckCameraStepCompletion()
+        {
+            return CameraMovement.cameraMovedInAllDirections && !cameraStepCompleted && gameManager.tutorialActivated;
+        }
+
+        private void HandleCameraStepCompletion()
+        {
+            GameUI.SetActive(true);
+            UpdateStepAndAnimate();
+            cameraStepCompleted = true;
+        }
+
+        private bool CheckFinishLevelStepCompletion()
+        {
+            return ECManager.totalPoints >= 150 && !finishLevelStepCompleted && gameManager.tutorialActivated;
+        }
+
+        private void HandleFinishLevelStepCompletion()
+        {
+            finishLevelButton.SetActive(true);
+            finishLevelStep.SetActive(true);
+            PopInAnimation(finishLevelStep);
+            finishLevelStepCompleted = true;
+        }
+
+        private void UpdateStepAndAnimate()
+        {
+            tutorialSteps[stepIndex].SetActive(false);
+            stepIndex++;
+            if (stepIndex < tutorialSteps.Length)
+            {
+                tutorialSteps[stepIndex].SetActive(true);
+                PopInAnimation(tutorialSteps[stepIndex]);
             }
         }
     }
