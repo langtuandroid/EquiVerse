@@ -367,11 +367,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03c69b377ab7094da95d3a04337ebb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 1008966264}
   screenOverlay: {fileID: 126064323}
   guidedTutorial: {fileID: 427199156}
   plantSpawner: {fileID: 1375087982}
-  GameUI: {fileID: 0}
+  GameUI: {fileID: 1983304909}
   objectSpawner: {fileID: 1777924704}
   rabbitButton: {fileID: 489798214}
   finishLevelButton: {fileID: 981940608}
@@ -3366,7 +3366,7 @@ MonoBehaviour:
   totalPointsText: {fileID: 405089428}
   endOfLevelText: {fileID: 405535193}
   slider: {fileID: 8757231977867629531}
-  startingPoints: 500
+  startingPoints: 140
   lowValuePoints: 20
   endOfLevelCost: 150
   transitionOverlay: {fileID: 509203782}
@@ -14623,7 +14623,7 @@ MonoBehaviour:
   transitionOverlay: {fileID: 509203782}
   transitionOverlayObject: {fileID: 642273461}
   guidedTutorial: {fileID: 427199156}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 1008966264}
 --- !u!114 &2100261343
 MonoBehaviour:
   m_ObjectHideFlags: 0
