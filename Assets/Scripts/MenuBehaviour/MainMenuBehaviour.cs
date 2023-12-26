@@ -16,11 +16,15 @@ namespace MainMenu
         [Header("ToggleMenu's")] 
         public GameObject mainMenu;
         public GameObject optionsMenu;
-
+        
         private void Start()
         {
-            GameManager.WORLD_INDEX = 1;
-            GameManager.LEVEL_INDEX = 1;
+            if (GameManager.firstTimePlaying)
+            {
+                GameManager.WORLD_INDEX = 1;
+                GameManager.LEVEL_INDEX = 1;
+                GameManager.firstTimePlaying = false;
+            }
         }
 
         public void ClickPlay()
