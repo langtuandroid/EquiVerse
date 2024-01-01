@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 3627eda31abfb914c8ebd83132317279, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 435689968e3f731439cb8f3eb3b89126, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: b71580e6768d8da43a797b9e1b6c000c, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -3345,7 +3345,7 @@ GameObject:
   - component: {fileID: 446018289}
   - component: {fileID: 446018291}
   m_Layer: 0
-  m_Name: LeafPointManager
+  m_Name: PointManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3368,6 +3368,7 @@ MonoBehaviour:
   slider: {fileID: 8757231977867629531}
   startingPoints: 140
   lowValuePoints: 20
+  gooseEggPoints: 50
   endOfLevelCost: 150
   transitionOverlay: {fileID: 509203782}
   loadingScreen: {fileID: 1328256536}

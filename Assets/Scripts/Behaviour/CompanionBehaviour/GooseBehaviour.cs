@@ -7,6 +7,7 @@ namespace Behaviour
         private Animator animator;
 
         public GameObject eggPrefab;
+        public Transform eggSpawnPosition;
 
         public float secondIdleTriggerMinWait = 5f;
         public float secondIdleTriggerMaxWait = 15f;
@@ -27,7 +28,7 @@ namespace Behaviour
         void EggDropTrigger()
         {
             animator.SetTrigger("EggDropTrigger");
-            Instantiate(eggPrefab, transform);
+            Instantiate(eggPrefab, eggSpawnPosition);
             Invoke("EggDropTrigger", Random.Range(15f, 45f));
         }
     }
