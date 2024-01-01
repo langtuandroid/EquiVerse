@@ -12,7 +12,7 @@ namespace Input
         private bool movedLeft = false, movedRight = false, movedUp = false, movedDown = false;
     
         [HideInInspector]
-        public static bool cameraLocked = true;
+        public static bool cameraLocked;
 
         public static bool cameraMovedInAllDirections = false;
 

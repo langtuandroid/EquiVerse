@@ -124,6 +124,7 @@ namespace Tutorial
 
         private void SetupTutorialMode()
         {
+            CameraMovement.cameraLocked = true;
             screenOverlay.SetActive(true);
             GameUI.SetActive(false);
             objectSpawner.SetActive(false);
