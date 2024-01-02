@@ -10,7 +10,7 @@ using UnityEngine.UI;
 namespace Managers {
     public class ECManager : MonoBehaviour {
         public TextMeshProUGUI totalPointsText;
-        public float lerpDuration = 0.5f;
+        public TextMeshProUGUI endOfLevelCostText;
         public Slider slider;
         public static int totalPoints, visualPoints;
         public int startingPoints;
@@ -31,6 +31,8 @@ namespace Managers {
             totalPoints = startingPoints;
             visualPoints = totalPoints;
             UpdatePointText();
+
+            endOfLevelCostText.text = endOfLevelCost.ToString();
         }
 
         //private void FixedUpdate() {
@@ -78,24 +80,6 @@ namespace Managers {
             }
         }
 
-
-        //IEnumerator LerpPoints(int startPoints, int targetPoints)
-        //{
-        //    float elapsedTime = 0f;
-        //
-        //    while (elapsedTime < lerpDuration)
-        //    {
-        //        totalPoints = Mathf.RoundToInt(Mathf.Lerp(startPoints, targetPoints, elapsedTime / lerpDuration));
-        //        UpdatePointText();
-        //        elapsedTime += Time.deltaTime;
-        //        yield return null;
-        //    }
-        //
-        //    totalPoints = targetPoints;
-        //    UpdatePointText();
-        //    lerpCoroutine = null; // Set coroutine to null when finished
-        //}
-
         void UpdatePointText() {
             if (totalPointsText != null) {
                 totalPointsText.text = visualPoints.ToString();
@@ -104,25 +88,10 @@ namespace Managers {
 
         public void IncrementPoints(int amount) {
             totalPoints += amount;
-            //if (lerpCoroutine != null)
-            //{
-            //    StopCoroutine(lerpCoroutine); // Stop the current coroutine if it's running
-            //}
-            //
-            //int newPoints = totalPoints + amount;
-            //lerpCoroutine = StartCoroutine(LerpPoints(totalPoints, newPoints));
         }
 
         public void DecrementPoints(int amount) {
             totalPoints -= amount;
-
-            //if (lerpCoroutine != null)
-            //{
-            //    StopCoroutine(lerpCoroutine); // Stop the current coroutine if it's running
-            //}
-            //
-            //int newPoints = totalPoints - amount;
-            //lerpCoroutine = StartCoroutine(LerpPoints(totalPoints, newPoints));
         }
 
         private void LevelCompleted() {

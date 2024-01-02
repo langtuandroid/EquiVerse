@@ -8,6 +8,7 @@ namespace Tutorial
     public class GuidedTutorial : MonoBehaviour
     {
         public GameManager gameManager;
+        public ECManager ecManager;
         public GameObject screenOverlay, guidedTutorial, plantSpawner, GameUI, objectSpawner, rabbitButton, finishLevelButton, finishLevelStep;
         public GameObject[] tutorialSteps;
 
@@ -154,7 +155,7 @@ namespace Tutorial
 
         private bool CheckFinishLevelStepCompletion()
         {
-            return ECManager.totalPoints >= 150 && !finishLevelStepCompleted && gameManager.tutorialActivated;
+            return ECManager.totalPoints >= ecManager.endOfLevelCost && !finishLevelStepCompleted && gameManager.tutorialActivated;
         }
 
         private void HandleFinishLevelStepCompletion()
