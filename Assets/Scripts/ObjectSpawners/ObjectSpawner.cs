@@ -6,13 +6,15 @@ namespace Spawners
 {
     public class ObjectSpawner : MonoBehaviour
     {
+        public ECManager ecManager;
+        
         [Header("SpawnPrefabs")]
         public GameObject rabbitPrefab;
 
         private Vector3 spawnPosition;
 
         [Header("SpawnCost")]
-        public float rabbitCost = 100f;
+        public int rabbitCost = 100;
 
         public Transform spawnLocation;
 
@@ -41,7 +43,7 @@ namespace Spawners
         {
             if (ECManager.totalPoints >= rabbitCost)
             {
-                ECManager.totalPoints -= rabbitCost;
+                ecManager.DecrementPoints(rabbitCost);
                 Instantiate(rabbitPrefab, spawnPosition, Quaternion.identity);
             }
         }

@@ -1855,7 +1855,7 @@ GameObject:
   - component: {fileID: 250978590}
   - component: {fileID: 250978589}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: WelcomeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2035,11 +2035,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'This is Equiverse
-
-
-    A game in which you try to balance a small ecosystem
-    by letting flora and fauna live in harmony'
+  m_text: The goal is to balance a small ecosystem by letting flora and fauna live
+    in harmony.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1b0ec1ad4045ad45a6c18649ee01dca, type: 2}
   m_sharedMaterial: {fileID: -5554273155930248582, guid: e1b0ec1ad4045ad45a6c18649ee01dca, type: 2}
@@ -3364,7 +3361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalPointsText: {fileID: 405089428}
-  endOfLevelText: {fileID: 405535193}
+  lerpDuration: 0.5
   slider: {fileID: 8757231977867629531}
   startingPoints: 140
   lowValuePoints: 20
@@ -9919,6 +9916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3feced6b2e252e64bbf4cc5ce8b28460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ecManager: {fileID: 446018289}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -12197,6 +12195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593b989ae15585d4d99cbe67df93f619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ecManager: {fileID: 446018289}
   rabbitPrefab: {fileID: 1262440479064932, guid: 8d880e7275556104cbae14a0cb6975bd, type: 3}
   rabbitCost: 100
   spawnLocation: {fileID: 443613164}

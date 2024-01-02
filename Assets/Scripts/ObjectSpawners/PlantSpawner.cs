@@ -9,10 +9,12 @@ namespace Spawners
     {
         private Camera mainCamera;
 
+        public ECManager ecManager;
+
         public LayerMask groundLayer;
         public GameObject[] grassPrefabs; // Prefab for the grass object
 
-        [Header("GrassCost")] public float grassCost = 20f;
+        [Header("GrassCost")] public int grassCost = 20;
 
         public GameObject tutorialStep;
 
@@ -52,7 +54,7 @@ namespace Spawners
                                 GameObject randomPrefab = grassPrefabs[randomIndex];
                                 // Instantiate the grass prefab at the clicked position
                                 GameObject spawnedPrefab = Instantiate(randomPrefab, hit.point, Quaternion.identity);
-                                ECManager.totalPoints -= grassCost;
+                                ecManager.DecrementPoints(grassCost);
                                 tutorialStep.SetActive(false);
 
                                 currentPlantCount++; // Increment the plant count

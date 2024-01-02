@@ -3365,12 +3365,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalPointsText: {fileID: 405089428}
-  endOfLevelText: {fileID: 405535193}
+  lerpDuration: 0.5
   slider: {fileID: 8757231977867629531}
   startingPoints: 140
   lowValuePoints: 20
-  gooseEggPoints: 75
-  endOfLevelCost: 150
+  gooseEggPoints: 50
+  endOfLevelCost: 300
   transitionOverlay: {fileID: 509203782}
   loadingScreen: {fileID: 1328256536}
   guidedTutorialManager: {fileID: 30172506}
@@ -10008,6 +10008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3feced6b2e252e64bbf4cc5ce8b28460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ecManager: {fileID: 446018289}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -12300,6 +12301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593b989ae15585d4d99cbe67df93f619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ecManager: {fileID: 446018289}
   rabbitPrefab: {fileID: 1262440479064932, guid: 8d880e7275556104cbae14a0cb6975bd, type: 3}
   rabbitCost: 100
   spawnLocation: {fileID: 443613164}
