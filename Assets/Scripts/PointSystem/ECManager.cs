@@ -13,9 +13,9 @@ namespace Managers {
         public TextMeshProUGUI endOfLevelCostText;
         public Slider slider;
         public static int totalPoints, visualPoints;
+        
+        [Header("LevelValues")]
         public int startingPoints;
-        public int lowValuePoints;
-        public int gooseEggPoints;
         public int endOfLevelCost;
 
         [Header("SceneTransition")]
@@ -23,6 +23,9 @@ namespace Managers {
         public GameObject loadingScreen;
         public GuidedTutorial guidedTutorialManager;
 
+        private static int lowValuePoints = 20;
+        private static int gooseEggPoints = 50;
+        
         private DateTime lastVisualUpdate = DateTime.Now;
         private const float updateInterval = 0.01666667f;
         private const int speedFactor = 15; //Higher is slower
