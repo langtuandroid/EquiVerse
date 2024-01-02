@@ -25,6 +25,7 @@ namespace Managers {
 
         private DateTime lastVisualUpdate = DateTime.Now;
         private const float updateInterval = 0.01666667f;
+        private const int speedFactor = 15; //Higher is slower
 
         private void Start() {
             totalPoints = startingPoints;
@@ -63,8 +64,15 @@ namespace Managers {
         public void UpdateVisualPoints() {
             DateTime now = DateTime.Now;
             if ((now - lastVisualUpdate).TotalSeconds > updateInterval) {
-                if (visualPoints < totalPoints) visualPoints++;
-                else if (visualPoints > totalPoints) visualPoints--;
+                int difference = Math.Abs(visualPoints - totalPoints);
+                int changeAmount = Math.Max(1, difference / speedFactor); 
+
+                if (visualPoints < totalPoints) {
+                    visualPoints = Math.Min(visualPoints + changeAmount, totalPoints);
+                } else if (visualPoints > totalPoints) {
+                    visualPoints = Math.Max(visualPoints - changeAmount, totalPoints);
+                }
+
                 lastVisualUpdate = now;
                 UpdatePointText();
             }
