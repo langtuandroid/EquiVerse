@@ -9,6 +9,8 @@ namespace Spawners
     {
         private Camera mainCamera;
 
+        [Header("Managers")]
+        public GameManager gameManager;
         public ECManager ecManager;
 
         public LayerMask groundLayer;
@@ -59,7 +61,7 @@ namespace Spawners
 
                                 currentPlantCount++; // Increment the plant count
                             }
-                            else if (!maxPlantPopUp.activeInHierarchy)
+                            else if (!maxPlantPopUp.activeInHierarchy && gameManager.tutorialActivated)
                             {
                                 maxPlantPopUp.SetActive(true);
                                 PopInAnimation(maxPlantPopUp);

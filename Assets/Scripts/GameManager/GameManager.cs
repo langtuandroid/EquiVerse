@@ -9,7 +9,7 @@ namespace Managers
         public static int WORLD_INDEX;
         [NonSerialized]
         public static int LEVEL_INDEX;
-        public bool tutorialActivated;
+        public  bool tutorialActivated;
         [NonSerialized]
         public static bool firstTimePlaying = true;
     }
