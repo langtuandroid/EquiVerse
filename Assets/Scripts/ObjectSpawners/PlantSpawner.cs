@@ -1,6 +1,7 @@
 using DG.Tweening;
 using Managers;
 using MyBox;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,8 +20,16 @@ namespace Spawners
 
         [Header("GrassCost")] public int grassCost = 20;
 
+        [Header("Maximum plants")]
         public int maxPlants = 2; // Maximum number of allowed plants
         private static int currentPlantCount; // Track the number of plants in the scene
+
+        [Header("MaximumPlantUpgrade")] 
+        public int[] upgradeAmount;
+        public TextMeshProUGUI maxPlantValueText;
+        public TextMeshProUGUI maxPlantUpgradeCostText;
+        private int currentUpgradeCost;
+        private int upgradeIndex = 0;
 
         [Header("GuidedTutorialSetup")]
         public bool isTutorial;
@@ -33,6 +42,10 @@ namespace Spawners
         {
             mainCamera = Camera.main;
             currentPlantCount = 0;
+
+            maxPlantValueText.text = maxPlants.ToString();
+            currentUpgradeCost = upgradeAmount[0];
+            maxPlantUpgradeCostText.text = currentUpgradeCost.ToString();
         }
 
         void Update()
@@ -92,6 +105,45 @@ namespace Spawners
                 currentPlantCount--; // Decrement the plant count
             }
         }
+
+        public void IncreaseMaxPlants()
+        {
+            if (upgradeIndex < upgradeAmount.Length - 1)
+            {
+                currentUpgradeCost = upgradeAmount[upgradeIndex];
+
+                if (ECManager.totalPoints >= currentUpgradeCost)
+                {
+                    maxPlants++;
+                    maxPlantValueText.text = maxPlants.ToString();
+
+                    ECManager.totalPoints -= currentUpgradeCost;
+                    upgradeIndex++;
+
+                    // Check if upgradeIndex is still within bounds before accessing the array
+                    if (upgradeIndex < upgradeAmount.Length - 1)
+                    {
+                        maxPlantUpgradeCostText.text = upgradeAmount[upgradeIndex].ToString();
+                    }
+                    else
+                    {
+                        Debug.LogWarning("No more upgrades available.");
+                        // You can choose to disable the upgrade button or handle it according to your game logic.
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("Insufficient points to upgrade.");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("No more upgrades available.");
+                // You can choose to disable the upgrade button or handle it according to your game logic.
+            }
+        }
+
+
 
         private void PopInAnimation(GameObject gameObject)
         {
