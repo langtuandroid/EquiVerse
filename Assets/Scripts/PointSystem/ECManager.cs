@@ -96,7 +96,8 @@ namespace Managers {
         public void DecrementPoints(int amount) {
             totalPoints -= amount;
         }
-
+        
+        //maybe find a different place for this logic
         private void LevelCompleted() {
             transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() => {
                 guidedTutorialManager.enabled = false;

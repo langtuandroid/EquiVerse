@@ -1,11 +1,14 @@
 using DG.Tweening;
 using Managers;
+using MyBox;
 using UnityEngine;
 
 namespace Spawners
 {
     public class ObjectSpawner : MonoBehaviour
     {
+        [Header("Managers")] 
+        public GameManager gameManager;
         public ECManager ecManager;
         
         [Header("SpawnPrefabs")]
@@ -19,6 +22,10 @@ namespace Spawners
         public Transform spawnLocation;
 
         private int amountOfRabbits;
+        
+        [Header("GuidedTutorialSetup")]
+        public bool isTutorial;
+        [ConditionalField("isTutorial")]
         public GameObject gameOverPopUp;
 
         private void Start()
@@ -31,7 +38,7 @@ namespace Spawners
             if (ECManager.totalPoints < rabbitCost)
             {
                 FindAliveRabbits();
-                if (amountOfRabbits <= 0)
+                if (amountOfRabbits <= 0 && gameManager.tutorialActivated)
                 {
                     ShowGameOverPopUp();
                 }

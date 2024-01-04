@@ -1,5 +1,6 @@
 using DG.Tweening;
 using Managers;
+using MyBox;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,11 +19,15 @@ namespace Spawners
 
         [Header("GrassCost")] public int grassCost = 20;
 
-        public GameObject tutorialStep;
-
         public int maxPlants = 2; // Maximum number of allowed plants
         private static int currentPlantCount; // Track the number of plants in the scene
+
+        [Header("GuidedTutorialSetup")]
+        public bool isTutorial;
+        [ConditionalField("isTutorial")]
         public GameObject maxPlantPopUp;
+        [ConditionalField("isTutorial")]
+        public GameObject tutorialStep;
 
         private void Start()
         {
