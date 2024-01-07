@@ -27,6 +27,10 @@ namespace Spawners
         public bool isTutorial;
         [ConditionalField("isTutorial")]
         public GameObject gameOverPopUp;
+        
+        public bool isSecondLevel;
+        [ConditionalField("isSecondLevel")]
+        public SecondLevelTutorial secondLevelTutorial;
 
         private void Start()
         {
@@ -52,6 +56,11 @@ namespace Spawners
             {
                 ecManager.DecrementPoints(rabbitCost);
                 Instantiate(rabbitPrefab, spawnPosition, Quaternion.identity);
+
+                if (gameManager.secondLevelTutorialActivated)
+                {
+                    secondLevelTutorial.ShowMaxPlantUpgradeButton();
+                }
             }
         }
 

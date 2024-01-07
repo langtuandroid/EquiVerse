@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using DG.Tweening;
 using Managers;
 using MyBox;
@@ -16,7 +17,7 @@ namespace Spawners
         public ECManager ecManager;
 
         public LayerMask groundLayer;
-        public GameObject[] grassPrefabs; // Prefab for the grass object
+        public GameObject grassPrefab;
 
         [Header("GrassCost")] public int grassCost = 20;
 
@@ -24,10 +25,10 @@ namespace Spawners
         public int maxPlants = 2; // Maximum number of allowed plants
         private static int currentPlantCount; // Track the number of plants in the scene
 
-        [Header("MaximumPlantUpgrade")] 
         public int[] upgradeAmount;
         public TextMeshProUGUI maxPlantValueText;
         public TextMeshProUGUI maxPlantUpgradeCostText;
+        
         private int currentUpgradeCost;
         private int upgradeIndex = 0;
 
@@ -70,10 +71,9 @@ namespace Spawners
                         {
                             if (currentPlantCount < maxPlants)
                             {
-                                int randomIndex = Random.Range(0, grassPrefabs.Length);
-                                GameObject randomPrefab = grassPrefabs[randomIndex];
                                 // Instantiate the grass prefab at the clicked position
-                                GameObject spawnedPrefab = Instantiate(randomPrefab, hit.point, Quaternion.identity);
+                                GameObject spawnedPrefab = Instantiate(grassPrefab, hit.point, Quaternion.identity);
+                                spawnedPrefab.transform.DOScale(1f, 0.75f).SetEase(Ease.OutElastic);
                                 ecManager.DecrementPoints(grassCost);
                                 tutorialStep.SetActive(false);
 

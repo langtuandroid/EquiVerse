@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialActivated: 1
+  secondLevelTutorialActivated: 0
 --- !u!1 &5300777629086163745
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,14 +344,15 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  grassPrefabs:
-  - {fileID: 1658363313306210, guid: dc98e9e3b3beb834fbaf6cdc0d3e5deb, type: 3}
-  - {fileID: 1762627254017038, guid: 3cb280681edcff14cbf4e5da2a48d10f, type: 3}
-  - {fileID: 1188032362689352, guid: 55c9dd9d35fbbf24d9c218bcc92de4cc, type: 3}
+  grassPrefab: {fileID: 1159558787302553158, guid: 0edd912d570736f41926a3fa796fedce, type: 3}
   grassCost: 5
-  tutorialStep: {fileID: 0}
   maxPlants: 2
+  upgradeAmount: 
+  maxPlantValueText: {fileID: 0}
+  maxPlantUpgradeCostText: {fileID: 0}
+  isTutorial: 0
   maxPlantPopUp: {fileID: 0}
+  tutorialStep: {fileID: 0}
 --- !u!1 &5300777629731829055
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,4 +401,7 @@ MonoBehaviour:
   rabbitPrefab: {fileID: 1262440479064932, guid: 8d880e7275556104cbae14a0cb6975bd, type: 3}
   rabbitCost: 100
   spawnLocation: {fileID: 0}
+  isTutorial: 0
   gameOverPopUp: {fileID: 0}
+  isSecondLevel: 0
+  secondLevelTutorial: {fileID: 0}

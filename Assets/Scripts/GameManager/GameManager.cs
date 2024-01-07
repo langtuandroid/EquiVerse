@@ -10,6 +10,7 @@ namespace Managers
         [NonSerialized]
         public static int LEVEL_INDEX;
         public  bool tutorialActivated;
+        public bool secondLevelTutorialActivated;
         [NonSerialized]
         public static bool firstTimePlaying = true;
     }

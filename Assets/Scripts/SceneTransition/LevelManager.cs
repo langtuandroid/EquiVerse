@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 namespace Managers
 {
@@ -10,6 +11,7 @@ namespace Managers
         private void Start()
         {
             currentLevelText.text = "Level " + GameManager.LEVEL_INDEX + " - " + GameManager.WORLD_INDEX;
+            
         }
     }
 }
