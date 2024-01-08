@@ -28,6 +28,7 @@ namespace Spawners
         public int[] upgradeAmount;
         public TextMeshProUGUI maxPlantValueText;
         public TextMeshProUGUI maxPlantUpgradeCostText;
+        public GameObject endOfLevelUpgrade;
         
         private int currentUpgradeCost;
         private int upgradeIndex = 0;
@@ -129,6 +130,11 @@ namespace Spawners
                     {
                         Debug.LogWarning("No more upgrades available.");
                         // You can choose to disable the upgrade button or handle it according to your game logic.
+                    }
+
+                    if (gameManager.secondLevelTutorialActivated && upgradeIndex == 1)
+                    {
+                        endOfLevelUpgrade.SetActive(true);
                     }
                 }
                 else

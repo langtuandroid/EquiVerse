@@ -10,7 +10,7 @@ namespace Managers
 
         private void Start()
         {
-            currentLevelText.text = "Level " + GameManager.LEVEL_INDEX + " - " + GameManager.WORLD_INDEX;
+            currentLevelText.text = "Level " + GameManager.WORLD_INDEX + " - " + GameManager.LEVEL_INDEX;
             
         }
     }

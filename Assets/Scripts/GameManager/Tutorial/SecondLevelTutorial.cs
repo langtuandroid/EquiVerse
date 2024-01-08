@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Managers;
 using UnityEngine;
 
@@ -11,11 +12,6 @@ public class SecondLevelTutorial : MonoBehaviour
     private void Start()
     {
         maxPlantUpgradeButton.SetActive(false);
-    }
-
-    private void FixedUpdate()
-    {
-        
     }
 
     public void ShowMaxPlantUpgradeButton()
