@@ -498,10 +498,50 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1281900917301301427, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900917301301427, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900917301301427, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900917301301427, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900917301301427, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900917301301427, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1281900917323221869, guid: 228006cb1b674504786775f3e83fe722, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 30172506}
+    - target: {fileID: 1281900917323221870, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900917323221870, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900917323221870, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900917323221870, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1281900917375332807, guid: 228006cb1b674504786775f3e83fe722, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -673,6 +713,30 @@ PrefabInstance:
     - target: {fileID: 1281900918142861427, guid: 228006cb1b674504786775f3e83fe722, type: 3}
       propertyPath: m_Name
       value: LevelUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900918348817416, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900918348817416, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900918348817416, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900918348817416, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900918348817416, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900918348817416, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1281900918560142162, guid: 228006cb1b674504786775f3e83fe722, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -886,11 +950,6 @@ GameObject:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6382226089883167014, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
   m_PrefabInstance: {fileID: 111410552}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2071954444 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1281900916676596645, guid: 228006cb1b674504786775f3e83fe722, type: 3}
-  m_PrefabInstance: {fileID: 1291068859}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2088304025 stripped
 GameObject:
@@ -1216,33 +1275,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1667729202}
     - target: {fileID: 5300777628258806277, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
+      propertyPath: tutorialSteps.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5300777628258806277, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
       propertyPath: tutorialSteps.Array.data[0]
       value: 
       objectReference: {fileID: 1948369399}
     - target: {fileID: 5300777628258806277, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
       propertyPath: tutorialSteps.Array.data[1]
       value: 
-      objectReference: {fileID: 2071954444}
+      objectReference: {fileID: 26180277}
     - target: {fileID: 5300777628258806277, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
       propertyPath: tutorialSteps.Array.data[2]
       value: 
-      objectReference: {fileID: 26180277}
+      objectReference: {fileID: 2088304025}
     - target: {fileID: 5300777628258806277, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
       propertyPath: tutorialSteps.Array.data[3]
       value: 
-      objectReference: {fileID: 2088304025}
+      objectReference: {fileID: 1115811948}
     - target: {fileID: 5300777628258806277, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
       propertyPath: tutorialSteps.Array.data[4]
       value: 
-      objectReference: {fileID: 1115811948}
+      objectReference: {fileID: 1044300199}
     - target: {fileID: 5300777628258806277, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
       propertyPath: tutorialSteps.Array.data[5]
       value: 
-      objectReference: {fileID: 1044300199}
+      objectReference: {fileID: 113411376}
     - target: {fileID: 5300777628258806277, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
       propertyPath: tutorialSteps.Array.data[6]
       value: 
-      objectReference: {fileID: 113411376}
+      objectReference: {fileID: 219623520}
     - target: {fileID: 5300777628258806277, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
       propertyPath: tutorialSteps.Array.data[7]
       value: 

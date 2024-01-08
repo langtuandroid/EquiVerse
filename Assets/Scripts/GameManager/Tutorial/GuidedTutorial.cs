@@ -52,23 +52,18 @@ namespace Tutorial
                 PopInAnimation(tutorialSteps[stepIndex]);
 
                 // Step-specific logic
-                if (stepIndex == 2)
+                if (stepIndex == 1)
                 {
                     screenOverlay.SetActive(false);
                     CameraMovement.cameraLocked = false;
                 }
 
-                if (stepIndex == 5)
+                if (stepIndex == 4)
                 {
                     rabbitButton.SetActive(true);
                 }
-                
-                if (stepIndex == 6)
-                {
-                    print("test");
-                }
 
-                if (stepIndex == 7)
+                if (stepIndex == 6)
                 {
                     plantSpawner.SetActive(true);
                 }
