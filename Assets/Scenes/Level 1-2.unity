@@ -139,24 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da11612e17154743bb22150df576269, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &253159329 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5300777628413590959, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
-  m_PrefabInstance: {fileID: 1473326831}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &253159330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253159329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd307652412e74745839506d8820135c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particleEffectPrefab: {fileID: 1698068915230344, guid: 12b3e6fe3dd2df1449ab06583b45d76e, type: 3}
 --- !u!1 &312371541
 GameObject:
   m_ObjectHideFlags: 1
@@ -761,6 +743,10 @@ PrefabInstance:
       propertyPath: upgradeAmount.Array.data[4]
       value: 4000
       objectReference: {fileID: 0}
+    - target: {fileID: 5300777629598507569, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5300777629731829054, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
       propertyPath: isTutorial
       value: 0
@@ -788,7 +774,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5300777628413590958, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
   m_PrefabInstance: {fileID: 1473326831}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253159329}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac2c752e754944a4d864fbf6340da239, type: 3}

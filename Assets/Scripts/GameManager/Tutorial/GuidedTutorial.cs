@@ -1,7 +1,9 @@
 using DG.Tweening;
 using Input;
 using Managers;
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Tutorial
 {
@@ -9,7 +11,7 @@ namespace Tutorial
     {
         public GameManager gameManager;
         public ECManager ecManager;
-        public GameObject screenOverlay, guidedTutorial, plantSpawner, GameUI, objectSpawner, rabbitButton, finishLevelButton, finishLevelStep;
+        public GameObject screenOverlay, guidedTutorial, GameUI, objectSpawner, rabbitButton, finishLevelButton, finishLevelStep;
         public GameObject[] tutorialSteps;
 
         private int stepIndex = 0;
@@ -65,7 +67,8 @@ namespace Tutorial
 
                 if (stepIndex == 6)
                 {
-                    plantSpawner.SetActive(true);
+                    Spawners.PlantSpawner.canSpawnPlants = true;
+                    //plantSpawner.SetActive(true);
                 }
             }
         }
@@ -95,7 +98,7 @@ namespace Tutorial
         private void PopInAnimation(GameObject gameObject)
         {
             RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
-            rectTransform?.DOScale(1, 0.5f).SetEase(Ease.OutExpo);
+            rectTransform?.DOScale(1, 0.5f).SetEase(Ease.OutExpo).From(Vector3.zero);
         }
 
         private void SetupNonTutorialMode()
@@ -105,7 +108,7 @@ namespace Tutorial
             screenOverlay.SetActive(false);
             objectSpawner.SetActive(true);
             rabbitButton.SetActive(true);
-            plantSpawner.SetActive(true);
+            Spawners.PlantSpawner.canSpawnPlants = true;
             finishLevelButton.SetActive(false);
             finishLevelStep.SetActive(false);
         }
@@ -125,7 +128,7 @@ namespace Tutorial
             GameUI.SetActive(false);
             objectSpawner.SetActive(false);
             finishLevelButton.SetActive(false);
-            plantSpawner.SetActive(false);
+            Spawners.PlantSpawner.canSpawnPlants = false;
 
             foreach (var step in tutorialSteps)
             {

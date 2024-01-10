@@ -66,8 +66,9 @@ namespace Spawners
 
         private void FindAliveRabbits()
         {
-            GameObject[] rabbits = GameObject.FindGameObjectsWithTag("Rabbit");
-            amountOfRabbits = rabbits.Length;
+            //GameObject[] rabbits = GameObject.FindGameObjectsWithTag("Rabbit");
+            //amountOfRabbits = rabbits.Length;
+            amountOfRabbits = EntityManager.GetRabbits().Count;
         }
 
         private void ShowGameOverPopUp()

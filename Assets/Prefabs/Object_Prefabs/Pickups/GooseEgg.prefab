@@ -4888,6 +4888,7 @@ GameObject:
   - component: {fileID: 66476198574707680}
   - component: {fileID: 2040229133660070421}
   - component: {fileID: 8471854565904957285}
+  - component: {fileID: 8948604963096055814}
   m_Layer: 8
   m_Name: GooseEgg
   m_TagString: GooseEgg
@@ -9732,6 +9733,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8948604963096055814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5271623836368792421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 572f74aadf6bcc842b6ade7239037b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleEffectPrefab: {fileID: 1698068915230344, guid: 12b3e6fe3dd2df1449ab06583b45d76e, type: 3}
 --- !u!1 &5272571386971802187
 GameObject:
   m_ObjectHideFlags: 0

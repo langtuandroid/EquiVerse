@@ -1,12 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
 using Spawners;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Behaviour
-{
-    public class WanderScript : MonoBehaviour
-    {
+namespace Behaviour {
+    public class WanderScript : MonoBehaviour {
         [SerializeField] private float wanderRadius;
         [SerializeField] private Vector2 wanderTimerRange = new Vector2(3f, 7f);
         [SerializeField] private Vector2 idleDurationRange = new Vector2(2f, 5f);
@@ -35,14 +34,17 @@ namespace Behaviour
         private const float SMOOTHING_FACTOR = 5f;
         private const float ROTATION_SPEED = 360f;
 
-        private void Start()
-        {
+        private void Start() {
             InitializeComponents();
             SwitchToIdle();
+            EntityManager.AddRabbit(gameObject);
         }
 
-        private void FixedUpdate()
-        {
+        private void OnDestroy() {
+            EntityManager.RemoveRabbit(gameObject);
+        }
+
+        private void FixedUpdate() {
             MaterialChanger();
             HandleHunger();
 
@@ -55,8 +57,7 @@ namespace Behaviour
             AlignRotation();
         }
 
-        private void InitializeComponents()
-        {
+        private void InitializeComponents() {
             agent = GetComponent<NavMeshAgent>();
             InitializeAgentParameters();
 
@@ -65,38 +66,32 @@ namespace Behaviour
             rabbitMaterial = skinnedMeshRenderer.material;
         }
 
-        private void InitializeAgentParameters()
-        {
+        private void InitializeAgentParameters() {
             agent.angularSpeed = 120f;
             agent.acceleration = 8f;
             agent.stoppingDistance = 0.2f;
         }
 
-        private void HandleHunger()
-        {
+        private void HandleHunger() {
             currentHunger += 5f * Time.fixedDeltaTime;
 
             if (currentHunger >= deathThreshold)
-                StartCoroutine(Die());
+                Die();
 
-            if (currentHunger >= hungerThreshold)
-            {
+            if (currentHunger >= hungerThreshold) {
                 isHungry = true;
 
-                if (currentHunger >= warningThreshold)
-                {
+                if (currentHunger >= warningThreshold) {
                     LeafPointsSpawner.spawnLeafPoints = false;
                     inWarningState = true;
                 }
             }
         }
 
-        private void HandleWanderAndIdle()
-        {
+        private void HandleWanderAndIdle() {
             stateTimer -= Time.fixedDeltaTime;
 
-            if (stateTimer <= 0f)
-            {
+            if (stateTimer <= 0f) {
                 if (isIdling)
                     SwitchToWander();
                 else
@@ -104,22 +99,19 @@ namespace Behaviour
             }
         }
 
-        private void SwitchToWander()
-        {
+        private void SwitchToWander() {
             isIdling = false;
             animator.SetBool("isJumping", true);
             Wander();
         }
 
-        private void SwitchToIdle()
-        {
+        private void SwitchToIdle() {
             isIdling = true;
             animator.SetBool("isJumping", false);
             Idle();
         }
 
-        private void Wander()
-        {
+        private void Wander() {
             SetWanderParameters();
 
             Vector3 randomDirection = Random.insideUnitSphere * wanderRadius;
@@ -129,8 +121,7 @@ namespace Behaviour
             agent.SetDestination(navHit.position);
         }
 
-        private void SetWanderParameters()
-        {
+        private void SetWanderParameters() {
             wanderTimer = Random.Range(wanderTimerRange.x, wanderTimerRange.y);
             idleDuration = 0f;
             stateTimer = wanderTimer;
@@ -138,25 +129,22 @@ namespace Behaviour
             SetRandomSpeed();
         }
 
-        private void SetRandomSpeed()
-        {
+        private void SetRandomSpeed() {
             speed = Random.Range(speedRange.x, speedRange.y);
             agent.speed = speed;
         }
 
-        private void Idle()
-        {
+        private void Idle() {
             agent.speed = 0f;
             idleDuration = Random.Range(idleDurationRange.x, idleDurationRange.y);
             stateTimer = idleDuration;
         }
 
-        private void FindClosestPlant()
-        {
-            GameObject[] plants = GameObject.FindGameObjectsWithTag("Plant");
+        private void FindClosestPlant() {
+            //GameObject[] plants = GameObject.FindGameObjectsWithTag("Plant");
+            List<GameObject> plants = EntityManager.GetPlants();
 
-            if (plants.Length == 0)
-            {
+            if (plants.Count == 0) {
                 HandleNoPlantsFound();
                 return;
             }
@@ -167,33 +155,26 @@ namespace Behaviour
                 HandleClosestPlant(closestPlant);
         }
 
-        private void HandleNoPlantsFound()
-        {
+        private void HandleNoPlantsFound() {
             animator.SetBool("isRunning", false);
             HandleWanderAndIdle();
         }
 
-        private void HandleClosestPlant(Transform closestPlant)
-        {
-            if (Vector3.Distance(transform.position, closestPlant.position) > LEAF_SPAWN_DISTANCE_THRESHOLD)
-            {
+        private void HandleClosestPlant(Transform closestPlant) {
+            if (Vector3.Distance(transform.position, closestPlant.position) > LEAF_SPAWN_DISTANCE_THRESHOLD) {
                 MoveTowardsPlant(closestPlant);
-            }
-            else
-            {
+            } else {
                 EatPlant(closestPlant);
             }
         }
 
-        private void MoveTowardsPlant(Transform closestPlant)
-        {
+        private void MoveTowardsPlant(Transform closestPlant) {
             agent.speed = 1.3f;
             agent.SetDestination(closestPlant.position);
             animator.SetBool("isRunning", true);
         }
 
-        private void EatPlant(Transform closestPlant)
-        {
+        private void EatPlant(Transform closestPlant) {
             animator.SetBool("isRunning", false);
             Destroy(closestPlant.gameObject);
             PlantSpawner.RemovePlant();
@@ -204,25 +185,21 @@ namespace Behaviour
             SetIdleAnimation();
         }
 
-        private void SetIdleAnimation()
-        {
+        private void SetIdleAnimation() {
             animator.SetBool("isRunning", false);
             animator.SetBool("isJumping", false);
             isIdling = true;
             HandleWanderAndIdle();
         }
 
-        private Transform FindClosestPlantTransform(GameObject[] plants)
-        {
+        private Transform FindClosestPlantTransform(List<GameObject> plants) {
             Transform closestPlant = null;
             float closestDistance = Mathf.Infinity;
 
-            foreach (GameObject plant in plants)
-            {
+            foreach (GameObject plant in plants) {
                 float distance = Vector3.Distance(transform.position, plant.transform.position);
 
-                if (distance < closestDistance)
-                {
+                if (distance < closestDistance) {
                     closestDistance = distance;
                     closestPlant = plant.transform;
                 }
@@ -231,36 +208,29 @@ namespace Behaviour
             return closestPlant;
         }
 
-        private void MaterialChanger()
-        {
+        private void MaterialChanger() {
             skinnedMeshRenderer.material = inWarningState ? hungryMaterial : rabbitMaterial;
         }
 
-        private void SmoothMovement()
-        {
+        private void SmoothMovement() {
             transform.position = Vector3.Lerp(transform.position, agent.nextPosition, Time.deltaTime * SMOOTHING_FACTOR);
         }
 
-        private void AlignRotation()
-        {
-            if (agent.velocity != Vector3.zero)
-            {
+        private void AlignRotation() {
+            if (agent.velocity != Vector3.zero) {
                 Quaternion toRotation = Quaternion.LookRotation(agent.velocity.normalized);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, ROTATION_SPEED * Time.deltaTime);
             }
         }
 
-        private IEnumerator Die()
-        {
+        private void Die() {
             agent.speed = 0;
             animator.SetBool("isJumping", false);
             animator.SetBool("isDead_0", true);
-            yield return new WaitForSeconds(3f);
-            Destroy(gameObject);
+            Destroy(gameObject, 3.0f);
         }
 
-        public void JumpLandEvent()
-        {
+        public void JumpLandEvent() {
             landingParticleSystem.Play();
         }
     }
