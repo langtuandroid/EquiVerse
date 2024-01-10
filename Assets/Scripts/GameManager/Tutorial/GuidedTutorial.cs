@@ -30,6 +30,7 @@ namespace Tutorial
 
         private void FixedUpdate()
         {
+            //Erwin: tutorialActivated wordt twee keer gecheckt maar dat ik een klein puntje. In dit geval niet super relevant maar je zou de checks kunnen omdraaien, dat performt (soms) beter.
             if (CheckCameraStepCompletion() && gameManager.tutorialActivated)
                 HandleCameraStepCompletion();
 
@@ -45,7 +46,9 @@ namespace Tutorial
 
             tutorialSteps[stepIndex].SetActive(false);
             stepIndex++;
-
+            
+            //Erwin: Als je de hardcoded stappen hier wil voorkomen (als je bijvoorbeeld meerdere tutorials wil maken) zou je gebruik kunnen maken van een lijst van UnityActions
+            //Je zou er een soort statemachine van kunnen maken die bijhoudt in welke stap je zit zodat alleen de logica in die stap gecheckt hoeft te worden.
             if (stepIndex <= tutorialSteps.Length)
             {
                 tutorialSteps[stepIndex].SetActive(true);
@@ -97,12 +100,14 @@ namespace Tutorial
             finishLevelStep.SetActive(false);
         }
 
+        //Erwin: Hele random plek voor dit punt maar is het nodig dat de game gepauseerd kan worden? Dan zou je namelijk wat moeten tweaken aan DOTween of SetUpdate(true) kunnen toevoegen.
         private void PopInAnimation(GameObject gameObject)
         {
             RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
             rectTransform?.DOScale(1, 0.5f).SetEase(Ease.OutExpo);
         }
 
+        //Erwin: Ook hier zou je met UnityActions een lijst van 'resets' kunnen maken (of gewoon 1 action waarin alles gereset wordt)
         private void SetupNonTutorialMode()
         {
             CameraMovement.cameraLocked = false;

@@ -41,6 +41,8 @@ namespace Spawners
         {
             if (ECManager.totalPoints < rabbitCost)
             {
+                //Erwin: Niet super belangrijk maar dit zou een bottleneck kunnen worden. Met het oog op verschillende levels met meerdere enemies zou je bijvoorbeeld een (static) class kunnen maken met daarin lijsten die alle dieren/entities bevatten.
+                //FindClosestPlant in het wanderscript zou hier ook profijt van kunnen hebben omdat het vaak aangeroepen kan worden.
                 FindAliveRabbits();
                 if (amountOfRabbits <= 0 && gameManager.tutorialActivated)
                 {

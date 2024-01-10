@@ -68,6 +68,8 @@ namespace MainMenu
             loadingScreen.SetActive(false);
         }
 
+        //Erwin: De huidige manier van UI elementen aan/uitzetten werkt goed als je niet veel menus hebt maar zou wat onoverzichtelijk kunnen worden als je meerdere menus hebt.
+        //In Memoria hadden we een UIManager waarin je SetMenu("menuName") kon aanroepen om een menu te openen, dan zorgde de UIManager ervoor dat het huidige menu uit ging en het nieuwe aan. Met CloseMenu() gingen sloot het actieve menu.
         public void ToggleOptionsMenu()
         {
             if (!optionsMenu.activeInHierarchy)

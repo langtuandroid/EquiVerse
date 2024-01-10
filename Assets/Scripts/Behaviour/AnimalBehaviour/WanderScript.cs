@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 namespace Behaviour
 {
+    //Erwin: Dit script blijft lastig door de complexiteit van navmesh + animation. Wat je zou kunnen doen om het iets toegankelijker te maken is het opsplitsen in verschillende scripts die AI movement en de honger mechanics opsplitsen
+    //(je zou zelfs her veranderen van de materials en death logica kunnen opsplitsen maar dat is wat vergezocht)
     public class WanderScript : MonoBehaviour
     {
         [SerializeField] private float wanderRadius;
@@ -67,7 +69,7 @@ namespace Behaviour
 
         private void InitializeAgentParameters()
         {
-            agent.angularSpeed = 120f;
+            agent.angularSpeed = 120f; //Erwin: Magic numbers
             agent.acceleration = 8f;
             agent.stoppingDistance = 0.2f;
         }
@@ -85,6 +87,7 @@ namespace Behaviour
 
                 if (currentHunger >= warningThreshold)
                 {
+                    //Erwin: Ik heb het idee dat het naar true en false zetten van deze static variable niet helemaal goed gaat wanneer er meerdere konijnen zijn. Het wordt namelijk uitgezet wanneer een konijn honger heeft maar als een andere dan net wat eet gaat 'ie weer aan
                     LeafPointsSpawner.spawnLeafPoints = false;
                     inWarningState = true;
                 }
@@ -257,6 +260,7 @@ namespace Behaviour
             animator.SetBool("isDead_0", true);
             yield return new WaitForSeconds(3f);
             Destroy(gameObject);
+            //Erwin: Destroy(gameObject, 3f); zou ook kunnen, dan heb je geen enumerator nodig
         }
 
         public void JumpLandEvent()

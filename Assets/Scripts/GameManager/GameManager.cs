@@ -5,7 +5,7 @@ namespace Managers
 {
     public class GameManager : MonoBehaviour
     {
-        [NonSerialized]
+        [NonSerialized] //Erwin: Static variables kunnen niet geserialiseerd worden
         public static int WORLD_INDEX;
         [NonSerialized]
         public static int LEVEL_INDEX;

@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//Erwin: Deze namespace conflict met een Unity namespace
 namespace Input
 {
     public class CameraMovement : MonoBehaviour
@@ -47,6 +48,7 @@ namespace Input
                 movedRight = true;
             }
         
+            //Erwin: Heb je nog last van de camera jitter bij het uitzoomen? Wss is dat omdat je clampt voordat je de fov aanpast
             // Clamp zoom within the defined limits
             camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, minDistance, maxDistance);
 

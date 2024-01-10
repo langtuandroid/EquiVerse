@@ -65,7 +65,7 @@ namespace Managers {
             UpdateVisualPoints();
         }
 
-
+        //Erwin: Wat een prachtige code
         public void UpdateVisualPoints() {
             DateTime now = DateTime.Now;
             if ((now - lastVisualUpdate).TotalSeconds > updateInterval) {

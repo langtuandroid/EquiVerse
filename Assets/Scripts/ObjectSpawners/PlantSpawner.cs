@@ -67,7 +67,7 @@ namespace Spawners
                     else
                     {
                         // Check if the hit point is on the NavMesh
-                        if (IsPointOnNavMesh(hit.point) && ECManager.totalPoints >= grassCost)
+                        if (IsPointOnNavMesh(hit.point) && ECManager.totalPoints >= grassCost) //Erwin: Goed voorbeeld waar het omdraaien van variabelen in een if statement voordelig kan zijn
                         {
                             if (currentPlantCount < maxPlants)
                             {

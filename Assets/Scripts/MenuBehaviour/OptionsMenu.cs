@@ -26,6 +26,14 @@ public class OptionsMenu : MonoBehaviour
         screenModeDropdown.onValueChanged.AddListener(OnScreenModeChanged);
     }
 
+    //Erwin: Dit is mijn eigen code maar goed, toch een puntje van verbetering gevonden! Er zijn een aantal dingen die hier dubbel gebeuren. Je zou een functie kunnen maken die dit 1 keer doet waardoor de readability omhoog gaat.
+        void PopuplateDropdown(TMP_Dropdown dropdown, List<string> list, int currentIndex) {
+        dropdown.ClearOptions();
+        resolutionDropdown.AddOptions(list);
+        resolutionDropdown.value = currentIndex;
+        resolutionDropdown.RefreshShownValue();
+    }
+
     void PopulateResolutionDropdown()
     {
         resolutions = Screen.resolutions;
