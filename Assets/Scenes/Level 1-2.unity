@@ -556,6 +556,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1983304909}
     - target: {fileID: 5300777628258806277, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
+      propertyPath: gameUI
+      value: 
+      objectReference: {fileID: 1983304909}
+    - target: {fileID: 5300777628258806277, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
       propertyPath: rabbitButton
       value: 
       objectReference: {fileID: 489798214}
@@ -767,7 +771,8 @@ PrefabInstance:
       propertyPath: secondLevelTutorial
       value: 
       objectReference: {fileID: 1877959311}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5300777628413590956, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
 --- !u!114 &1473326832 stripped
 MonoBehaviour:

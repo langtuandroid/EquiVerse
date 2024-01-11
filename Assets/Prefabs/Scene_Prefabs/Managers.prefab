@@ -158,7 +158,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5300777628413590957}
   - component: {fileID: 5300777628413590958}
-  - component: {fileID: 5300777628413590956}
   m_Layer: 0
   m_Name: PointManager
   m_TagString: Untagged
@@ -200,19 +199,6 @@ MonoBehaviour:
   transitionOverlay: {fileID: 0}
   loadingScreen: {fileID: 0}
   guidedTutorialManager: {fileID: 5300777628258806277}
---- !u!114 &5300777628413590956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5300777628413590959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05b40dad47b220a49bf750ce0f179c19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particleEffectPrefab: {fileID: 1698068915230344, guid: 087f8c4a3f051b146b24ad2d080a7ace, type: 3}
 --- !u!1 &5300777628524437898
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ namespace Tutorial
     {
         public GameManager gameManager;
         public ECManager ecManager;
-        public GameObject screenOverlay, guidedTutorial, GameUI, objectSpawner, rabbitButton, finishLevelButton, finishLevelStep;
+        public GameObject screenOverlay, gameUI, objectSpawner, rabbitButton, finishLevelButton, finishLevelStep;
         public GameObject[] tutorialSteps;
 
         private int stepIndex = 0;
@@ -41,10 +41,6 @@ namespace Tutorial
 
         public void NextStep()
         {
-            print(stepIndex);
-            print(tutorialSteps.Length);
-            //if (buttonPressed || stepIndex >= tutorialSteps.Length) return;
-
             tutorialSteps[stepIndex].SetActive(false);
             stepIndex++;
 
@@ -68,7 +64,6 @@ namespace Tutorial
                 if (stepIndex == 6)
                 {
                     Spawners.PlantSpawner.canSpawnPlants = true;
-                    //plantSpawner.SetActive(true);
                 }
             }
         }
@@ -104,7 +99,7 @@ namespace Tutorial
         private void SetupNonTutorialMode()
         {
             CameraMovement.cameraLocked = false;
-            GameUI.SetActive(true);
+            gameUI.SetActive(true);
             screenOverlay.SetActive(false);
             objectSpawner.SetActive(true);
             rabbitButton.SetActive(true);
@@ -125,7 +120,7 @@ namespace Tutorial
         {
             CameraMovement.cameraLocked = true;
             screenOverlay.SetActive(true);
-            GameUI.SetActive(false);
+            gameUI.SetActive(false);
             objectSpawner.SetActive(false);
             finishLevelButton.SetActive(false);
             Spawners.PlantSpawner.canSpawnPlants = false;
@@ -136,7 +131,6 @@ namespace Tutorial
             }
 
             tutorialSteps[0].SetActive(true);
-            PopInAnimation(guidedTutorial);
         }
 
         private bool CheckCameraStepCompletion()
@@ -146,7 +140,7 @@ namespace Tutorial
 
         private void HandleCameraStepCompletion()
         {
-            GameUI.SetActive(true);
+            gameUI.SetActive(true);
             UpdateStepAndAnimate();
             cameraStepCompleted = true;
         }

@@ -4886,6 +4886,7 @@ GameObject:
   - component: {fileID: 5471576739273999025}
   - component: {fileID: 5471056834958484049}
   - component: {fileID: 66476198574707680}
+  - component: {fileID: -4641580931070596871}
   m_Layer: 8
   m_Name: LowValueLeaf
   m_TagString: LowValue
@@ -9701,6 +9702,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.49
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-4641580931070596871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5271623836368792421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bca8e658976d84892293f1f14e9499, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleEffectPrefab: {fileID: 1698068915230344, guid: 087f8c4a3f051b146b24ad2d080a7ace, type: 3}
 --- !u!1 &5272571386971802187
 GameObject:
   m_ObjectHideFlags: 0
