@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI; // Make sure to include this namespace
+using UnityEngine.AI;
 
 [System.Serializable]
 public class EnemyPrefabWithDelay
@@ -9,11 +9,12 @@ public class EnemyPrefabWithDelay
     public GameObject enemyPrefab;
     public float minSpawnDelay = 1f;
     public float maxSpawnDelay = 5f;
-    public float launchDistance = 2f; // Adjust this value as needed
+    public float launchDistance = 2f;
 }
 
 public class EnemySpawner : MonoBehaviour
 {
+    public float initialSpawnDelay;
     public Transform enemySpawnLocation;
     public ParticleSystem portalOpeningParticleSystem;
     public List<EnemyPrefabWithDelay> enemyPrefabsWithDelays;
@@ -25,6 +26,9 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnEnemiesWithDelays()
     {
+        // Delay before the first enemy spawns
+        yield return new WaitForSeconds(initialSpawnDelay);
+
         while (true)
         {
             foreach (var enemyPrefabWithDelay in enemyPrefabsWithDelays)
@@ -58,5 +62,3 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 }
-
-

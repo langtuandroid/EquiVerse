@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class WanderingEnemyBehaviour : MonoBehaviour
 {
@@ -55,6 +57,15 @@ public class WanderingEnemyBehaviour : MonoBehaviour
         {
             Quaternion targetRotation = Quaternion.LookRotation(navMeshAgent.desiredVelocity);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * smoothRotationSpeed);
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.name == "Rabbit")
+        {
+            print("rabbitKilled");
+            Destroy(other.gameObject);
         }
     }
 }
