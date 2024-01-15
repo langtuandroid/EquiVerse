@@ -8,10 +8,12 @@ using UnityEngine;
 public class SecondLevelTutorial : MonoBehaviour
 {
     public GameObject maxPlantUpgradeButton;
-    
+
+    public GameObject screenOverlay;
     private void Start()
     {
         maxPlantUpgradeButton.SetActive(false);
+        screenOverlay.SetActive(true);
     }
 
     public void ShowMaxPlantUpgradeButton()
@@ -25,5 +27,10 @@ public class SecondLevelTutorial : MonoBehaviour
         {
             hint.SetActive(false);
         }
+    }
+
+    public void CloseFirstEnemyPopup()
+    {
+        screenOverlay.SetActive(false);
     }
 }
