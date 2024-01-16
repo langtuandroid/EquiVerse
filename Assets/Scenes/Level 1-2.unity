@@ -311,6 +311,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &690671794 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7246205303458653489, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
+  m_PrefabInstance: {fileID: 6382226089716455114}
+  m_PrefabAsset: {fileID: 0}
 --- !u!108 &705507994 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 4477920238870446243, guid: 2368b4828fad9424582e0db3009ca10d, type: 3}
@@ -1056,7 +1061,7 @@ PrefabInstance:
     - target: {fileID: 5300777629731829054, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
       propertyPath: spawnLocation
       value: 
-      objectReference: {fileID: 443613164}
+      objectReference: {fileID: 690671794}
     - target: {fileID: 5300777629731829054, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
       propertyPath: secondLevelTutorial
       value: 
@@ -2545,6 +2550,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -2.758
       objectReference: {fileID: 0}
+    - target: {fileID: 6382226088053091944, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6382226088053091950, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
       propertyPath: m_VoxelSize
       value: 0.2
@@ -2552,11 +2561,11 @@ PrefabInstance:
     - target: {fileID: 6382226088053091950, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 5eaf14317a271b0469ffa543d5d7e305, type: 2}
+      objectReference: {fileID: 23800000, guid: acc915b9b927b8f48aff0e0c52f68684, type: 2}
     - target: {fileID: 6382226088858245205, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: ad28f881b67e0bc44ab5ba237d561725, type: 2}
+      objectReference: {fileID: 23800000, guid: beafb8cf0b5524a409d2600861a94acb, type: 2}
     - target: {fileID: 6382226088858245207, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
       propertyPath: m_IsActive
       value: 1
