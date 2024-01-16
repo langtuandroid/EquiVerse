@@ -12,7 +12,7 @@ public class CrystalShard : Clickable
         ECManager ecManager = FindObjectOfType<ECManager>();
 
         if (ecManager != null) {
-            ecManager.AddGooseEggPoints();
+            ecManager.AddCrystalShardPoints();
             StartCoroutine(DestroyObjectWithEffect(gameObject));
         }
     }
@@ -20,13 +20,16 @@ public class CrystalShard : Clickable
     
     void Start()
     {
-        transform.DOMoveY(2f, 1f).SetEase(Ease.OutExpo).OnComplete((() =>
+        transform.localScale = Vector3.zero;
+        
+        transform.DOMoveY(2f, 2f).SetEase(Ease.InSine).OnComplete((() =>
         {
             Vector3 initialPosition = transform.position;
             transform.DOMoveY(initialPosition.y + 0.3f, 2.0f)
                 .SetEase(Ease.InOutQuad) // Adjust the easing function as needed
                 .SetLoops(-1, LoopType.Yoyo); // Set it to loop indefinitely 
         }));
+        transform.DOScale(Vector3.one, 1f).SetEase(Ease.OutBack).SetDelay(0.5f);
     }
     
     private IEnumerator DestroyObjectWithEffect(GameObject obj) {

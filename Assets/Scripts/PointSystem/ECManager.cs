@@ -25,6 +25,7 @@ namespace Managers {
 
         private static int lowValuePoints = 20;
         private static int gooseEggPoints = 50;
+        private static int crystalShardPoints = 50;
         
         private DateTime lastVisualUpdate = DateTime.Now;
         private const float updateInterval = 0.01666667f;
@@ -48,6 +49,10 @@ namespace Managers {
 
         public void AddGooseEggPoints() {
             IncrementPoints(gooseEggPoints);
+        }
+        
+        public void AddCrystalShardPoints() {
+            IncrementPoints(crystalShardPoints);
         }
 
         public void BuyEndOfLevel() {

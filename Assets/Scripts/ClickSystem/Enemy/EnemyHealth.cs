@@ -23,9 +23,9 @@ public class EnemyHealth : Clickable
 
     private void Die()
     {
-        transform.DOScale(0, 1f).SetEase(Ease.OutExpo);
+        transform.DOScale(0, 0.2f).SetEase(Ease.OutQuint);
         Instantiate(deathParticles, gameObject.transform.position, Quaternion.identity);
-        Instantiate(reward, gameObject.transform.position , Quaternion.identity);
+        Instantiate(reward, gameObject.transform.position + new Vector3(0,0.3f,0) , Quaternion.identity);
         
         Destroy(gameObject, 1f);
         Destroy(deathParticles, 5f);

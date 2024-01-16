@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6382226088053091945
 Transform:
   m_ObjectHideFlags: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.2
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 92c836875b8213644b6c68695dc2651b, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 6c5401342b6f3344e8bf2fb35e2d4baa, type: 2}
 --- !u!1 &6382226088720904418
 GameObject:
   m_ObjectHideFlags: 0
@@ -10791,6 +10791,18 @@ PrefabInstance:
     - target: {fileID: 2230677029410029137, guid: 1011cbda8ec91c44b8b84449432a11f7, type: 3}
       propertyPath: m_Name
       value: EnemySpawnGate
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688901110200376504, guid: 1011cbda8ec91c44b8b84449432a11f7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688942510247789146, guid: 1011cbda8ec91c44b8b84449432a11f7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8689290740741628934, guid: 1011cbda8ec91c44b8b84449432a11f7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1011cbda8ec91c44b8b84449432a11f7, type: 3}
