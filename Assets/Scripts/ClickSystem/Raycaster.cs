@@ -16,7 +16,6 @@ public class Raycaster : MonoBehaviour {
 
     void Update() {
         if (UnityEngine.Input.GetMouseButtonDown(0)) {
-            if(EventSystem.current.IsPointerOverGameObject()) print("UI CLICKED");
             Ray ray = Camera.main.ScreenPointToRay(UnityEngine.Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity)) {
                 if (IsClickable(hit.collider.gameObject)) {

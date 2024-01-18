@@ -339,7 +339,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262440479064932}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2115,6 +2115,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4367362870695974, guid: c7f93a0255162fd47bbe40874f339bf4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367362870695974, guid: c7f93a0255162fd47bbe40874f339bf4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367362870695974, guid: c7f93a0255162fd47bbe40874f339bf4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367362870695974, guid: c7f93a0255162fd47bbe40874f339bf4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2156,15 +2168,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198410904701440020, guid: c7f93a0255162fd47bbe40874f339bf4, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.4477395
+      value: 0.9254902
       objectReference: {fileID: 0}
     - target: {fileID: 198410904701440020, guid: c7f93a0255162fd47bbe40874f339bf4, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.8018868
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198410904701440020, guid: c7f93a0255162fd47bbe40874f339bf4, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.38959596
+      value: 0.4117647
       objectReference: {fileID: 0}
     - target: {fileID: 198410904701440020, guid: c7f93a0255162fd47bbe40874f339bf4, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key0.b
@@ -2180,15 +2192,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198587703769245278, guid: c7f93a0255162fd47bbe40874f339bf4, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.3801224
+      value: 0.92512727
       objectReference: {fileID: 0}
     - target: {fileID: 198587703769245278, guid: c7f93a0255162fd47bbe40874f339bf4, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.6226415
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198587703769245278, guid: c7f93a0255162fd47bbe40874f339bf4, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.35537556
+      value: 0.41037738
       objectReference: {fileID: 0}
     - target: {fileID: 199256865592472146, guid: c7f93a0255162fd47bbe40874f339bf4, type: 3}
       propertyPath: m_Materials.Array.size

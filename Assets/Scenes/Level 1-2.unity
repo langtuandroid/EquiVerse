@@ -842,6 +842,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3130055666408576329, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5300777628039273247, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
       propertyPath: currentLevelText
       value: 
@@ -1044,7 +1048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5300777629598507569, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5300777629731829054, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
       propertyPath: isTutorial
@@ -1308,6 +1312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxPlantUpgradeButton: {fileID: 1807108142}
   screenOverlay: {fileID: 126064323}
+  rayCaster: {fileID: 2054428056}
 --- !u!1 &1902965756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1457,6 +1462,11 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1281900917959861602, guid: 228006cb1b674504786775f3e83fe722, type: 3}
   m_PrefabInstance: {fileID: 1281900917117448623}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2054428056 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3130055666408576329, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
+  m_PrefabInstance: {fileID: 1473326831}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2057327386 stripped
 GameObject:
@@ -2673,7 +2683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6579d39df3a00e4593f1eef98e1da1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSpawnDelay: 1
+  initialSpawnDelay: 20
   enemySpawnLocation: {fileID: 928408468}
   portalOpeningParticleSystem: {fileID: 1550588104}
   enemyPrefabsWithDelays:
