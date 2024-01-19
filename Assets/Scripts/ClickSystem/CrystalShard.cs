@@ -8,7 +8,7 @@ public class CrystalShard : Clickable
 {
     public GameObject particleEffectPrefab;
 
-    public override void OnClick() {
+    public override void OnClick(Vector3 point) {
         ECManager ecManager = FindObjectOfType<ECManager>();
 
         if (ecManager != null) {

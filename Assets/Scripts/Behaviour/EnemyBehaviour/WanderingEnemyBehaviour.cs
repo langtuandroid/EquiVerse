@@ -60,8 +60,9 @@ public class WanderingEnemyBehaviour : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
+        print(other.gameObject.name);
         if (other.gameObject.name == "Rabbit")
         {
             print("rabbitKilled");

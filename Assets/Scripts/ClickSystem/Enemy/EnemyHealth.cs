@@ -9,11 +9,15 @@ public class EnemyHealth : Clickable
     public int enemyHealth;
     public GameObject reward;
     public GameObject deathParticles;
-    public override void OnClick()
+    
+    public override void OnClick(Vector3 point)
     {
-        if (enemyHealth > GunBehaviour.gunDamage)
+        GunUpgrade currentGunUpgrade = UpgradeManager.GetInstance().GetCurrentGunUpgrade();
+        if (enemyHealth > currentGunUpgrade.gunDamage)
         {
-            enemyHealth -= GunBehaviour.gunDamage;
+            enemyHealth -= currentGunUpgrade.gunDamage;
+            ParticleSystem p = Instantiate(currentGunUpgrade.gunParticles,point, Quaternion.identity);
+            p.Play();
         }
         else
         {
