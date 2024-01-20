@@ -4,6 +4,5 @@ using UnityEngine;
 
 public abstract class Clickable : MonoBehaviour
 {
-    public ParticleSystem gunParticles;
     public abstract void OnClick(Vector3 point);
 }

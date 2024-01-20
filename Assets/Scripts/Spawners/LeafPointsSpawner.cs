@@ -31,7 +31,7 @@ namespace Spawners
                     GameObject newLeaf = Instantiate(leafPointPrefab, spawnPosition, Quaternion.identity);
 
                     // Use DoTween to move the object to the desired height
-                    newLeaf.transform.DOMoveY(desiredHeight, duration).SetEase(Ease.OutSine)
+                    newLeaf.transform.DOMoveY(desiredHeight, duration).SetEase(Ease.OutCubic)
                         .OnComplete(() => FadeAndDestroy(newLeaf));
 
                     spawnTimer = 0f;
@@ -43,7 +43,7 @@ namespace Spawners
         private void FadeAndDestroy(GameObject obj)
         {
             Material material = obj.GetComponent<Renderer>().material;
-            material.DOFade(0f, duration).OnComplete(() => Destroy(obj));
+            material.DOFade(0f, 1f).OnComplete(() => Destroy(obj));
         }
     }
 }
