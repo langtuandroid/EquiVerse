@@ -1,4 +1,5 @@
 using System;
+using Behaviour;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -62,11 +63,9 @@ public class WanderingEnemyBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other.gameObject.name);
-        if (other.gameObject.name == "Rabbit")
+        if (other.CompareTag("Rabbit"))
         {
-            print("rabbitKilled");
-            Destroy(other.gameObject);
+           other.GetComponent<WanderScript>().Die();
         }
     }
 }

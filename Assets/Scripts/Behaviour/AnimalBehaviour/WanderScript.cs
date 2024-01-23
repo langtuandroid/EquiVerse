@@ -223,7 +223,7 @@ namespace Behaviour {
             }
         }
 
-        private void Die() {
+        public void Die() {
             agent.speed = 0;
             animator.SetBool("isJumping", false);
             animator.SetBool("isDead_0", true);
