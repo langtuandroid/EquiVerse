@@ -29,6 +29,7 @@ namespace Behaviour {
         private bool isHungry = false;
         private bool inWarningState = false;
         private float currentHunger = 0f;
+        private bool death = false;
 
         private const float LEAF_SPAWN_DISTANCE_THRESHOLD = 0.2f;
         private const float SMOOTHING_FACTOR = 5f;
@@ -45,6 +46,11 @@ namespace Behaviour {
         }
 
         private void FixedUpdate() {
+            if (death)
+            {
+                agent.speed = 0;
+            }
+            
             MaterialChanger();
             HandleHunger();
 
@@ -223,8 +229,9 @@ namespace Behaviour {
             }
         }
 
-        public void Die() {
-            agent.speed = 0;
+        public void Die()
+        {
+            death = true;
             animator.SetBool("isJumping", false);
             animator.SetBool("isDead_0", true);
             Destroy(gameObject, 3.0f);

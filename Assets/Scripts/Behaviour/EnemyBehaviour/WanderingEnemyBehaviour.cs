@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using Behaviour;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,9 +11,12 @@ public class WanderingEnemyBehaviour : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private Vector3 targetPosition;
 
-    public float minSpeed = 2.5f;
-    public float maxSpeed = 4.5f;
+
+    public Animator animator;
+    public float speed;
     public float smoothRotationSpeed = 5f;
+
+    private bool attacking = false;
 
     private void Start()
     {
@@ -34,6 +39,15 @@ public class WanderingEnemyBehaviour : MonoBehaviour
         }
 
         MoveAndRotateTowardsDestination();
+        
+        if (WanderingEnemyFXController.attacking)
+        {
+            navMeshAgent.speed = 0;
+        }
+        else
+        {
+            navMeshAgent.speed = speed;
+        }
     }
 
     private void SetRandomDestination()
@@ -43,9 +57,6 @@ public class WanderingEnemyBehaviour : MonoBehaviour
         NavMeshHit hit;
         NavMesh.SamplePosition(randomDirection, out hit, 10f, 1);
         targetPosition = hit.position;
-
-        float randomSpeed = Random.Range(minSpeed, maxSpeed);
-        navMeshAgent.speed = randomSpeed;
 
         // Set the new destination
         navMeshAgent.SetDestination(targetPosition);
@@ -65,7 +76,9 @@ public class WanderingEnemyBehaviour : MonoBehaviour
     {
         if (other.CompareTag("Rabbit"))
         {
-           other.GetComponent<WanderScript>().Die();
+            WanderingEnemyFXController.attacking = true;
+            animator.SetTrigger("AttackTrigger");
+            other.GetComponent<WanderScript>().Die();
         }
     }
 }
