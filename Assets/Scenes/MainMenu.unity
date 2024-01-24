@@ -10878,6 +10878,130 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4803593490609036, guid: d9b9ef0cf9aa8754d8d0369ab8794095, type: 3}
   m_PrefabInstance: {fileID: 1968260500}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1988220907
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2484444543811308925, guid: 94debfe3354a05c4e9c457bf3470ec63, type: 3}
+      propertyPath: m_Name
+      value: MainMenuAmbientSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260702080416724648, guid: 94debfe3354a05c4e9c457bf3470ec63, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260702080416724648, guid: 94debfe3354a05c4e9c457bf3470ec63, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260702080416724648, guid: 94debfe3354a05c4e9c457bf3470ec63, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260702080416724648, guid: 94debfe3354a05c4e9c457bf3470ec63, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260702080416724648, guid: 94debfe3354a05c4e9c457bf3470ec63, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260702080416724648, guid: 94debfe3354a05c4e9c457bf3470ec63, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260702080416724648, guid: 94debfe3354a05c4e9c457bf3470ec63, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260702080416724648, guid: 94debfe3354a05c4e9c457bf3470ec63, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260702080416724648, guid: 94debfe3354a05c4e9c457bf3470ec63, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260702080416724648, guid: 94debfe3354a05c4e9c457bf3470ec63, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260702080416724648, guid: 94debfe3354a05c4e9c457bf3470ec63, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 94debfe3354a05c4e9c457bf3470ec63, type: 3}
+--- !u!1 &1993349735 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2484444543811308925, guid: 94debfe3354a05c4e9c457bf3470ec63, type: 3}
+  m_PrefabInstance: {fileID: 1988220907}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1993349736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993349735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1456014075
+      Data2: 1130575066
+      Data3: 1906678442
+      Data4: 46401573
+    Path: event:/MainMenuMusic
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1993349738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993349735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1919769179
+      Data2: 1274030709
+      Data3: 1733382072
+      Data4: -595688089
+    Path: event:/MainMenuAmbient
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &2003689789
 PrefabInstance:
   m_ObjectHideFlags: 0

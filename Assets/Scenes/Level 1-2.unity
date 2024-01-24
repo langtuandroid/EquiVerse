@@ -1640,8 +1640,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 734809473133366268, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
+--- !u!1 &734809473521936015 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 734809473133366271, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
+  m_PrefabInstance: {fileID: 734809473521936014}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &734809473521936016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734809473521936015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1001 &1281900917117448623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2687,14 +2706,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6579d39df3a00e4593f1eef98e1da1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSpawnDelay: 1
+  initialSpawnDelay: 5
   enemySpawnLocation: {fileID: 928408468}
   portalOpeningParticleSystem: {fileID: 1550588104}
-  enemyPrefabsWithDelays:
+  enemyPrefabs:
   - enemyPrefab: {fileID: 4250166054841865360, guid: 2c5cadcd143f4434c8de321d297eaaba, type: 3}
     minSpawnDelay: 20
     maxSpawnDelay: 25
-    launchDistance: 2
 --- !u!114 &8757231977867629531 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7515885461654839924, guid: 228006cb1b674504786775f3e83fe722, type: 3}

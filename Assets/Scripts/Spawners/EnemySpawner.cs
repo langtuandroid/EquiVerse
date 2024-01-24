@@ -4,12 +4,11 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [System.Serializable]
-public class EnemyPrefabWithDelay
+public class EnemyPrefab
 {
     public GameObject enemyPrefab;
     public float minSpawnDelay = 1f;
     public float maxSpawnDelay = 5f;
-    public float launchDistance = 2f;
 }
 
 public class EnemySpawner : MonoBehaviour
@@ -17,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
     public float initialSpawnDelay;
     public Transform enemySpawnLocation;
     public ParticleSystem portalOpeningParticleSystem;
-    public List<EnemyPrefabWithDelay> enemyPrefabsWithDelays;
+    public List<EnemyPrefab> enemyPrefabs;
 
     void Start()
     {
@@ -31,27 +30,18 @@ public class EnemySpawner : MonoBehaviour
 
         while (true)
         {
-            foreach (var enemyPrefabWithDelay in enemyPrefabsWithDelays)
+            foreach (var enemyPrefab in enemyPrefabs)
             {
-                if (enemyPrefabWithDelay.enemyPrefab != null)
+                if (enemyPrefab.enemyPrefab != null)
                 {
                     portalOpeningParticleSystem.Play();
                     yield return new WaitForSeconds(3f);
 
-                    GameObject newEnemy = Instantiate(enemyPrefabWithDelay.enemyPrefab, enemySpawnLocation.position, Quaternion.identity);
-
-                    // Move the NavMeshAgent a short distance
-                    NavMeshAgent enemyNavMeshAgent = newEnemy.GetComponent<NavMeshAgent>();
-                    if (enemyNavMeshAgent != null)
-                    {
-                        Vector3 destination = enemySpawnLocation.position + enemySpawnLocation.forward * enemyPrefabWithDelay.launchDistance;
-                        enemyNavMeshAgent.Warp(enemySpawnLocation.position); // Set the initial position
-                        enemyNavMeshAgent.SetDestination(destination);
-                    }
+                    GameObject newEnemy = Instantiate(enemyPrefab.enemyPrefab, enemySpawnLocation.position, Quaternion.identity);
 
                     portalOpeningParticleSystem.Stop();
 
-                    float spawnDelay = Random.Range(enemyPrefabWithDelay.minSpawnDelay, enemyPrefabWithDelay.maxSpawnDelay);
+                    float spawnDelay = Random.Range(enemyPrefab.minSpawnDelay, enemyPrefab.maxSpawnDelay);
                     yield return new WaitForSeconds(spawnDelay);
                 }
                 else
