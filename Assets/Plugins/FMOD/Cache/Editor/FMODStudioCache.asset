@@ -27,6 +27,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 128160
+--- !u!114 &-2890108901729854323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/ButtonClick
+  m_EditorClassIdentifier: 
+  Path: event:/UI/ButtonClick
+  Guid:
+    Data1: 1174458210
+    Data2: 1315138961
+    Data3: -2115122263
+    Data4: 1079781944
+  Banks:
+  - {fileID: 5304006631014352583}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 120
 --- !u!114 &-2646896960164663470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,6 +81,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 39999
+--- !u!114 &-951281588405915596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/ButtonHover
+  m_EditorClassIdentifier: 
+  Path: event:/UI/ButtonHover
+  Guid:
+    Data1: 1520162310
+    Data2: 1181014446
+    Data3: 1019750059
+    Data4: 315864777
+  Banks:
+  - {fileID: 5304006631014352583}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 72
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,12 +127,14 @@ MonoBehaviour:
   EditorEvents:
   - {fileID: -2646896960164663470}
   - {fileID: -8985539193971215155}
+  - {fileID: -2890108901729854323}
+  - {fileID: -951281588405915596}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5304006631014352583}
   StringsBanks:
   - {fileID: 23253448088795587}
-  cacheTime: 638417081102710602
+  cacheTime: 638417323452850684
   cacheVersion: 131616
 --- !u!114 &23253448088795587
 MonoBehaviour:
@@ -95,10 +151,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
   Name: MainMenu.strings
   StudioPath: bank:/MainMenu.strings
-  lastModified: 638417081102710602
+  lastModified: 638417323452850684
   FileSizes:
   - Name: Desktop
-    Value: 898
+    Value: 1004
   Exists: 1
 --- !u!114 &3956151758206991042
 MonoBehaviour:
@@ -135,8 +191,8 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 638417081102700594
+  lastModified: 638417323452840683
   FileSizes:
   - Name: Desktop
-    Value: 2346080
+    Value: 2351584
   Exists: 1

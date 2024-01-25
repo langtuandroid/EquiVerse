@@ -76,9 +76,19 @@ public class WanderingEnemyBehaviour : MonoBehaviour
     {
         if (other.CompareTag("Rabbit"))
         {
-            WanderingEnemyFXController.attacking = true;
-            animator.SetTrigger("AttackTrigger");
-            other.GetComponent<WanderScript>().Die();
+            StartCoroutine(AttackRabbit(other));
         }
+    }
+
+    private IEnumerator AttackRabbit(Collider other)
+    {
+        Transform rabbitTransform = other.transform;
+        Vector3 targetDirection = rabbitTransform.position - transform.position;
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, 1.0f, 0.0f);
+        transform.rotation = Quaternion.LookRotation(newDirection);
+        WanderingEnemyFXController.attacking = true;
+        animator.SetTrigger("AttackTrigger");
+        yield return new WaitForSeconds(2f);
+        other.GetComponent<WanderScript>().Die();
     }
 }

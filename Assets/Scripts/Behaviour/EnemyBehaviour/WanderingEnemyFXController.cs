@@ -5,7 +5,7 @@ using UnityEngine;
 public class WanderingEnemyFXController : MonoBehaviour
 {
     public static bool attacking = false;
-    public ParticleSystem leftFootImpact, rightFootImpact;
+    public ParticleSystem leftFootImpact, rightFootImpact, attackOnHit;
     
     public void RightImpactEvent()
     {
@@ -16,10 +16,14 @@ public class WanderingEnemyFXController : MonoBehaviour
     {
         leftFootImpact.Play();
     }
+
+    public void AttackOnHit()
+    {
+        
+    }
     
     public void OnAttackAnimationComplete()
     {
-        print("test");
         attacking = false;
     }
 }
