@@ -24,7 +24,7 @@ namespace UI
 
         private void FadeSceneOpen()
         {
-            transitionOverlay.DOFade(0f, 3f).SetEase(Ease.InCubic).OnComplete((() =>
+            transitionOverlay.DOFade(0f, 6f).SetEase(Ease.InSine).OnComplete((() =>
             {
                 if (gameManager.tutorialActivated)
                 {

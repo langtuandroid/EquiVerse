@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8985539193971215155
+--- !u!114 &-8473568095422376001
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/MainMenuAmbient
+  m_Name: event:/MainMenu/MainMenuAmbient
   m_EditorClassIdentifier: 
-  Path: event:/MainMenuAmbient
+  Path: event:/MainMenu/MainMenuAmbient
   Guid:
     Data1: 1919769179
     Data2: 1274030709
@@ -24,11 +24,11 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -7819339928308687150}
+  - {fileID: 5178793026395174547}
   MinDistance: 1
   MaxDistance: 20
   Length: 128160
---- !u!114 &-7819339928308687150
+--- !u!114 &-7344631718792414954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -37,21 +37,53 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MainMenuAmbient/MainMenuVolume
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MainMenu/MainMenuMusic
   m_EditorClassIdentifier: 
-  Name: MainMenuVolume
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 120619980
-    data2: 2234874556
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
+  Path: event:/MainMenu/MainMenuMusic
+  Guid:
+    Data1: 1456014075
+    Data2: 1130575066
+    Data3: 1906678442
+    Data4: 46401573
+  Banks:
+  - {fileID: 5304006631014352583}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 2449093306978900814}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 39999
+--- !u!114 &-3627540013687878476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/World1/World1LevelAmbience
+  m_EditorClassIdentifier: 
+  Path: event:/World1/World1LevelAmbience
+  Guid:
+    Data1: 1059095620
+    Data2: 1235638006
+    Data3: -663427685
+    Data4: 1769726836
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 842525933788318587}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 126096
 --- !u!114 &-2890108901729854323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,7 +111,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 120
---- !u!114 &-2646896960164663470
+--- !u!114 &-2021504784237846920
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,24 +121,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/MainMenuMusic
+  m_Name: event:/World1/World1LevelMusic
   m_EditorClassIdentifier: 
-  Path: event:/MainMenuMusic
+  Path: event:/World1/World1LevelMusic
   Guid:
-    Data1: 1456014075
-    Data2: 1130575066
-    Data3: 1906678442
-    Data4: 46401573
+    Data1: 1066589528
+    Data2: 1294238846
+    Data3: -13296502
+    Data4: -291742425
   Banks:
-  - {fileID: 5304006631014352583}
+  - {fileID: 3956151758206991042}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -59601710365341163}
+  - {fileID: 2119219704131904232}
   MinDistance: 1
   MaxDistance: 20
-  Length: 39999
+  Length: 206053
 --- !u!114 &-951281588405915596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,7 +166,105 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 72
---- !u!114 &-59601710365341163
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 23253448088795587}
+  - {fileID: 3956151758206991042}
+  - {fileID: 5304006631014352583}
+  EditorEvents:
+  - {fileID: -2890108901729854323}
+  - {fileID: -951281588405915596}
+  - {fileID: -3627540013687878476}
+  - {fileID: -2021504784237846920}
+  - {fileID: -8473568095422376001}
+  - {fileID: -7344631718792414954}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 5304006631014352583}
+  StringsBanks:
+  - {fileID: 23253448088795587}
+  cacheTime: 638419932105107610
+  cacheVersion: 131616
+--- !u!114 &23253448088795587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/MainMenu.strings.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
+  Name: MainMenu.strings
+  StudioPath: bank:/MainMenu.strings
+  lastModified: 638419923473883531
+  FileSizes:
+  - Name: Desktop
+    Value: 1400
+  Exists: 1
+--- !u!114 &842525933788318587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/World1LevelAmbience/World1LevelAmbienceVolume
+  m_EditorClassIdentifier: 
+  Name: World1LevelAmbienceVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3791231998
+    data2: 3273213767
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &2119219704131904232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/World1LevelMusic/World1LevelMainMusicVolume
+  m_EditorClassIdentifier: 
+  Name: World1LevelMainMusicVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 3383034797
+    data2: 1994318767
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &2449093306978900814
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,54 +288,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
-  m_Name: FMODStudioCache
-  m_EditorClassIdentifier: 
-  EditorBanks:
-  - {fileID: 23253448088795587}
-  - {fileID: 3956151758206991042}
-  - {fileID: 5304006631014352583}
-  EditorEvents:
-  - {fileID: -2646896960164663470}
-  - {fileID: -8985539193971215155}
-  - {fileID: -2890108901729854323}
-  - {fileID: -951281588405915596}
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: 5304006631014352583}
-  StringsBanks:
-  - {fileID: 23253448088795587}
-  cacheTime: 638419781723112709
-  cacheVersion: 131616
---- !u!114 &23253448088795587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/MainMenu.strings.bank
-  m_EditorClassIdentifier: 
-  Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
-  Name: MainMenu.strings
-  StudioPath: bank:/MainMenu.strings
-  lastModified: 638419781723112709
-  FileSizes:
-  - Name: Desktop
-    Value: 1060
-  Exists: 1
 --- !u!114 &3956151758206991042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,10 +303,34 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 638417078447174115
+  lastModified: 638419932105107610
   FileSizes:
   - Name: Desktop
-    Value: 494
+    Value: 4912416
+  Exists: 1
+--- !u!114 &5178793026395174547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MainMenuAmbient/MainMenuVolume
+  m_EditorClassIdentifier: 
+  Name: MainMenuVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 120619980
+    data2: 2234874556
+  Type: 0
+  IsGlobal: 0
+  Labels: []
   Exists: 1
 --- !u!114 &5304006631014352583
 MonoBehaviour:
@@ -241,8 +347,8 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 638419781723102708
+  lastModified: 638419923473873536
   FileSizes:
   - Name: Desktop
-    Value: 2352480
+    Value: 2352928
   Exists: 1

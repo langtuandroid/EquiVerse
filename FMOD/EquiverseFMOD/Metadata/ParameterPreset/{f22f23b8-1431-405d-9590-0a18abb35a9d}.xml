@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{f22f23b8-1431-405d-9590-0a18abb35a9d}">
+		<property name="name">
+			<value>World1LevelAmbienceVolume</value>
+		</property>
+		<relationship name="folder">
+			<destination>{0885cd84-c8e3-4d9f-bb3b-e4dc7605ebca}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{1374b482-8504-47fd-bbb2-9689b6384a2f}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{1374b482-8504-47fd-bbb2-9689b6384a2f}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

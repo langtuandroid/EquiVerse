@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{e885a0ae-6beb-44e4-a9a0-e99c9014542b}">
+		<property name="name">
+			<value>World1LevelMainMusicVolume</value>
+		</property>
+		<relationship name="folder">
+			<destination>{0885cd84-c8e3-4d9f-bb3b-e4dc7605ebca}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{3b948706-89eb-4b50-9ee0-d4d9cf9e58eb}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{3b948706-89eb-4b50-9ee0-d4d9cf9e58eb}">
+		<property name="initialValue">
+			<value>1</value>
+		</property>
+	</object>
+</objects>

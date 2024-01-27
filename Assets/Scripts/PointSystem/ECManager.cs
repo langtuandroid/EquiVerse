@@ -23,6 +23,8 @@ namespace Managers {
         public GameObject loadingScreen;
         public GuidedTutorial guidedTutorialManager;
 
+        [Header("Sound")] public World1LevelSoundController soundController;
+
         private static int lowValuePoints = 20;
         private static int gooseEggPoints = 50;
         private static int crystalShardPoints = 50;
@@ -104,6 +106,8 @@ namespace Managers {
         
         //maybe find a different place for this logic
         private void LevelCompleted() {
+            soundController.StopAudioEvent("Music");
+            soundController.StopAudioEvent("Ambience");
             transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() => {
                 guidedTutorialManager.enabled = false;
                 StartCoroutine(LoadAsynchronously("NewCompanionScene"));

@@ -131,6 +131,7 @@ namespace Tutorial
             }
 
             tutorialSteps[0].SetActive(true);
+            PopInAnimation(tutorialSteps[0]);
         }
 
         private bool CheckCameraStepCompletion()
