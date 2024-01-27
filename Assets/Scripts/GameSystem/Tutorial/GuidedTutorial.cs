@@ -53,7 +53,7 @@ namespace Tutorial
                 if (stepIndex == 1)
                 {
                     screenOverlay.SetActive(false);
-                    CameraMovement.cameraLocked = false;
+                    CameraMovement.CAMERA_LOCKED = false;
                 }
 
                 if (stepIndex == 4)
@@ -98,7 +98,7 @@ namespace Tutorial
 
         private void SetupNonTutorialMode()
         {
-            CameraMovement.cameraLocked = false;
+            CameraMovement.CAMERA_LOCKED = false;
             gameUI.SetActive(true);
             screenOverlay.SetActive(false);
             objectSpawner.SetActive(true);
@@ -118,7 +118,7 @@ namespace Tutorial
 
         private void SetupTutorialMode()
         {
-            CameraMovement.cameraLocked = true;
+            CameraMovement.CAMERA_LOCKED = true;
             screenOverlay.SetActive(true);
             gameUI.SetActive(false);
             objectSpawner.SetActive(false);
@@ -135,7 +135,7 @@ namespace Tutorial
 
         private bool CheckCameraStepCompletion()
         {
-            return CameraMovement.cameraMovedInAllDirections && !cameraStepCompleted && gameManager.tutorialActivated;
+            return CameraMovement.CAMERA_MOVED_IN_ALL_DIRECTIONS && !cameraStepCompleted && gameManager.tutorialActivated;
         }
 
         private void HandleCameraStepCompletion()

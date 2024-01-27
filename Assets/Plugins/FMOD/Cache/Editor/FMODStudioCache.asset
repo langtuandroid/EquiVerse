@@ -23,10 +23,35 @@ MonoBehaviour:
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
-  Parameters: []
+  Parameters:
+  - {fileID: -7819339928308687150}
   MinDistance: 1
   MaxDistance: 20
   Length: 128160
+--- !u!114 &-7819339928308687150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MainMenuAmbient/MainMenuVolume
+  m_EditorClassIdentifier: 
+  Name: MainMenuVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 120619980
+    data2: 2234874556
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-2890108901729854323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,7 +102,8 @@ MonoBehaviour:
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
-  Parameters: []
+  Parameters:
+  - {fileID: -59601710365341163}
   MinDistance: 1
   MaxDistance: 20
   Length: 39999
@@ -108,6 +134,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 72
+--- !u!114 &-59601710365341163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MainMenuMusic/MainMenuVolume
+  m_EditorClassIdentifier: 
+  Name: MainMenuVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 120619980
+    data2: 2234874556
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,7 +184,7 @@ MonoBehaviour:
   - {fileID: 5304006631014352583}
   StringsBanks:
   - {fileID: 23253448088795587}
-  cacheTime: 638417323452850684
+  cacheTime: 638419781723112709
   cacheVersion: 131616
 --- !u!114 &23253448088795587
 MonoBehaviour:
@@ -151,10 +201,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
   Name: MainMenu.strings
   StudioPath: bank:/MainMenu.strings
-  lastModified: 638417323452850684
+  lastModified: 638419781723112709
   FileSizes:
   - Name: Desktop
-    Value: 1004
+    Value: 1060
   Exists: 1
 --- !u!114 &3956151758206991042
 MonoBehaviour:
@@ -191,8 +241,8 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 638417323452840683
+  lastModified: 638419781723102708
   FileSizes:
   - Name: Desktop
-    Value: 2351584
+    Value: 2352480
   Exists: 1

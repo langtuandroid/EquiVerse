@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class LevelLoader : MonoBehaviour
 {
+    public MainMenuSoundController mainMenuSoundController;
+    
     [Header("SceneTransition")]
     public Image transitionOverlay;
     public GameObject loadingScreen;

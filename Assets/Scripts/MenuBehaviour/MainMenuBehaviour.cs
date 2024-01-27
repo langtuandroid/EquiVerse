@@ -21,8 +21,13 @@ namespace MainMenu
         public GameObject continueAdventureObject;
         public TextMeshProUGUI continueAdventureButton;
         
+        [Header("Sound")] 
+        public MainMenuSoundController mainMenuSoundController;
+        
         private void Start()
         {
+            mainMenuSoundController.FadeMainMenuVolume(0f, 3f);
+
             if (GameManager.firstTimePlaying)
             {
                 GameManager.WORLD_INDEX = 1;
@@ -39,6 +44,7 @@ namespace MainMenu
 
         public void ClickNew()
         {
+            mainMenuSoundController.FadeMainMenuVolume(1.0f, 1.1f);
             GameManager.WORLD_INDEX = 1;
             GameManager.LEVEL_INDEX = 1;
             transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
@@ -49,6 +55,7 @@ namespace MainMenu
         
         public void ClickContinue()
         {
+            mainMenuSoundController.FadeMainMenuVolume(1.0f, 1.1f);
             transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
             {
                 StartCoroutine(LoadAsynchronously("Level " + GameManager.WORLD_INDEX.ToString() + "-" + GameManager.LEVEL_INDEX.ToString()));

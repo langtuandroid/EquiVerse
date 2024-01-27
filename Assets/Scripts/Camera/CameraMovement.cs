@@ -12,22 +12,22 @@ namespace Input
         private bool movedLeft = false, movedRight = false, movedUp = false, movedDown = false;
     
         [HideInInspector]
-        public static bool cameraLocked;
+        public static bool CAMERA_LOCKED;
 
-        public static bool cameraMovedInAllDirections = false;
+        public static bool CAMERA_MOVED_IN_ALL_DIRECTIONS = false;
 
         private new Camera camera;
 
         private void Start()
         {
             camera = GetComponent<Camera>();
-            cameraMovedInAllDirections = false;
-            cameraLocked = true;
+            CAMERA_MOVED_IN_ALL_DIRECTIONS = false;
+            CAMERA_LOCKED = true;
         }
 
         private void Update()
         {
-            if (!cameraLocked)
+            if (!CAMERA_LOCKED)
             {
                 MoveCamera();
                 CheckCameraTutorial();
@@ -86,7 +86,7 @@ namespace Input
         {
             if (movedLeft && movedRight && movedUp && movedDown)
             {
-                cameraMovedInAllDirections = true;
+                CAMERA_MOVED_IN_ALL_DIRECTIONS = true;
             }
         }
     }
