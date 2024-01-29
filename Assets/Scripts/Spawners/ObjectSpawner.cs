@@ -45,6 +45,7 @@ namespace Spawners
                 if (amountOfRabbits <= 0 && gameManager.tutorialActivated)
                 {
                     ShowGameOverPopUp();
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/UI/PopupWarning");
                 }
                 return;
             }
@@ -56,7 +57,7 @@ namespace Spawners
             {
                 ecManager.DecrementPoints(rabbitCost);
                 Instantiate(rabbitPrefab, spawnPosition, Quaternion.identity);
-
+                FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/SpawnAnimal");
                 if (gameManager.secondLevelTutorialActivated)
                 {
                     secondLevelTutorial.ShowMaxPlantUpgradeButton();

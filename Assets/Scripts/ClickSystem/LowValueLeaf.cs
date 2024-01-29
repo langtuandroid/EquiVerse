@@ -11,6 +11,7 @@ public class LowValueLeaf : Clickable {
 
         if (ecManager != null) {
             ecManager.AddLowValuePoints();
+            FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/CollectLeafPoint");
             StartCoroutine(DestroyObjectWithEffect(gameObject));
         }
     }

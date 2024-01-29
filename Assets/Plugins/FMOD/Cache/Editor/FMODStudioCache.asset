@@ -56,6 +56,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 39999
+--- !u!114 &-3985963045818522160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlayerActions/SpawnAnimal
+  m_EditorClassIdentifier: 
+  Path: event:/PlayerActions/SpawnAnimal
+  Guid:
+    Data1: 1746399278
+    Data2: 1303854595
+    Data3: 1979655336
+    Data4: -7709562
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-3627540013687878476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +166,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 206053
+--- !u!114 &-1894138523112175018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/Buy
+  m_EditorClassIdentifier: 
+  Path: event:/UI/Buy
+  Guid:
+    Data1: -367513843
+    Data2: 1173809504
+    Data3: 564000896
+    Data4: -1506994798
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1100
 --- !u!114 &-951281588405915596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,12 +243,17 @@ MonoBehaviour:
   - {fileID: -2021504784237846920}
   - {fileID: -8473568095422376001}
   - {fileID: -7344631718792414954}
+  - {fileID: 1568721851647216497}
+  - {fileID: 5231159253254009993}
+  - {fileID: -1894138523112175018}
+  - {fileID: -3985963045818522160}
+  - {fileID: 1496164698314395894}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5304006631014352583}
   StringsBanks:
   - {fileID: 23253448088795587}
-  cacheTime: 638419932105107610
+  cacheTime: 638421560145839044
   cacheVersion: 131616
 --- !u!114 &23253448088795587
 MonoBehaviour:
@@ -211,10 +270,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
   Name: MainMenu.strings
   StudioPath: bank:/MainMenu.strings
-  lastModified: 638419923473883531
+  lastModified: 638421560145839044
   FileSizes:
   - Name: Desktop
-    Value: 1400
+    Value: 1658
   Exists: 1
 --- !u!114 &842525933788318587
 MonoBehaviour:
@@ -240,6 +299,60 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &1496164698314395894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlayerActions/CollectLeafPoint
+  m_EditorClassIdentifier: 
+  Path: event:/PlayerActions/CollectLeafPoint
+  Guid:
+    Data1: -1959479851
+    Data2: 1284447188
+    Data3: -744685175
+    Data4: 852632230
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 764
+--- !u!114 &1568721851647216497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlayerActions/GrassPlacement
+  m_EditorClassIdentifier: 
+  Path: event:/PlayerActions/GrassPlacement
+  Guid:
+    Data1: 1257430856
+    Data2: 1239981254
+    Data3: -237474399
+    Data4: -862042710
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 512
 --- !u!114 &2119219704131904232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,10 +416,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 638419932105107610
+  lastModified: 638421560145629045
   FileSizes:
   - Name: Desktop
-    Value: 4912416
+    Value: 5012896
   Exists: 1
 --- !u!114 &5178793026395174547
 MonoBehaviour:
@@ -332,6 +445,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &5231159253254009993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/PopupWarning
+  m_EditorClassIdentifier: 
+  Path: event:/UI/PopupWarning
+  Guid:
+    Data1: 1046091745
+    Data2: 1218492418
+    Data3: -1047073898
+    Data4: 1630334508
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1500
 --- !u!114 &5304006631014352583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,7 +487,7 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 638419923473873536
+  lastModified: 638421560145829046
   FileSizes:
   - Name: Desktop
     Value: 2352928

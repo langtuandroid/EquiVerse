@@ -60,9 +60,12 @@ namespace Spawners {
                     tutorialStep.SetActive(false);
 
                     currentPlantCount++; // Increment the plant count
+                    
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/GrassPlacement");
                 } else if (!maxPlantPopUp.activeInHierarchy && gameManager.tutorialActivated) {
                     maxPlantPopUp.SetActive(true);
                     PopInAnimation(maxPlantPopUp);
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/UI/PopupWarning");
                 }
             }
         }
