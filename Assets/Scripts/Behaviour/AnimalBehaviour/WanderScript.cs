@@ -39,6 +39,7 @@ namespace Behaviour {
             InitializeComponents();
             SwitchToIdle();
             EntityManager.AddRabbit(gameObject);
+            agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
         }
 
         private void OnDestroy() {
