@@ -1,7 +1,10 @@
+using System.Numerics;
 using DG.Tweening;
 using Managers;
 using MyBox;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 namespace Spawners
 {
@@ -56,7 +59,9 @@ namespace Spawners
             if (ECManager.totalPoints >= rabbitCost)
             {
                 ecManager.DecrementPoints(rabbitCost);
-                Instantiate(rabbitPrefab, spawnPosition, Quaternion.identity);
+                GameObject rabbitInstance = Instantiate(rabbitPrefab, spawnPosition, Quaternion.identity);
+                rabbitInstance.transform.localScale = Vector3.zero;
+                rabbitInstance.transform.DOScale(Vector3.one, 0.25f).SetEase(Ease.OutBack);
                 FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/SpawnAnimal");
                 if (gameManager.secondLevelTutorialActivated)
                 {
@@ -67,8 +72,6 @@ namespace Spawners
 
         private void FindAliveRabbits()
         {
-            //GameObject[] rabbits = GameObject.FindGameObjectsWithTag("Rabbit");
-            //amountOfRabbits = rabbits.Length;
             amountOfRabbits = EntityManager.GetRabbits().Count;
         }
 

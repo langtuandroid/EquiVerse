@@ -82,6 +82,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{64411b99-c6fb-4d42-9cf9-e5ca2f98662a}">
+		<property name="volume">
+			<value>-7</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{d1169d3e-dc56-4006-8a18-2c885f78f4ed}</destination>
 		</relationship>
@@ -102,6 +105,9 @@
 		<property name="length">
 			<value>0.76400000000000012</value>
 		</property>
+		<property name="pitch">
+			<value>1</value>
+		</property>
 		<relationship name="modulators">
 			<destination>{3425dcb5-375d-4bdc-b68a-4bf7c510a9f8}</destination>
 		</relationship>
@@ -116,9 +122,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{9ca7f295-12b8-4827-88b5-52e2c0464de4}">
-		<property name="volume">
-			<value>-2</value>
-		</property>
 		<property name="name">
 			<value>Audio 2</value>
 		</property>
@@ -157,7 +160,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{9672f7d6-b14b-4324-b1ca-c9f77f4bf087}">
 		<property name="volume">
-			<value>-4</value>
+			<value>-2</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
@@ -184,7 +187,7 @@
 			<value>pitch</value>
 		</property>
 		<property name="amount">
-			<value>3</value>
+			<value>1.5</value>
 		</property>
 	</object>
 	<object class="FadeCurve" id="{62f040fd-0235-458e-8290-adc412bc0934}">

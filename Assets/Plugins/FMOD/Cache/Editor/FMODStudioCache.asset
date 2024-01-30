@@ -82,7 +82,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 1830
 --- !u!114 &-3627540013687878476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
   - {fileID: 842525933788318587}
   MinDistance: 1
   MaxDistance: 20
-  Length: 126096
+  Length: 132493
 --- !u!114 &-2890108901729854323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +253,7 @@ MonoBehaviour:
   - {fileID: 5304006631014352583}
   StringsBanks:
   - {fileID: 23253448088795587}
-  cacheTime: 638421560145839044
+  cacheTime: 638422424122263012
   cacheVersion: 131616
 --- !u!114 &23253448088795587
 MonoBehaviour:
@@ -416,10 +416,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 638421560145629045
+  lastModified: 638422424122263012
   FileSizes:
   - Name: Desktop
-    Value: 5012896
+    Value: 5098080
   Exists: 1
 --- !u!114 &5178793026395174547
 MonoBehaviour:
