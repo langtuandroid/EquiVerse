@@ -9,6 +9,7 @@ using Random = UnityEngine.Random;
 public class WanderingEnemyBehaviour : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
+    private WanderingEnemyFXController wanderingEnemyFXController;
     private Vector3 targetPosition;
 
 
@@ -21,6 +22,7 @@ public class WanderingEnemyBehaviour : MonoBehaviour
     private void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        wanderingEnemyFXController = GetComponentInChildren<WanderingEnemyFXController>();
 
         if (navMeshAgent == null)
         {
@@ -40,7 +42,7 @@ public class WanderingEnemyBehaviour : MonoBehaviour
 
         MoveAndRotateTowardsDestination();
         
-        if (WanderingEnemyFXController.attacking)
+        if (wanderingEnemyFXController.attacking)
         {
             navMeshAgent.speed = 0;
         }
@@ -82,13 +84,11 @@ public class WanderingEnemyBehaviour : MonoBehaviour
 
     private IEnumerator AttackRabbit(Collider other)
     {
-        Transform rabbitTransform = other.transform;
-        Vector3 targetDirection = rabbitTransform.position - transform.position;
-        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, 1.0f, 0.0f);
-        transform.rotation = Quaternion.LookRotation(newDirection);
-        WanderingEnemyFXController.attacking = true;
+        wanderingEnemyFXController.attacking = true;
         animator.SetTrigger("AttackTrigger");
         yield return new WaitForSeconds(2f);
         other.GetComponent<WanderScript>().Die();
+        yield return new WaitForSeconds(2.5f);
+        wanderingEnemyFXController.attacking = false;
     }
 }

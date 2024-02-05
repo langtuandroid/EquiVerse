@@ -30,8 +30,9 @@ public class EnemyHealth : Clickable
         transform.DOScale(0, 0.2f).SetEase(Ease.OutQuint);
         Instantiate(deathParticles, gameObject.transform.position, Quaternion.identity);
         Instantiate(reward, gameObject.transform.position + new Vector3(0,0.3f,0) , Quaternion.identity);
-        
-        Destroy(gameObject, 1f);
+
+        EnemySpawner enemySpawner = FindObjectOfType<EnemySpawner>();
+        enemySpawner.RemoveEnemy(gameObject);
         Destroy(deathParticles, 5f);
     }
 }

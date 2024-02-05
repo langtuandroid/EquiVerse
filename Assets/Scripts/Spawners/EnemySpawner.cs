@@ -18,6 +18,8 @@ public class EnemySpawner : MonoBehaviour
     public ParticleSystem portalOpeningParticleSystem;
     public List<EnemyPrefab> enemyPrefabs;
 
+    private List<GameObject> activeEnemies = new List<GameObject>();
+
     void Start()
     {
         StartCoroutine(SpawnEnemiesWithDelays());
@@ -37,6 +39,7 @@ public class EnemySpawner : MonoBehaviour
                     yield return new WaitForSeconds(3f);
 
                     GameObject newEnemy = Instantiate(enemyPrefab.enemyPrefab, enemySpawnLocation.position, Quaternion.identity);
+                    activeEnemies.Add(newEnemy); // Add the newly instantiated enemy to the active list.
 
                     portalOpeningParticleSystem.Stop();
 
@@ -48,6 +51,15 @@ public class EnemySpawner : MonoBehaviour
                     Debug.LogWarning("An enemy prefab in the list is not assigned.");
                 }
             }
+        }
+    }
+
+    public void RemoveEnemy(GameObject enemyToRemove)
+    {
+        if (activeEnemies.Contains(enemyToRemove))
+        {
+            activeEnemies.Remove(enemyToRemove);
+            Destroy(enemyToRemove); // Destroy the enemy game object.
         }
     }
 }
