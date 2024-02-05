@@ -56,6 +56,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 39999
+--- !u!114 &-4142303748516042694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/CantBuy
+  m_EditorClassIdentifier: 
+  Path: event:/UI/CantBuy
+  Guid:
+    Data1: 1290669197
+    Data2: 1303172642
+    Data3: 1300473001
+    Data4: 1810666827
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3172
 --- !u!114 &-3985963045818522160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,7 +109,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1830
+  Length: 1700
 --- !u!114 &-3627540013687878476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,12 +275,16 @@ MonoBehaviour:
   - {fileID: -1894138523112175018}
   - {fileID: -3985963045818522160}
   - {fileID: 1496164698314395894}
+  - {fileID: 477437016506379518}
+  - {fileID: 8126868510507412270}
+  - {fileID: -4142303748516042694}
+  - {fileID: 7382976632621169688}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5304006631014352583}
   StringsBanks:
   - {fileID: 23253448088795587}
-  cacheTime: 638422424122263012
+  cacheTime: 638427373778773367
   cacheVersion: 131616
 --- !u!114 &23253448088795587
 MonoBehaviour:
@@ -270,11 +301,38 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
   Name: MainMenu.strings
   StudioPath: bank:/MainMenu.strings
-  lastModified: 638421560145839044
+  lastModified: 638427373778773367
   FileSizes:
   - Name: Desktop
-    Value: 1658
+    Value: 1846
   Exists: 1
+--- !u!114 &477437016506379518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/OpeningUIElement
+  m_EditorClassIdentifier: 
+  Path: event:/UI/OpeningUIElement
+  Guid:
+    Data1: 650248539
+    Data2: 1307334648
+    Data3: -772601211
+    Data4: 2019866429
+  Banks:
+  - {fileID: 5304006631014352583}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 190
 --- !u!114 &842525933788318587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,7 +383,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 764
+  Length: 2130
 --- !u!114 &1568721851647216497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,10 +474,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 638422424122263012
+  lastModified: 638427373778558595
   FileSizes:
   - Name: Desktop
-    Value: 5098080
+    Value: 5302592
   Exists: 1
 --- !u!114 &5178793026395174547
 MonoBehaviour:
@@ -487,8 +545,62 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 638421560145829046
+  lastModified: 638427373778763364
   FileSizes:
   - Name: Desktop
-    Value: 2352928
+    Value: 2355616
   Exists: 1
+--- !u!114 &7382976632621169688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/CompleteLevel
+  m_EditorClassIdentifier: 
+  Path: event:/UI/CompleteLevel
+  Guid:
+    Data1: 2123360234
+    Data2: 1163413734
+    Data3: 1271734657
+    Data4: 1557887209
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 5136
+--- !u!114 &8126868510507412270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Animals/RabbitEat
+  m_EditorClassIdentifier: 
+  Path: event:/Animals/RabbitEat
+  Guid:
+    Data1: 548507036
+    Data2: 1338605305
+    Data3: 195309494
+    Data4: -1500091092
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1189

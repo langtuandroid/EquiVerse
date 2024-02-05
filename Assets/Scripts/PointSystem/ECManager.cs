@@ -8,7 +8,10 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Managers {
-    public class ECManager : MonoBehaviour {
+    public class ECManager : MonoBehaviour
+    {
+        public Image totalPointsBackground;
+        private Color originalColor;
         public TextMeshProUGUI totalPointsText;
         public TextMeshProUGUI endOfLevelCostText;
         public Slider slider;
@@ -33,7 +36,10 @@ namespace Managers {
         private const float updateInterval = 0.01666667f;
         private const int speedFactor = 15; //Higher is slower
 
-        private void Start() {
+        private void Start()
+        {
+            originalColor = totalPointsBackground.color;
+            
             totalPoints = startingPoints;
             visualPoints = totalPoints;
             UpdatePointText();
@@ -59,12 +65,19 @@ namespace Managers {
 
         public void BuyEndOfLevel() {
             if (totalPoints >= endOfLevelCost) {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/UI/Buy");
+                    
                 if ((int)slider.value == (int)slider.maxValue) {
                     LevelCompleted();
                 } else {
                     DecrementPoints(endOfLevelCost);
                     slider.value += 1;
                 }
+            }
+            else
+            {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/UI/CantBuy");
+                FlickerTotalPointsElement();
             }
         }
 
@@ -106,9 +119,12 @@ namespace Managers {
         
         //maybe find a different place for this logic
         private void LevelCompleted() {
-            soundController.StopAudioEvent("Music");
-            soundController.StopAudioEvent("Ambience");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/UI/CompleteLevel");
+            soundController.FadeAudioParameter("Music", "World1LevelMainMusicVolume", 0f, 1.2f);
+            soundController.FadeAudioParameter("Ambience", "World1LevelAmbienceVolume", 0f, 1.2f);
             transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() => {
+                soundController.StopAudioEvent("Music");
+                soundController.StopAudioEvent("Ambience");
                 guidedTutorialManager.enabled = false;
                 StartCoroutine(LoadAsynchronously("NewCompanionScene"));
             })).SetUpdate(true);
@@ -119,6 +135,16 @@ namespace Managers {
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Single);
             yield return operation;
             loadingScreen.SetActive(false);
+        }
+
+        public void FlickerTotalPointsElement()
+        {
+            totalPointsBackground.DOColor(new Color(1f, 0.3f, 0.35f, 0.8f), 0.25f)
+                .SetLoops(5, LoopType.Yoyo)
+                .OnComplete(() =>
+                {
+                    totalPointsBackground.color = originalColor;
+                });
         }
     }
 }

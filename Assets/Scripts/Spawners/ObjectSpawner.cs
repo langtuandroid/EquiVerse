@@ -49,6 +49,7 @@ namespace Spawners
                 {
                     ShowGameOverPopUp();
                     FMODUnity.RuntimeManager.PlayOneShot("event:/UI/PopupWarning");
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
                 }
                 return;
             }
@@ -58,15 +59,22 @@ namespace Spawners
         {
             if (ECManager.totalPoints >= rabbitCost)
             {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/UI/Buy");
                 ecManager.DecrementPoints(rabbitCost);
                 GameObject rabbitInstance = Instantiate(rabbitPrefab, spawnPosition, Quaternion.identity);
                 rabbitInstance.transform.localScale = Vector3.zero;
                 rabbitInstance.transform.DOScale(Vector3.one, 0.25f).SetEase(Ease.OutBack);
                 FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/SpawnAnimal");
+                
                 if (gameManager.secondLevelTutorialActivated)
                 {
                     secondLevelTutorial.ShowMaxPlantUpgradeButton();
                 }
+            }
+            else
+            {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/UI/CantBuy");
+                ecManager.FlickerTotalPointsElement();
             }
         }
 

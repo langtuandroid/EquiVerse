@@ -66,6 +66,7 @@ namespace Spawners {
                     maxPlantPopUp.SetActive(true);
                     PopInAnimation(maxPlantPopUp);
                     FMODUnity.RuntimeManager.PlayOneShot("event:/UI/PopupWarning");
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
                 }
             }
         }
@@ -88,6 +89,7 @@ namespace Spawners {
                 currentUpgradeCost = upgradeAmount[upgradeIndex];
 
                 if (ECManager.totalPoints >= currentUpgradeCost) {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/UI/Buy");
                     maxPlants++;
                     maxPlantValueText.text = maxPlants.ToString();
 
@@ -107,6 +109,7 @@ namespace Spawners {
                     }
                 } else {
                     Debug.LogWarning("Insufficient points to upgrade.");
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/UI/CantBuy");
                 }
             } else {
                 Debug.LogWarning("No more upgrades available.");

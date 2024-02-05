@@ -29,6 +29,8 @@ namespace UI
                 if (gameManager.tutorialActivated)
                 {
                     guidedTutorial.SetActive(true);
+                    PopInAnimation(guidedTutorial);
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
                 }
             }));
         }
@@ -36,6 +38,12 @@ namespace UI
         private void FadeSceneClose()
         {
             transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic);
+        }
+        
+        private void PopInAnimation(GameObject gameObject)
+        {
+            RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
+            rectTransform?.DOScale(1, 0.5f).SetEase(Ease.OutExpo).From(Vector3.zero);
         }
     }
 }

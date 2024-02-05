@@ -41,6 +41,8 @@ namespace Tutorial
 
         public void NextStep()
         {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
+            
             tutorialSteps[stepIndex].SetActive(false);
             stepIndex++;
 
@@ -70,8 +72,10 @@ namespace Tutorial
 
         public void NextStepOnce()
         {
+            
             if (!buttonPressed)
             {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
                 tutorialSteps[stepIndex].SetActive(false);
                 stepIndex++;
                 buttonPressed = true;
@@ -141,6 +145,7 @@ namespace Tutorial
 
         private void HandleCameraStepCompletion()
         {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
             gameUI.SetActive(true);
             UpdateStepAndAnimate();
             cameraStepCompleted = true;
@@ -153,6 +158,7 @@ namespace Tutorial
 
         private void HandleFinishLevelStepCompletion()
         {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
             finishLevelButton.SetActive(true);
             finishLevelStep.SetActive(true);
             PopInAnimation(finishLevelStep);

@@ -15,6 +15,8 @@ namespace UI
         public Image transitionOverlay;
         public GameObject loadingScreen;
         public GuidedTutorial guidedTutorialManager;
+        
+        [Header("Sound")] public World1LevelSoundController soundController;
 
         void Start()
         {
@@ -58,11 +60,13 @@ namespace UI
         public void BackToMainMenu()
         {
             ResumeGame();
-            transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
+            transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete(() =>
             {
+                soundController.StopAudioEvent("Music");
+                soundController.StopAudioEvent("Ambience");
                 guidedTutorialManager.enabled = false;
                 StartCoroutine(LoadAsynchronously(0));
-            })).SetUpdate(true);
+            }).SetUpdate(true);
         }
     
         IEnumerator LoadAsynchronously(int sceneIndex)

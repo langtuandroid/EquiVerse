@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Spawners;
 using UnityEngine;
 using UnityEngine.AI;
@@ -183,7 +184,9 @@ namespace Behaviour {
 
         private void EatPlant(Transform closestPlant) {
             animator.SetBool("isRunning", false);
-            Destroy(closestPlant.gameObject);
+            closestPlant.gameObject.transform.DOScale(0, 0.6f).SetEase(Ease.OutBack);
+            Destroy(closestPlant.gameObject, 0.6f);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/RabbitEat");
             PlantSpawner.RemovePlant();
             currentHunger -= 100f;
             LeafPointsSpawner.spawnLeafPoints = true;

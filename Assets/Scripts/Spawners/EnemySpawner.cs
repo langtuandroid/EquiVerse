@@ -25,7 +25,6 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnEnemiesWithDelays()
     {
-        // Delay before the first enemy spawns
         yield return new WaitForSeconds(initialSpawnDelay);
 
         while (true)

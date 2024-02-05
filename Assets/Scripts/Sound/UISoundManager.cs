@@ -13,9 +13,4 @@ public class UISoundManager : MonoBehaviour
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/ButtonHover");
     }
-
-    public void PlayBuySound()
-    {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/Buy");
-    }
 }
