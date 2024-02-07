@@ -123,6 +123,30 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &29434163 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 847583941653504035, guid: eadbc402627fc2547b6183302406c03c, type: 3}
+  m_PrefabInstance: {fileID: 1645807545}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &29434164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29434163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a2357355ee187f438f19799faac3a03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicEvent:
+    Guid:
+      Data1: -1331539754
+      Data2: 1174965096
+      Data3: 624511109
+      Data4: -1642228305
+    Path: event:/NewCompanionScene/NewCompanionMusic
 --- !u!1001 &96979099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -212,6 +236,7 @@ MonoBehaviour:
   giftButton: {fileID: 1285690116}
   companion: {fileID: 1443235281}
   nextLevelButton: {fileID: 997824995}
+  soundController: {fileID: 29434164}
 --- !u!4 &184692282
 Transform:
   m_ObjectHideFlags: 0
@@ -426,6 +451,7 @@ GameObject:
   - component: {fileID: 912668520}
   - component: {fileID: 912668519}
   - component: {fileID: 912668518}
+  - component: {fileID: 912668522}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -516,6 +542,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &912668522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912668517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c0e0b72936cde4385d1bd3acc5cc6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &997824993
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,6 +567,7 @@ GameObject:
   - component: {fileID: 997824996}
   - component: {fileID: 997824995}
   - component: {fileID: 997824998}
+  - component: {fileID: 997824999}
   m_Layer: 5
   m_Name: NextLevelButton
   m_TagString: Untagged
@@ -612,6 +651,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 29434164}
+        m_TargetAssemblyTypeName: NewCompanionSoundController, Assembly-CSharp
+        m_MethodName: StopMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 912668522}
+        m_TargetAssemblyTypeName: UISoundManager, Assembly-CSharp
+        m_MethodName: PlayButtonClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &997824996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -662,8 +725,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01051063306be294ea7f3814958340e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuSoundController: {fileID: 0}
   transitionOverlay: {fileID: 1445527419}
   loadingScreen: {fileID: 1289345641}
+--- !u!114 &997824999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997824993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 912668522}
+          m_TargetAssemblyTypeName: UISoundManager, Assembly-CSharp
+          m_MethodName: PlayButtonHoverSound
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1241310325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1552,6 +1645,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1524818286}
   m_CullTransparentMesh: 1
+--- !u!1001 &1645807545
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 734084870958539297, guid: eadbc402627fc2547b6183302406c03c, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 734084870958539297, guid: eadbc402627fc2547b6183302406c03c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 734084870958539297, guid: eadbc402627fc2547b6183302406c03c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 734084870958539297, guid: eadbc402627fc2547b6183302406c03c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 734084870958539297, guid: eadbc402627fc2547b6183302406c03c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 734084870958539297, guid: eadbc402627fc2547b6183302406c03c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 734084870958539297, guid: eadbc402627fc2547b6183302406c03c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 734084870958539297, guid: eadbc402627fc2547b6183302406c03c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 734084870958539297, guid: eadbc402627fc2547b6183302406c03c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 734084870958539297, guid: eadbc402627fc2547b6183302406c03c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 734084870958539297, guid: eadbc402627fc2547b6183302406c03c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 847583941653504035, guid: eadbc402627fc2547b6183302406c03c, type: 3}
+      propertyPath: m_Name
+      value: NewCompanion_SoundController
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eadbc402627fc2547b6183302406c03c, type: 3}
 --- !u!1 &1708453125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1992,6 +2142,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 64557825363427999, guid: a51c023ff63e8e74289cab4f4367cbd4, type: 3}
+      propertyPath: eggPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 64557825363427999, guid: a51c023ff63e8e74289cab4f4367cbd4, type: 3}
       propertyPath: secondIdleTriggerMaxWait
       value: 8

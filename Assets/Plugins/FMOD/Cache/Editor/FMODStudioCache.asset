@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8785399233917159505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/NewCompanionScene/RevealDrumroll
+  m_EditorClassIdentifier: 
+  Path: event:/NewCompanionScene/RevealDrumroll
+  Guid:
+    Data1: -293306519
+    Data2: 1176988497
+    Data3: -39425883
+    Data4: -214236551
+  Banks:
+  - {fileID: -8406122563154337033}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2600
 --- !u!114 &-8473568095422376001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28,6 +55,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 128160
+--- !u!114 &-8406122563154337033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/NewCompanion.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/EquiverseFMOD/Build/Desktop/NewCompanion.bank
+  Name: NewCompanion
+  StudioPath: bank:/NewCompanion
+  lastModified: 638429311181398543
+  FileSizes:
+  - Name: Desktop
+    Value: 3320512
+  Exists: 1
 --- !u!114 &-7344631718792414954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56,6 +103,58 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 39999
+--- !u!114 &-6702501010804934414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/NewCompanionScene/NewCompanionMusic
+  m_EditorClassIdentifier: 
+  Path: event:/NewCompanionScene/NewCompanionMusic
+  Guid:
+    Data1: -1331539754
+    Data2: 1174965096
+    Data3: 624511109
+    Data4: -1642228305
+  Banks:
+  - {fileID: -8406122563154337033}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -4728833457392758472}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 218070
+--- !u!114 &-4728833457392758472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/NewCompanionMusic/NewCompanionMusicVolume
+  m_EditorClassIdentifier: 
+  Name: NewCompanionMusicVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 606373704
+    data2: 2695990297
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-4142303748516042694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,7 +208,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1700
+  Length: 2130
 --- !u!114 &-3627540013687878476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +346,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 72
+--- !u!114 &-168969213144980700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/World1/SwampGolem/Attack
+  m_EditorClassIdentifier: 
+  Path: event:/World1/SwampGolem/Attack
+  Guid:
+    Data1: -340100754
+    Data2: 1206472949
+    Data3: 1554831235
+    Data4: 1352869952
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4700
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,6 +389,7 @@ MonoBehaviour:
   - {fileID: 23253448088795587}
   - {fileID: 3956151758206991042}
   - {fileID: 5304006631014352583}
+  - {fileID: -8406122563154337033}
   EditorEvents:
   - {fileID: -2890108901729854323}
   - {fileID: -951281588405915596}
@@ -279,12 +406,18 @@ MonoBehaviour:
   - {fileID: 8126868510507412270}
   - {fileID: -4142303748516042694}
   - {fileID: 7382976632621169688}
+  - {fileID: -6702501010804934414}
+  - {fileID: 4867247044173022020}
+  - {fileID: 877446699778725887}
+  - {fileID: -168969213144980700}
+  - {fileID: -8785399233917159505}
+  - {fileID: 1274667539317285103}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5304006631014352583}
   StringsBanks:
   - {fileID: 23253448088795587}
-  cacheTime: 638427373778773367
+  cacheTime: 638429311181398543
   cacheVersion: 131616
 --- !u!114 &23253448088795587
 MonoBehaviour:
@@ -301,10 +434,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
   Name: MainMenu.strings
   StudioPath: bank:/MainMenu.strings
-  lastModified: 638427373778773367
+  lastModified: 638429306391637512
   FileSizes:
   - Name: Desktop
-    Value: 1846
+    Value: 2264
   Exists: 1
 --- !u!114 &477437016506379518
 MonoBehaviour:
@@ -357,6 +490,60 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &877446699778725887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/World1/SwampGolem/FootGroundImpact
+  m_EditorClassIdentifier: 
+  Path: event:/World1/SwampGolem/FootGroundImpact
+  Guid:
+    Data1: 2087047488
+    Data2: 1231672197
+    Data3: -213460056
+    Data4: -1399488057
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 570
+--- !u!114 &1274667539317285103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/NewCompanionScene/OnReveal
+  m_EditorClassIdentifier: 
+  Path: event:/NewCompanionScene/OnReveal
+  Guid:
+    Data1: 404860527
+    Data2: 1307521220
+    Data3: 32898689
+    Data4: -1203443691
+  Banks:
+  - {fileID: -8406122563154337033}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3300
 --- !u!114 &1496164698314395894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,7 +570,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 2130
+  Length: 764
 --- !u!114 &1568721851647216497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,11 +661,38 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 638427373778558595
+  lastModified: 638429292544837439
   FileSizes:
   - Name: Desktop
-    Value: 5302592
+    Value: 5329152
   Exists: 1
+--- !u!114 &4867247044173022020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/NewCompanionScene/GiftShake
+  m_EditorClassIdentifier: 
+  Path: event:/NewCompanionScene/GiftShake
+  Guid:
+    Data1: -969091504
+    Data2: 1074622403
+    Data3: 2033348745
+    Data4: 1872670686
+  Banks:
+  - {fileID: -8406122563154337033}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1464
 --- !u!114 &5178793026395174547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545,7 +759,7 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 638427373778763364
+  lastModified: 638429306391627513
   FileSizes:
   - Name: Desktop
     Value: 2355616

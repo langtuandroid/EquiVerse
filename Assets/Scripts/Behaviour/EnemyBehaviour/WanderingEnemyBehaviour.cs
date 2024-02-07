@@ -84,6 +84,7 @@ public class WanderingEnemyBehaviour : MonoBehaviour
 
     private IEnumerator AttackRabbit(Collider other)
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/World1/SwampGolem/Attack");
         wanderingEnemyFXController.attacking = true;
         animator.SetTrigger("AttackTrigger");
         yield return new WaitForSeconds(2f);

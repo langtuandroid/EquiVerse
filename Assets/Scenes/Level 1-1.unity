@@ -504,46 +504,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1281900917176395628, guid: 228006cb1b674504786775f3e83fe722, type: 3}
   m_PrefabInstance: {fileID: 1291068859}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &909243847 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2484444543811308925, guid: c98e09b62d0b1f1419afe147299fb366, type: 3}
+--- !u!114 &909243848 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 909243848, guid: c98e09b62d0b1f1419afe147299fb366, type: 3}
   m_PrefabInstance: {fileID: 1177066905}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &909243848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 909243847}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6af9ab6dfee6be44292aee7238f04eb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioEvents:
-  - name: Music
-    eventReference:
-      Guid:
-        Data1: 1066589528
-        Data2: 1294238846
-        Data3: -13296502
-        Data4: -291742425
-      Path: event:/World1/World1LevelMusic
-    parameters:
-    - name: World1LevelMainMusicVolume
-      value: 0
-  - name: Ambience
-    eventReference:
-      Guid:
-        Data1: 1059095620
-        Data2: 1235638006
-        Data3: -663427685
-        Data4: 1769726836
-      Path: event:/World1/World1LevelAmbience
-    parameters:
-    - name: World1LevelAmbienceVolume
-      value: 0
 --- !u!114 &953606213 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 586357112718192719, guid: 228006cb1b674504786775f3e83fe722, type: 3}

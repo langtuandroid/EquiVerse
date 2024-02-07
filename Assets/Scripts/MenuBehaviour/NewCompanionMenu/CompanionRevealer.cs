@@ -11,17 +11,25 @@ public class CompanionRevealer : MonoBehaviour
     public RectTransform companion;
     public Button nextLevelButton;
 
+    private Tween shakeTween;
+
+    [SerializeField] private NewCompanionSoundController soundController;
+
     private void Start()
     {
-        DOVirtual.DelayedCall(2.0f, () =>
+        shakeTween = DOVirtual.DelayedCall(2.5f, () =>
             {
-                giftButton.transform.DOShakePosition(1.0f, new Vector3(5, 5, 0), 10, 90, false, true);
+                giftButton.transform.DOShakePosition(2.5f, new Vector3(8, 8, 0), 10, 90, false, true);
+                FMODUnity.RuntimeManager.PlayOneShot("event:/NewCompanionScene/GiftShake");
             })
             .SetLoops(-1, LoopType.Restart);
     }
 
     public void RevealCompanion()
     {
+        shakeTween.Kill();
+        soundController.NewCompanionMusicVolumeFade(0, 2f);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NewCompanionScene/RevealDrumroll");
         giftButton.transform.DOScale(0, 2.5f)
             .SetEase(Ease.InBack)
             .OnPlay(() =>
@@ -34,9 +42,11 @@ public class CompanionRevealer : MonoBehaviour
             .OnComplete(() =>
             {
                 companion.gameObject.SetActive(true);
+                FMODUnity.RuntimeManager.PlayOneShot("event:/NewCompanionScene/OnReveal");
                 companion.DOSizeDelta(new Vector2(750, 800), 2f).SetEase(Ease.OutBack).OnComplete((() =>
                 {
                     nextLevelButton.gameObject.SetActive(true);
+                    soundController.NewCompanionMusicVolumeFade(1, 2f);
                 }));
             });
     }
