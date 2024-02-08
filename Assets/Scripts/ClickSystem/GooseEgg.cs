@@ -11,6 +11,7 @@ public class GooseEgg : Clickable {
 
         if (ecManager != null) {
             ecManager.AddGooseEggPoints();
+            FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/CollectEgg");
             StartCoroutine(DestroyObjectWithEffect(gameObject));
         }
     }

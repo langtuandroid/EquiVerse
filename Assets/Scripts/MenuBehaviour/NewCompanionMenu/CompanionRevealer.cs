@@ -47,6 +47,7 @@ public class CompanionRevealer : MonoBehaviour
                 {
                     nextLevelButton.gameObject.SetActive(true);
                     soundController.NewCompanionMusicVolumeFade(1, 2f);
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/FerdinandGoose/FerdinandHonk");
                 }));
             });
     }

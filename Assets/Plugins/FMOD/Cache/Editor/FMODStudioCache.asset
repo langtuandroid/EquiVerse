@@ -70,10 +70,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/NewCompanion.bank
   Name: NewCompanion
   StudioPath: bank:/NewCompanion
-  lastModified: 638429311181398543
+  lastModified: 638430147385022883
   FileSizes:
   - Name: Desktop
-    Value: 3320512
+    Value: 3360608
   Exists: 1
 --- !u!114 &-7344631718792414954
 MonoBehaviour:
@@ -131,6 +131,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 218070
+--- !u!114 &-6515037039015193946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Animals/FerdinandGoose/FerdinandHonk
+  m_EditorClassIdentifier: 
+  Path: event:/Animals/FerdinandGoose/FerdinandHonk
+  Guid:
+    Data1: 1162528105
+    Data2: 1264047014
+    Data3: 468396464
+    Data4: -977825043
+  Banks:
+  - {fileID: -8406122563154337033}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 408
 --- !u!114 &-4728833457392758472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +236,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2130
+--- !u!114 &-3845185426232091570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Animals/FerdinandGoose/FerdinandEggDrop
+  m_EditorClassIdentifier: 
+  Path: event:/Animals/FerdinandGoose/FerdinandEggDrop
+  Guid:
+    Data1: -1091563666
+    Data2: 1086453975
+    Data3: 1874340530
+    Data4: -1846117098
+  Banks:
+  - {fileID: -8406122563154337033}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1278
 --- !u!114 &-3627540013687878476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,12 +466,15 @@ MonoBehaviour:
   - {fileID: -168969213144980700}
   - {fileID: -8785399233917159505}
   - {fileID: 1274667539317285103}
+  - {fileID: -6515037039015193946}
+  - {fileID: -3845185426232091570}
+  - {fileID: 476426055693632330}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5304006631014352583}
   StringsBanks:
   - {fileID: 23253448088795587}
-  cacheTime: 638429311181398543
+  cacheTime: 638430155131151366
   cacheVersion: 131616
 --- !u!114 &23253448088795587
 MonoBehaviour:
@@ -434,11 +491,38 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
   Name: MainMenu.strings
   StudioPath: bank:/MainMenu.strings
-  lastModified: 638429306391637512
+  lastModified: 638430150381968694
   FileSizes:
   - Name: Desktop
-    Value: 2264
+    Value: 2432
   Exists: 1
+--- !u!114 &476426055693632330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlayerActions/CollectEgg
+  m_EditorClassIdentifier: 
+  Path: event:/PlayerActions/CollectEgg
+  Guid:
+    Data1: 407776271
+    Data2: 1106365463
+    Data3: -2052037760
+    Data4: -313169924
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2030
 --- !u!114 &477437016506379518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,10 +745,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 638429292544837439
+  lastModified: 638430155131151366
   FileSizes:
   - Name: Desktop
-    Value: 5329152
+    Value: 5329984
   Exists: 1
 --- !u!114 &4867247044173022020
 MonoBehaviour:
@@ -759,7 +843,7 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 638429306391627513
+  lastModified: 638430150381958698
   FileSizes:
   - Name: Desktop
     Value: 2355616

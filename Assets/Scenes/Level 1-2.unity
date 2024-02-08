@@ -2735,6 +2735,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7595480298212384177, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
+      propertyPath: eggDropMaxWait
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595480298212384177, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
+      propertyPath: eggDropMinWait
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8774179667552875198, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.408
@@ -2786,13 +2794,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6579d39df3a00e4593f1eef98e1da1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSpawnDelay: 5
+  initialSpawnDelay: 60
   enemySpawnLocation: {fileID: 928408468}
   portalOpeningParticleSystem: {fileID: 1550588104}
   enemyPrefabs:
   - enemyPrefab: {fileID: 4250166054841865360, guid: 2c5cadcd143f4434c8de321d297eaaba, type: 3}
-    minSpawnDelay: 20
-    maxSpawnDelay: 25
+    minSpawnDelay: 50
+    maxSpawnDelay: 70
 --- !u!114 &8757231977867629531 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7515885461654839924, guid: 228006cb1b674504786775f3e83fe722, type: 3}

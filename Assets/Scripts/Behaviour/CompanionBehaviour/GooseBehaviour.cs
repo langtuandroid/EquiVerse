@@ -8,28 +8,37 @@ namespace Behaviour
 
         public GameObject eggPrefab;
         public Transform eggSpawnPosition;
+        public ParticleSystem featherParticles;
 
         public float secondIdleTriggerMinWait = 5f;
         public float secondIdleTriggerMaxWait = 15f;
+
+        public float eggDropMinWait = 15f;
+        public float eggDropMaxWait = 45f;
+        
+        
 
         void Start()
         {
             animator = GetComponent<Animator>();
             Invoke("TriggerSecondIdle", Random.Range(secondIdleTriggerMinWait, secondIdleTriggerMaxWait));
-            Invoke("EggDropTrigger", Random.Range(15f, 45f));
+            Invoke("EggDropTrigger", Random.Range(eggDropMinWait, eggDropMaxWait));
         }
 
         void TriggerSecondIdle()
         {
             animator.SetTrigger("SecondIdleTrigger");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/FerdinandGoose/FerdinandHonk");
             Invoke("TriggerSecondIdle", Random.Range(secondIdleTriggerMinWait, secondIdleTriggerMaxWait));
         }
 
         void EggDropTrigger()
         {
             animator.SetTrigger("EggDropTrigger");
+            featherParticles.Play();
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/FerdinandGoose/FerdinandEggDrop");
             Instantiate(eggPrefab, eggSpawnPosition);
-            Invoke("EggDropTrigger", Random.Range(15f, 45f));
+            Invoke("EggDropTrigger", Random.Range(eggDropMinWait, eggDropMaxWait));
         }
     }
 }
