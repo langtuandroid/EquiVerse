@@ -142,7 +142,7 @@ namespace Behaviour {
             agent.speed = speed;
         }
 
-        private void Idle() {
+        public void Idle() {
             agent.speed = 0f;
             idleDuration = Random.Range(idleDurationRange.x, idleDurationRange.y);
             stateTimer = idleDuration;
@@ -235,10 +235,15 @@ namespace Behaviour {
 
         public void Die()
         {
-            death = true;
-            animator.SetBool("isJumping", false);
+            StartCoroutine(DeathSequence());
+        }
+
+        private IEnumerator DeathSequence()
+        {   death = true;
+            Destroy(gameObject, 2f);
             animator.SetBool("isDead_0", true);
-            Destroy(gameObject, 3.0f);
+            yield return new WaitForSeconds(1f);
+            transform.DOScale(0, 0.5f).SetEase(Ease.OutBack);
         }
 
         public void JumpLandEvent() {

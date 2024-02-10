@@ -16,8 +16,10 @@ public class EnemyHealth : Clickable
         if (enemyHealth > currentGunUpgrade.gunDamage)
         {
             enemyHealth -= currentGunUpgrade.gunDamage;
-            ParticleSystem p = Instantiate(currentGunUpgrade.gunParticles,point, Quaternion.identity);
-            p.Play();
+            ParticleSystem particleSystem = Instantiate(currentGunUpgrade.gunParticles,point, Quaternion.identity);
+            particleSystem.Play();
+            GameObject gunParticleInstance = particleSystem.gameObject;
+            Destroy(gunParticleInstance, 1f);
         }
         else
         {
@@ -28,11 +30,12 @@ public class EnemyHealth : Clickable
     private void Die()
     {
         transform.DOScale(0, 0.2f).SetEase(Ease.OutQuint);
-        Instantiate(deathParticles, gameObject.transform.position, Quaternion.identity);
-        Instantiate(reward, gameObject.transform.position + new Vector3(0,0.3f,0) , Quaternion.identity);
+        GameObject particlesInstance = Instantiate(deathParticles, gameObject.transform.position, Quaternion.identity);
+        Instantiate(reward, gameObject.transform.position + new Vector3(0, 0.3f, 0), Quaternion.identity);
 
         EnemySpawner enemySpawner = FindObjectOfType<EnemySpawner>();
         enemySpawner.RemoveEnemy(gameObject);
-        Destroy(deathParticles, 5f);
+    
+        Destroy(particlesInstance, 5f);
     }
 }

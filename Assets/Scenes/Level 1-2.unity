@@ -1599,6 +1599,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PPFX
       objectReference: {fileID: 0}
+    - target: {fileID: 204462515822114000, guid: f4c53e50c91cdd944989823dc140282c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 204462515822114002, guid: f4c53e50c91cdd944989823dc140282c, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2731,6 +2735,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: World
       objectReference: {fileID: 0}
+    - target: {fileID: 6382226089035399179, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6730119816024467002, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2794,13 +2802,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6579d39df3a00e4593f1eef98e1da1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSpawnDelay: 60
+  initialSpawnDelay: 5
   enemySpawnLocation: {fileID: 928408468}
   portalOpeningParticleSystem: {fileID: 1550588104}
   enemyPrefabs:
   - enemyPrefab: {fileID: 4250166054841865360, guid: 2c5cadcd143f4434c8de321d297eaaba, type: 3}
-    minSpawnDelay: 50
-    maxSpawnDelay: 70
+    minSpawnDelay: 5
+    maxSpawnDelay: 10
 --- !u!114 &8757231977867629531 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7515885461654839924, guid: 228006cb1b674504786775f3e83fe722, type: 3}

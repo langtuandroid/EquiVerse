@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using Behaviour;
 using UnityEngine;
 using UnityEngine.AI;
-using Random = UnityEngine.Random;
 
 public class WanderingEnemyBehaviour : MonoBehaviour
 {
@@ -12,10 +9,10 @@ public class WanderingEnemyBehaviour : MonoBehaviour
     private WanderingEnemyFXController wanderingEnemyFXController;
     private Vector3 targetPosition;
 
-
     public Animator animator;
-    public float speed;
+    public float speed = 3f;
     public float smoothRotationSpeed = 5f;
+    public float attackDistance = 1.5f;
 
     private bool attacking = false;
 
@@ -26,30 +23,21 @@ public class WanderingEnemyBehaviour : MonoBehaviour
 
         if (navMeshAgent == null)
         {
-            Debug.LogError("NavMeshAgent component is missing on the GameObject.");
-            enabled = false; // Disable the script if NavMeshAgent is not found.
+            enabled = false;
         }
 
+        navMeshAgent.speed = speed;
         SetRandomDestination();
     }
 
     private void FixedUpdate()
     {
-        if (Vector3.Distance(transform.position, targetPosition) < 1f || !navMeshAgent.hasPath)
+        if (!attacking && (Vector3.Distance(transform.position, targetPosition) < attackDistance || !navMeshAgent.hasPath))
         {
             SetRandomDestination();
         }
 
         MoveAndRotateTowardsDestination();
-        
-        if (wanderingEnemyFXController.attacking)
-        {
-            navMeshAgent.speed = 0;
-        }
-        else
-        {
-            navMeshAgent.speed = speed;
-        }
     }
 
     private void SetRandomDestination()
@@ -60,14 +48,12 @@ public class WanderingEnemyBehaviour : MonoBehaviour
         NavMesh.SamplePosition(randomDirection, out hit, 10f, 1);
         targetPosition = hit.position;
 
-        // Set the new destination
         navMeshAgent.SetDestination(targetPosition);
     }
 
     private void MoveAndRotateTowardsDestination()
     {
-        // Smooth rotation towards the destination
-        if (navMeshAgent.hasPath)
+        if (navMeshAgent.hasPath && navMeshAgent.desiredVelocity != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(navMeshAgent.desiredVelocity);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * smoothRotationSpeed);
@@ -76,7 +62,7 @@ public class WanderingEnemyBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Rabbit"))
+        if (!attacking && other.CompareTag("Rabbit"))
         {
             StartCoroutine(AttackRabbit(other));
         }
@@ -84,12 +70,19 @@ public class WanderingEnemyBehaviour : MonoBehaviour
 
     private IEnumerator AttackRabbit(Collider other)
     {
+        attacking = true;
+        navMeshAgent.isStopped = true;
         FMODUnity.RuntimeManager.PlayOneShot("event:/World1/SwampGolem/Attack");
         wanderingEnemyFXController.attacking = true;
         animator.SetTrigger("AttackTrigger");
-        yield return new WaitForSeconds(2f);
-        other.GetComponent<WanderScript>().Die();
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1f);
+        if (other != null && other.gameObject.activeSelf)
+        {
+            other.GetComponent<WanderScript>()?.Die();
+        }
+        yield return new WaitForSeconds(1f);
         wanderingEnemyFXController.attacking = false;
+        navMeshAgent.isStopped = false;
+        attacking = false;
     }
 }

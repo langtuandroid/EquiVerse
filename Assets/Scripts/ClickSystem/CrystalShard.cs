@@ -13,10 +13,11 @@ public class CrystalShard : Clickable
 
         if (ecManager != null) {
             ecManager.AddCrystalShardPoints();
-            StartCoroutine(DestroyObjectWithEffect(gameObject));
+            Destroy(gameObject);
+            GameObject particleEffect = Instantiate(particleEffectPrefab, gameObject.transform.position, Quaternion.identity);
+            Destroy(particleEffect, 1f);
         }
     }
-    
     
     void Start()
     {
@@ -30,12 +31,5 @@ public class CrystalShard : Clickable
                 .SetLoops(-1, LoopType.Yoyo); // Set it to loop indefinitely 
         }));
         transform.DOScale(Vector3.one, 1f).SetEase(Ease.OutBack).SetDelay(0.5f);
-    }
-    
-    private IEnumerator DestroyObjectWithEffect(GameObject obj) {
-        Destroy(obj);
-        GameObject particleEffect = Instantiate(particleEffectPrefab, obj.transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(1.0f);
-        Destroy(particleEffect);
     }
 }

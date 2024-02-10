@@ -12,14 +12,9 @@ public class LowValueLeaf : Clickable {
         if (ecManager != null) {
             ecManager.AddLowValuePoints();
             FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/CollectLeafPoint");
-            StartCoroutine(DestroyObjectWithEffect(gameObject));
+            Destroy(gameObject);
+            GameObject particleEffect = Instantiate(particleEffectPrefab, gameObject.transform.position, Quaternion.identity);
+            Destroy(particleEffect, 1.5f);
         }
-    }
-
-    private IEnumerator DestroyObjectWithEffect(GameObject obj) {
-        Destroy(obj);
-        GameObject particleEffect = Instantiate(particleEffectPrefab, obj.transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(1.0f);
-        Destroy(particleEffect);
     }
 }

@@ -35,6 +35,7 @@ public class SecondLevelTutorial : MonoBehaviour
 
     public void CloseFirstEnemyPopup()
     {
+        Time.timeScale = 1;
         screenOverlay.SetActive(false);
         rayCaster.SetActive(true);
     }
