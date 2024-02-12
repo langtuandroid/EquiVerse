@@ -10,9 +10,9 @@ public class GunUpgrade
     public int gunDamage;
 }
 
-public class UpgradeManager : MonoBehaviour
+public class GunUpgradeManager : MonoBehaviour
 {
-    private static UpgradeManager _instance;
+    private static GunUpgradeManager _instance;
     public List<GunUpgrade> gunUpgrades = new List<GunUpgrade>();
 
     private int gunUpgradeIndex = 0;
@@ -22,7 +22,7 @@ public class UpgradeManager : MonoBehaviour
         _instance = this;
     }
 
-    public static UpgradeManager GetInstance()
+    public static GunUpgradeManager GetInstance()
     {
         return _instance;
     }

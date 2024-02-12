@@ -24,14 +24,6 @@ namespace Spawners {
         private static int currentPlantCount; // Track the number of plants in the scene
         public static bool canSpawnPlants = true;
 
-        public int[] upgradeAmount;
-        public TextMeshProUGUI maxPlantValueText;
-        public TextMeshProUGUI maxPlantUpgradeCostText;
-        public GameObject endOfLevelUpgrade;
-
-        private int currentUpgradeCost;
-        private int upgradeIndex = 0;
-
         [Header("GuidedTutorialSetup")]
         public bool isTutorial;
         [ConditionalField("isTutorial")]
@@ -42,24 +34,18 @@ namespace Spawners {
         private void Start() {
             mainCamera = Camera.main;
             currentPlantCount = 0;
-
-            maxPlantValueText.text = maxPlants.ToString();
-            currentUpgradeCost = upgradeAmount[0];
-            maxPlantUpgradeCostText.text = currentUpgradeCost.ToString();
         }
 
         public void ClickOnGround(Vector3 point) {
             if(!canSpawnPlants) return;
-            // Check if the hit point is on the NavMesh
             if (IsPointOnNavMesh(point) && ECManager.totalPoints >= grassCost) {
                 if (currentPlantCount < maxPlants) {
-                    // Instantiate the grass prefab at the clicked position
                     GameObject spawnedPrefab = Instantiate(grassPrefab, point, Quaternion.identity);
                     spawnedPrefab.transform.DOScale(1f, 0.75f).SetEase(Ease.OutElastic);
                     ecManager.DecrementPoints(grassCost);
                     tutorialStep.SetActive(false);
 
-                    currentPlantCount++; // Increment the plant count
+                    currentPlantCount++;
                     
                     FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/GrassPlacement");
                 } else if (!maxPlantPopUp.activeInHierarchy && gameManager.tutorialActivated) {
@@ -71,55 +57,17 @@ namespace Spawners {
             }
         }
 
-        // Check if a given point is on the NavMesh
         bool IsPointOnNavMesh(Vector3 point) {
             NavMeshHit hit;
             return NavMesh.SamplePosition(point, out hit, 0.1f, NavMesh.AllAreas);
         }
 
-        // You should call this method when a plant is removed or destroyed.
         public static void RemovePlant() {
             if (currentPlantCount > 0) {
-                currentPlantCount--; // Decrement the plant count
+                currentPlantCount--;
             }
         }
-
-        public void IncreaseMaxPlants() {
-            if (upgradeIndex < upgradeAmount.Length - 1) {
-                currentUpgradeCost = upgradeAmount[upgradeIndex];
-
-                if (ECManager.totalPoints >= currentUpgradeCost) {
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/UI/Buy");
-                    maxPlants++;
-                    maxPlantValueText.text = maxPlants.ToString();
-
-                    ECManager.totalPoints -= currentUpgradeCost;
-                    upgradeIndex++;
-
-                    // Check if upgradeIndex is still within bounds before accessing the array
-                    if (upgradeIndex < upgradeAmount.Length - 1) {
-                        maxPlantUpgradeCostText.text = upgradeAmount[upgradeIndex].ToString();
-                    } else {
-                        Debug.LogWarning("No more upgrades available.");
-                        // You can choose to disable the upgrade button or handle it according to your game logic.
-                    }
-
-                    if (gameManager.secondLevelTutorialActivated && upgradeIndex == 1) {
-                        endOfLevelUpgrade.SetActive(true);
-                    }
-                } else {
-                    Debug.LogWarning("Insufficient points to upgrade.");
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/UI/CantBuy");
-                    ecManager.FlickerTotalPointsElement();
-                }
-            } else {
-                Debug.LogWarning("No more upgrades available.");
-                // You can choose to disable the upgrade button or handle it according to your game logic.
-            }
-        }
-
-
-
+        
         private void PopInAnimation(GameObject gameObject) {
             RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
 
@@ -127,11 +75,6 @@ namespace Spawners {
                 rectTransform.localScale = new Vector3(0f, 0f, 0f);
                 rectTransform.DOScale(1, 0.5f).SetEase(Ease.OutExpo);
             }
-        }
-
-        bool IsCollectable(GameObject obj) {
-            // Replace "CollectableLayer" with the actual layer of your collectable objects
-            return obj.layer == LayerMask.NameToLayer("CollectableLayer");
         }
     }
 }
