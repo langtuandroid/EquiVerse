@@ -48,11 +48,10 @@ namespace Behaviour {
         }
 
         private void FixedUpdate() {
-            if (death)
-            {
+            if (death) {
                 agent.speed = 0;
             }
-            
+
             MaterialChanger();
             HandleHunger();
 
@@ -177,17 +176,19 @@ namespace Behaviour {
         }
 
         private void MoveTowardsPlant(Transform closestPlant) {
+            closestPlant.GetComponent<Plant>().SetHuntedBy(gameObject);
             agent.speed = 1.3f;
             agent.SetDestination(closestPlant.position);
             animator.SetBool("isRunning", true);
         }
 
+        //Changed
         private void EatPlant(Transform closestPlant) {
+            Plant plant = closestPlant.GetComponent<Plant>(); //
+            plant.Consume(); //
+
             animator.SetBool("isRunning", false);
-            closestPlant.gameObject.transform.DOScale(0, 0.6f).SetEase(Ease.OutBack);
-            Destroy(closestPlant.gameObject, 0.6f);
             FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/RabbitEat");
-            PlantSpawner.RemovePlant();
             currentHunger -= 100f;
             LeafPointsSpawner.spawnLeafPoints = true;
             isHungry = false;
@@ -202,14 +203,16 @@ namespace Behaviour {
             HandleWanderAndIdle();
         }
 
+        //Changed
         private Transform FindClosestPlantTransform(List<GameObject> plants) {
             Transform closestPlant = null;
             float closestDistance = Mathf.Infinity;
 
             foreach (GameObject plant in plants) {
-                float distance = Vector3.Distance(transform.position, plant.transform.position);
+                Plant plantObj = plant.GetComponent<Plant>(); //
+                float distance = Vector3.Distance(transform.position, plant.transform.position); //
 
-                if (distance < closestDistance) {
+                if (plantObj.CanBeHunted(gameObject) && distance < closestDistance) {
                     closestDistance = distance;
                     closestPlant = plant.transform;
                 }
@@ -233,13 +236,12 @@ namespace Behaviour {
             }
         }
 
-        public void Die()
-        {
+        public void Die() {
             StartCoroutine(DeathSequence());
         }
 
-        private IEnumerator DeathSequence()
-        {   death = true;
+        private IEnumerator DeathSequence() {
+            death = true;
             Destroy(gameObject, 2f);
             animator.SetBool("isDead_0", true);
             yield return new WaitForSeconds(1f);
