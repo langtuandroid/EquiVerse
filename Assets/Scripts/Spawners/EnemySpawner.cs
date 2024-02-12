@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Managers;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 [System.Serializable]
 public class EnemyPrefab
@@ -13,6 +16,8 @@ public class EnemyPrefab
 
 public class EnemySpawner : MonoBehaviour
 {
+    public GameManager gameManager;
+    
     public float initialSpawnDelay;
     public Transform enemySpawnLocation;
     public ParticleSystem portalOpeningParticleSystem;
@@ -20,7 +25,16 @@ public class EnemySpawner : MonoBehaviour
 
     private List<GameObject> activeEnemies = new List<GameObject>();
 
-    void Start()
+    private void Start()
+    {
+        if (!gameManager.secondLevelTutorialActivated)
+        {
+            SpawnEnemies();
+        }
+    }
+
+
+    public void SpawnEnemies()
     {
         StartCoroutine(SpawnEnemiesWithDelays());
     }

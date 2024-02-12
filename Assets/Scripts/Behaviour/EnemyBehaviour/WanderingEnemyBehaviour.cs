@@ -80,7 +80,7 @@ public class WanderingEnemyBehaviour : MonoBehaviour
         {
             other.GetComponent<WanderScript>()?.Die();
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         wanderingEnemyFXController.attacking = false;
         navMeshAgent.isStopped = false;
         attacking = false;

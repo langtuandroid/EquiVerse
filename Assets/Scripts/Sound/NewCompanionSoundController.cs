@@ -53,7 +53,7 @@ public class NewCompanionSoundController : MonoBehaviour
     public void StartMusic()
     {
         music.start();
-        NewCompanionMusicVolumeFade(1.0f, 2f);
+        NewCompanionMusicVolumeFade(1.0f, 5f);
     }
 
     public void StopMusic()

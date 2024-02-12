@@ -47,10 +47,6 @@ namespace Managers {
             endOfLevelCostText.text = endOfLevelCost.ToString();
         }
 
-        //private void FixedUpdate() {
-        //    totalPointsText.text = totalPoints.ToString();
-        //}
-
         public void AddLowValuePoints() {
             IncrementPoints(lowValuePoints);
         }

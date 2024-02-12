@@ -110,6 +110,7 @@ namespace Spawners {
                 } else {
                     Debug.LogWarning("Insufficient points to upgrade.");
                     FMODUnity.RuntimeManager.PlayOneShot("event:/UI/CantBuy");
+                    ecManager.FlickerTotalPointsElement();
                 }
             } else {
                 Debug.LogWarning("No more upgrades available.");
