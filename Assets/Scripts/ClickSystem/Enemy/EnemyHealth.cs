@@ -18,6 +18,7 @@ public class EnemyHealth : Clickable
             enemyHealth -= currentGunUpgrade.gunDamage;
             ParticleSystem particleSystem = Instantiate(currentGunUpgrade.gunParticles,point, Quaternion.identity);
             particleSystem.Play();
+            FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/Gun/Gun1Impact");
             GameObject gunParticleInstance = particleSystem.gameObject;
             Destroy(gunParticleInstance, 1f);
         }

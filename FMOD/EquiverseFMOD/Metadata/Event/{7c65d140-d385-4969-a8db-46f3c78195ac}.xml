@@ -96,7 +96,7 @@
 			<value>0.038649231237588427</value>
 		</property>
 		<property name="pitch">
-			<value>-15.5</value>
+			<value>-7.5</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{a4fa76cd-c87d-48d7-a3d9-b09000572911}</destination>
@@ -162,7 +162,6 @@
 	<object class="MixerBusEffectChain" id="{3d0f7e66-9ea9-4e10-90fc-17d2ccf68890}">
 		<relationship name="effects">
 			<destination>{384cbcce-73be-466b-ae35-a0813d4c8356}</destination>
-			<destination>{67eca308-0d54-4348-b603-ad101c53a97f}</destination>
 			<destination>{f35029f2-04ce-4fa3-b9bd-5df932133b3b}</destination>
 		</relationship>
 	</object>
@@ -207,26 +206,12 @@
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{384cbcce-73be-466b-ae35-a0813d4c8356}" />
-	<object class="SFXReverbEffect" id="{67eca308-0d54-4348-b603-ad101c53a97f}">
-		<property name="decayTime">
-			<value>950</value>
-		</property>
-		<property name="lowShelfFrequency">
-			<value>310</value>
-		</property>
-		<property name="highCut">
-			<value>1200</value>
-		</property>
-		<property name="wetLevel">
-			<value>-18.5</value>
-		</property>
-		<property name="dryLevel">
-			<value>-4</value>
-		</property>
-	</object>
 	<object class="ThreeEQEffect" id="{f35029f2-04ce-4fa3-b9bd-5df932133b3b}">
 		<property name="lowGain">
 			<value>4</value>
+		</property>
+		<property name="highGain">
+			<value>-6.5</value>
 		</property>
 	</object>
 </objects>

@@ -17,6 +17,7 @@ public class EnemyPrefab
 public class EnemySpawner : MonoBehaviour
 {
     public GameManager gameManager;
+    public World1LevelSoundController soundController;
     
     public float initialSpawnDelay;
     public Transform enemySpawnLocation;
@@ -50,6 +51,8 @@ public class EnemySpawner : MonoBehaviour
                 if (enemyPrefab.enemyPrefab != null)
                 {
                     portalOpeningParticleSystem.Play();
+                    soundController.FadeAudioParameter("Music", "World1LevelMainMusicVolume", 0f, 1.2f);
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/SpawnPortal/SpawnPortalCharge");
                     yield return new WaitForSeconds(3f);
 
                     GameObject newEnemy = Instantiate(enemyPrefab.enemyPrefab, enemySpawnLocation.position, Quaternion.identity);
@@ -74,6 +77,11 @@ public class EnemySpawner : MonoBehaviour
         {
             activeEnemies.Remove(enemyToRemove);
             Destroy(enemyToRemove); // Destroy the enemy game object.
+        }
+        
+        if (activeEnemies.Count == 0)
+        {
+            soundController.FadeAudioParameter("Music", "World1LevelMainMusicVolume", 1f, 1.2f);
         }
     }
 }

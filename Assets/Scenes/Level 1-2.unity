@@ -1055,6 +1055,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 5300777629086163745, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5300777629598507568, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
       propertyPath: isTutorial
       value: 0
@@ -2788,6 +2792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 130409640}
+  soundController: {fileID: 785382896}
   initialSpawnDelay: 5
   enemySpawnLocation: {fileID: 928408468}
   portalOpeningParticleSystem: {fileID: 1550588104}

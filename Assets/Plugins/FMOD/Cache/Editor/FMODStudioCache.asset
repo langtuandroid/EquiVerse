@@ -235,7 +235,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 2130
+  Length: 2580
 --- !u!114 &-3845185426232091570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,6 +291,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 132493
+--- !u!114 &-3578848029282896769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlayerActions/CollectCrystal
+  m_EditorClassIdentifier: 
+  Path: event:/PlayerActions/CollectCrystal
+  Guid:
+    Data1: 452562637
+    Data2: 1121591535
+    Data3: -1362317395
+    Data4: 509562009
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1800
 --- !u!114 &-2890108901729854323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,12 +496,15 @@ MonoBehaviour:
   - {fileID: -6515037039015193946}
   - {fileID: -3845185426232091570}
   - {fileID: 476426055693632330}
+  - {fileID: 1282502107793189100}
+  - {fileID: -3578848029282896769}
+  - {fileID: 7783967197243622096}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5304006631014352583}
   StringsBanks:
   - {fileID: 23253448088795587}
-  cacheTime: 638433478273529610
+  cacheTime: 638437039532173266
   cacheVersion: 131616
 --- !u!114 &23253448088795587
 MonoBehaviour:
@@ -491,10 +521,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
   Name: MainMenu.strings
   StudioPath: bank:/MainMenu.strings
-  lastModified: 638430150381968694
+  lastModified: 638437039159772176
   FileSizes:
   - Name: Desktop
-    Value: 2432
+    Value: 2586
   Exists: 1
 --- !u!114 &476426055693632330
 MonoBehaviour:
@@ -628,6 +658,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3300
+--- !u!114 &1282502107793189100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlayerActions/Gun/Gun1Impact
+  m_EditorClassIdentifier: 
+  Path: event:/PlayerActions/Gun/Gun1Impact
+  Guid:
+    Data1: 1951701674
+    Data2: 1269584342
+    Data3: 2086564789
+    Data4: -730353447
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 760
 --- !u!114 &1496164698314395894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,10 +802,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 638433478273529610
+  lastModified: 638437039532173266
   FileSizes:
   - Name: Desktop
-    Value: 5318688
+    Value: 5743936
   Exists: 1
 --- !u!114 &4867247044173022020
 MonoBehaviour:
@@ -843,7 +900,7 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 638430150381958698
+  lastModified: 638437039159762212
   FileSizes:
   - Name: Desktop
     Value: 2355616
@@ -875,6 +932,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 5136
+--- !u!114 &7783967197243622096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SpawnPortal/SpawnPortalCharge
+  m_EditorClassIdentifier: 
+  Path: event:/SpawnPortal/SpawnPortalCharge
+  Guid:
+    Data1: 1550961422
+    Data2: 1291588430
+    Data3: 1395390853
+    Data4: -241974449
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 14500
 --- !u!114 &8126868510507412270
 MonoBehaviour:
   m_ObjectHideFlags: 0

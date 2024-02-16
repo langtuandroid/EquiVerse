@@ -13,6 +13,7 @@ public class CrystalShard : Clickable
 
         if (ecManager != null) {
             ecManager.AddCrystalShardPoints();
+            FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/CollectCrystal");
             Destroy(gameObject);
             GameObject particleEffect = Instantiate(particleEffectPrefab, gameObject.transform.position, Quaternion.identity);
             Destroy(particleEffect, 1f);
