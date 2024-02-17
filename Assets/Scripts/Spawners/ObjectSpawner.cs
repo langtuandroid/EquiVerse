@@ -80,7 +80,7 @@ namespace Spawners
 
         private void FindAliveRabbits()
         {
-            amountOfRabbits = EntityManager.GetRabbits().Count;
+            amountOfRabbits = EntityManager.Get().GetRabbits().Count;
         }
 
         private void ShowGameOverPopUp()

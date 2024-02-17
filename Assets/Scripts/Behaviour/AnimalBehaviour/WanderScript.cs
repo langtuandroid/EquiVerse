@@ -39,12 +39,12 @@ namespace Behaviour {
         private void Start() {
             InitializeComponents();
             SwitchToIdle();
-            EntityManager.AddRabbit(gameObject);
+            EntityManager.Get().AddRabbit(gameObject);
             agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
         }
 
         private void OnDestroy() {
-            EntityManager.RemoveRabbit(gameObject);
+            EntityManager.Get().RemoveRabbit(gameObject);
         }
 
         private void FixedUpdate() {
@@ -149,7 +149,7 @@ namespace Behaviour {
 
         private void FindClosestPlant() {
             //GameObject[] plants = GameObject.FindGameObjectsWithTag("Plant");
-            List<GameObject> plants = EntityManager.GetPlants();
+            List<GameObject> plants = EntityManager.Get().GetPlants();
 
             if (plants.Count == 0) {
                 HandleNoPlantsFound();

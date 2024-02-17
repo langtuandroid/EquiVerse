@@ -3,35 +3,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class EntityManager {
-    private static List<GameObject> rabbits = new List<GameObject>();
-    private static List<GameObject> plants = new List<GameObject>();
+public class EntityManager : MonoBehaviour {
+    private static EntityManager _instance;
 
-    public static void AddRabbit(GameObject rabbit) {
+    public void Start() {
+        _instance = this;
+    }
+
+    public static EntityManager Get() {
+        return _instance;
+    }
+
+    private List<GameObject> rabbits = new List<GameObject>();
+    private List<GameObject> plants = new List<GameObject>();
+
+    public void AddRabbit(GameObject rabbit) {
         rabbits.Add(rabbit);
     }
 
-    public static void AddPlant(GameObject plant) {
+    public void AddPlant(GameObject plant) {
         plants.Add(plant);
     }
 
-    public static void RemoveRabbit(GameObject rabbit) {
+    public void RemoveRabbit(GameObject rabbit) {
         if (rabbits.Contains(rabbit)) {
             rabbits.Remove(rabbit);
         }
     }
 
-    public static void RemovePlant(GameObject plant) {
+    public void RemovePlant(GameObject plant) {
         if (plants.Contains(plant)) {
             plants.Remove(plant);
         }
     }
 
-    public static List<GameObject> GetRabbits() {
+    public List<GameObject> GetRabbits() {
         return rabbits;
     }
 
-    public static List<GameObject> GetPlants() {
+    public List<GameObject> GetPlants() {
         return plants;
     }
 }

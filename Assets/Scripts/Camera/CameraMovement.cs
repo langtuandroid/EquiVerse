@@ -10,24 +10,18 @@ namespace Input
         public float maxDistance = 80f;
         public float minDistance = 20f; // Added minimum zoom distance
         private bool movedLeft = false, movedRight = false, movedUp = false, movedDown = false;
-    
-        [HideInInspector]
-        public static bool CAMERA_LOCKED;
-
-        public static bool CAMERA_MOVED_IN_ALL_DIRECTIONS = false;
-
+        public bool CameraLocked { get; set; }
         private new Camera camera;
 
         private void Start()
         {
             camera = GetComponent<Camera>();
-            CAMERA_MOVED_IN_ALL_DIRECTIONS = false;
-            CAMERA_LOCKED = true;
         }
 
         private void Update()
         {
-            if (!CAMERA_LOCKED)
+            print(CameraLocked);
+            if (!CameraLocked)
             {
                 MoveCamera();
                 CheckCameraTutorial();
@@ -86,7 +80,7 @@ namespace Input
         {
             if (movedLeft && movedRight && movedUp && movedDown)
             {
-                CAMERA_MOVED_IN_ALL_DIRECTIONS = true;
+                TutorialManager.CompleteStep("Step_Camera");
             }
         }
     }

@@ -8,11 +8,11 @@ public class Plant : MonoBehaviour {
     GameObject huntedBy = null;
 
     void Start() {
-        EntityManager.AddPlant(gameObject);
+        EntityManager.Get().AddPlant(gameObject);
     }
 
     void OnDestroy() {
-        EntityManager.RemovePlant(gameObject);
+        EntityManager.Get().RemovePlant(gameObject);
     }
 
     public bool CanBeHunted(GameObject huntingObject) {
@@ -26,6 +26,6 @@ public class Plant : MonoBehaviour {
     public void Consume() {
         gameObject.transform.DOScale(0, 0.6f).SetEase(Ease.OutBack);
         Destroy(gameObject, 0.6f);
-        PlantSpawner.RemovePlant();
+        FindObjectOfType<PlantSpawner>().RemovePlant();
     }
 }

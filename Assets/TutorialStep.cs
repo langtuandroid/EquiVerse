@@ -9,7 +9,6 @@ public class TutorialStep
     public string name;
     public UnityEvent onStart;
     public UnityEvent onComplete;
-    public UnityEvent onReset;
 
     [HideInInspector]
     public bool completed;

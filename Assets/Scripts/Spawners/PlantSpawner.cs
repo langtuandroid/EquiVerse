@@ -21,8 +21,8 @@ namespace Spawners {
 
         [Header("Maximum plants")]
         public int maxPlants = 2; // Maximum number of allowed plants
-        private static int currentPlantCount; // Track the number of plants in the scene
-        public static bool canSpawnPlants = true;
+        private int currentPlantCount; // Track the number of plants in the scene
+        public bool CanSpawnPlants { get; set; }
 
         [Header("GuidedTutorialSetup")]
         public bool isTutorial;
@@ -37,7 +37,7 @@ namespace Spawners {
         }
 
         public void ClickOnGround(Vector3 point) {
-            if(!canSpawnPlants) return;
+            if(!CanSpawnPlants) return;
             if (IsPointOnNavMesh(point) && ECManager.totalPoints >= grassCost) {
                 if (currentPlantCount < maxPlants) {
                     GameObject spawnedPrefab = Instantiate(grassPrefab, point, Quaternion.identity);
@@ -62,7 +62,7 @@ namespace Spawners {
             return NavMesh.SamplePosition(point, out hit, 0.1f, NavMesh.AllAreas);
         }
 
-        public static void RemovePlant() {
+        public void RemovePlant() {
             if (currentPlantCount > 0) {
                 currentPlantCount--;
             }

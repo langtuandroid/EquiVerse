@@ -32,8 +32,8 @@ namespace Tutorial
 
         private void FixedUpdate()
         {
-            if (CheckCameraStepCompletion() && gameManager.tutorialActivated)
-                HandleCameraStepCompletion();
+            // if (CheckCameraStepCompletion() && gameManager.tutorialActivated)
+            //     HandleCameraStepCompletion();
 
             if (CheckFinishLevelStepCompletion() && gameManager.tutorialActivated)
                 HandleFinishLevelStepCompletion();
@@ -55,7 +55,6 @@ namespace Tutorial
                 if (stepIndex == 1)
                 {
                     screenOverlay.SetActive(false);
-                    CameraMovement.CAMERA_LOCKED = false;
                 }
 
                 if (stepIndex == 4)
@@ -65,7 +64,7 @@ namespace Tutorial
 
                 if (stepIndex == 6)
                 {
-                    Spawners.PlantSpawner.canSpawnPlants = true;
+                    //Spawners.PlantSpawner.canSpawnPlants = true;
                 }
             }
         }
@@ -102,12 +101,12 @@ namespace Tutorial
 
         private void SetupNonTutorialMode()
         {
-            CameraMovement.CAMERA_LOCKED = false;
+            //CameraMovement.CAMERA_LOCKED = false;
             gameUI.SetActive(true);
             screenOverlay.SetActive(false);
             objectSpawner.SetActive(true);
             rabbitButton.SetActive(true);
-            Spawners.PlantSpawner.canSpawnPlants = true;
+            //Spawners.PlantSpawner.canSpawnPlants = true;
             finishLevelButton.SetActive(false);
             finishLevelStep.SetActive(false);
         }
@@ -122,12 +121,12 @@ namespace Tutorial
 
         private void SetupTutorialMode()
         {
-            CameraMovement.CAMERA_LOCKED = true;
+            //CameraMovement.CAMERA_LOCKED = true;
             screenOverlay.SetActive(true);
             gameUI.SetActive(false);
             objectSpawner.SetActive(false);
             finishLevelButton.SetActive(false);
-            Spawners.PlantSpawner.canSpawnPlants = false;
+            //Spawners.PlantSpawner.canSpawnPlants = false;
 
             foreach (var step in tutorialSteps)
             {
@@ -138,10 +137,10 @@ namespace Tutorial
             PopInAnimation(tutorialSteps[0]);
         }
 
-        private bool CheckCameraStepCompletion()
-        {
-            return CameraMovement.CAMERA_MOVED_IN_ALL_DIRECTIONS && !cameraStepCompleted && gameManager.tutorialActivated;
-        }
+        // private bool CheckCameraStepCompletion()
+        // {
+        //     //return CameraMovement.CAMERA_MOVED_IN_ALL_DIRECTIONS && !cameraStepCompleted && gameManager.tutorialActivated;
+        // }
 
         private void HandleCameraStepCompletion()
         {

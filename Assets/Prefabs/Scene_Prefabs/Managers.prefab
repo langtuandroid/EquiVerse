@@ -89,6 +89,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acde880cb4c66914b84383938fc5490c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4903406426804034229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1551421633730741584}
+  - component: {fileID: 1552864803487495003}
+  m_Layer: 0
+  m_Name: EntityManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1551421633730741584
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4903406426804034229}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5300777629086163744}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1552864803487495003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4903406426804034229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36028b353a21a504ebc7d5e3e357555a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5300777628039273313
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,6 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2c752e754944a4d864fbf6340da239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalPointsBackground: {fileID: 0}
   totalPointsText: {fileID: 0}
   endOfLevelCostText: {fileID: 0}
   slider: {fileID: 0}
@@ -244,6 +288,7 @@ MonoBehaviour:
   transitionOverlay: {fileID: 0}
   loadingScreen: {fileID: 0}
   guidedTutorialManager: {fileID: 5300777628258806277}
+  soundController: {fileID: 0}
 --- !u!1 &5300777628524437898
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,6 +413,8 @@ Transform:
   - {fileID: 5300777628840219944}
   - {fileID: 7918852831548602957}
   - {fileID: 6269039703862189936}
+  - {fileID: 655871950358959583}
+  - {fileID: 1551421633730741584}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -422,10 +469,7 @@ MonoBehaviour:
   grassPrefab: {fileID: 1159558787302553158, guid: 0edd912d570736f41926a3fa796fedce, type: 3}
   grassCost: 5
   maxPlants: 2
-  upgradeAmount: 
-  maxPlantValueText: {fileID: 0}
-  maxPlantUpgradeCostText: {fileID: 0}
-  endOfLevelUpgrade: {fileID: 0}
+  canSpawnPlants: 1
   isTutorial: 0
   maxPlantPopUp: {fileID: 0}
   tutorialStep: {fileID: 0}
@@ -481,3 +525,47 @@ MonoBehaviour:
   gameOverPopUp: {fileID: 0}
   isSecondLevel: 0
   secondLevelTutorial: {fileID: 0}
+--- !u!1 &8084435105737532942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 655871950358959583}
+  - component: {fileID: 1608422050236082110}
+  m_Layer: 0
+  m_Name: TutorialManager2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &655871950358959583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8084435105737532942}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5300777629086163744}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1608422050236082110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8084435105737532942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ae0472e20ca051459a66a7fa7a307e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  steps: []

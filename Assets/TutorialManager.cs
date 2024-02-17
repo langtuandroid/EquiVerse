@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class TutorialManager : MonoBehaviour {
@@ -19,15 +20,7 @@ public class TutorialManager : MonoBehaviour {
         currentStepIndex = index;
         steps[currentStepIndex].onStart.Invoke();
     }
-
-
-
-    public void Reset() {
-        foreach (var step in steps) {
-            step.onReset.Invoke();
-        }
-
-    }
+    
     private static TutorialManager _instance;
     public static void CompleteStep(string name) {
         if (_instance == null) {
@@ -41,7 +34,7 @@ public class TutorialManager : MonoBehaviour {
     }
 
     private void _CompleteStep(string name) {
-        if (steps[currentStepIndex].name.Equals(name)) { //Step name is the same so we mark the step as completed
+        if (steps[currentStepIndex].name.Equals(name, System.StringComparison.OrdinalIgnoreCase)) { //Step name is the same so we mark the step as completed
             if (!steps[currentStepIndex].completed) {
                 steps[currentStepIndex].onComplete.Invoke();
             }
@@ -51,5 +44,12 @@ public class TutorialManager : MonoBehaviour {
                 SetStep(currentStepIndex + 1);
             }
         }
+    }
+    
+    public void PopInAnimation(GameObject gameObject)
+    {
+        gameObject.SetActive(true);
+        RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
+        rectTransform?.DOScale(1, 0.5f).SetEase(Ease.OutExpo).From(Vector3.zero);
     }
 }

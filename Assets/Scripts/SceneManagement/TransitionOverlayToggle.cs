@@ -34,7 +34,6 @@ namespace UI
                 {
                     guidedTutorial.SetActive(true);
                     PopInAnimation(guidedTutorial);
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
                 }
 
                 if (gameManager.secondLevelTutorialActivated)
@@ -43,6 +42,7 @@ namespace UI
                     firstEnemyPopup.transform.localScale = Vector3.zero;
                     PopInAnimation(firstEnemyPopup);
                 }
+                FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
             }));
         }
 
