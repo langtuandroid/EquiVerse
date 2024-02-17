@@ -44,6 +44,10 @@ public class TutorialManager : MonoBehaviour {
                 SetStep(currentStepIndex + 1);
             }
         }
+        else
+        {
+            throw new System.Exception($"TutorialManager complete step '{name}' called but step could not be found");
+        }
     }
     
     public void PopInAnimation(GameObject gameObject)
