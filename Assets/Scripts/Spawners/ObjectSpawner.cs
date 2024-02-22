@@ -27,7 +27,7 @@ namespace Spawners
         private int amountOfRabbits;
         
         [Header("GuidedTutorialSetup")]
-        public bool isTutorial;
+        private bool isTutorial = false;
         [ConditionalField("isTutorial")]
         public GameObject gameOverPopUp;
         
@@ -65,11 +65,6 @@ namespace Spawners
                 rabbitInstance.transform.localScale = Vector3.zero;
                 rabbitInstance.transform.DOScale(Vector3.one, 0.25f).SetEase(Ease.OutBack);
                 FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/SpawnAnimal");
-                
-                if (gameManager.secondLevelTutorialActivated)
-                {
-                    //secondLevelTutorial.ShowMaxPlantUpgradeButton();
-                }
             }
             else
             {

@@ -83,7 +83,7 @@ namespace Input
         {
             if (movedLeft && movedRight && movedUp && movedDown)
             {
-                TutorialManager.CompleteStep("Step_Camera", false);
+                TutorialManager.CompleteStepAndContinueToNextStep("Step_Camera");
                 cameraStepCompleted = true;
             }
         }

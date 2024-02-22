@@ -32,8 +32,12 @@ public class TutorialManager : MonoBehaviour {
         return _instance;
     }
 
-    public static void CompleteStep(string name, bool autoNextStep) {
-        GetInstance()._CompleteStep(name, autoNextStep);
+    public static void CompleteStep(string name) {
+        GetInstance()._CompleteStep(name, false);
+    }
+
+    public static void CompleteStepAndContinueToNextStep(string name) {
+        GetInstance()._CompleteStep(name, true);
     }
 
     private void _CompleteStep(string name, bool autoNextStep) {
@@ -47,8 +51,6 @@ public class TutorialManager : MonoBehaviour {
             if (autoNextStep && currentStepIndex + 1 < steps.Count) {
                 SetStep(currentStepIndex + 1);
             }
-        } else {
-            throw new System.Exception($"TutorialManager complete step '{name}' called but step could not be found");
         }
     }
     public static void GoToNextStep() {
@@ -56,6 +58,9 @@ public class TutorialManager : MonoBehaviour {
     }
 
     private void _GoToNextStep() {
+        if (!steps[currentStepIndex].completed)
+            throw new System.Exception($"TutorialManager tried to advance a step but the last step was not yet completed");
+
         if (currentStepIndex + 1 < steps.Count) {
             SetStep(currentStepIndex + 1);
         }

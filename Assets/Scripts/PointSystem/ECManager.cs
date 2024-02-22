@@ -3,6 +3,7 @@ using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -35,6 +36,8 @@ namespace Managers {
         private const float updateInterval = 0.01666667f;
         private const int speedFactor = 15; //Higher is slower
 
+        private bool finishLevelStepCompleted = false;
+
         private void Start()
         {
             originalColor = totalPointsBackground.color;
@@ -44,6 +47,23 @@ namespace Managers {
             UpdatePointText();
 
             endOfLevelCostText.text = endOfLevelCost.ToString();
+        }
+
+        private void FixedUpdate()
+        {
+            if (totalPoints >= endOfLevelCost && !finishLevelStepCompleted)
+            {
+                TutorialManager.GoToNextStep();
+                finishLevelStepCompleted = true;
+            }
+        }
+        
+        public void Update() {
+            if (UnityEngine.Input.GetKey(KeyCode.LeftControl))
+            {
+                totalPoints += 100;
+            }
+            UpdateVisualPoints();
         }
 
         public void AddLowValuePoints() {
@@ -74,10 +94,6 @@ namespace Managers {
                 FMODUnity.RuntimeManager.PlayOneShot("event:/UI/CantBuy");
                 FlickerTotalPointsElement();
             }
-        }
-
-        public void Update() {
-            UpdateVisualPoints();
         }
 
 
@@ -115,8 +131,10 @@ namespace Managers {
         //maybe find a different place for this logic
         private void LevelCompleted() {
             FMODUnity.RuntimeManager.PlayOneShot("event:/UI/CompleteLevel");
+            
             soundController.FadeAudioParameter("Music", "World1LevelMainMusicVolume", 0f, 1.2f);
             soundController.FadeAudioParameter("Ambience", "World1LevelAmbienceVolume", 0f, 1.2f);
+            
             transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() => {
                 soundController.StopAudioEvent("Music");
                 soundController.StopAudioEvent("Ambience");
