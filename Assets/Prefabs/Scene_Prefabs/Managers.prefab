@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5300777629086163744}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4721962974655589686
 MonoBehaviour:
@@ -75,7 +75,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5300777629086163744}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &524385812395333508
 MonoBehaviour:
@@ -118,7 +118,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5300777629086163744}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1552864803487495003
 MonoBehaviour:
@@ -161,7 +161,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5300777629086163744}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5300777628039273247
 MonoBehaviour:
@@ -176,66 +176,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevelText: {fileID: 0}
---- !u!1 &5300777628258806278
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5300777628258806276}
-  - component: {fileID: 5300777628258806277}
-  m_Layer: 0
-  m_Name: TutorialManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5300777628258806276
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5300777628258806278}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.35158, y: 41.52673, z: 57.771812}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5300777629086163744}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5300777628258806277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5300777628258806278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f03c69b377ab7094da95d3a04337ebb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 5300777628840219943}
-  ecManager: {fileID: 5300777628413590958}
-  screenOverlay: {fileID: 0}
-  gameUI: {fileID: 0}
-  objectSpawner: {fileID: 5300777629731829055}
-  rabbitButton: {fileID: 0}
-  finishLevelButton: {fileID: 0}
-  finishLevelStep: {fileID: 0}
-  tutorialSteps:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &5300777628413590959
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +227,7 @@ MonoBehaviour:
   endOfLevelCost: 150
   transitionOverlay: {fileID: 0}
   loadingScreen: {fileID: 0}
-  guidedTutorialManager: {fileID: 5300777628258806277}
+  guidedTutorialManager: {fileID: 0}
   soundController: {fileID: 0}
 --- !u!1 &5300777628524437898
 GameObject:
@@ -318,7 +258,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5300777629086163744}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5300777628524437897
 MonoBehaviour:
@@ -361,7 +301,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5300777629086163744}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5300777628840219943
 MonoBehaviour:
@@ -406,7 +346,6 @@ Transform:
   m_Children:
   - {fileID: 5300777629731829053}
   - {fileID: 5300777628413590957}
-  - {fileID: 5300777628258806276}
   - {fileID: 5300777628524437896}
   - {fileID: 5300777629598507567}
   - {fileID: 5300777628039273312}
@@ -447,7 +386,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5300777629086163744}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5300777629598507568
 MonoBehaviour:
@@ -469,10 +408,8 @@ MonoBehaviour:
   grassPrefab: {fileID: 1159558787302553158, guid: 0edd912d570736f41926a3fa796fedce, type: 3}
   grassCost: 5
   maxPlants: 2
-  canSpawnPlants: 1
   isTutorial: 0
   maxPlantPopUp: {fileID: 0}
-  tutorialStep: {fileID: 0}
 --- !u!1 &5300777629731829055
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,7 +491,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5300777629086163744}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1608422050236082110
 MonoBehaviour:

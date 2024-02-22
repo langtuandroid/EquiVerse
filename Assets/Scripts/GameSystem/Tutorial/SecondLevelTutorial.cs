@@ -37,11 +37,4 @@ public class SecondLevelTutorial : MonoBehaviour
             hint.SetActive(false);
         }
     }
-
-    public void CloseFirstEnemyPopup()
-    {
-        Time.timeScale = 1;
-        screenOverlay.SetActive(false);
-        rayCaster.SetActive(true);
-    }
 }

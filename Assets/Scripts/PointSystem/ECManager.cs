@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using DG.Tweening;
 using TMPro;
-using Tutorial;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -24,9 +23,9 @@ namespace Managers {
         [Header("SceneTransition")]
         public Image transitionOverlay;
         public GameObject loadingScreen;
-        public GuidedTutorial guidedTutorialManager;
 
-        [Header("Sound")] public World1LevelSoundController soundController;
+        [Header("Sound")] 
+        public World1LevelSoundController soundController;
 
         private static int lowValuePoints = 20;
         private static int gooseEggPoints = 50;
@@ -121,7 +120,6 @@ namespace Managers {
             transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() => {
                 soundController.StopAudioEvent("Music");
                 soundController.StopAudioEvent("Ambience");
-                guidedTutorialManager.enabled = false;
                 StartCoroutine(LoadAsynchronously("NewCompanionScene"));
             })).SetUpdate(true);
         }

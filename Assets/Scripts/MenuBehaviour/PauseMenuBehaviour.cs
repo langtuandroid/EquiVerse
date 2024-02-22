@@ -1,6 +1,5 @@
 using System.Collections;
 using DG.Tweening;
-using Tutorial;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,9 +13,9 @@ namespace UI
         [Header("SceneTransition")]
         public Image transitionOverlay;
         public GameObject loadingScreen;
-        public GuidedTutorial guidedTutorialManager;
         
-        [Header("Sound")] public World1LevelSoundController soundController;
+        [Header("Sound")] 
+        public World1LevelSoundController soundController;
 
         void Start()
         {
@@ -64,7 +63,6 @@ namespace UI
             {
                 soundController.StopAudioEvent("Music");
                 soundController.StopAudioEvent("Ambience");
-                guidedTutorialManager.enabled = false;
                 StartCoroutine(LoadAsynchronously(0));
             }).SetUpdate(true);
         }

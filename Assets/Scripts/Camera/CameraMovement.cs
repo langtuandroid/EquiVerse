@@ -12,6 +12,7 @@ namespace Input
         private bool movedLeft = false, movedRight = false, movedUp = false, movedDown = false;
         public bool CameraLocked { get; set; }
         private new Camera camera;
+        private bool cameraStepCompleted = false;
 
         private void Start()
         {
@@ -20,11 +21,13 @@ namespace Input
 
         private void Update()
         {
-            print(CameraLocked);
             if (!CameraLocked)
             {
                 MoveCamera();
-                CheckCameraTutorial();
+                if (!cameraStepCompleted)
+                {
+                    CheckCameraTutorial(); 
+                }
             }
         }
 
@@ -81,6 +84,7 @@ namespace Input
             if (movedLeft && movedRight && movedUp && movedDown)
             {
                 TutorialManager.CompleteStep("Step_Camera");
+                cameraStepCompleted = true;
             }
         }
     }

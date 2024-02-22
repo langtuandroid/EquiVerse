@@ -68,7 +68,7 @@ namespace Spawners
                 
                 if (gameManager.secondLevelTutorialActivated)
                 {
-                    secondLevelTutorial.ShowMaxPlantUpgradeButton();
+                    //secondLevelTutorial.ShowMaxPlantUpgradeButton();
                 }
             }
             else

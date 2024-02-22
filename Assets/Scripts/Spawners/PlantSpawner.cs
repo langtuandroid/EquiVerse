@@ -28,8 +28,6 @@ namespace Spawners {
         public bool isTutorial;
         [ConditionalField("isTutorial")]
         public GameObject maxPlantPopUp;
-        [ConditionalField("isTutorial")]
-        public GameObject tutorialStep;
 
         private void Start() {
             mainCamera = Camera.main;
@@ -43,7 +41,7 @@ namespace Spawners {
                     GameObject spawnedPrefab = Instantiate(grassPrefab, point, Quaternion.identity);
                     spawnedPrefab.transform.DOScale(1f, 0.75f).SetEase(Ease.OutElastic);
                     ecManager.DecrementPoints(grassCost);
-                    tutorialStep.SetActive(false);
+                    TutorialManager.CompleteStep("Step_GrassSpawn2");
 
                     currentPlantCount++;
                     

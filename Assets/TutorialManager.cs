@@ -55,5 +55,6 @@ public class TutorialManager : MonoBehaviour {
         gameObject.SetActive(true);
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
         rectTransform?.DOScale(1, 0.5f).SetEase(Ease.OutExpo).From(Vector3.zero);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
     }
 }
