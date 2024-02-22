@@ -20,11 +20,6 @@ public class SecondLevelTutorial : MonoBehaviour
         gameUI.SetActive(false);
     }
 
-    public void ShowGameUI()
-    {
-        gameUI.SetActive(true);
-    }
-
     public void ShowMaxPlantUpgradeButton()
     {
         maxPlantUpgradeButton.SetActive(true);

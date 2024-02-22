@@ -22,36 +22,46 @@ public class TutorialManager : MonoBehaviour {
     }
     
     private static TutorialManager _instance;
-    public static void CompleteStep(string name) {
+    private static TutorialManager GetInstance() {
         if (_instance == null) {
             _instance = FindObjectOfType<TutorialManager>();
         }
-        if (_instance == null) {
+        if (_instance == null)
             throw new System.Exception("TutorialManager not found in scene while tutorial step was completed");
-        } else {
-            _instance._CompleteStep(name);
-        }
+
+        return _instance;
     }
 
-    private void _CompleteStep(string name) {
+    public static void CompleteStep(string name, bool autoNextStep) {
+        GetInstance()._CompleteStep(name, autoNextStep);
+    }
+
+    private void _CompleteStep(string name, bool autoNextStep) {
         if (steps[currentStepIndex].name.Equals(name, System.StringComparison.OrdinalIgnoreCase)) { //Step name is the same so we mark the step as completed
             if (!steps[currentStepIndex].completed) {
+                print("OnComplete!");
                 steps[currentStepIndex].onComplete.Invoke();
             }
             steps[currentStepIndex].completed = true;
 
-            if (currentStepIndex + 1 < steps.Count) {
+            if (autoNextStep && currentStepIndex + 1 < steps.Count) {
                 SetStep(currentStepIndex + 1);
             }
-        }
-        else
-        {
+        } else {
             throw new System.Exception($"TutorialManager complete step '{name}' called but step could not be found");
         }
     }
+    public static void GoToNextStep() {
+        GetInstance()._GoToNextStep();
+    }
+
+    private void _GoToNextStep() {
+        if (currentStepIndex + 1 < steps.Count) {
+            SetStep(currentStepIndex + 1);
+        }
+    }
     
-    public void PopInAnimation(GameObject gameObject)
-    {
+    public void PopInAnimation(GameObject gameObject) {
         gameObject.SetActive(true);
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
         rectTransform?.DOScale(1, 0.5f).SetEase(Ease.OutExpo).From(Vector3.zero);
