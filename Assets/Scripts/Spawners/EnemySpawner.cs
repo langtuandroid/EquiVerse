@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Managers;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -25,6 +26,8 @@ public class EnemySpawner : MonoBehaviour
     public List<EnemyPrefab> enemyPrefabs;
 
     private List<GameObject> activeEnemies = new List<GameObject>();
+
+    public TextMeshProUGUI newEnemyTypeWarningText;
 
     private void Start()
     {
@@ -50,12 +53,15 @@ public class EnemySpawner : MonoBehaviour
             {
                 if (enemyPrefab.enemyPrefab != null)
                 {
+                    newEnemyTypeWarningText.gameObject.SetActive(true);
+                    newEnemyTypeWarningText.text = "Alert! Portal fluctuations indicate a <b>Swamp Golem</b> is about to gatecrash the party!";
+                    
                     soundController.FadeAudioParameter("Music", "World1LevelMainMusicVolume", 0f, 1.2f);
                     soundController.StartAudioEvent("BattleMusic");
                     soundController.FadeAudioParameter("BattleMusic", "EnemyMusicVolume", 1f, 1.2f);
                     
                     yield return new WaitForSeconds(10f);
-                    
+                    newEnemyTypeWarningText.gameObject.SetActive(false);
                     portalOpeningParticleSystem.Play();
                     FMODUnity.RuntimeManager.PlayOneShot("event:/SpawnPortal/SpawnPortalCharge");
                     yield return new WaitForSeconds(3f);
