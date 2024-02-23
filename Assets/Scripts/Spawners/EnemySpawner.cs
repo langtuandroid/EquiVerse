@@ -50,11 +50,17 @@ public class EnemySpawner : MonoBehaviour
             {
                 if (enemyPrefab.enemyPrefab != null)
                 {
-                    portalOpeningParticleSystem.Play();
                     soundController.FadeAudioParameter("Music", "World1LevelMainMusicVolume", 0f, 1.2f);
+                    soundController.StartAudioEvent("BattleMusic");
+                    soundController.FadeAudioParameter("BattleMusic", "EnemyMusicVolume", 1f, 1.2f);
+                    
+                    yield return new WaitForSeconds(10f);
+                    
+                    portalOpeningParticleSystem.Play();
                     FMODUnity.RuntimeManager.PlayOneShot("event:/SpawnPortal/SpawnPortalCharge");
                     yield return new WaitForSeconds(3f);
-
+                    
+                    soundController.FadeAudioParameter("BattleMusic", "Suspense_Action_Transition", 1f, 1f);
                     GameObject newEnemy = Instantiate(enemyPrefab.enemyPrefab, enemySpawnLocation.position, Quaternion.identity);
                     activeEnemies.Add(newEnemy); // Add the newly instantiated enemy to the active list.
 
@@ -81,6 +87,7 @@ public class EnemySpawner : MonoBehaviour
         
         if (activeEnemies.Count == 0)
         {
+            soundController.FadeAudioParameter("BattleMusic", "EnemyMusicVolume", 0f, 1.2f);
             soundController.FadeAudioParameter("Music", "World1LevelMainMusicVolume", 1f, 1.2f);
         }
     }

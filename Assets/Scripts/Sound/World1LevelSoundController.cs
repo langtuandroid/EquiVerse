@@ -92,6 +92,12 @@ public class World1LevelSoundController : MonoBehaviour
         }
     }
 
+    public void StartAudioEventAndFadeIn(string eventName)
+    {
+        StartAudioEvent(eventName);
+        FadeAudioParameter(eventName, "World1LevelMainMusicVolume", 1.0f, 1f);
+    }
+
     public void StopAudioEvent(string eventName)
     {
         var audioEvent = audioEvents.Find(e => e.name == eventName);

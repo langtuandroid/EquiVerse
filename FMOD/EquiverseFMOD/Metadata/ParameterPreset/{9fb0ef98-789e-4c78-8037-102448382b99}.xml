@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{9fb0ef98-789e-4c78-8037-102448382b99}">
+		<property name="name">
+			<value>Suspense_Action_Transition</value>
+		</property>
+		<relationship name="folder">
+			<destination>{0885cd84-c8e3-4d9f-bb3b-e4dc7605ebca}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{8ab5ce74-a7f3-4d57-bc77-052b3ab83b42}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{8ab5ce74-a7f3-4d57-bc77-052b3ab83b42}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

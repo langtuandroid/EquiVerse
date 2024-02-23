@@ -318,6 +318,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1800
+--- !u!114 &-3570232996075553737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/World1LevelBattleMusic/EnemyMusicVolume
+  m_EditorClassIdentifier: 
+  Name: EnemyMusicVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 950852161
+    data2: 3164270251
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-2890108901729854323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,7 +368,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 120
+  Length: 62
 --- !u!114 &-2021504784237846920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,6 +424,35 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1100
+--- !u!114 &-1605043148709720071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/World1/World1LevelBattleMusic
+  m_EditorClassIdentifier: 
+  Path: event:/World1/World1LevelBattleMusic
+  Guid:
+    Data1: 302308046
+    Data2: 1207126371
+    Data3: -1449220457
+    Data4: 963137034
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 1246757685814810358}
+  - {fileID: -3570232996075553737}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 57808
 --- !u!114 &-951281588405915596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,12 +552,13 @@ MonoBehaviour:
   - {fileID: 1282502107793189100}
   - {fileID: -3578848029282896769}
   - {fileID: 7783967197243622096}
+  - {fileID: -1605043148709720071}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5304006631014352583}
   StringsBanks:
   - {fileID: 23253448088795587}
-  cacheTime: 638437039532173266
+  cacheTime: 638443051043178836
   cacheVersion: 131616
 --- !u!114 &23253448088795587
 MonoBehaviour:
@@ -521,10 +575,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
   Name: MainMenu.strings
   StudioPath: bank:/MainMenu.strings
-  lastModified: 638437039159772176
+  lastModified: 638442967010745832
   FileSizes:
   - Name: Desktop
-    Value: 2586
+    Value: 2732
   Exists: 1
 --- !u!114 &476426055693632330
 MonoBehaviour:
@@ -631,6 +685,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 570
+--- !u!114 &1246757685814810358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/World1LevelBattleMusic/Suspense_Action_Transition
+  m_EditorClassIdentifier: 
+  Name: Suspense_Action_Transition
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1170677907
+    data2: 3236443197
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &1274667539317285103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -755,7 +833,7 @@ MonoBehaviour:
   StudioPath: 
   Min: 0
   Max: 1
-  Default: 1
+  Default: 0
   ID:
     data1: 3383034797
     data2: 1994318767
@@ -802,10 +880,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 638437039532173266
+  lastModified: 638443051043178836
   FileSizes:
   - Name: Desktop
-    Value: 5743936
+    Value: 8519392
   Exists: 1
 --- !u!114 &4867247044173022020
 MonoBehaviour:
@@ -900,10 +978,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 638437039159762212
+  lastModified: 638442967010735832
   FileSizes:
   - Name: Desktop
-    Value: 2355616
+    Value: 2355776
   Exists: 1
 --- !u!114 &7382976632621169688
 MonoBehaviour:
@@ -958,7 +1036,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 14500
+  Length: 8045
 --- !u!114 &8126868510507412270
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{f22252d2-9bf6-4d14-adb5-5ce005453f8f}">
+		<property name="name">
+			<value>EnemyMusicVolume</value>
+		</property>
+		<relationship name="folder">
+			<destination>{0885cd84-c8e3-4d9f-bb3b-e4dc7605ebca}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{7fc2e630-bc50-4970-bbc8-86c6c3efcd72}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{7fc2e630-bc50-4970-bbc8-86c6c3efcd72}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

@@ -227,7 +227,6 @@ MonoBehaviour:
   endOfLevelCost: 150
   transitionOverlay: {fileID: 0}
   loadingScreen: {fileID: 0}
-  guidedTutorialManager: {fileID: 0}
   soundController: {fileID: 0}
 --- !u!1 &5300777628524437898
 GameObject:
@@ -458,7 +457,6 @@ MonoBehaviour:
   rabbitPrefab: {fileID: 1262440479064932, guid: 8d880e7275556104cbae14a0cb6975bd, type: 3}
   rabbitCost: 100
   spawnLocation: {fileID: 0}
-  isTutorial: 0
   gameOverPopUp: {fileID: 0}
   isSecondLevel: 0
   secondLevelTutorial: {fileID: 0}
@@ -473,7 +471,7 @@ GameObject:
   - component: {fileID: 655871950358959583}
   - component: {fileID: 1608422050236082110}
   m_Layer: 0
-  m_Name: TutorialManager2
+  m_Name: TutorialManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

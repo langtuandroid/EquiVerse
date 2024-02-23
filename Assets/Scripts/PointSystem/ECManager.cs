@@ -36,7 +36,7 @@ namespace Managers {
         private const float updateInterval = 0.01666667f;
         private const int speedFactor = 15; //Higher is slower
 
-        private bool finishLevelStepCompleted = false;
+        private bool finishLevelStepCompleted = true;
 
         private void Start()
         {
@@ -140,6 +140,11 @@ namespace Managers {
                 soundController.StopAudioEvent("Ambience");
                 StartCoroutine(LoadAsynchronously("NewCompanionScene"));
             })).SetUpdate(true);
+        }
+
+        public void FinishLevelStep(bool _finishLevelStepCompleted)
+        {
+            finishLevelStepCompleted = _finishLevelStepCompleted;
         }
 
         IEnumerator LoadAsynchronously(string sceneIndex) {
