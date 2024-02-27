@@ -41,7 +41,6 @@ namespace UpgradeSystem
                     ECManager.totalPoints -= currentUpgradeCost;
                     upgradeIndex++;
 
-                    // Check if upgradeIndex is still within bounds before accessing the array
                     if (upgradeIndex < upgradeAmount.Length) {
                         maxPlantUpgradeCostText.text = upgradeAmount[upgradeIndex].ToString();
                     } else {
@@ -49,7 +48,6 @@ namespace UpgradeSystem
                         maxPlantValueText.text = "MAX";
                         maxPlantCostField.SetActive(false);
                         maxPlantUpgradeButton.interactable = false;
-                        // You can choose to disable the upgrade button or handle it according to your game logic.
                     }
 
                     if (gameManager.secondLevelTutorialActivated && upgradeIndex == 1) {
@@ -62,7 +60,6 @@ namespace UpgradeSystem
                 }
             } else {
                 Debug.LogWarning("No more upgrades available.");
-                // You can choose to disable the upgrade button or handle it according to your game logic.
             }
         }
     }

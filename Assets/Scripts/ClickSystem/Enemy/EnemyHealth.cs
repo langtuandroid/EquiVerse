@@ -31,6 +31,7 @@ public class EnemyHealth : Clickable
     private void Die()
     {
         transform.DOScale(0, 0.2f).SetEase(Ease.OutQuint);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/World1/SwampGolem/Death");
         GameObject particlesInstance = Instantiate(deathParticles, gameObject.transform.position, Quaternion.identity);
         Instantiate(reward, gameObject.transform.position + new Vector3(0, 0.3f, 0), Quaternion.identity);
 

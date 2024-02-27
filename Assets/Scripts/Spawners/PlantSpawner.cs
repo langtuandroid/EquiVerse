@@ -37,6 +37,7 @@ namespace Spawners {
         public void ClickOnGround(Vector3 point) {
             if(!CanSpawnPlants) return;
             if (IsPointOnNavMesh(point) && ECManager.totalPoints >= grassCost) {
+                print(currentPlantCount);
                 if (currentPlantCount < maxPlants) {
                     GameObject spawnedPrefab = Instantiate(grassPrefab, point, Quaternion.identity);
                     spawnedPrefab.transform.DOScale(1f, 0.75f).SetEase(Ease.OutElastic);

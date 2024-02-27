@@ -64,9 +64,9 @@ public class EnemySpawner : MonoBehaviour
                     newEnemyTypeWarningText.gameObject.SetActive(false);
                     portalOpeningParticleSystem.Play();
                     FMODUnity.RuntimeManager.PlayOneShot("event:/SpawnPortal/SpawnPortalCharge");
-                    yield return new WaitForSeconds(3f);
-                    
-                    soundController.FadeAudioParameter("BattleMusic", "Suspense_Action_Transition", 1f, 1f);
+                    yield return new WaitForSeconds(5f);
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/World1/SwampGolem/Spawn");
+                    soundController.FadeAudioParameter("BattleMusic", "Suspense_Action_Transition", 1f, 0.5f);
                     GameObject newEnemy = Instantiate(enemyPrefab.enemyPrefab, enemySpawnLocation.position, Quaternion.identity);
                     activeEnemies.Add(newEnemy); // Add the newly instantiated enemy to the active list.
 
@@ -93,6 +93,7 @@ public class EnemySpawner : MonoBehaviour
         
         if (activeEnemies.Count == 0)
         {
+            soundController.FadeAudioParameter("BattleMusic", "Suspense_Action_Transition", 0f, 0.5f);
             soundController.FadeAudioParameter("BattleMusic", "EnemyMusicVolume", 0f, 1.2f);
             soundController.FadeAudioParameter("Music", "World1LevelMainMusicVolume", 1f, 1.2f);
         }

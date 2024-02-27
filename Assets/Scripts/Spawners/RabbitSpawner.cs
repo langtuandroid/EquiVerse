@@ -8,7 +8,7 @@ using Vector3 = UnityEngine.Vector3;
 
 namespace Spawners
 {
-    public class ObjectSpawner : MonoBehaviour
+    public class RabbitSpawner : MonoBehaviour
     {
         [Header("Managers")] 
         public GameManager gameManager;
@@ -31,10 +31,6 @@ namespace Spawners
         [ConditionalField("isTutorial")]
         public GameObject gameOverPopUp;
         
-        public bool isSecondLevel;
-        [ConditionalField("isSecondLevel")]
-        public SecondLevelTutorial secondLevelTutorial;
-
         private void Start()
         {
             spawnPosition = new Vector3(spawnLocation.transform.position.x/2,0.5f, spawnLocation.transform.position.z/2);

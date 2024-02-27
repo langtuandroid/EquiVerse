@@ -29,7 +29,7 @@ public class World1LevelSoundController : MonoBehaviour
     private void Start()
     {
         InitializeAudioEvents();
-        StartCoroutine(StartAfterDelay());
+        StartCoroutine(StartAmbienceAfterDelay());
     }
 
     private void InitializeAudioEvents()
@@ -49,7 +49,7 @@ public class World1LevelSoundController : MonoBehaviour
         }
     }
 
-    private IEnumerator StartAfterDelay()
+    private IEnumerator StartAmbienceAfterDelay()
     {
         yield return new WaitForSeconds(1f); // Adjust delay as needed
         StartAudioEvent("Ambience");
