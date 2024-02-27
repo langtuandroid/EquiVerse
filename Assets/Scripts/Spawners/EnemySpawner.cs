@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
+using DG.Tweening;
 
 [System.Serializable]
 public class EnemyPrefab
@@ -69,7 +70,7 @@ public class EnemySpawner : MonoBehaviour
                     soundController.FadeAudioParameter("BattleMusic", "Suspense_Action_Transition", 1f, 0.5f);
                     GameObject newEnemy = Instantiate(enemyPrefab.enemyPrefab, enemySpawnLocation.position, Quaternion.identity);
                     activeEnemies.Add(newEnemy); // Add the newly instantiated enemy to the active list.
-
+                    AnimateEnemySpawnIn(newEnemy, 0.5f);
                     portalOpeningParticleSystem.Stop();
 
                     float spawnDelay = Random.Range(enemyPrefab.minSpawnDelay, enemyPrefab.maxSpawnDelay);
@@ -81,6 +82,12 @@ public class EnemySpawner : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void AnimateEnemySpawnIn(GameObject enemy, float duration)
+    {
+        enemy.transform.localScale = Vector3.zero;
+        enemy.transform.DOScale(Vector3.one, duration).SetEase(Ease.OutBack);
     }
 
     public void RemoveEnemy(GameObject enemyToRemove)
