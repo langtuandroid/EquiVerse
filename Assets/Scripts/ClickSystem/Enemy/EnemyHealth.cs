@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,18 +10,29 @@ public class EnemyHealth : Clickable
     public int enemyHealth;
     public GameObject reward;
     public GameObject deathParticles;
-    
+    private Tween punchTween;
+
     public override void OnClick(Vector3 point)
     {
         GunUpgrade currentGunUpgrade = GunUpgradeManager.GetInstance().GetCurrentGunUpgrade();
         if (enemyHealth > currentGunUpgrade.gunDamage)
         {
+            if (punchTween != null && punchTween.IsActive())
+            {
+                punchTween.Complete(); // Complete the previous tween
+                punchTween = null; // Reset the tween reference
+            }
+
             enemyHealth -= currentGunUpgrade.gunDamage;
-            ParticleSystem particleSystem = Instantiate(currentGunUpgrade.gunParticles,point, Quaternion.identity);
+        
+            punchTween = transform.DOPunchScale(Vector3.one * 0.05f, 0.5f, 8, 1);
+
+            ParticleSystem particleSystem = Instantiate(currentGunUpgrade.gunParticles, point, Quaternion.identity);
             particleSystem.Play();
-            FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/Gun/Gun1Impact");
             GameObject gunParticleInstance = particleSystem.gameObject;
             Destroy(gunParticleInstance, 1f);
+
+            FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/Gun/Gun1Impact");
         }
         else
         {
