@@ -890,7 +890,7 @@ GameObject:
   - component: {fileID: 1241310328}
   - component: {fileID: 1241310327}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: HeaderText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -937,8 +937,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: You have unlocked a new companion!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e1b0ec1ad4045ad45a6c18649ee01dca, type: 2}
-  m_sharedMaterial: {fileID: -5554273155930248582, guid: e1b0ec1ad4045ad45a6c18649ee01dca, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
+  m_sharedMaterial: {fileID: -7110766763493709028, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -962,12 +962,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
+  m_fontSize: 64
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 32
-  m_fontSizeMax: 48
+  m_fontSizeMin: 48
+  m_fontSizeMax: 64
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7490196, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.8227806, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1335,8 +1335,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Click here to continue
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e1b0ec1ad4045ad45a6c18649ee01dca, type: 2}
-  m_sharedMaterial: {fileID: -5554273155930248582, guid: e1b0ec1ad4045ad45a6c18649ee01dca, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
+  m_sharedMaterial: {fileID: -7110766763493709028, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1360,12 +1360,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
+  m_fontSize: 48
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 32
-  m_fontSizeMax: 40
+  m_fontSizeMin: 40
+  m_fontSizeMax: 48
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1826,8 +1826,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: the goose
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b765bd3b4aaf6a44e8fef161dde1ed15, type: 2}
-  m_sharedMaterial: {fileID: -5425052263334318128, guid: b765bd3b4aaf6a44e8fef161dde1ed15, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
+  m_sharedMaterial: {fileID: -7110766763493709028, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2246,8 +2246,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Ferdinand
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b765bd3b4aaf6a44e8fef161dde1ed15, type: 2}
-  m_sharedMaterial: {fileID: -5425052263334318128, guid: b765bd3b4aaf6a44e8fef161dde1ed15, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
+  m_sharedMaterial: {fileID: -7110766763493709028, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2381,8 +2381,8 @@ MonoBehaviour:
   m_text: Ferdinand helps you a bit with your finances by laying a valuable egg every
     now and then.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e1b0ec1ad4045ad45a6c18649ee01dca, type: 2}
-  m_sharedMaterial: {fileID: -5554273155930248582, guid: e1b0ec1ad4045ad45a6c18649ee01dca, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
+  m_sharedMaterial: {fileID: -7110766763493709028, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2406,7 +2406,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.3
+  m_fontSize: 28.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
