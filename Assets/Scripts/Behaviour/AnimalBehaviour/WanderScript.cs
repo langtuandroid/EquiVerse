@@ -16,6 +16,7 @@ namespace Behaviour {
         [SerializeField] private float deathThreshold;
         [SerializeField] private Material hungryMaterial;
         [SerializeField] private ParticleSystem landingParticleSystem;
+        [SerializeField] private ParticleSystem rabbitGhostParticleSystem;
 
         private SkinnedMeshRenderer skinnedMeshRenderer;
         private NavMeshAgent agent;
@@ -242,9 +243,13 @@ namespace Behaviour {
 
         private IEnumerator DeathSequence() {
             death = true;
-            Destroy(gameObject, 2f);
+            Destroy(gameObject, 5f);
             animator.SetBool("isDead_0", true);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
+            if (!rabbitGhostParticleSystem.isPlaying)
+            {
+                rabbitGhostParticleSystem.Play();
+            }
             transform.DOScale(0, 0.5f).SetEase(Ease.OutBack);
         }
 

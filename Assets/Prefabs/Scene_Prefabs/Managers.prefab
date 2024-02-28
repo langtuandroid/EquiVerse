@@ -223,8 +223,8 @@ MonoBehaviour:
   totalPointsText: {fileID: 0}
   endOfLevelCostText: {fileID: 0}
   slider: {fileID: 0}
-  startingPoints: 140
-  endOfLevelCost: 150
+  startingPoints: 220
+  endOfLevelCost: 300
   transitionOverlay: {fileID: 0}
   loadingScreen: {fileID: 0}
   soundController: {fileID: 0}
@@ -366,6 +366,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5300777629598507567}
   - component: {fileID: 5300777629598507568}
+  - component: {fileID: 1478440835053496089}
   m_Layer: 0
   m_Name: PlantSpawner
   m_TagString: Untagged
@@ -409,6 +410,27 @@ MonoBehaviour:
   maxPlants: 2
   isTutorial: 0
   maxPlantPopUp: {fileID: 0}
+--- !u!114 &1478440835053496089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5300777629598507569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96b317e6833e384f857b7dde4a19ca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 5300777628840219943}
+  ecManager: {fileID: 5300777628413590958}
+  plantSpawner: {fileID: 5300777629598507568}
+  upgradeAmount: fa000000f4010000e8030000d0070000
+  maxPlantCostField: {fileID: 0}
+  maxPlantUpgradeButton: {fileID: 0}
+  maxPlantValueText: {fileID: 0}
+  maxPlantUpgradeCostText: {fileID: 0}
+  endOfLevelUpgrade: {fileID: 0}
 --- !u!1 &5300777629731829055
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,8 +480,6 @@ MonoBehaviour:
   rabbitCost: 100
   spawnLocation: {fileID: 0}
   gameOverPopUp: {fileID: 0}
-  isSecondLevel: 0
-  secondLevelTutorial: {fileID: 0}
 --- !u!1 &8084435105737532942
 GameObject:
   m_ObjectHideFlags: 0

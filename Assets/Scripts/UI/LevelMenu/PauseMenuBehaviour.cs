@@ -9,24 +9,29 @@ namespace UI
     public class PauseMenuBehaviour : MonoBehaviour
     {
         public GameObject pauseMenuUI;
-    
+        public Raycaster raycaster;
+
         [Header("SceneTransition")]
         public Image transitionOverlay;
         public GameObject loadingScreen;
-        
-        [Header("Sound")] 
+
+        [Header("Sound")]
         public World1LevelSoundController soundController;
 
-        void Start()
+        private Tween pauseMenuAnimationTween;
+
+        private bool isPaused = false;
+
+        private void Start()
         {
             pauseMenuUI.SetActive(false);
         }
-    
-        void Update()
+
+        private void Update()
         {
             if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
             {
-                if (IsGamePaused())
+                if (isPaused)
                 {
                     ResumeGame();
                 }
@@ -37,43 +42,43 @@ namespace UI
             }
         }
 
-        void PauseGame()
+        private void PauseGame()
         {
+            raycaster.gameObject.SetActive(false);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");   
+            isPaused = true;
             pauseMenuUI.SetActive(true);
-            Time.timeScale = 0f;
+            pauseMenuUI.transform.localScale = Vector3.zero;
+            pauseMenuAnimationTween = pauseMenuUI.transform.DOScale(Vector3.one, 0.5f)
+                .SetEase(Ease.OutExpo)
+                .OnComplete(() => Time.timeScale = 0f);
         }
 
         public void ResumeGame()
         {
-            pauseMenuUI.SetActive(false);
-
+            raycaster.gameObject.SetActive(true);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");   
+            isPaused = false;
             Time.timeScale = 1f;
-
+            pauseMenuAnimationTween = pauseMenuUI.transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.OutExpo)
+                .OnComplete(() => pauseMenuUI.SetActive(false));
         }
 
-        bool IsGamePaused()
-        {
-            return Time.timeScale == 0f;
-        }
-    
         public void BackToMainMenu()
         {
             ResumeGame();
-            transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete(() =>
-            {
-                soundController.StopAudioEvent("Music");
-                soundController.StopAudioEvent("Ambience");
-                StartCoroutine(LoadAsynchronously(0));
-            }).SetUpdate(true);
+            soundController.StopAudioEvent("Music");
+            soundController.StopAudioEvent("Ambience");
+            StartCoroutine(LoadAsynchronously(0));
         }
-    
-        IEnumerator LoadAsynchronously(int sceneIndex)
+
+        private IEnumerator LoadAsynchronously(int sceneIndex)
         {
             loadingScreen.SetActive(true);
+            transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).SetUpdate(true);
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Single);
             yield return operation;
             loadingScreen.SetActive(false);
         }
-
     }
 }

@@ -1,13 +1,8 @@
-using DG.Tweening;
-using Managers;
 using Spawners;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
 public class Raycaster : MonoBehaviour {
+    
     PlantSpawner plantSpawner;
 
     private void Start() {
@@ -19,8 +14,7 @@ public class Raycaster : MonoBehaviour {
             Ray ray = Camera.main.ScreenPointToRay(UnityEngine.Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity)) {
                 if (IsClickable(hit.collider.gameObject, hit.point)) {
-                    // Handle the case when a collectable object is clicked (e.g., play a sound or show a message)
-                } else { //We didn't click on an objects. Maybe on the ground?
+                } else {
                     plantSpawner.ClickOnGround(hit.point);
                 }
             }
