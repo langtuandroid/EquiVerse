@@ -83,7 +83,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{64411b99-c6fb-4d42-9cf9-e5ca2f98662a}">
 		<property name="volume">
-			<value>-7</value>
+			<value>-10</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{d1169d3e-dc56-4006-8a18-2c885f78f4ed}</destination>
@@ -109,7 +109,7 @@
 			<value>0.062000000000000013</value>
 		</property>
 		<property name="pitch">
-			<value>20</value>
+			<value>15.5</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{193a1953-7fc7-4df6-8ab2-ef9a8c12ef08}</destination>
@@ -145,9 +145,6 @@
 		<property name="timelockedOffset">
 			<value>0.073020211222477427</value>
 		</property>
-		<property name="pitch">
-			<value>5</value>
-		</property>
 		<relationship name="audioFile">
 			<destination>{322e3fed-5ef8-4453-a7e3-930dfee620fd}</destination>
 		</relationship>
@@ -181,7 +178,7 @@
 			<value>pitch</value>
 		</property>
 		<property name="amount">
-			<value>1</value>
+			<value>1.5</value>
 		</property>
 	</object>
 	<object class="FadeCurve" id="{a836a8ac-056c-49c7-83c1-1a039e8d0a28}">

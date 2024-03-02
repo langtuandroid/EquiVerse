@@ -69,6 +69,7 @@ namespace UI
             ResumeGame();
             soundController.StopAudioEvent("Music");
             soundController.StopAudioEvent("Ambience");
+            soundController.StopAudioEvent("BattleMusic");
             StartCoroutine(LoadAsynchronously(0));
         }
 
