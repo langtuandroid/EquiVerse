@@ -17,6 +17,7 @@ public class CompanionRevealer : MonoBehaviour
 
     private void Start()
     {
+        giftButton.interactable = true;
         shakeTween = DOVirtual.DelayedCall(2.5f, () =>
             {
                 giftButton.transform.DOShakePosition(2.5f, new Vector3(8, 8, 0), 10, 90, false, true);
@@ -28,6 +29,7 @@ public class CompanionRevealer : MonoBehaviour
     public void RevealCompanion()
     {
         shakeTween.Kill();
+        giftButton.interactable = false;
         soundController.NewCompanionMusicVolumeFade(0, 2f);
         FMODUnity.RuntimeManager.PlayOneShot("event:/NewCompanionScene/RevealDrumroll");
         giftButton.transform.DOScale(0, 2.5f)

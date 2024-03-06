@@ -248,6 +248,7 @@ namespace Behaviour {
             yield return new WaitForSeconds(2f);
             if (!rabbitGhostParticleSystem.isPlaying)
             {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/RabbitDeath");
                 rabbitGhostParticleSystem.Play();
             }
             transform.DOScale(0, 0.5f).SetEase(Ease.OutBack);

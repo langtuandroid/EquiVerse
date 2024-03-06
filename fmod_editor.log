@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000001A86A6A7C68 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 000002304BC74F18 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -19,10 +19,597 @@
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] SystemI::createSound                     : filename = FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] Thread::initThread                       : Init FMOD nonblocking thread (0). Affinity: 0x4000000000000003, Priority: 0xFFFF7FFC, Stack Size: 114688, Semaphore: Yes, Sleep Time: 0, Looping: Yes.
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000230BAAF4C68, queue head = 00000230BB70BEA8, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000230BAAF4C68
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank', mode=0x02010082
+[LOG] SystemI::createSound                     :     filename = FMOD/EquiverseFMOD/Build/Desktop/Level.bank : mode 02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 2346336
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 9440
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 00000230BAAF14B8, queue head = 00000230BB70BEA8, queue count = 0
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000230CEC4A7F0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='WindAmbient', format=5, channels=2, frequency=48000, lengthbytes=1609216, lengthpcm=6052608, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.117859.
+[LOG] Thread::initThread                       :     Init FMOD file thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFC, Stack Size: 65536, Semaphore: No, Sleep Time: 10, Looping: Yes.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000230BAAF4C68
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000230BAAF14B8
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/EquiverseFMOD/Build/Desktop/Level.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000230CEC4A6B0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='burghrecords__birds-singing-forest-scotland(chosic.com)', format=5, channels=2, frequency=48000, lengthbytes=439008, lengthpcm=1589916, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.199921.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000230BAAF14B8
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 2346336
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 9440
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000007E8767EFE8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF82D623F70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF82D623F30
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF82D624050
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF82D624110
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000230ACECE278
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='zapsplat_multimedia_ui_window_maximize_short_swipe_whoosh_001_71500', format=5, channels=1, frequency=48000, lengthbytes=1472, lengthpcm=8064, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.693420.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 2346336
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 9440
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000007E8767EFE8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF82D623F70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF82D623F30
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF82D624050
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF82D624110
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000230ACECE068
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='zapsplat_multimedia_button_click_fast_short_004_79288', format=5, channels=2, frequency=48000, lengthbytes=1504, lengthpcm=3456, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.684509.
+[LOG] SystemI::createSound                     : filename = FMOD/EquiverseFMOD/Build/Desktop/Level.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000230DD72A8E8, queue head = 00000230BB70BEA8, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000230DD72A8E8
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/EquiverseFMOD/Build/Desktop/Level.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000230C790E4F0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSound                     :     filename = FMOD/EquiverseFMOD/Build/Desktop/Level.bank : mode 02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 00000230DD72A078, queue head = 00000230BB70BEA8, queue count = 0
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Farm(chosic.com)', format=5, channels=2, frequency=48000, lengthbytes=2856640, lengthpcm=9890586, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.990967.
+[LOG] SystemI::createSoundInternal             :     Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 2346336
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 9440
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000007E8767EFE8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->useropen           = 00007FF82D623F70
+[LOG] SystemI::createSoundInternal             :     exinfo->userclose          = 00007FF82D623F30
+[LOG] SystemI::createSoundInternal             :     exinfo->userread           = 00007FF82D624050
+[LOG] SystemI::createSoundInternal             :     exinfo->userseek           = 00007FF82D624110
+[LOG] SystemI::createSoundInternal             :     exinfo->fileuserdata       = 00000230ACED2058
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            :     register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             :     Sample 0/1: name='zapsplat_multimedia_click_003_19369', format=5, channels=2, frequency=48000, lengthbytes=1696, lengthpcm=5760, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.704651.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000230DD72A8E8
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000230DD72A078
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/EquiverseFMOD/Build/Desktop/Level.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000230C790DC30
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Farm(chosic.com)', format=5, channels=2, frequency=48000, lengthbytes=2856640, lengthpcm=9890586, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.990967.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000230DD72A078
+[LOG] SoundI::release                          : Farm(chosic.com) (00000230DD72A8E8)
+[LOG] SoundI::release                          :     Farm(chosic.com) (0000023142CBEAE8)
+[LOG] SoundI::release                          :     Farm(chosic.com) (00000230BAAF2598)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000007E8767EFE8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF82D623F70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF82D623F30
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF82D624050
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF82D624110
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000233EE2C3738
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Fantasy_Game_Magic_Organic_Poof_Buff_Hit_2', format=5, channels=2, frequency=48000, lengthbytes=30208, lengthpcm=120000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.889252.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000007E8767EFE8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF82D623F70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF82D623F30
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF82D624050
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF82D624110
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000233EE2C3738
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='zapsplat_multimedia_game_sound_coins_lose_drop_010_73745', format=5, channels=2, frequency=48000, lengthbytes=22912, lengthpcm=80640, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.527222.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000007E8767EFE8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF82D623F70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF82D623F30
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF82D624050
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF82D624110
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000233EE2C3738
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='zapsplat_sound_design_whoosh_flames_fire_cinematic_007_62046', format=5, channels=2, frequency=48000, lengthbytes=34240, lengthpcm=141696, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.703857.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000007E8767EFE8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF82D623F70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF82D623F30
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF82D624050
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF82D624110
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000233EE2C3738
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='zapsplat_multimedia_game_sound_chime_riff_playful_bright_003_97631', format=5, channels=2, frequency=48000, lengthbytes=40640, lengthpcm=144000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.696716.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000007E8767EFE8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF82D623F70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF82D623F30
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF82D624050
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF82D624110
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000233EE2C4398
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='zapsplat_foley_hay_pile_handful_pick_up_001_65731', format=5, channels=2, frequency=48000, lengthbytes=10112, lengthpcm=46080, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.595459.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000007E8767EFE8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF82D623F70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF82D623F30
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF82D624050
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF82D624110
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000233EE2C4398
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='zapsplat_foley_footstep_single_walking_hay_005_65718', format=5, channels=2, frequency=48000, lengthbytes=5792, lengthpcm=26496, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.652252.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000007E8767EFE8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF82D623F70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF82D623F30
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF82D624050
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF82D624110
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000233EE2C3108
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Fantasy_Game_Item_Collect_Magic_F', format=5, channels=2, frequency=48000, lengthbytes=36000, lengthpcm=120278, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.891022.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000007E8767EFE8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF82D623F70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF82D623F30
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF82D624050
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF82D624110
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000233EE2C3108
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Fantasy_Game_Action_Book_Page_Turn_1', format=5, channels=2, frequency=48000, lengthbytes=9152, lengthpcm=38999, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.877197.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000007E8767EFE8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF82D623F70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF82D623F30
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF82D624050
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF82D624110
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000233E7318528
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='RabbitEat2', format=5, channels=1, frequency=48000, lengthbytes=11232, lengthpcm=46957, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.614410.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000007E8767EFE8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF82D623F70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF82D623F30
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF82D624050
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF82D624110
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000233E7318528
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='RabbitEat1', format=5, channels=1, frequency=48000, lengthbytes=13312, lengthpcm=57085, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.672607.
+[LOG] SystemI::createSound                     : filename = FMOD/EquiverseFMOD/Build/Desktop/Level.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000230AF936D48, queue head = 00000230BB70BEA8, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000230AF936D48
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/EquiverseFMOD/Build/Desktop/Level.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000230C790DD70
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='burghrecords__birds-singing-forest-scotland(chosic.com)', format=5, channels=2, frequency=48000, lengthbytes=439008, lengthpcm=1589916, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.199921.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000230AF936D48
+[LOG] SoundI::release                          : burghrecords__birds-singing-forest-scotland(chosic.com) (00000230BAAF14B8)
+[LOG] SoundI::release                          :     burghrecords__birds-singing-forest-scotland(chosic.com) (00000230DD9C1C98)
+[LOG] SoundI::release                          :     burghrecords__birds-singing-forest-scotland(chosic.com) (00000233EE1745E8)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000007E8767EFE8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF82D623F70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF82D623F30
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF82D624050
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF82D624110
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000233E7318528
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='zapsplat_sound_design_hit_thud_hard_chime_warm_negative_sounding_73629', format=5, channels=2, frequency=48000, lengthbytes=109728, lengthpcm=471168, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.708313.
+[LOG] SystemI::createSound                     : filename = FMOD/EquiverseFMOD/Build/Desktop/Level.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000230AF9369E8, queue head = 00000230BB70BEA8, queue count = 0
+[LOG] SystemI::createSound                     : filename = FMOD/EquiverseFMOD/Build/Desktop/Level.bank : mode 02010082
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000230AF9369E8
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/EquiverseFMOD/Build/Desktop/Level.bank', mode=0x02010082
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 00000230AF9364D8, queue head = 00000230BB70BEA8, queue count = 0
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000230C790E3B0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 3600
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='zapsplat_musical_heavenly_choir_swell_001_107283', format=5, channels=2, frequency=48000, lengthbytes=111584, lengthpcm=482688, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.707764.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000230AF9369E8
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000230AF9364D8
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/EquiverseFMOD/Build/Desktop/Level.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000230C790E130
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='julien_matthey_bell_church_ring_6_o_clock', format=5, channels=2, frequency=48000, lengthbytes=130496, lengthpcm=536659, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.891022.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000230AF9364D8
+[LOG] SystemI::createSound                     : filename = FMOD/EquiverseFMOD/Build/Desktop/Level.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000233EE316478, queue head = 00000230BB70BEA8, queue count = 0
+[LOG] SystemI::createSound                     : filename = FMOD/EquiverseFMOD/Build/Desktop/Level.bank : mode 02010082
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000233EE316478
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/EquiverseFMOD/Build/Desktop/Level.bank', mode=0x02010082
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 00000233EE315398, queue head = 00000230BB70BEA8, queue count = 0
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000233FE96E0D0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 3600
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='zapsplat_musical_heavenly_choir_swell_001_107283', format=5, channels=2, frequency=48000, lengthbytes=111584, lengthpcm=482688, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.707764.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000233EE316478
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000233EE315398
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/EquiverseFMOD/Build/Desktop/Level.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000233FE96DA90
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='julien_matthey_bell_church_ring_6_o_clock', format=5, channels=2, frequency=48000, lengthbytes=130496, lengthpcm=536659, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.891022.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000233EE315398
+[LOG] SoundI::release                          : julien_matthey_bell_church_ring_6_o_clock (00000230AF9364D8)
+[LOG] SoundI::release                          :     julien_matthey_bell_church_ring_6_o_clock (00000230DD9BFDB8)
+[LOG] SoundI::release                          :     julien_matthey_bell_church_ring_6_o_clock (00000233EE173D78)
+[LOG] SoundI::release                          : zapsplat_musical_heavenly_choir_swell_001_107283 (00000230AF9369E8)
+[LOG] SoundI::release                          :     zapsplat_musical_heavenly_choir_swell_001_107283 (00000230DD9C0AB8)
+[LOG] SoundI::release                          :     zapsplat_musical_heavenly_choir_swell_001_107283 (00000233EE174CA8)
+[LOG] SoundI::release                          : julien_matthey_bell_church_ring_6_o_clock (00000233EE315398)
+[LOG] SoundI::release                          :     julien_matthey_bell_church_ring_6_o_clock (0000023142CBE608)
+[LOG] SoundI::release                          :     julien_matthey_bell_church_ring_6_o_clock (00000230BAAF0DF8)
+[LOG] SystemI::createSound                     : filename = FMOD/EquiverseFMOD/Build/Desktop/Level.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000230BA0E4AF8, queue head = 00000230BB70BEA8, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000230BA0E4AF8
+[LOG] SystemI::createSound                     : filename = FMOD/EquiverseFMOD/Build/Desktop/Level.bank : mode 02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/EquiverseFMOD/Build/Desktop/Level.bank', mode=0x02010082
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 00000230B0142708, queue head = 00000230BB70BEA8, queue count = 0
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000230A9646030
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 3600
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='zapsplat_musical_heavenly_choir_swell_001_107283', format=5, channels=2, frequency=48000, lengthbytes=111584, lengthpcm=482688, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.707764.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000230BA0E4AF8
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000230B0142708
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/EquiverseFMOD/Build/Desktop/Level.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000230A96462B0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='julien_matthey_bell_church_ring_6_o_clock', format=5, channels=2, frequency=48000, lengthbytes=130496, lengthpcm=536659, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.891022.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000230B0142708
+[LOG] SoundI::release                          : zapsplat_musical_heavenly_choir_swell_001_107283 (00000233EE316478)
+[LOG] SoundI::release                          :     zapsplat_musical_heavenly_choir_swell_001_107283 (0000023142CBE128)
+[LOG] SoundI::release                          :     zapsplat_musical_heavenly_choir_swell_001_107283 (00000230BAAF1668)
+[LOG] SoundI::release                          : julien_matthey_bell_church_ring_6_o_clock (00000230B0142708)
+[LOG] SoundI::release                          :     julien_matthey_bell_church_ring_6_o_clock (00000230AB7968F8)
+[LOG] SoundI::release                          :     julien_matthey_bell_church_ring_6_o_clock (00000233EE312968)
+[LOG] SystemI::createSound                     : filename = FMOD/EquiverseFMOD/Build/Desktop/Level.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000230BAAF5688, queue head = 00000230BB70BEA8, queue count = 0
+[LOG] SystemI::createSound                     : filename = FMOD/EquiverseFMOD/Build/Desktop/Level.bank : mode 02010082
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000230BAAF5688
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/EquiverseFMOD/Build/Desktop/Level.bank', mode=0x02010082
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 00000230BAAF5328, queue head = 00000230BB70BEA8, queue count = 0
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000230CEC4A6B0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 3600
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='zapsplat_musical_heavenly_choir_swell_001_107283', format=5, channels=2, frequency=48000, lengthbytes=111584, lengthpcm=482688, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.707764.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000230BAAF5688
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000230BAAF5328
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/EquiverseFMOD/Build/Desktop/Level.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000230B01424D0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='julien_matthey_bell_church_ring_6_o_clock', format=5, channels=2, frequency=48000, lengthbytes=130496, lengthpcm=536659, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.891022.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000230BAAF5328
+[LOG] SoundI::release                          : zapsplat_musical_heavenly_choir_swell_001_107283 (00000230BA0E4AF8)
+[LOG] SoundI::release                          :     zapsplat_musical_heavenly_choir_swell_001_107283 (00000230AB796758)
+[LOG] SoundI::release                          :     zapsplat_musical_heavenly_choir_swell_001_107283 (00000233EE314618)
+[LOG] SoundI::release                          : julien_matthey_bell_church_ring_6_o_clock (00000230BAAF5328)
+[LOG] SoundI::release                          :     julien_matthey_bell_church_ring_6_o_clock (00000230DD753B88)
+[LOG] SoundI::release                          :     julien_matthey_bell_church_ring_6_o_clock (00000233EE315398)
+[LOG] SystemI::createSound                     : filename = FMOD/EquiverseFMOD/Build/Desktop/Level.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000233E77439C8, queue head = 00000230BB70BEA8, queue count = 0
+[LOG] SystemI::createSound                     : filename = FMOD/EquiverseFMOD/Build/Desktop/Level.bank : mode 02010082
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000233E77439C8
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/EquiverseFMOD/Build/Desktop/Level.bank', mode=0x02010082
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 00000233E7747838, queue head = 00000230BB70BEA8, queue count = 0
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000230CEBCCCB0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 3600
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='zapsplat_musical_heavenly_choir_swell_001_107283', format=5, channels=2, frequency=48000, lengthbytes=111584, lengthpcm=482688, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.707764.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000233E77439C8
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000233E7747838
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/EquiverseFMOD/Build/Desktop/Level.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000230CEBCCA30
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='julien_matthey_bell_church_ring_6_o_clock', format=5, channels=2, frequency=48000, lengthbytes=130496, lengthpcm=536659, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.891022.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000233E7747838
+[LOG] SoundI::release                          : zapsplat_musical_heavenly_choir_swell_001_107283 (00000230BAAF5688)
+[LOG] SoundI::release                          :     zapsplat_musical_heavenly_choir_swell_001_107283 (00000230AB796418)
+[LOG] SoundI::release                          :     zapsplat_musical_heavenly_choir_swell_001_107283 (00000233EE316478)
+[LOG] SoundI::release                          : julien_matthey_bell_church_ring_6_o_clock (00000233E7747838)
+[LOG] SoundI::release                          :     julien_matthey_bell_church_ring_6_o_clock (00000230BAA94BF8)
+[LOG] SoundI::release                          :     julien_matthey_bell_church_ring_6_o_clock (00000230BA0E4948)
+[LOG] SoundI::release                          : zapsplat_musical_heavenly_choir_swell_001_107283 (00000233E77439C8)
+[LOG] SoundI::release                          :     zapsplat_musical_heavenly_choir_swell_001_107283 (00000230BAA94D98)
+[LOG] SoundI::release                          :     zapsplat_musical_heavenly_choir_swell_001_107283 (00000230BA0E4CA8)
+[LOG] SystemI::createSound                     : filename = FMOD/EquiverseFMOD/Build/Desktop/Level.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000233E7743ED8, queue head = 00000230BB70BEA8, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000233E7743ED8
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/EquiverseFMOD/Build/Desktop/Level.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000230CEBCCF30
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='burghrecords__birds-singing-forest-scotland(chosic.com)', format=5, channels=2, frequency=48000, lengthbytes=439008, lengthpcm=1589916, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.199921.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000233E7743ED8
+[LOG] SoundI::release                          : burghrecords__birds-singing-forest-scotland(chosic.com) (00000230AF936D48)
+[LOG] SoundI::release                          :     burghrecords__birds-singing-forest-scotland(chosic.com) (00000230AE490A78)
+[LOG] SoundI::release                          :     burghrecords__birds-singing-forest-scotland(chosic.com) (00000233EE315038)
+[LOG] SystemI::createSound                     : filename = FMOD/EquiverseFMOD/Build/Desktop/Level.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000233E7748768, queue head = 00000230BB70BEA8, queue count = 0
+[LOG] SystemI::createSound                     : filename = FMOD/EquiverseFMOD/Build/Desktop/Level.bank : mode 02010082
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000233E7748768
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/EquiverseFMOD/Build/Desktop/Level.bank', mode=0x02010082
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 00000233E77423D8, queue head = 00000230BB70BEA8, queue count = 0
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000230CEBCC8F0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 3600
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='zapsplat_musical_heavenly_choir_swell_001_107283', format=5, channels=2, frequency=48000, lengthbytes=111584, lengthpcm=482688, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.707764.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000233E7748768
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000233E77423D8
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/EquiverseFMOD/Build/Desktop/Level.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9032096
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 38176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000230CEBCCDF0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='julien_matthey_bell_church_ring_6_o_clock', format=5, channels=2, frequency=48000, lengthbytes=130496, lengthpcm=536659, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.891022.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000233E77423D8
+[LOG] SoundI::release                          : julien_matthey_bell_church_ring_6_o_clock (00000233E77423D8)
+[LOG] SoundI::release                          :     julien_matthey_bell_church_ring_6_o_clock (00000230DD9C00F8)
+[LOG] SoundI::release                          :     julien_matthey_bell_church_ring_6_o_clock (00000233EE173358)
+[LOG] SoundI::release                          : zapsplat_musical_heavenly_choir_swell_001_107283 (00000233E7748768)
+[LOG] SoundI::release                          :     zapsplat_musical_heavenly_choir_swell_001_107283 (00000230DD9BFDB8)
+[LOG] SoundI::release                          :     zapsplat_musical_heavenly_choir_swell_001_107283 (00000233EE174948)
+[LOG] SoundI::release                          :  (00000230AFD2B538)
+[LOG] SoundI::release                          :     zapsplat_multimedia_ui_window_maximize_short_swipe_whoosh_001_71500 (00000230DD9C2B38)
+[LOG] SoundI::release                          :  (00000230CB3BD128)
+[LOG] SoundI::release                          :     zapsplat_foley_footstep_single_walking_hay_005_65718 (00000231440225E8)
+[LOG] SoundI::release                          :  (00000230CB3BD858)
+[LOG] SoundI::release                          :     zapsplat_foley_hay_pile_handful_pick_up_001_65731 (0000023144022928)
+[LOG] SoundI::release                          :  (00000230AFD26798)
+[LOG] SoundI::release                          :     zapsplat_multimedia_button_click_fast_short_004_79288 (00000230DD9BF8D8)
+[LOG] SoundI::release                          :  (00000230AFD28458)
+[LOG] SoundI::release                          :     zapsplat_multimedia_click_003_19369 (00000230DD9C1FD8)
+[LOG] SoundI::release                          :  (00000230B513BC98)
+[LOG] SoundI::release                          :     zapsplat_multimedia_game_sound_coins_lose_drop_010_73745 (0000023144022108)
+[LOG] SoundI::release                          :  (00000230CB3BD6E8)
+[LOG] SoundI::release                          :     zapsplat_multimedia_game_sound_chime_riff_playful_bright_003_97631 (0000023144022788)
+[LOG] SoundI::release                          : burghrecords__birds-singing-forest-scotland(chosic.com) (00000233E7743ED8)
+[LOG] SoundI::release                          :     burghrecords__birds-singing-forest-scotland(chosic.com) (00000230DD9BFA78)
+[LOG] SoundI::release                          :     burghrecords__birds-singing-forest-scotland(chosic.com) (00000233EE1745E8)
+[LOG] SoundI::release                          : WindAmbient (00000230BAAF4C68)
+[LOG] SoundI::release                          :     WindAmbient (00000230DD9BD378)
+[LOG] SoundI::release                          :     WindAmbient (00000233EE173868)
+[LOG] SoundI::release                          : Farm(chosic.com) (00000230DD72A078)
+[LOG] SoundI::release                          :     Farm(chosic.com) (0000023142CBE468)
+[LOG] SoundI::release                          :     Farm(chosic.com) (00000230BAAF0C48)
+[LOG] SoundI::release                          :  (00000230B513BB28)
+[LOG] SoundI::release                          :     Fantasy_Game_Magic_Organic_Poof_Buff_Hit_2 (00000230CEEAAAE8)
+[LOG] SoundI::release                          :  (00000230CB3BD578)
+[LOG] SoundI::release                          :     zapsplat_sound_design_whoosh_flames_fire_cinematic_007_62046 (0000023144022C68)
+[LOG] SoundI::release                          :  (0000023142F604B8)
+[LOG] SoundI::release                          :     RabbitEat1 (000002342D500738)
+[LOG] SoundI::release                          :  (0000023142F5FEF8)
+[LOG] SoundI::release                          :     RabbitEat2 (00000230CF6868C8)
+[LOG] SoundI::release                          :  (00000230CB3BD9C8)
+[LOG] SoundI::release                          :     Fantasy_Game_Action_Book_Page_Turn_1 (0000023144143B18)
+[LOG] SoundI::release                          :  (00000230CB3BD408)
+[LOG] SoundI::release                          :     Fantasy_Game_Item_Collect_Magic_F (0000023144143FF8)
+[LOG] SoundI::release                          :  (0000023142F60068)
+[LOG] SoundI::release                          :     zapsplat_sound_design_hit_thud_hard_chime_warm_negative_sounding_73629 (000002342D500C18)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
 [LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
 [LOG] SystemI::close                           : Closed.

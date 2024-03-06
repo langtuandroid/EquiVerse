@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using Managers;
@@ -20,12 +21,16 @@ namespace MainMenu
 
         public GameObject continueAdventureObject;
         public TextMeshProUGUI continueAdventureButton;
-        
+
+        public GameObject logoCanvas;
+        public GameObject mainMenuCanvas;
         [Header("Sound")] 
         public MainMenuSoundController mainMenuSoundController;
         
         private void Start()
         {
+            mainMenuCanvas.SetActive(false);
+            logoCanvas.SetActive(true);
             mainMenuSoundController.FadeMainMenuVolume(0f, 3f);
 
             if (GameManager.firstTimePlaying)
@@ -39,6 +44,18 @@ namespace MainMenu
             {
                 continueAdventureObject.SetActive(true);
                 continueAdventureButton.text = "Continue adventure (" + GameManager.WORLD_INDEX.ToString() + "-" + GameManager.LEVEL_INDEX.ToString() + ")";
+            }
+        }
+
+        private void Update()
+        {
+            if (logoCanvas.activeInHierarchy)
+            {
+                if (UnityEngine.Input.anyKeyDown)
+                { 
+                    logoCanvas.SetActive(false);
+                    mainMenuCanvas.SetActive(true); 
+                }
             }
         }
 
@@ -87,6 +104,16 @@ namespace MainMenu
                 optionsMenu.SetActive(false);
                 mainMenu.SetActive(true);
             }
+        }
+
+        public void ScaleUpText(Button button)
+        {
+            button.transform.DOScale(Vector3.one * 1.3f, 0.5f).SetEase(Ease.OutCubic);
+        }
+
+        public void ScaleDownText(Button button)
+        {
+            button.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutCubic);
         }
     }
 }

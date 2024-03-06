@@ -584,12 +584,13 @@ MonoBehaviour:
   - {fileID: 7299616907702014823}
   - {fileID: 2472274604699577894}
   - {fileID: -5018250098232119722}
+  - {fileID: 3639749690015997694}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5304006631014352583}
   StringsBanks:
   - {fileID: 23253448088795587}
-  cacheTime: 638448016574149199
+  cacheTime: 638453449348016622
   cacheVersion: 131616
 --- !u!114 &23253448088795587
 MonoBehaviour:
@@ -606,10 +607,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
   Name: MainMenu.strings
   StudioPath: bank:/MainMenu.strings
-  lastModified: 638444769687115334
+  lastModified: 638453433257176986
   FileSizes:
   - Name: Desktop
-    Value: 2884
+    Value: 2932
   Exists: 1
 --- !u!114 &476426055693632330
 MonoBehaviour:
@@ -950,6 +951,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2750
+--- !u!114 &3639749690015997694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Animals/RabbitDeath
+  m_EditorClassIdentifier: 
+  Path: event:/Animals/RabbitDeath
+  Guid:
+    Data1: -1468910627
+    Data2: 1240880545
+    Data3: -1337599346
+    Data4: 297021932
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2700
 --- !u!114 &3956151758206991042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -965,10 +993,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 638448016574149199
+  lastModified: 638453449348016622
   FileSizes:
   - Name: Desktop
-    Value: 8715072
+    Value: 9070272
   Exists: 1
 --- !u!114 &4867247044173022020
 MonoBehaviour:
@@ -1063,7 +1091,7 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 638444769687095331
+  lastModified: 638453433257156984
   FileSizes:
   - Name: Desktop
     Value: 2355776
