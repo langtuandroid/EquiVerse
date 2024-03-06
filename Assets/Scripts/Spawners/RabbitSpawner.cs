@@ -38,14 +38,18 @@ namespace Spawners
 
         private void FixedUpdate()
         {
+            print(amountOfRabbits);
             if (ECManager.totalPoints < rabbitCost)
             {
                 FindAliveRabbits();
-                if (amountOfRabbits <= 0 && gameManager.tutorialActivated)
+                if (amountOfRabbits <= 0)
                 {
-                    ShowGameOverPopUp();
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/UI/PopupWarning");
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
+                    if (gameManager.tutorialActivated)
+                    {
+                        ShowGameOverPopUp();
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/PopupWarning");
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
+                    }
                 }
                 return;
             }
