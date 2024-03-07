@@ -31,6 +31,7 @@ namespace UI
         {
             if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
             {
+                pauseMenuAnimationTween.Complete();
                 if (isPaused)
                 {
                     ResumeGame();

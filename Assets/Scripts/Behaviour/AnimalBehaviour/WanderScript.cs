@@ -33,7 +33,7 @@ namespace Behaviour {
         private float currentHunger = 0f;
         private bool death = false;
 
-        private const float LEAF_SPAWN_DISTANCE_THRESHOLD = 0.2f;
+        private const float PLANT_REACHED_THRESHOLD = 0.3f;
         private const float SMOOTHING_FACTOR = 5f;
         private const float ROTATION_SPEED = 360f;
 
@@ -149,7 +149,6 @@ namespace Behaviour {
         }
 
         private void FindClosestPlant() {
-            //GameObject[] plants = GameObject.FindGameObjectsWithTag("Plant");
             List<GameObject> plants = EntityManager.Get().GetPlants();
 
             if (plants.Count == 0) {
@@ -169,7 +168,7 @@ namespace Behaviour {
         }
 
         private void HandleClosestPlant(Transform closestPlant) {
-            if (Vector3.Distance(transform.position, closestPlant.position) > LEAF_SPAWN_DISTANCE_THRESHOLD) {
+            if (Vector3.Distance(transform.position, closestPlant.position) >= PLANT_REACHED_THRESHOLD) {
                 MoveTowardsPlant(closestPlant);
             } else {
                 EatPlant(closestPlant);
@@ -183,7 +182,6 @@ namespace Behaviour {
             animator.SetBool("isRunning", true);
         }
 
-        //Changed
         private void EatPlant(Transform closestPlant) {
             Plant plant = closestPlant.GetComponent<Plant>(); //
             plant.Consume(); //
@@ -204,7 +202,6 @@ namespace Behaviour {
             HandleWanderAndIdle();
         }
 
-        //Changed
         private Transform FindClosestPlantTransform(List<GameObject> plants) {
             Transform closestPlant = null;
             float closestDistance = Mathf.Infinity;

@@ -38,7 +38,6 @@ namespace Spawners
 
         private void FixedUpdate()
         {
-            print(amountOfRabbits);
             if (ECManager.totalPoints < rabbitCost)
             {
                 FindAliveRabbits();

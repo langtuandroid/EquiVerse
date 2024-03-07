@@ -8,8 +8,6 @@ using UnityEngine.AI;
 
 namespace Spawners {
     public class PlantSpawner : MonoBehaviour {
-        private Camera mainCamera;
-
         [Header("Managers")]
         public GameManager gameManager;
         public ECManager ecManager;
@@ -20,8 +18,8 @@ namespace Spawners {
         [Header("GrassCost")] public int grassCost = 20;
 
         [Header("Maximum plants")]
-        public int maxPlants = 2; // Maximum number of allowed plants
-        private int currentPlantCount; // Track the number of plants in the scene
+        public int maxPlants = 2; 
+        private int currentPlantCount;
         public bool CanSpawnPlants { get; set; }
 
         [Header("GuidedTutorialSetup")]
@@ -30,7 +28,6 @@ namespace Spawners {
         public GameObject maxPlantPopUp;
 
         private void Start() {
-            mainCamera = Camera.main;
             currentPlantCount = 0;
         }
 
@@ -41,7 +38,7 @@ namespace Spawners {
                     GameObject spawnedPrefab = Instantiate(grassPrefab, point, Quaternion.identity);
                     spawnedPrefab.transform.DOScale(1f, 0.75f).SetEase(Ease.OutElastic);
                     ecManager.DecrementPoints(grassCost);
-                    TutorialManager.CompleteStep("Step_GrassSpawn2");
+                    TutorialManager.CompleteStepAndContinueToNextStep("Step_GrassSpawn2");
 
                     currentPlantCount++;
                     

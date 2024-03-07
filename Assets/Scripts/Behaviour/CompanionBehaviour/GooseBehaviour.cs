@@ -13,8 +13,8 @@ namespace Behaviour
         public float secondIdleTriggerMinWait = 5f;
         public float secondIdleTriggerMaxWait = 15f;
 
-        public float eggDropMinWait = 15f;
-        public float eggDropMaxWait = 45f;
+        public float eggDropMinWait = 45f;
+        public float eggDropMaxWait = 60f;
         
         
 

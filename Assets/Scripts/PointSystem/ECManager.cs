@@ -29,8 +29,8 @@ namespace Managers {
         public World1LevelSoundController soundController;
 
         private static int lowValuePoints = 20;
-        private static int gooseEggPoints = 50;
-        private static int crystalShardPoints = 50;
+        private static int gooseEggPoints = 200;
+        private static int crystalShardPoints = 200;
         
         private DateTime lastVisualUpdate = DateTime.Now;
         private const float updateInterval = 0.01666667f;

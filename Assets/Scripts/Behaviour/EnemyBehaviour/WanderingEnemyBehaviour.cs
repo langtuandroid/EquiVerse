@@ -15,6 +15,7 @@ public class WanderingEnemyBehaviour : MonoBehaviour
     public float attackDistance = 1.5f;
 
     private bool attacking = false;
+    private bool attackCooldown = false;
 
     private void Start()
     {
@@ -24,6 +25,7 @@ public class WanderingEnemyBehaviour : MonoBehaviour
         if (navMeshAgent == null)
         {
             enabled = false;
+            return;
         }
 
         navMeshAgent.speed = speed;
@@ -32,12 +34,11 @@ public class WanderingEnemyBehaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!attacking && (Vector3.Distance(transform.position, targetPosition) < attackDistance || !navMeshAgent.hasPath))
+        if (!attacking && !attackCooldown && (Vector3.Distance(transform.position, targetPosition) < attackDistance || !navMeshAgent.hasPath))
         {
             SetRandomDestination();
+            MoveAndRotateTowardsDestination();
         }
-
-        MoveAndRotateTowardsDestination();
     }
 
     private void SetRandomDestination()
@@ -45,10 +46,11 @@ public class WanderingEnemyBehaviour : MonoBehaviour
         Vector3 randomDirection = Random.insideUnitSphere * 10f;
         randomDirection += transform.position;
         NavMeshHit hit;
-        NavMesh.SamplePosition(randomDirection, out hit, 10f, 1);
-        targetPosition = hit.position;
-
-        navMeshAgent.SetDestination(targetPosition);
+        if (NavMesh.SamplePosition(randomDirection, out hit, 10f, 1))
+        {
+            targetPosition = hit.position;
+            navMeshAgent.SetDestination(targetPosition);
+        }
     }
 
     private void MoveAndRotateTowardsDestination()
@@ -62,7 +64,7 @@ public class WanderingEnemyBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!attacking && other.CompareTag("Rabbit"))
+        if (!attacking && !attackCooldown && other.CompareTag("Rabbit"))
         {
             StartCoroutine(AttackRabbit(other));
         }
@@ -71,18 +73,31 @@ public class WanderingEnemyBehaviour : MonoBehaviour
     private IEnumerator AttackRabbit(Collider other)
     {
         attacking = true;
+        attackCooldown = true;
+
         navMeshAgent.isStopped = true;
         FMODUnity.RuntimeManager.PlayOneShot("event:/World1/SwampGolem/Attack");
         wanderingEnemyFXController.attacking = true;
         animator.SetTrigger("AttackTrigger");
+
         yield return new WaitForSeconds(1f);
+
         if (other != null && other.gameObject.activeSelf)
         {
-            other.GetComponent<WanderScript>()?.Die();
+            WanderScript wanderScript = other.GetComponent<WanderScript>();
+            if (wanderScript != null)
+            {
+                wanderScript.Die();
+            }
         }
+
         yield return new WaitForSeconds(2f);
+
         wanderingEnemyFXController.attacking = false;
         navMeshAgent.isStopped = false;
         attacking = false;
+
+        yield return new WaitForSeconds(5f);
+        attackCooldown = false; // Reset attack cooldown after 5 seconds
     }
 }
