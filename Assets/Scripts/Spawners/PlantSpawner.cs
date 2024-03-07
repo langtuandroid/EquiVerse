@@ -18,7 +18,7 @@ namespace Spawners {
         [Header("GrassCost")] public int grassCost = 20;
 
         [Header("Maximum plants")]
-        public int maxPlants = 2; 
+        public int maxPlants = 2;
         private int currentPlantCount;
         public bool CanSpawnPlants { get; set; }
 
@@ -32,7 +32,8 @@ namespace Spawners {
         }
 
         public void ClickOnGround(Vector3 point) {
-            if(!CanSpawnPlants) return;
+            if (!CanSpawnPlants) return;
+            point = new Vector3(point.x, 0.5f, point.z); //Hackerman fix for plants spawning too high. Should work until there's a level where the ground has a different height.
             if (IsPointOnNavMesh(point) && ECManager.totalPoints >= grassCost) {
                 if (currentPlantCount < maxPlants) {
                     GameObject spawnedPrefab = Instantiate(grassPrefab, point, Quaternion.identity);
@@ -41,7 +42,7 @@ namespace Spawners {
                     TutorialManager.CompleteStepAndContinueToNextStep("Step_GrassSpawn2");
 
                     currentPlantCount++;
-                    
+
                     FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/GrassPlacement");
                 } else if (!maxPlantPopUp.activeInHierarchy && gameManager.tutorialActivated) {
                     maxPlantPopUp.SetActive(true);
@@ -62,7 +63,7 @@ namespace Spawners {
                 currentPlantCount--;
             }
         }
-        
+
         private void PopInAnimation(GameObject gameObject) {
             RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
 
