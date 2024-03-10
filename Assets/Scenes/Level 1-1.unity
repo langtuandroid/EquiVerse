@@ -1585,7 +1585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1281900917433884204, guid: 228006cb1b674504786775f3e83fe722, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2102.7957
+      value: -2304.2173
       objectReference: {fileID: 0}
     - target: {fileID: 1281900917521877111, guid: 228006cb1b674504786775f3e83fe722, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1723,6 +1723,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1281900917638508737, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1281900917707181321, guid: 228006cb1b674504786775f3e83fe722, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1817,6 +1821,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -100
       objectReference: {fileID: 0}
+    - target: {fileID: 1281900917916569766, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_text
+      value: For now, only two plants can be grown at a time.
+      objectReference: {fileID: 0}
     - target: {fileID: 1281900917916569767, guid: 228006cb1b674504786775f3e83fe722, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -1837,9 +1845,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1281900917987784929, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_text
+      value: "Uh oh\n\nIt looks like you have no rabbits left and you also have no
+        Leaf points left to get more. \n\nBecause it is the first level, you get
+        some Leaf points to try again! \n\nGood luck!"
+      objectReference: {fileID: 0}
     - target: {fileID: 1281900918012445572, guid: 228006cb1b674504786775f3e83fe722, type: 3}
       propertyPath: m_text
-      value: 'Let''s bring our first animal into the equiverse!
+      value: 'Bring your first animal into the equiverse!
 
         <?ActivateButton>'
       objectReference: {fileID: 0}
@@ -2002,6 +2016,22 @@ PrefabInstance:
     - target: {fileID: 1281900918058058736, guid: 228006cb1b674504786775f3e83fe722, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900918116517408, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900918116517408, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900918116517408, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900918116517408, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1281900918116517439, guid: 228006cb1b674504786775f3e83fe722, type: 3}
       propertyPath: m_Interactable
@@ -2173,9 +2203,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1281900918492336259, guid: 228006cb1b674504786775f3e83fe722, type: 3}
       propertyPath: m_text
-      value: 'These are your total Leaf points!
+      value: 'Your so-called Leaf points
+
+        Spend them wisely!
 
         <?ActivateButton>'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900918492336259, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_fontSize
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900918492336259, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7110766763493709028, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
+    - target: {fileID: 1281900918492336259, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900918492336260, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900918492336260, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900918492336260, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281900918492336260, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1281900918560142162, guid: 228006cb1b674504786775f3e83fe722, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
