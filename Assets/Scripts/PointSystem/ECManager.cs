@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using DG.Tweening;
+using MyBox;
 using TMPro;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
@@ -14,8 +15,11 @@ namespace Managers {
         private Color originalColor;
         public TextMeshProUGUI totalPointsText;
         public TextMeshProUGUI endOfLevelCostText;
-        public Slider slider;
         public static int totalPoints, visualPoints;
+        public GameObject[] locks;
+        private int lockIndex = 0;
+        public Button endOfLevelButton;
+        private Tween lockTween;
         
         [Header("LevelValues")]
         public int startingPoints;
@@ -81,13 +85,8 @@ namespace Managers {
         public void BuyEndOfLevel() {
             if (totalPoints >= endOfLevelCost) {
                 FMODUnity.RuntimeManager.PlayOneShot("event:/UI/Buy");
-                    
-                if ((int)slider.value == (int)slider.maxValue) {
-                    LevelCompleted();
-                } else {
-                    DecrementPoints(endOfLevelCost);
-                    slider.value += 1;
-                }
+                DecrementPoints(endOfLevelCost);
+                RemoveLock();
             }
             else
             {
@@ -128,8 +127,9 @@ namespace Managers {
             totalPoints -= amount;
         }
         
-        //maybe find a different place for this logic
-        private void LevelCompleted() {
+        private void LevelCompleted()
+        {
+            endOfLevelButton.interactable = false;
             FMODUnity.RuntimeManager.PlayOneShot("event:/UI/CompleteLevel");
             
             soundController.FadeAudioParameter("Music", "World1LevelMainMusicVolume", 0f, 1.2f);
@@ -163,5 +163,30 @@ namespace Managers {
                     totalPointsBackground.color = originalColor;
                 });
         }
+
+        private void RemoveLock()
+        {
+            lockTween.Complete();
+            if (lockIndex < locks.Length)
+            {
+                print(locks.Length);
+                FMODUnity.RuntimeManager.PlayOneShot("event:/UI/Unlock");
+                lockTween = locks[lockIndex].transform.DOScale(0f, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
+                {
+                    locks[lockIndex].SetActive(false);
+                    if (lockIndex == locks.Length - 1)
+                    {
+                        LevelCompleted();
+                    }
+                    else
+                    {
+                        lockIndex++; 
+                    }
+                });
+            }
+        }
+
+
+
     }
 }

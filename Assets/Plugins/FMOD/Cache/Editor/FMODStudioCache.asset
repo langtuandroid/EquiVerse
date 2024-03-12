@@ -585,12 +585,13 @@ MonoBehaviour:
   - {fileID: 2472274604699577894}
   - {fileID: -5018250098232119722}
   - {fileID: 3639749690015997694}
+  - {fileID: 6904060466005424949}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5304006631014352583}
   StringsBanks:
   - {fileID: 23253448088795587}
-  cacheTime: 638454102416807126
+  cacheTime: 638458510398666007
   cacheVersion: 131616
 --- !u!114 &23253448088795587
 MonoBehaviour:
@@ -607,10 +608,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
   Name: MainMenu.strings
   StudioPath: bank:/MainMenu.strings
-  lastModified: 638453433257176986
+  lastModified: 638458509149964348
   FileSizes:
   - Name: Desktop
-    Value: 2932
+    Value: 2968
   Exists: 1
 --- !u!114 &476426055693632330
 MonoBehaviour:
@@ -993,10 +994,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 638453449348016622
+  lastModified: 638458510398666007
   FileSizes:
   - Name: Desktop
-    Value: 9070272
+    Value: 9087552
   Exists: 1
 --- !u!114 &4867247044173022020
 MonoBehaviour:
@@ -1091,11 +1092,38 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 638453433257156984
+  lastModified: 638458509149944328
   FileSizes:
   - Name: Desktop
     Value: 2355776
   Exists: 1
+--- !u!114 &6904060466005424949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/Unlock
+  m_EditorClassIdentifier: 
+  Path: event:/UI/Unlock
+  Guid:
+    Data1: 470866265
+    Data2: 1239750059
+    Data3: -439920750
+    Data4: -450810328
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
 --- !u!114 &7299616907702014823
 MonoBehaviour:
   m_ObjectHideFlags: 0
