@@ -8,7 +8,7 @@ public class OptionsMenu : MonoBehaviour
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown qualityDropdown;
     public TMP_Dropdown screenModeDropdown;
-    public TMP_Dropdown frameRateDropdown;
+    //public TMP_Dropdown frameRateDropdown;
 
     private List<Resolution> filteredResolutions;
     private Resolution[] resolutions;
@@ -19,15 +19,14 @@ public class OptionsMenu : MonoBehaviour
     {
         PopulateQualityDropdown();
         PopulateResolutionDropdown();
-        PopulateScreenModeDropdown();
-        PopulateFrameRateDropdown();
+        PopulateScreenModeDropdown(); 
+        //PopulateFrameRateDropdown();
 
         screenModeDropdown.onValueChanged.AddListener(OnScreenModeChanged);
         resolutionDropdown.onValueChanged.AddListener(OnResolutionChanged);
         qualityDropdown.onValueChanged.AddListener(OnQualityChanged);
-        frameRateDropdown.onValueChanged.AddListener(OnFrameRateChanged);
+        //frameRateDropdown.onValueChanged.AddListener(OnFrameRateChanged);
 
-        // Set the default resolution to the current resolution
         SetDefaultResolution();
     }
 
@@ -96,22 +95,21 @@ public class OptionsMenu : MonoBehaviour
         SetDropdownValueBasedOnCurrentScreenMode();
     }
 
-    void PopulateFrameRateDropdown()
-    {
-        frameRateDropdown.ClearOptions();
-
-        List<string> frameRateOptions = new List<string>
-        {
-            "30 FPS",
-            "60 FPS",
-            "120 FPS"
-            // Add more options as needed
-        };
-
-        frameRateDropdown.AddOptions(frameRateOptions);
-        frameRateDropdown.value = frameRateOptions.IndexOf($"{Application.targetFrameRate} FPS");
-        frameRateDropdown.RefreshShownValue();
-    }
+    // void PopulateFrameRateDropdown()
+    // {
+    //     frameRateDropdown.ClearOptions();
+    //
+    //     List<string> frameRateOptions = new List<string>
+    //     {
+    //         "30 FPS",
+    //         "60 FPS",
+    //         "120 FPS"
+    //     };
+    //
+    //     frameRateDropdown.AddOptions(frameRateOptions);
+    //     frameRateDropdown.value = frameRateOptions.IndexOf($"{Application.targetFrameRate} FPS");
+    //     frameRateDropdown.RefreshShownValue();
+    // }
 
     void OnScreenModeChanged(int index)
     {
@@ -160,24 +158,24 @@ public class OptionsMenu : MonoBehaviour
         QualitySettings.SetQualityLevel(index);
     }
 
-    void OnFrameRateChanged(int index)
-    {
-        switch (index)
-        {
-            case 0:
-                Application.targetFrameRate = 30;
-                break;
-            case 1:
-                Application.targetFrameRate = 60;
-                break;
-            case 2:
-                Application.targetFrameRate = 120;
-                break;
-            // Add more options as needed
-            default:
-                break;
-        }
-    }
+    // void OnFrameRateChanged(int index)
+    // {
+    //     switch (index)
+    //     {
+    //         case 0:
+    //             Application.targetFrameRate = 30;
+    //             break;
+    //         case 1:
+    //             Application.targetFrameRate = 60;
+    //             break;
+    //         case 2:
+    //             Application.targetFrameRate = 120;
+    //             break;
+    //         // Add more options as needed
+    //         default:
+    //             break;
+    //     }
+    // }
 
     int FindCurrentResolutionIndex()
     {
