@@ -31,13 +31,14 @@ namespace UI
         {
             if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
             {
-                pauseMenuAnimationTween.Complete();
                 if (isPaused)
                 {
+                    pauseMenuAnimationTween.Complete();
                     ResumeGame();
                 }
                 else
                 {
+                    pauseMenuAnimationTween.Complete();
                     PauseGame();
                 }
             }
@@ -50,9 +51,8 @@ namespace UI
             isPaused = true;
             pauseMenuUI.SetActive(true);
             pauseMenuUI.transform.localScale = Vector3.zero;
-            pauseMenuAnimationTween = pauseMenuUI.transform.DOScale(Vector3.one, 0.5f)
-                .SetEase(Ease.OutExpo)
-                .OnComplete(() => Time.timeScale = 0f);
+            Time.timeScale = 0f;
+            pauseMenuAnimationTween = pauseMenuUI.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutExpo).SetUpdate(true);
         }
 
         public void ResumeGame()
@@ -61,8 +61,7 @@ namespace UI
             FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");   
             isPaused = false;
             Time.timeScale = 1f;
-            pauseMenuAnimationTween = pauseMenuUI.transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.OutExpo)
-                .OnComplete(() => pauseMenuUI.SetActive(false));
+            pauseMenuAnimationTween = pauseMenuUI.transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.OutExpo).OnComplete(() => pauseMenuUI.SetActive(false));
         }
 
         public void BackToMainMenu()
