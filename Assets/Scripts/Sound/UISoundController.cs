@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UISoundController : MonoBehaviour
 {
@@ -9,9 +10,12 @@ public class UISoundController : MonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/ButtonClick");
     }
 
-    public void PlayButtonHoverSound()
+    public void PlayButtonHoverSound(Button button)
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/ButtonHover");
+        if (button.interactable)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/UI/ButtonHover");
+        }
     }
 
     public void PlayOpeningUIElementSound()

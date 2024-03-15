@@ -644,12 +644,12 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1291068861}
-          m_TargetAssemblyTypeName: UISoundManager, Assembly-CSharp
+          m_TargetAssemblyTypeName: UISoundController, Assembly-CSharp
           m_MethodName: PlayButtonHoverSound
-          m_Mode: 1
+          m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgument: {fileID: 548855279}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -721,12 +721,12 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1291068861}
-          m_TargetAssemblyTypeName: UISoundManager, Assembly-CSharp
+          m_TargetAssemblyTypeName: UISoundController, Assembly-CSharp
           m_MethodName: PlayButtonHoverSound
-          m_Mode: 1
+          m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgument: {fileID: 746334771}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -866,6 +866,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8559642371466152226, guid: 228006cb1b674504786775f3e83fe722, type: 3}
   m_PrefabInstance: {fileID: 1291068859}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1144511170 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1096075827484858002, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+  m_PrefabInstance: {fileID: 1291068859}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144511168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1144511174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -884,12 +895,12 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1291068861}
-          m_TargetAssemblyTypeName: UISoundManager, Assembly-CSharp
+          m_TargetAssemblyTypeName: UISoundController, Assembly-CSharp
           m_MethodName: PlayButtonHoverSound
-          m_Mode: 1
+          m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgument: {fileID: 1144511170}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -2515,18 +2526,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 228006cb1b674504786775f3e83fe722, type: 3}
---- !u!1 &1291068860 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1281900918142861427, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+--- !u!114 &1291068861 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6519513830956080994, guid: 228006cb1b674504786775f3e83fe722, type: 3}
   m_PrefabInstance: {fileID: 1291068859}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1291068861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1291068860}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74c0e0b72936cde4385d1bd3acc5cc6c, type: 3}
@@ -2555,12 +2560,12 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1291068861}
-          m_TargetAssemblyTypeName: UISoundManager, Assembly-CSharp
+          m_TargetAssemblyTypeName: UISoundController, Assembly-CSharp
           m_MethodName: PlayButtonHoverSound
-          m_Mode: 1
+          m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgument: {fileID: 1291068885}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -2589,12 +2594,12 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1291068861}
-          m_TargetAssemblyTypeName: UISoundManager, Assembly-CSharp
+          m_TargetAssemblyTypeName: UISoundController, Assembly-CSharp
           m_MethodName: PlayButtonHoverSound
-          m_Mode: 1
+          m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgument: {fileID: 1291068881}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -2668,6 +2673,28 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1291068881 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1281900916759965346, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+  m_PrefabInstance: {fileID: 1291068859}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291068864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1291068885 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1281900918560142162, guid: 228006cb1b674504786775f3e83fe722, type: 3}
+  m_PrefabInstance: {fileID: 1291068859}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291068862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1293069097 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1281900916548846574, guid: 228006cb1b674504786775f3e83fe722, type: 3}
@@ -2702,12 +2729,12 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1291068861}
-          m_TargetAssemblyTypeName: UISoundManager, Assembly-CSharp
+          m_TargetAssemblyTypeName: UISoundController, Assembly-CSharp
           m_MethodName: PlayButtonHoverSound
-          m_Mode: 1
+          m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgument: {fileID: 1293069099}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -2873,12 +2900,12 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1291068861}
-          m_TargetAssemblyTypeName: UISoundManager, Assembly-CSharp
+          m_TargetAssemblyTypeName: UISoundController, Assembly-CSharp
           m_MethodName: PlayButtonHoverSound
-          m_Mode: 1
+          m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgument: {fileID: 1574248234}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -2929,12 +2956,12 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1291068861}
-          m_TargetAssemblyTypeName: UISoundManager, Assembly-CSharp
+          m_TargetAssemblyTypeName: UISoundController, Assembly-CSharp
           m_MethodName: PlayButtonHoverSound
-          m_Mode: 1
+          m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgument: {fileID: 1667729204}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -3182,12 +3209,12 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1291068861}
-          m_TargetAssemblyTypeName: UISoundManager, Assembly-CSharp
+          m_TargetAssemblyTypeName: UISoundController, Assembly-CSharp
           m_MethodName: PlayButtonHoverSound
-          m_Mode: 1
+          m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgument: {fileID: 1985595418}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
