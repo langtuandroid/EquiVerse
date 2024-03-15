@@ -8,6 +8,7 @@ namespace UI
 {
     public class PauseMenuBehaviour : MonoBehaviour
     {
+        public GraphicRaycaster graphicRaycaster;
         public GameObject pauseMenuUI;
         public Raycaster raycaster;
 
@@ -46,6 +47,7 @@ namespace UI
 
         private void PauseGame()
         {
+            graphicRaycaster.enabled = false;
             raycaster.gameObject.SetActive(false);
             FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");   
             isPaused = true;
@@ -57,6 +59,7 @@ namespace UI
 
         public void ResumeGame()
         {
+            graphicRaycaster.enabled = true;
             raycaster.gameObject.SetActive(true);
             FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");   
             isPaused = false;
