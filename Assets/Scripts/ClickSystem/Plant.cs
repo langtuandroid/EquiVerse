@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Plant : MonoBehaviour {
-    GameObject huntedBy = null;
+    private bool canBeConsumed = true;
 
     void Start() {
         EntityManager.Get().AddPlant(gameObject);
@@ -15,15 +15,12 @@ public class Plant : MonoBehaviour {
         EntityManager.Get().RemovePlant(gameObject);
     }
 
-    public bool CanBeHunted(GameObject huntingObject) {
-        return huntedBy == huntingObject || huntedBy == null;
-    }
-
-    public void SetHuntedBy(GameObject huntingObject) { 
-        huntedBy = huntingObject;
+    public bool CanBeConsumed() {
+        return canBeConsumed;
     }
 
     public void Consume() {
+        canBeConsumed = false;
         gameObject.transform.DOScale(0, 0.6f).SetEase(Ease.OutBack);
         Destroy(gameObject, 0.6f);
         FindObjectOfType<PlantSpawner>().RemovePlant();

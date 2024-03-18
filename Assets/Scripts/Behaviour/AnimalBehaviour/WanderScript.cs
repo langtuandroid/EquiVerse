@@ -176,7 +176,6 @@ namespace Behaviour {
         }
 
         private void MoveTowardsPlant(Transform closestPlant) {
-            closestPlant.GetComponent<Plant>().SetHuntedBy(gameObject);
             agent.speed = 1.3f;
             agent.SetDestination(closestPlant.position);
             animator.SetBool("isRunning", true);
@@ -210,7 +209,7 @@ namespace Behaviour {
                 Plant plantObj = plant.GetComponent<Plant>(); //
                 float distance = Vector3.Distance(transform.position, plant.transform.position); //
 
-                if (plantObj.CanBeHunted(gameObject) && distance < closestDistance) {
+                if (plantObj.CanBeConsumed() && distance < closestDistance) {
                     closestDistance = distance;
                     closestPlant = plant.transform;
                 }
