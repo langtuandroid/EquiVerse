@@ -222,7 +222,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 0.27058825}
+      maxColor: {r: 1, g: 0.7490196, b: 0, a: 0.27058825}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4886,10 +4886,10 @@ GameObject:
   - component: {fileID: 5471576739273999025}
   - component: {fileID: 5471056834958484049}
   - component: {fileID: 66476198574707680}
-  - component: {fileID: -4641580931070596871}
+  - component: {fileID: -6076787490994708556}
   m_Layer: 8
-  m_Name: LowValueLeaf
-  m_TagString: LowValue
+  m_Name: HighValueLeaf
+  m_TagString: HighValue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5064,7 +5064,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
+      maxColor: {r: 1, g: 0.7490196, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 0.51724136, b: 0, a: 1}
@@ -9643,7 +9643,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 58a457b1b335bc840b331de2434aedeb, type: 2}
+  - {fileID: 2100000, guid: 65ff3abfe4b17fb458de1b128029f4ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9702,7 +9702,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.49
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-4641580931070596871
+--- !u!114 &-6076787490994708556
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9711,10 +9711,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5271623836368792421}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68bca8e658976d84892293f1f14e9499, type: 3}
+  m_Script: {fileID: 11500000, guid: 620c652f14d191a468cbd1a427c8d822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleEffectPrefab: {fileID: 1698068915230344, guid: 087f8c4a3f051b146b24ad2d080a7ace, type: 3}
+  particleEffectPrefab: {fileID: 1698068915230344, guid: e4d83375072044246b4cb38c228c3d11, type: 3}
 --- !u!1 &5272571386971802187
 GameObject:
   m_ObjectHideFlags: 0
@@ -9937,7 +9937,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 0.7490196, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -11076,8 +11076,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.754717, g: 0.754717, b: 0.754717, a: 0}
-        key1: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
+        key0: {r: 1, g: 0.7490196, b: 0, a: 0}
+        key1: {r: 1, g: 0.7490196, b: 0, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0.575}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}

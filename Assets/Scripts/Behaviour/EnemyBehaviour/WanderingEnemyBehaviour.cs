@@ -84,10 +84,10 @@ public class WanderingEnemyBehaviour : MonoBehaviour
 
         if (other != null && other.gameObject.activeSelf)
         {
-            WanderScript wanderScript = other.GetComponent<WanderScript>();
-            if (wanderScript != null)
+            RabbitBehaviour rabbitBehaviour = other.GetComponent<RabbitBehaviour>();
+            if (rabbitBehaviour != null)
             {
-                wanderScript.Die();
+                rabbitBehaviour.Die();
             }
         }
 

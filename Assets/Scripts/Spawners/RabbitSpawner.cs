@@ -62,7 +62,7 @@ namespace Spawners
                 ecManager.DecrementPoints(rabbitCost);
                 GameObject rabbitInstance = Instantiate(rabbitPrefab, spawnPosition, Quaternion.identity);
                 rabbitInstance.transform.localScale = Vector3.zero;
-                rabbitInstance.transform.DOScale(Vector3.one, 0.25f).SetEase(Ease.OutBack);
+                rabbitInstance.transform.DOScale(Vector3.one * 0.5f, 0.25f).SetEase(Ease.OutBack);
                 FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/SpawnAnimal");
             }
             else

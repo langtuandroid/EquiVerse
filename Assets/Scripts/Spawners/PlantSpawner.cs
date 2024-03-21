@@ -15,7 +15,7 @@ namespace Spawners {
         public LayerMask groundLayer;
         public GameObject grassPrefab;
 
-        [Header("GrassCost")] public int grassCost = 20;
+        [Header("GrassCost")] public int grassCost;
 
         [Header("Maximum plants")]
         public int maxPlants = 2;

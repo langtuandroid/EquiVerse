@@ -6,7 +6,9 @@ using UnityEngine;
 using UnityEngine.AI;
 
 namespace Behaviour {
-    public class WanderScript : MonoBehaviour {
+    public class RabbitBehaviour : MonoBehaviour
+    {
+        [SerializeField] private GrowthManager growthManager;
         [SerializeField] private float wanderRadius;
         [SerializeField] private Vector2 wanderTimerRange = new Vector2(3f, 7f);
         [SerializeField] private Vector2 idleDurationRange = new Vector2(2f, 5f);
@@ -188,6 +190,7 @@ namespace Behaviour {
             animator.SetBool("isRunning", false);
             FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/RabbitEat");
             currentHunger -= 100f;
+            growthManager.ProgressGrowth();
             LeafPointsSpawner.spawnLeafPoints = true;
             isHungry = false;
             inWarningState = false;

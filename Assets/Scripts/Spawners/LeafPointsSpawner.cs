@@ -6,7 +6,8 @@ namespace Spawners
 {
     public class LeafPointsSpawner : MonoBehaviour
     {
-        public GameObject leafPointPrefab;
+        public GrowthManager growthManager;
+        public GameObject lowValueleafPointPrefab, highValueleafPointPrefab;
         private float spawnTimer = 0f;
         private float timeBetweenLeafSpawn;
         public Vector2 timeBetweenLeafSpawnRange = new Vector2(10f, 18f);
@@ -22,15 +23,22 @@ namespace Spawners
 
         private void FixedUpdate()
         {
-            if (spawnLeafPoints)
+            if (spawnLeafPoints && growthManager.isAdolescent)
             {
                 spawnTimer += Time.fixedDeltaTime;
                 if (spawnTimer >= timeBetweenLeafSpawn)
                 {
-                    Vector3 spawnPosition = transform.position + new Vector3(0, 0.5f, 0); // Use the position of the object
-                    GameObject newLeaf = Instantiate(leafPointPrefab, spawnPosition, Quaternion.identity);
+                    Vector3 spawnPosition = transform.position + new Vector3(0, 0.5f, 0);
+                    GameObject newLeaf;
+                    if (growthManager.isAdult)
+                    {
+                        newLeaf = Instantiate(highValueleafPointPrefab, spawnPosition, Quaternion.identity);
+                    }
+                    else
+                    {
+                        newLeaf = Instantiate(lowValueleafPointPrefab, spawnPosition, Quaternion.identity);
+                    }
 
-                    // Use DoTween to move the object to the desired height
                     newLeaf.transform.DOMoveY(desiredHeight, duration).SetEase(Ease.OutCubic)
                         .OnComplete(() => FadeAndDestroy(newLeaf));
 

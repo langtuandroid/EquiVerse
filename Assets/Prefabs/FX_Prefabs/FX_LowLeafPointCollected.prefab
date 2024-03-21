@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 198121459679799664}
   - component: {fileID: 199843303328931898}
   m_Layer: 0
-  m_Name: FX_LeafPointCollected
+  m_Name: FX_LowLeafPointCollected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,7 +222,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.7490196, b: 0, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
