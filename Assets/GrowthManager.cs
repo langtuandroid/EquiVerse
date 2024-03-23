@@ -9,8 +9,8 @@ public class GrowthManager : MonoBehaviour
     public ParticleSystem growthParticleSystem;
     
     private int growthProgressValue;
-    private int adolescentTreshold = 50;
-    private int adultTreshold = 100;
+    private int adolescentTreshold = 150;
+    private int adultTreshold = 500;
     private int plantGrowthValue = 50;
     [HideInInspector]
     public bool isAdolescent = false;

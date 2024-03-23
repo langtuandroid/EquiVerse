@@ -21,6 +21,7 @@ namespace UpgradeSystem
 
         private int currentUpgradeCost;
         private int upgradeIndex = 0;
+        private bool stepCompleted = false;
 
         private void Start()
         {
@@ -35,6 +36,11 @@ namespace UpgradeSystem
 
                 if (ECManager.totalPoints >= currentUpgradeCost) {
                     FMODUnity.RuntimeManager.PlayOneShot("event:/UI/Buy");
+                    if (!stepCompleted)
+                    {
+                        TutorialManager.CompleteStepAndContinueToNextStep("Step_MaxPlantUpgrade");
+                        stepCompleted = true;
+                    }
                     plantSpawner.maxPlants++;
                     maxPlantValueText.text = (plantSpawner.maxPlants + 1).ToString();
 
