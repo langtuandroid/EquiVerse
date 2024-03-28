@@ -9,10 +9,10 @@ public class CrystalShard : Clickable
     public GameObject particleEffectPrefab;
 
     public override void OnClick(Vector3 point) {
-        ECManager ecManager = FindObjectOfType<ECManager>();
+        LeafPointManager leafPointManager = FindObjectOfType<LeafPointManager>();
 
-        if (ecManager != null) {
-            ecManager.AddCrystalShardPoints();
+        if (leafPointManager != null) {
+            leafPointManager.AddCrystalShardPoints();
             FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/CollectCrystal");
             Destroy(gameObject);
             GameObject particleEffect = Instantiate(particleEffectPrefab, gameObject.transform.position, Quaternion.identity);

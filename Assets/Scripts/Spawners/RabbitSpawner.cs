@@ -3,6 +3,7 @@ using DG.Tweening;
 using Managers;
 using MyBox;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
@@ -12,7 +13,7 @@ namespace Spawners
     {
         [Header("Managers")] 
         public GameManager gameManager;
-        public ECManager ecManager;
+        [FormerlySerializedAs("ecManager")] public LeafPointManager leafPointManager;
         
         [Header("SpawnPrefabs")]
         public GameObject rabbitPrefab;
@@ -38,7 +39,7 @@ namespace Spawners
 
         private void FixedUpdate()
         {
-            if (ECManager.totalPoints < rabbitCost)
+            if (LeafPointManager.totalPoints < rabbitCost)
             {
                 FindAliveRabbits();
                 if (amountOfRabbits <= 0)
@@ -56,10 +57,10 @@ namespace Spawners
 
         public void SpawnRabbit()
         {
-            if (ECManager.totalPoints >= rabbitCost)
+            if (LeafPointManager.totalPoints >= rabbitCost)
             {
                 FMODUnity.RuntimeManager.PlayOneShot("event:/UI/Buy");
-                ecManager.DecrementPoints(rabbitCost);
+                leafPointManager.DecrementPoints(rabbitCost);
                 GameObject rabbitInstance = Instantiate(rabbitPrefab, spawnPosition, Quaternion.identity);
                 rabbitInstance.transform.localScale = Vector3.zero;
                 rabbitInstance.transform.DOScale(Vector3.one * 0.5f, 0.25f).SetEase(Ease.OutBack);
@@ -68,7 +69,7 @@ namespace Spawners
             else
             {
                 FMODUnity.RuntimeManager.PlayOneShot("event:/UI/CantBuy");
-                ecManager.FlickerTotalPointsElement();
+                leafPointManager.FlickerTotalPointsElement();
             }
         }
 

@@ -7,10 +7,10 @@ public class GooseEgg : Clickable {
     public GameObject particleEffectPrefab;
 
     public override void OnClick(Vector3 point) {
-        ECManager ecManager = FindObjectOfType<ECManager>();
+        LeafPointManager leafPointManager = FindObjectOfType<LeafPointManager>();
 
-        if (ecManager != null) {
-            ecManager.AddGooseEggPoints();
+        if (leafPointManager != null) {
+            leafPointManager.AddGooseEggPoints();
             FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/CollectEgg");
             StartCoroutine(DestroyObjectWithEffect(gameObject));
         }

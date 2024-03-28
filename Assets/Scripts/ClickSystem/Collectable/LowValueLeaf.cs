@@ -7,10 +7,10 @@ public class LowValueLeaf : Clickable {
     public GameObject particleEffectPrefab;
 
     public override void OnClick(Vector3 point) {
-        ECManager ecManager = FindObjectOfType<ECManager>();
+        LeafPointManager leafPointManager = FindObjectOfType<LeafPointManager>();
 
-        if (ecManager != null) {
-            ecManager.AddLowValuePoints();
+        if (leafPointManager != null) {
+            leafPointManager.AddLowValuePoints();
             FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/CollectLeafPoint");
             Destroy(gameObject);
             GameObject particleEffect = Instantiate(particleEffectPrefab, gameObject.transform.position, Quaternion.identity);

@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Raycaster : MonoBehaviour {
     
-    PlantSpawner plantSpawner;
+    FoodSpawner foodSpawner;
 
     private void Start() {
-        plantSpawner = FindObjectOfType<PlantSpawner>(true);
+        foodSpawner = FindObjectOfType<FoodSpawner>(true);
     }
 
     void Update() {
@@ -15,7 +15,7 @@ public class Raycaster : MonoBehaviour {
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity)) {
                 if (IsClickable(hit.collider.gameObject, hit.point)) {
                 } else {
-                    plantSpawner.ClickOnGround(hit.point);
+                    foodSpawner.ClickOnGround(hit.point);
                 }
             }
         }

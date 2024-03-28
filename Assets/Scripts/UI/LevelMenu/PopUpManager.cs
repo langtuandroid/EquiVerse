@@ -11,7 +11,7 @@ namespace Managers
 
         public void GivePoints(int amountOfPoints)
         {
-            ECManager.totalPoints = amountOfPoints;
+            LeafPointManager.totalPoints = amountOfPoints;
         }
     
         public void ActivateObject(GameObject objectToActive){

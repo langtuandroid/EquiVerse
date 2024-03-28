@@ -222,7 +222,8 @@ MonoBehaviour:
   totalPointsBackground: {fileID: 0}
   totalPointsText: {fileID: 0}
   endOfLevelCostText: {fileID: 0}
-  slider: {fileID: 0}
+  locks: []
+  endOfLevelButton: {fileID: 0}
   startingPoints: 220
   endOfLevelCost: 300
   transitionOverlay: {fileID: 0}
@@ -368,7 +369,7 @@ GameObject:
   - component: {fileID: 5300777629598507568}
   - component: {fileID: 1478440835053496089}
   m_Layer: 0
-  m_Name: PlantSpawner
+  m_Name: FoodSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -405,7 +406,10 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  grassPrefab: {fileID: 1159558787302553158, guid: 0edd912d570736f41926a3fa796fedce, type: 3}
+  foodPrefabs:
+  - {fileID: 1159558787302553158, guid: 0edd912d570736f41926a3fa796fedce, type: 3}
+  - {fileID: 1696853984970666, guid: 13902285df9ac3945978fe11d52caa9e, type: 3}
+  - {fileID: 1071326183674264, guid: 1058e27b1101f7a4d81c7c8d8a5b5d63, type: 3}
   grassCost: 5
   maxPlants: 2
   isTutorial: 0
@@ -424,7 +428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 5300777628840219943}
   ecManager: {fileID: 5300777628413590958}
-  plantSpawner: {fileID: 5300777629598507568}
+  foodSpawner: {fileID: 5300777629598507568}
   upgradeAmount: fa000000f4010000e8030000d0070000
   maxPlantCostField: {fileID: 0}
   maxPlantUpgradeButton: {fileID: 0}
@@ -442,7 +446,7 @@ GameObject:
   - component: {fileID: 5300777629731829053}
   - component: {fileID: 5300777629731829054}
   m_Layer: 0
-  m_Name: ObjectSpawner
+  m_Name: AnimalSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

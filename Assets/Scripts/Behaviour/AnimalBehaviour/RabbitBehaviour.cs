@@ -35,7 +35,7 @@ namespace Behaviour {
         private float currentHunger = 0f;
         private bool death = false;
 
-        private const float PLANT_REACHED_THRESHOLD = 0.3f;
+        private const float FOOD_REACHED_THRESHOLD = 0.3f;
         private const float SMOOTHING_FACTOR = 5f;
         private const float ROTATION_SPEED = 360f;
 
@@ -59,7 +59,7 @@ namespace Behaviour {
             HandleHunger();
 
             if (isHungry)
-                FindClosestPlant();
+                FindClosestfFood();
             else
                 HandleWanderAndIdle();
 
@@ -150,47 +150,47 @@ namespace Behaviour {
             stateTimer = idleDuration;
         }
 
-        private void FindClosestPlant() {
-            List<GameObject> plants = EntityManager.Get().GetPlants();
+        private void FindClosestfFood() {
+            List<GameObject> foods = EntityManager.Get().GetFoods();
 
-            if (plants.Count == 0) {
-                HandleNoPlantsFound();
+            if (foods.Count == 0) {
+                HandleNoFoodsFound();
                 return;
             }
 
-            Transform closestPlant = FindClosestPlantTransform(plants);
+            Transform closestFood = FindClosestFoodTransform(foods);
 
-            if (closestPlant != null)
-                HandleClosestPlant(closestPlant);
+            if (closestFood != null)
+                HandleClosestFood(closestFood);
         }
 
-        private void HandleNoPlantsFound() {
+        private void HandleNoFoodsFound() {
             animator.SetBool("isRunning", false);
             HandleWanderAndIdle();
         }
 
-        private void HandleClosestPlant(Transform closestPlant) {
-            if (Vector3.Distance(transform.position, closestPlant.position) >= PLANT_REACHED_THRESHOLD) {
-                MoveTowardsPlant(closestPlant);
+        private void HandleClosestFood(Transform closestFood) {
+            if (Vector3.Distance(transform.position, closestFood.position) >= FOOD_REACHED_THRESHOLD) {
+                MoveTowardsFood(closestFood);
             } else {
-                EatPlant(closestPlant);
+                EatFood(closestFood);
             }
         }
 
-        private void MoveTowardsPlant(Transform closestPlant) {
+        private void MoveTowardsFood(Transform closestFood) {
             agent.speed = 1.3f;
-            agent.SetDestination(closestPlant.position);
+            agent.SetDestination(closestFood.position);
             animator.SetBool("isRunning", true);
         }
 
-        private void EatPlant(Transform closestPlant) {
-            Plant plant = closestPlant.GetComponent<Plant>(); //
-            plant.Consume(); //
+        private void EatFood(Transform closestFood) {
+            Food food = closestFood.GetComponent<Food>(); 
+            food.Consume(); 
 
             animator.SetBool("isRunning", false);
             FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/RabbitEat");
             currentHunger -= 100f;
-            growthManager.ProgressGrowth();
+            growthManager.ProgressGrowth(food.foodGrowthValue);
             LeafPointsSpawner.spawnLeafPoints = true;
             isHungry = false;
             inWarningState = false;
@@ -204,21 +204,21 @@ namespace Behaviour {
             HandleWanderAndIdle();
         }
 
-        private Transform FindClosestPlantTransform(List<GameObject> plants) {
-            Transform closestPlant = null;
+        private Transform FindClosestFoodTransform(List<GameObject> foods) {
+            Transform closestFood = null;
             float closestDistance = Mathf.Infinity;
 
-            foreach (GameObject plant in plants) {
-                Plant plantObj = plant.GetComponent<Plant>(); //
-                float distance = Vector3.Distance(transform.position, plant.transform.position); //
+            foreach (GameObject food in foods) {
+                Food foodObj = food.GetComponent<Food>(); //
+                float distance = Vector3.Distance(transform.position, food.transform.position); //
 
-                if (plantObj.CanBeConsumed() && distance < closestDistance) {
+                if (foodObj.CanBeConsumed() && distance < closestDistance) {
                     closestDistance = distance;
-                    closestPlant = plant.transform;
+                    closestFood = food.transform;
                 }
             }
 
-            return closestPlant;
+            return closestFood;
         }
 
         private void MaterialChanger() {
