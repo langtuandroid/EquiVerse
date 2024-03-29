@@ -32,8 +32,8 @@ namespace Managers {
         [Header("Sound")] 
         public World1LevelSoundController soundController;
 
-        private static int lowValuePoints = 25;
-        private static int highValuePoints = 50;
+        private static int lowValuePoints = 15;
+        private static int highValuePoints = 35;
         private static int gooseEggPoints = 200;
         private static int crystalShardPoints = 200;
         

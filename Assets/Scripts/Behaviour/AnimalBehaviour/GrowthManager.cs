@@ -3,14 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GrowthManager : MonoBehaviour
 {
     public ParticleSystem growthParticleSystem;
     
     public int growthProgressValue;
-    private int adolescentTreshold = 150;
-    private int adultTreshold = 500;
+    private int adolescentTreshold;
+    private int adultTreshold;
     [HideInInspector]
     public bool isAdolescent = false;
     [HideInInspector]
@@ -19,6 +20,9 @@ public class GrowthManager : MonoBehaviour
     private void Start()
     {
         growthProgressValue = 0;
+        adolescentTreshold = Random.Range(200, 300);
+        adultTreshold = Random.Range(600, 700);
+
     }
 
     public void ProgressGrowth(int growthAmount)

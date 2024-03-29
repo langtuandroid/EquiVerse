@@ -47,7 +47,7 @@ namespace Spawners {
                     switch (foodPrefabsIndex)
                     {
                         case 0:
-                            spawnedPrefab.transform.DOScale(1f, 0.75f).SetEase(Ease.OutElastic);
+                            spawnedPrefab.transform.DOScale(0.75f, 0.75f).SetEase(Ease.OutElastic);
                             break;
                         case 1:
                             spawnedPrefab.transform.DOScale(0.5f, 0.75f).SetEase(Ease.OutElastic);
