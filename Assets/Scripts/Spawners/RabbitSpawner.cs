@@ -32,6 +32,8 @@ namespace Spawners
         [ConditionalField("isTutorial")]
         public GameObject gameOverPopUp;
         
+        private bool finishLevelStepCompleted = true;
+        
         private void Start()
         {
             spawnPosition = new Vector3(spawnLocation.transform.position.x/2,0.5f, spawnLocation.transform.position.z/2);
@@ -65,6 +67,12 @@ namespace Spawners
                 rabbitInstance.transform.localScale = Vector3.zero;
                 rabbitInstance.transform.DOScale(Vector3.one * 0.5f, 0.25f).SetEase(Ease.OutBack);
                 FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/SpawnAnimal");
+                
+                if (amountOfRabbits >= 4 && !finishLevelStepCompleted)
+                {
+                    TutorialManager.GoToNextStep();
+                    finishLevelStepCompleted = true;
+                }
             }
             else
             {
@@ -94,6 +102,11 @@ namespace Spawners
                 rectTransform.localScale = Vector3.zero;
                 rectTransform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutExpo);
             }
+        }
+        
+        public void FinishLevelStep(bool _finishLevelStepCompleted)
+        {
+            finishLevelStepCompleted = _finishLevelStepCompleted;
         }
     }
 }

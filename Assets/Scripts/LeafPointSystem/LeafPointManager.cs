@@ -41,8 +41,6 @@ namespace Managers {
         private const float updateInterval = 0.01666667f;
         private const int speedFactor = 15; //Higher is slower
 
-        private bool finishLevelStepCompleted = true;
-
         private void Start()
         {
             originalColor = totalPointsBackground.color;
@@ -54,15 +52,6 @@ namespace Managers {
             endOfLevelCostText.text = endOfLevelCost.ToString();
         }
 
-        private void FixedUpdate()
-        {
-            if (totalPoints >= endOfLevelCost && !finishLevelStepCompleted)
-            {
-                TutorialManager.GoToNextStep();
-                finishLevelStepCompleted = true;
-            }
-        }
-        
         public void Update() {
             if (UnityEngine.Input.GetKey(KeyCode.LeftControl))
             {
@@ -145,11 +134,6 @@ namespace Managers {
                 soundController.StopAudioEvent("Ambience");
                 StartCoroutine(LoadAsynchronously("NewCompanionScene"));
             })).SetUpdate(true);
-        }
-
-        public void FinishLevelStep(bool _finishLevelStepCompleted)
-        {
-            finishLevelStepCompleted = _finishLevelStepCompleted;
         }
 
         IEnumerator LoadAsynchronously(string sceneIndex) {
