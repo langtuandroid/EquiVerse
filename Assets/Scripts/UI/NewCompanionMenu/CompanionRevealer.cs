@@ -10,6 +10,7 @@ public class CompanionRevealer : MonoBehaviour
     public Button giftButton;
     public RectTransform companion;
     public Button nextLevelButton;
+    public GameObject clickOnChestText;
 
     private Tween shakeTween;
 
@@ -17,6 +18,7 @@ public class CompanionRevealer : MonoBehaviour
 
     private void Start()
     {
+        clickOnChestText.SetActive(true);
         giftButton.interactable = true;
         shakeTween = DOVirtual.DelayedCall(2.5f, () =>
             {
@@ -28,6 +30,7 @@ public class CompanionRevealer : MonoBehaviour
 
     public void RevealCompanion()
     {
+        clickOnChestText.SetActive(false);
         shakeTween.Kill();
         giftButton.interactable = false;
         soundController.NewCompanionMusicVolumeFade(0, 2f);

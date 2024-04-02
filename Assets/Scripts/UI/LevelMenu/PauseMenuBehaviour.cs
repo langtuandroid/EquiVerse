@@ -10,6 +10,7 @@ namespace UI
     {
         public GraphicRaycaster graphicRaycaster;
         public GameObject pauseMenuUI;
+        public GameObject quitWarningPanel;
         public Raycaster raycaster;
 
         [Header("SceneTransition")]
@@ -25,6 +26,7 @@ namespace UI
 
         private void Start()
         {
+            quitWarningPanel.SetActive(false);
             pauseMenuUI.SetActive(false);
         }
 
@@ -70,10 +72,26 @@ namespace UI
         public void BackToMainMenu()
         {
             ResumeGame();
-            soundController.StopAudioEvent("Music");
-            soundController.StopAudioEvent("Ambience");
-            soundController.StopAudioEvent("BattleMusic");
-            StartCoroutine(LoadAsynchronously(0));
+            pauseMenuAnimationTween = pauseMenuUI.transform.DOScale(Vector3.zero, 0.3f).SetEase(Ease.OutExpo).OnComplete(() =>
+            {
+                pauseMenuUI.SetActive(false);
+                soundController.StopAudioEvent("Music");
+                soundController.StopAudioEvent("Ambience");
+                soundController.StopAudioEvent("BattleMusic");
+                StartCoroutine(LoadAsynchronously(0));
+            }).SetUpdate(true);
+        }
+
+        public void ToggleQuitWarning()
+        {
+            if (quitWarningPanel.activeSelf)
+            {
+                quitWarningPanel.SetActive(false);
+            }
+            else
+            {
+                quitWarningPanel.SetActive(true);
+            }
         }
 
         private IEnumerator LoadAsynchronously(int sceneIndex)

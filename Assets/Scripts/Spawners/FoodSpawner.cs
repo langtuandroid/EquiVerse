@@ -30,8 +30,11 @@ namespace Spawners {
         [ConditionalField("isTutorial")]
         public GameObject maxPlantPopUp;
 
+        private int timesPopupShown;
+
         private void Start() {
             currentPlantCount = 0;
+            timesPopupShown = 0;
         }
 
         public void ClickOnGround(Vector3 point) {
@@ -63,11 +66,12 @@ namespace Spawners {
                     currentPlantCount++;
 
                     FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/GrassPlacement");
-                } else if (!maxPlantPopUp.activeInHierarchy && gameManager.tutorialActivated) {
+                } else if (!maxPlantPopUp.activeInHierarchy && gameManager.tutorialActivated && timesPopupShown < 3) {
                     maxPlantPopUp.SetActive(true);
                     PopInAnimation(maxPlantPopUp);
                     FMODUnity.RuntimeManager.PlayOneShot("event:/UI/PopupWarning");
                     FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
+                    timesPopupShown++;
                 }
             }
         }

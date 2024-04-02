@@ -32,7 +32,7 @@ namespace Spawners
         [ConditionalField("isTutorial")]
         public GameObject gameOverPopUp;
         
-        private bool finishLevelStepCompleted = true;
+        private bool finishLevelStepCompleted = false;
         
         private void Start()
         {
@@ -53,7 +53,6 @@ namespace Spawners
                         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
                     }
                 }
-                return;
             }
         }
 
@@ -67,6 +66,8 @@ namespace Spawners
                 rabbitInstance.transform.localScale = Vector3.zero;
                 rabbitInstance.transform.DOScale(Vector3.one * 0.5f, 0.25f).SetEase(Ease.OutBack);
                 FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/SpawnAnimal");
+                
+                FindAliveRabbits();
                 
                 if (amountOfRabbits >= 4 && !finishLevelStepCompleted)
                 {
