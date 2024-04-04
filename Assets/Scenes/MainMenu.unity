@@ -14,12 +14,12 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 2
+  m_FogMode: 1
   m_FogDensity: 0.002
-  m_LinearFogStart: 0
-  m_LinearFogEnd: 300
+  m_LinearFogStart: -400
+  m_LinearFogEnd: 1071.01
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1606488562}
-  m_IndirectSpecularColor: {r: 0.4028661, g: 0.62219423, b: 0.8026538, a: 1}
+  m_IndirectSpecularColor: {r: 0.4036325, g: 0.45851028, b: 0.45831466, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: f4fa9a02781ba944580a2538524fba12, type: 2}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: b71580e6768d8da43a797b9e1b6c000c, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: d7d0529e2a93ae440952845061785f8f, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2595,6 +2595,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PPFX
       objectReference: {fileID: 0}
+    - target: {fileID: 204462515822114000, guid: f4c53e50c91cdd944989823dc140282c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 204462515822114002, guid: f4c53e50c91cdd944989823dc140282c, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -2639,10 +2643,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 204462515822114003, guid: f4c53e50c91cdd944989823dc140282c, type: 3}
-      propertyPath: sharedProfile
-      value: 
-      objectReference: {fileID: 11400000, guid: c2b1cbdaf4378c445a240ab6776cff40, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4c53e50c91cdd944989823dc140282c, type: 3}
 --- !u!1001 &316756001
@@ -11806,6 +11806,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1976735639839414, guid: 14f4f60387c6fb64f954511f05df977f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976735639839414, guid: 14f4f60387c6fb64f954511f05df977f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
@@ -19918,7 +19922,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 129
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

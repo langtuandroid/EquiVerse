@@ -16,17 +16,17 @@ RenderSettings:
   serializedVersion: 9
   m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 3
+  m_FogMode: 1
   m_FogDensity: 0.03
-  m_LinearFogStart: 0
-  m_LinearFogEnd: 300
+  m_LinearFogStart: -100
+  m_LinearFogEnd: 500
   m_AmbientSkyColor: {r: 0.6981132, g: 0.50943327, b: 0.26014596, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.26415092, g: 0.21981426, b: 0.18814524, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: b4d1e1180d6b45d4eaa6f6b684d18e2b, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 0ff23603c187cd146bc65bf76e851175, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.51526326, g: 0.30906966, b: 0.09358961, a: 1}
+  m_IndirectSpecularColor: {r: 0.4036325, g: 0.45851028, b: 0.45831466, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: dfdcb27d98eb3d54eb48e91070038775, type: 2}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: b71580e6768d8da43a797b9e1b6c000c, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: d7d0529e2a93ae440952845061785f8f, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -217,11 +217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &443613164 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6382226089883167014, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
-  m_PrefabInstance: {fileID: 6382226089716455114}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &446568562 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1478440835053496089, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
@@ -2643,10 +2638,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PPFX
       objectReference: {fileID: 0}
-    - target: {fileID: 204462515822114000, guid: f4c53e50c91cdd944989823dc140282c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 204462515822114002, guid: f4c53e50c91cdd944989823dc140282c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2700,14 +2691,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 734809473133366265, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
-      propertyPath: m_Antialiasing
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 734809473133366265, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
-      propertyPath: m_RenderShadows
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 734809473133366266, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2752,43 +2735,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 734809473133366267, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 443613164}
-    - target: {fileID: 734809473133366269, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
-      propertyPath: far clip plane
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 734809473133366269, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
-      propertyPath: near clip plane
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 734809473133366271, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 734809473133366268, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
---- !u!1 &734809473521936015 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 734809473133366271, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
-  m_PrefabInstance: {fileID: 734809473521936014}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &734809473521936016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 734809473521936015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attenuationObject: {fileID: 0}
 --- !u!1001 &1281900917117448623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4234,15 +4186,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4477920238870446242, guid: 2368b4828fad9424582e0db3009ca10d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.7147026
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4477920238870446242, guid: 2368b4828fad9424582e0db3009ca10d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 27.449915
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4477920238870446242, guid: 2368b4828fad9424582e0db3009ca10d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20.859823
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4477920238870446242, guid: 2368b4828fad9424582e0db3009ca10d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4271,6 +4223,10 @@ PrefabInstance:
     - target: {fileID: 4477920238870446242, guid: 2368b4828fad9424582e0db3009ca10d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477920238870446243, guid: 2368b4828fad9424582e0db3009ca10d, type: 3}
+      propertyPath: m_ShadowAngle
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2368b4828fad9424582e0db3009ca10d, type: 3}
