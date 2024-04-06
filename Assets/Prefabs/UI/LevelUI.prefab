@@ -400,7 +400,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 752, y: -256.73004}
+  m_AnchoredPosition: {x: 750, y: -256.73004}
   m_SizeDelta: {x: 240, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1281900916548846570
@@ -1277,10 +1277,10 @@ RectTransform:
   m_Father: {fileID: 1281900917862115301}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 500, y: -219}
-  m_SizeDelta: {x: 744, y: 219.43}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1500, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1281900916892473947
 CanvasRenderer:
@@ -1319,7 +1319,7 @@ MonoBehaviour:
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
-  m_sharedMaterial: {fileID: -5554273155930248582, guid: e1b0ec1ad4045ad45a6c18649ee01dca, type: 2}
+  m_sharedMaterial: {fileID: -7110766763493709028, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2469,7 +2469,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 752, y: -98.36502}
+  m_AnchoredPosition: {x: 750, y: -98.36502}
   m_SizeDelta: {x: 1157.19, y: 68.73004}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1281900917292157392
@@ -2504,7 +2504,7 @@ MonoBehaviour:
     get him something to eat!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
-  m_sharedMaterial: {fileID: -5554273155930248582, guid: e1b0ec1ad4045ad45a6c18649ee01dca, type: 2}
+  m_sharedMaterial: {fileID: -7110766763493709028, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3450,7 +3450,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1504, y: 350}
+  m_SizeDelta: {x: 1500, y: 350}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &1281900917439141953
 CanvasRenderer:
@@ -3895,7 +3895,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1281900917544647450
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3987,7 +3987,7 @@ MonoBehaviour:
   m_text: Got it!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
-  m_sharedMaterial: {fileID: -5554273155930248582, guid: e1b0ec1ad4045ad45a6c18649ee01dca, type: 2}
+  m_sharedMaterial: {fileID: -7110766763493709028, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4631,7 +4631,7 @@ MonoBehaviour:
   m_text: Next
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
-  m_sharedMaterial: {fileID: -5554273155930248582, guid: e1b0ec1ad4045ad45a6c18649ee01dca, type: 2}
+  m_sharedMaterial: {fileID: -7110766763493709028, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4735,7 +4735,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1504, y: 350}
+  m_SizeDelta: {x: 1500, y: 350}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &1281900917678581403
 CanvasRenderer:
@@ -5008,7 +5008,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1281900917862115301
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5025,11 +5025,11 @@ RectTransform:
   m_Father: {fileID: 1281900917544647450}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1000, y: 600}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 48}
+  m_SizeDelta: {x: 1500, y: 300}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &1281900917862115298
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5086,10 +5086,10 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 48
-  m_ChildForceExpandWidth: 1
+  m_Spacing: 32
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 1
+  m_ChildControlWidth: 0
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
@@ -5893,10 +5893,10 @@ RectTransform:
   m_Father: {fileID: 1281900917862115301}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 500, y: -433.715}
-  m_SizeDelta: {x: 744, y: 114}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1281900918012663694
 CanvasRenderer:
@@ -6856,8 +6856,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 752, y: -175}
-  m_SizeDelta: {x: 1248, y: 93.99998}
+  m_AnchoredPosition: {x: 750, y: -175}
+  m_SizeDelta: {x: 1244, y: 93.99998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1281900918371557409
 CanvasRenderer:
@@ -6894,7 +6894,7 @@ MonoBehaviour:
     on the ground in your Equiverse to place some grass!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
-  m_sharedMaterial: {fileID: -5554273155930248582, guid: e1b0ec1ad4045ad45a6c18649ee01dca, type: 2}
+  m_sharedMaterial: {fileID: -7110766763493709028, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
