@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using FMODUnity;
+using TMPro;
 using UnityEngine;
 
 [System.Serializable]
@@ -19,18 +20,29 @@ public class CompanionSelector : MonoBehaviour
 {
     public List<Companion> companions;
     [HideInInspector]
-    public int currentCompanionIndex;
+    public static int currentCompanionIndex;
     public Transform companionPrefabInstanceLocation;
+
+    public TextMeshProUGUI companionTitleText;
+    public TextMeshProUGUI companionSecondTitleText;
+    public TextMeshProUGUI companionDescriptionText;
 
     private void Start()
     {
-        currentCompanionIndex = 0;
         Instantiate(companions[currentCompanionIndex].companionPrefab, companionPrefabInstanceLocation);
-        
+        companionTitleText.text = companions[currentCompanionIndex].companionTitle;
+        companionSecondTitleText.text = companions[currentCompanionIndex].companionSecondTitle;
+        companionDescriptionText.text = companions[currentCompanionIndex].companionDescription;
+
     }
 
     public void PlayCompanionSound()
     {
         FMODUnity.RuntimeManager.PlayOneShot(companions[currentCompanionIndex].companionSoundEventPath);
+    }
+
+    public void IncrementCompanionIndex()
+    {
+        currentCompanionIndex++;
     }
 }

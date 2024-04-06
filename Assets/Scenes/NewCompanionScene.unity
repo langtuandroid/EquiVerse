@@ -360,8 +360,21 @@ MonoBehaviour:
   companions:
   - companionTitle: Ferdinand
     companionSecondTitle: the goose
-    companionDescription: fiets
+    companionDescription: Ferdinand helps you a bit with your finances by laying
+      a valuable egg every now and then.
     companionPrefab: {fileID: 4810356167467281102, guid: 72b784daf2a51bc4d9093aa9373fe701, type: 3}
+    companionSoundEventPath:
+      Guid:
+        Data1: 1162528105
+        Data2: 1264047014
+        Data3: 468396464
+        Data4: -977825043
+      Path: event:/Animals/FerdinandGoose/FerdinandHonk
+  - companionTitle: Pablo
+    companionSecondTitle: the parrot
+    companionDescription: Pablo's off to grab Leaf points for you, but honestly,
+      he's more talk than flight!
+    companionPrefab: {fileID: 1977361067276591308, guid: 7698ffffcd0baf640a03fe6a3c81c609, type: 3}
     companionSoundEventPath:
       Guid:
         Data1: 1162528105
@@ -371,6 +384,9 @@ MonoBehaviour:
       Path: event:/Animals/FerdinandGoose/FerdinandHonk
   currentCompanionIndex: 0
   companionPrefabInstanceLocation: {fileID: 120734898}
+  companionTitleText: {fileID: 1759051608}
+  companionSecondTitleText: {fileID: 1612868432}
+  companionDescriptionText: {fileID: 1832304225}
 --- !u!1 &271163832
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,7 +679,7 @@ GameObject:
   - component: {fileID: 652471347}
   - component: {fileID: 652471346}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: CompanionRenderImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -959,6 +975,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 184692283}
+        m_TargetAssemblyTypeName: CompanionSelector, Assembly-CSharp
+        m_MethodName: IncrementCompanionIndex
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &997824996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1030,12 +1058,12 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 912668522}
-          m_TargetAssemblyTypeName: UISoundManager, Assembly-CSharp
+          m_TargetAssemblyTypeName: UISoundController, Assembly-CSharp
           m_MethodName: PlayButtonHoverSound
-          m_Mode: 1
+          m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgument: {fileID: 997824995}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -1973,7 +2001,7 @@ GameObject:
   - component: {fileID: 1612868433}
   - component: {fileID: 1612868432}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: CompanionSecondTitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2018,7 +2046,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: the goose
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
   m_sharedMaterial: {fileID: -7110766763493709028, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
@@ -2388,7 +2416,7 @@ GameObject:
   - component: {fileID: 1759051609}
   - component: {fileID: 1759051608}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: CompanionTitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2433,7 +2461,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ferdinand
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
   m_sharedMaterial: {fileID: -7110766763493709028, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
@@ -2522,7 +2550,7 @@ GameObject:
   - component: {fileID: 1832304226}
   - component: {fileID: 1832304225}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: CompanionDescriptionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2567,8 +2595,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ferdinand helps you a bit with your finances by laying a valuable egg every
-    now and then.
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
   m_sharedMaterial: {fileID: -7110766763493709028, guid: 71559167f88c1654abe18457f8d2bbb7, type: 2}
