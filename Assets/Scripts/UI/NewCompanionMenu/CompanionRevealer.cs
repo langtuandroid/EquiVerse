@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class CompanionRevealer : MonoBehaviour
 {
+    public CompanionSelector companionSelector;
+    
     public Button giftButton;
     public RectTransform companion;
     public Button nextLevelButton;
@@ -52,7 +54,7 @@ public class CompanionRevealer : MonoBehaviour
                 {
                     nextLevelButton.gameObject.SetActive(true);
                     soundController.NewCompanionMusicVolumeFade(1, 2f);
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/FerdinandGoose/FerdinandHonk");
+                    companionSelector.PlayCompanionSound();
                 }));
             });
     }
