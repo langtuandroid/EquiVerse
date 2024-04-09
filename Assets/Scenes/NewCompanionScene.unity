@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: b4d1e1180d6b45d4eaa6f6b684d18e2b, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -37,8 +37,8 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_Sun: {fileID: 96979100}
+  m_IndirectSpecularColor: {r: 0.5797591, g: 0.7464565, b: 0.8199965, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: f9846ebbaf194814da5e8a288aff7e3e, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: d7d0529e2a93ae440952845061785f8f, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -202,8 +202,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4477920238870446243, guid: 2368b4828fad9424582e0db3009ca10d, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5960751
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477920238870446243, guid: 2368b4828fad9424582e0db3009ca10d, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8506677
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477920238870446243, guid: 2368b4828fad9424582e0db3009ca10d, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8962264
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2368b4828fad9424582e0db3009ca10d, type: 3}
+--- !u!108 &96979100 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 4477920238870446243, guid: 2368b4828fad9424582e0db3009ca10d, type: 3}
+  m_PrefabInstance: {fileID: 96979099}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &100097559
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,7 +399,6 @@ MonoBehaviour:
         Data3: 468396464
         Data4: -977825043
       Path: event:/Animals/FerdinandGoose/FerdinandHonk
-  currentCompanionIndex: 0
   companionPrefabInstanceLocation: {fileID: 120734898}
   companionTitleText: {fileID: 1759051608}
   companionSecondTitleText: {fileID: 1612868432}
