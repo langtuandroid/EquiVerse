@@ -69,7 +69,7 @@ namespace Spawners
                 
                 FindAliveRabbits();
                 
-                if (amountOfRabbits >= 4 && !finishLevelStepCompleted)
+                if (amountOfRabbits >= 2 && !finishLevelStepCompleted)
                 {
                     TutorialManager.GoToNextStep();
                     finishLevelStepCompleted = true;
