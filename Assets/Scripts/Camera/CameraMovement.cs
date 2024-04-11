@@ -17,6 +17,7 @@ namespace Input
         private void Start()
         {
             camera = GetComponent<Camera>();
+            CameraLocked = true;
         }
 
         private void Update()

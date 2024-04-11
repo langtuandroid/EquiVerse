@@ -8,12 +8,11 @@ public class TutorialManager : MonoBehaviour {
     private int currentStepIndex;
 
     public void Start() {
-        if (steps.Count == 0) {
+        if (steps.Count == 0)
+        {
             enabled = false;
             return;
         }
-
-        SetStep(0);
     }
 
     public void SetStep(int index) {
