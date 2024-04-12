@@ -20,8 +20,8 @@ public class GrowthManager : MonoBehaviour
     private void Start()
     {
         growthProgressValue = 0;
-        adolescentTreshold = Random.Range(200, 300);
-        adultTreshold = Random.Range(600, 700);
+        adolescentTreshold = Random.Range(150, 200);
+        adultTreshold = Random.Range(500, 750);
 
     }
 
