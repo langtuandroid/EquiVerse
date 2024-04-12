@@ -33,6 +33,8 @@ public class EnemyHealth : Clickable
             Destroy(gunParticleInstance, 1f);
 
             FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/Gun/Gun1Impact");
+            
+            CameraShake.Instance.ShakeCamera(2f, 0.15f);
         }
         else
         {
