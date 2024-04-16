@@ -12,7 +12,7 @@ public class FoodQualityUpgradeManager : MonoBehaviour
 {
     public LeafPointManager leafPointManager;
     public FoodSpawner foodSpawner;
-    public int[] upgradeAmount;
+    public int[] upgradeCostAmount;
     public TextMeshProUGUI foodQualityUpgradeCostText;
     public Button foodQualityUpgradeButton;
     public GameObject maxUpgradeReachedText;
@@ -25,7 +25,7 @@ public class FoodQualityUpgradeManager : MonoBehaviour
 
     private void Start() 
     {
-        currentUpgradeCost = upgradeAmount[0];
+        currentUpgradeCost = upgradeCostAmount[0];
         foodQualityUpgradeCostText.text = currentUpgradeCost.ToString();
     }
 
@@ -33,7 +33,7 @@ public class FoodQualityUpgradeManager : MonoBehaviour
     {
         if (upgradeIndex < foodSpawner.foodPrefabs.Length)
         {
-            currentUpgradeCost = upgradeAmount[upgradeIndex];
+            currentUpgradeCost = upgradeCostAmount[upgradeIndex];
             if (LeafPointManager.totalPoints >= currentUpgradeCost)
             {
                 FMODUnity.RuntimeManager.PlayOneShot("event:/UI/Buy");
@@ -46,8 +46,8 @@ public class FoodQualityUpgradeManager : MonoBehaviour
                 LeafPointManager.totalPoints -= currentUpgradeCost;
                 upgradeIndex++;
                 
-                if (upgradeIndex < upgradeAmount.Length) {
-                    foodQualityUpgradeCostText.text = upgradeAmount[upgradeIndex].ToString();
+                if (upgradeIndex < upgradeCostAmount.Length) {
+                    foodQualityUpgradeCostText.text = upgradeCostAmount[upgradeIndex].ToString();
                 } else {
                     Debug.LogWarning("No more upgrades available.");
                     upgradeImage.SetActive(false);

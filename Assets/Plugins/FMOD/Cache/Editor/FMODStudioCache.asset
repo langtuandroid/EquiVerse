@@ -587,12 +587,15 @@ MonoBehaviour:
   - {fileID: 3639749690015997694}
   - {fileID: 6904060466005424949}
   - {fileID: 2191670450419736632}
+  - {fileID: 5281085275062599599}
+  - {fileID: 2339941370302716682}
+  - {fileID: 6947527359114893124}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5304006631014352583}
   StringsBanks:
   - {fileID: 23253448088795587}
-  cacheTime: 638480245603016141
+  cacheTime: 638488887328666281
   cacheVersion: 131616
 --- !u!114 &23253448088795587
 MonoBehaviour:
@@ -609,10 +612,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
   Name: MainMenu.strings
   StudioPath: bank:/MainMenu.strings
-  lastModified: 638480245602218807
+  lastModified: 638488884620143292
   FileSizes:
   - Name: Desktop
-    Value: 2976
+    Value: 3102
   Exists: 1
 --- !u!114 &476426055693632330
 MonoBehaviour:
@@ -902,6 +905,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1312
+--- !u!114 &2339941370302716682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlayerActions/Gun/Gun3Impact
+  m_EditorClassIdentifier: 
+  Path: event:/PlayerActions/Gun/Gun3Impact
+  Guid:
+    Data1: 1229965199
+    Data2: 1206567390
+    Data3: 293825685
+    Data4: 509520775
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1119
 --- !u!114 &2449093306978900814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1022,10 +1052,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 638480245601879940
+  lastModified: 638488887328666281
   FileSizes:
   - Name: Desktop
-    Value: 9121952
+    Value: 9207104
   Exists: 1
 --- !u!114 &4867247044173022020
 MonoBehaviour:
@@ -1105,6 +1135,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1500
+--- !u!114 &5281085275062599599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlayerActions/Gun/Gun4Impact
+  m_EditorClassIdentifier: 
+  Path: event:/PlayerActions/Gun/Gun4Impact
+  Guid:
+    Data1: 464631894
+    Data2: 1080502928
+    Data3: 501631131
+    Data4: -1137454868
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 740
 --- !u!114 &5304006631014352583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1120,7 +1177,7 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 638480245602208839
+  lastModified: 638488884620133327
   FileSizes:
   - Name: Desktop
     Value: 2355776
@@ -1152,6 +1209,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1000
+--- !u!114 &6947527359114893124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlayerActions/Gun/Gun2Impact
+  m_EditorClassIdentifier: 
+  Path: event:/PlayerActions/Gun/Gun2Impact
+  Guid:
+    Data1: -1972871493
+    Data2: 1231938912
+    Data3: 1456426641
+    Data4: 1791044602
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 760
 --- !u!114 &7299616907702014823
 MonoBehaviour:
   m_ObjectHideFlags: 0

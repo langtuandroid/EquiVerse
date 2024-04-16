@@ -14,6 +14,7 @@ public class EnemyHealth : Clickable
 
     public override void OnClick(Vector3 point)
     {
+        print(GunUpgradeManager.GetInstance() == null ? "null" : "niet null" + " dus");
         GunUpgrade currentGunUpgrade = GunUpgradeManager.GetInstance().GetCurrentGunUpgrade();
         if (enemyHealth > currentGunUpgrade.gunDamage)
         {
@@ -32,7 +33,7 @@ public class EnemyHealth : Clickable
             GameObject gunParticleInstance = particleSystem.gameObject;
             Destroy(gunParticleInstance, 1f);
 
-            FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/Gun/Gun1Impact");
+            FMODUnity.RuntimeManager.PlayOneShot(currentGunUpgrade.gunImpactSoundEventPath);
             
             CameraShake.Instance.ShakeCamera(2f, 0.15f);
         }

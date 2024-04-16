@@ -33,6 +33,8 @@ namespace Spawners
         public GameObject gameOverPopUp;
         
         private bool finishLevelStepCompleted = false;
+        private bool showUpgrades = false;
+        
         
         private void Start()
         {
@@ -69,10 +71,16 @@ namespace Spawners
                 
                 FindAliveRabbits();
                 
-                if (amountOfRabbits >= 2 && !finishLevelStepCompleted)
+                if (amountOfRabbits == 2 && !finishLevelStepCompleted && gameManager.tutorialActivated)
                 {
                     TutorialManager.GoToNextStep();
                     finishLevelStepCompleted = true;
+                }
+
+                if (amountOfRabbits == 2 && !showUpgrades)
+                {
+                    TutorialManager.CompleteStepAndContinueToNextStep("StartGame");
+                    showUpgrades = true;
                 }
             }
             else
