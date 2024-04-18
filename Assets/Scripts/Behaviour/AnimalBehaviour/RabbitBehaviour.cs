@@ -240,6 +240,18 @@ namespace Behaviour {
             StartCoroutine(DeathSequence());
         }
 
+        public void InstantDeath()
+        {
+            death = true;
+            Destroy(gameObject, 2f);
+            if (!rabbitGhostParticleSystem.isPlaying)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/RabbitDeath");
+                rabbitGhostParticleSystem.Play();
+                transform.DOScale(0, 0.5f).SetEase(Ease.OutBack);
+            }
+        }
+
         private IEnumerator DeathSequence() {
             death = true;
             Destroy(gameObject, 5f);

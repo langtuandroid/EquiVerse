@@ -87,7 +87,8 @@ public class WanderingEnemyBehaviour : MonoBehaviour
             RabbitBehaviour rabbitBehaviour = other.GetComponent<RabbitBehaviour>();
             if (rabbitBehaviour != null)
             {
-                rabbitBehaviour.Die();
+                yield return new WaitForSeconds(0.75f);
+                rabbitBehaviour.InstantDeath();
             }
         }
 

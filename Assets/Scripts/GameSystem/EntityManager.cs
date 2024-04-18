@@ -15,10 +15,16 @@ public class EntityManager : MonoBehaviour {
     }
 
     private List<GameObject> rabbits = new List<GameObject>();
+    private List<GameObject> foxes = new List<GameObject>();
     private List<GameObject> foods = new List<GameObject>();
 
     public void AddRabbit(GameObject rabbit) {
         rabbits.Add(rabbit);
+    }
+
+    public void AddFox(GameObject fox)
+    {
+        foxes.Add(fox);
     }
 
     public void AddFood(GameObject food) {
@@ -30,6 +36,12 @@ public class EntityManager : MonoBehaviour {
             rabbits.Remove(rabbit);
         }
     }
+    
+    public void RemoveFox(GameObject fox) {
+        if (foxes.Contains(fox)) {
+            foxes.Remove(fox);
+        }
+    }
 
     public void RemoveFood(GameObject food) {
         if (foods.Contains(food)) {
@@ -39,6 +51,10 @@ public class EntityManager : MonoBehaviour {
 
     public List<GameObject> GetRabbits() {
         return rabbits;
+    }
+    
+    public List<GameObject> GetFoxes() {
+        return foxes;
     }
 
     public List<GameObject> GetFoods() {

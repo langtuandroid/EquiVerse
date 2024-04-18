@@ -13,7 +13,7 @@ namespace Spawners
     {
         [Header("Managers")] 
         public GameManager gameManager;
-        [FormerlySerializedAs("ecManager")] public LeafPointManager leafPointManager;
+        public LeafPointManager leafPointManager;
         
         [Header("SpawnPrefabs")]
         public GameObject rabbitPrefab;
