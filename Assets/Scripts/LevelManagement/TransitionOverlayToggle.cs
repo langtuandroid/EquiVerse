@@ -26,7 +26,6 @@ namespace UI
             transitionOverlay.DOFade(0f, 4f).SetEase(Ease.InSine).OnComplete((() =>
             {
                 tutorialManager.SetStep(0);
-                FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
             }));
         }
     }

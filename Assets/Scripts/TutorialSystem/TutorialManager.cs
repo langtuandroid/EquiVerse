@@ -69,4 +69,10 @@ public class TutorialManager : MonoBehaviour {
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
         rectTransform?.DOScale(1, 0.5f).SetEase(Ease.OutExpo).From(Vector3.zero);
     }
+
+    public void PlayOpeningUIElementSound()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
+
+    }
 }
