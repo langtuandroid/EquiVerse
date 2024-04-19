@@ -11,7 +11,7 @@ public class WanderingEnemyBehaviour : MonoBehaviour
 
     public Animator animator;
     public float speed = 3f;
-    public float smoothRotationSpeed = 5f;
+    public float smoothRotationSpeed = 360f;
     public float attackDistance = 1.5f;
 
     private bool attacking = false;
@@ -21,6 +21,7 @@ public class WanderingEnemyBehaviour : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         wanderingEnemyFXController = GetComponentInChildren<WanderingEnemyFXController>();
+        navMeshAgent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
 
         if (navMeshAgent == null)
         {
