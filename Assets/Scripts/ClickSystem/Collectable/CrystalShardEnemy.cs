@@ -4,7 +4,7 @@ using DG.Tweening;
 using UnityEngine;
 using Managers;
 
-public class CrystalShard : Clickable
+public class CrystalShardEnemy : Clickable
 {
     public GameObject particleEffectPrefab;
 

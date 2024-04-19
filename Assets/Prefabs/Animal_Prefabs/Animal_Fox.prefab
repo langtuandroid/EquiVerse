@@ -1563,6 +1563,7 @@ GameObject:
   - component: {fileID: 7702235298615476949}
   - component: {fileID: 7702235298615476951}
   - component: {fileID: 5316877021844777995}
+  - component: {fileID: -2908892062991132895}
   m_Layer: 0
   m_Name: Animal_Fox
   m_TagString: Untagged
@@ -1667,6 +1668,20 @@ MonoBehaviour:
   deathThreshold: 250
   hungryMaterial: {fileID: 2100000, guid: 5122b494eeaec444b8f2170e42864f4a, type: 2}
   foxGhostParticleSystem: {fileID: 0}
+--- !u!114 &-2908892062991132895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7359655724910758988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e306d60e840ae4abe8e08d8416229f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crystalShardPrefab: {fileID: 6456595118884574070, guid: b02721908b131924cb146ae639427580, type: 3}
+  timeBetweenCrystalShardSpawnRange: {x: 10, y: 18}
 --- !u!1 &7383707190713300638
 GameObject:
   m_ObjectHideFlags: 0
