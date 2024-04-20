@@ -1,11 +1,6 @@
-using System.Numerics;
+using UnityEngine;
 using DG.Tweening;
 using Managers;
-using MyBox;
-using UnityEngine;
-using UnityEngine.Serialization;
-using Quaternion = UnityEngine.Quaternion;
-using Vector3 = UnityEngine.Vector3;
 
 namespace Spawners
 {
@@ -15,30 +10,21 @@ namespace Spawners
         public GameManager gameManager;
         public LeafPointManager leafPointManager;
         
-        [Header("SpawnPrefabs")]
+        [Header("Spawner")]
         public GameObject rabbitPrefab;
-
-        private Vector3 spawnPosition;
-
-        [Header("SpawnCost")]
         public int rabbitCost = 100;
-
         public Transform spawnLocation;
 
-        private int amountOfRabbits;
-        
-        [Header("GuidedTutorialSetup")]
-        private bool isTutorial = false;
-        [ConditionalField("isTutorial")]
         public GameObject gameOverPopUp;
         
+        private Vector3 spawnPosition;
+        private int amountOfRabbits;
         private bool finishLevelStepCompleted = false;
         private bool showUpgrades = false;
-        
-        
+
         private void Start()
         {
-            spawnPosition = new Vector3(spawnLocation.transform.position.x/2,0.5f, spawnLocation.transform.position.z/2);
+            spawnPosition = new Vector3(spawnLocation.transform.position.x / 2, 0.5f, spawnLocation.transform.position.z / 2);
         }
 
         private void FixedUpdate()
@@ -48,12 +34,9 @@ namespace Spawners
                 FindAliveRabbits();
                 if (amountOfRabbits <= 0)
                 {
-                    if (gameManager.tutorialActivated)
-                    {
-                        ShowGameOverPopUp();
-                        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/PopupWarning");
-                        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
-                    }
+                    ShowGameOverPopUp();
+                    PlaySound("event:/UI/PopupWarning");
+                    PlaySound("event:/UI/OpeningUIElement");
                 }
             }
         }
@@ -62,12 +45,12 @@ namespace Spawners
         {
             if (LeafPointManager.totalPoints >= rabbitCost)
             {
-                FMODUnity.RuntimeManager.PlayOneShot("event:/UI/Buy");
+                PlaySound("event:/UI/Buy");
                 leafPointManager.DecrementPoints(rabbitCost);
                 GameObject rabbitInstance = Instantiate(rabbitPrefab, spawnPosition, Quaternion.identity);
                 rabbitInstance.transform.localScale = Vector3.zero;
                 rabbitInstance.transform.DOScale(Vector3.one * 0.5f, 0.25f).SetEase(Ease.OutBack);
-                FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/SpawnAnimal");
+                PlaySound("event:/PlayerActions/SpawnAnimal");
                 
                 FindAliveRabbits();
                 
@@ -85,7 +68,7 @@ namespace Spawners
             }
             else
             {
-                FMODUnity.RuntimeManager.PlayOneShot("event:/UI/CantBuy");
+                PlaySound("event:/UI/CantBuy");
                 leafPointManager.FlickerTotalPointsElement();
             }
         }
@@ -102,9 +85,9 @@ namespace Spawners
             gameObject.SetActive(false);
         }
 
-        private void PopInAnimation(GameObject gameObject)
+        private void PopInAnimation(GameObject obj)
         {
-            RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
+            RectTransform rectTransform = obj.GetComponent<RectTransform>();
 
             if (rectTransform != null)
             {
@@ -113,10 +96,14 @@ namespace Spawners
             }
         }
         
-        public void FinishLevelStep(bool _finishLevelStepCompleted)
+        public void FinishLevelStep(bool finish)
         {
-            finishLevelStepCompleted = _finishLevelStepCompleted;
+            finishLevelStepCompleted = finish;
+        }
+
+        private void PlaySound(string eventName)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot(eventName);
         }
     }
 }
-

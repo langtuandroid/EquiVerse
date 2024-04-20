@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using DG.Tweening;
-using MyBox;
 using TMPro;
 using UnityEngine;
 using UnityEngine.PlayerLoop;

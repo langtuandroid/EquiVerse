@@ -1,7 +1,6 @@
 using System.Text.RegularExpressions;
 using DG.Tweening;
 using Managers;
-using MyBox;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -24,11 +23,8 @@ namespace Spawners {
         public int maxPlants = 2;
         private int currentPlantCount;
         public bool CanSpawnPlants { get; set; }
-        
-        [Header("GuidedTutorialSetup")]
-        public bool isTutorial;
-        [ConditionalField("isTutorial")]
-        public GameObject maxPlantPopUp;
+
+        public GameObject maxFoodPopup;
 
         private int timesPopupShown;
 
@@ -66,9 +62,9 @@ namespace Spawners {
                     currentPlantCount++;
 
                     FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/GrassPlacement");
-                } else if (!maxPlantPopUp.activeInHierarchy && gameManager.tutorialActivated && timesPopupShown < 3) {
-                    maxPlantPopUp.SetActive(true);
-                    PopInAnimation(maxPlantPopUp);
+                } else if (!maxFoodPopup.activeInHierarchy && gameManager.tutorialActivated && timesPopupShown < 3) {
+                    maxFoodPopup.SetActive(true);
+                    PopInAnimation(maxFoodPopup);
                     FMODUnity.RuntimeManager.PlayOneShot("event:/UI/PopupWarning");
                     FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
                     timesPopupShown++;

@@ -1,8 +1,5 @@
 using DG.Tweening;
-using Managers;
-using MyBox;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace UI
