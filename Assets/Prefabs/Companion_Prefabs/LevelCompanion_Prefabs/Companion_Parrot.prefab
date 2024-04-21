@@ -472,13 +472,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1169581058317171318}
-  - component: {fileID: 5622844438720048032}
-  - component: {fileID: 5622844438720048033}
-  - component: {fileID: 5622844438720048031}
-  - component: {fileID: 5822809479874208777}
+  - component: {fileID: 485528286446539422}
+  - component: {fileID: 7627013328648911264}
+  - component: {fileID: 1410527269}
   m_Layer: 0
-  m_Name: Parrot
-  m_TagString: Untagged
+  m_Name: Companion_Parrot
+  m_TagString: Parrot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -499,25 +498,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &5622844438720048032
-CharacterController:
+--- !u!114 &485528286446539422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977361067276591308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c88dac07b627c94c98c1f6c29f7c92c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areaCenter: {x: 0, y: 4, z: 0}
+  areaSize: {x: 9, y: 2, z: 9}
+  moveSpeed: 1
+--- !u!135 &7627013328648911264
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1977361067276591308}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1
-  m_Radius: 0.19
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.5, z: 0}
---- !u!95 &5622844438720048033
+  m_Radius: 0.32
+  m_Center: {x: 0, y: 0.2, z: 0}
+--- !u!95 &1410527269
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -527,7 +536,7 @@ Animator:
   m_GameObject: {fileID: 1977361067276591308}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e6430ef95a709f242a5db0a42e07ec4f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4aff00a8590246942b3049eb40c2eae5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -536,95 +545,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5622844438720048031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1977361067276591308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36003be02bd7fc54db18675085e2ab6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  idleStates:
-  - stateName: isLooking
-    animationBool: isLooking
-    minStateTime: 1
-    maxStateTime: 6
-    stateWeight: 7
-  movementStates:
-  - stateName: Walking
-    animationBool: isWalking
-    maxStateTime: 100
-    moveSpeed: 1
-    turnSpeed: 200
-  - stateName: Running
-    animationBool: isRunning
-    maxStateTime: 3
-    moveSpeed: 6
-    turnSpeed: 350
-  - stateName: Flyinjg
-    animationBool: isFlying
-    maxStateTime: 6
-    moveSpeed: 8
-    turnSpeed: 500
-  attackingStates:
-  - stateName: isAttacking
-    animationBool: isAttacking
-  deathStates:
-  - stateName: Dead
-    animationBool: isDead
-  species: Parrot
-  stats: {fileID: 11400000, guid: d2caf0316dee25a4f9dd898cfc2afd0e, type: 2}
-  wanderZone: 16.71
-  awareness: 30
-  scent: 30
-  constainedToWanderZone: 0
-  nonAgressiveTowards: []
-  matchSurfaceRotation: 0
-  surfaceRotationSpeed: 2
-  logChanges: 0
-  showGizmos: 0
-  drawWanderRange: 1
-  drawScentRange: 1
-  drawAwarenessRange: 1
-  deathEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  attackingEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  idleEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  movementEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  CurrentState: 0
---- !u!195 &5822809479874208777
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1977361067276591308}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.1
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1 &1978664434015822468
 GameObject:
   m_ObjectHideFlags: 0

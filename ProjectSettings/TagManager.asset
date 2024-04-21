@@ -7,6 +7,11 @@ TagManager:
   - Plant
   - Rabbit
   - Enemy
+  - CrystalShard
+  - GooseEgg
+  - LowValue
+  - HighValue
+  - Parrot
   layers:
   - Default
   - TransparentFX
@@ -19,7 +24,7 @@ TagManager:
   - CollectableLayer
   - UICamera
   - IgnoreNavmeshBake
-  - 
+  - FlyingArea
   - 
   - 
   - 

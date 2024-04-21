@@ -8,6 +8,11 @@ public class HighValueLeaf : Clickable
     public GameObject particleEffectPrefab;
 
     public override void OnClick(Vector3 point) {
+        CollectLeafPoint();
+    }
+
+    public void CollectLeafPoint()
+    {
         LeafPointManager leafPointManager = FindObjectOfType<LeafPointManager>();
 
         if (leafPointManager != null) {

@@ -586,9 +586,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   soundController: {fileID: 0}
-  initialSpawnDelay: 5
-  minSpawnDelay: 1
-  maxSpawnDelay: 5
+  initialSpawnDelay: 60
+  minSpawnDelay: 60
+  maxSpawnDelay: 90
   enemySpawnLocation: {fileID: 8774179667552875198}
   portalOpeningParticleSystem: {fileID: 2505009129334239156}
   enemyPrefab: {fileID: 0}
