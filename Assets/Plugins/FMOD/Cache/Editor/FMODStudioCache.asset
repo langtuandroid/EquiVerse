@@ -507,6 +507,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 57808
+--- !u!114 &-1460087074902682051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Animals/PabloParrot/PabloIdle
+  m_EditorClassIdentifier: 
+  Path: event:/Animals/PabloParrot/PabloIdle
+  Guid:
+    Data1: 1492486045
+    Data2: 1088494965
+    Data3: -870480737
+    Data4: 518543215
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 490
 --- !u!114 &-951281588405915596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -618,12 +645,14 @@ MonoBehaviour:
   - {fileID: 2339941370302716682}
   - {fileID: 6947527359114893124}
   - {fileID: -3107469317855419406}
+  - {fileID: -1460087074902682051}
+  - {fileID: 4923495447351183731}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5304006631014352583}
   StringsBanks:
   - {fileID: 23253448088795587}
-  cacheTime: 638492371765567564
+  cacheTime: 638494005377487374
   cacheVersion: 131616
 --- !u!114 &23253448088795587
 MonoBehaviour:
@@ -640,10 +669,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
   Name: MainMenu.strings
   StudioPath: bank:/MainMenu.strings
-  lastModified: 638492371765567564
+  lastModified: 638494002042588548
   FileSizes:
   - Name: Desktop
-    Value: 3150
+    Value: 3252
   Exists: 1
 --- !u!114 &476426055693632330
 MonoBehaviour:
@@ -1080,10 +1109,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 638492371765104074
+  lastModified: 638494005377487374
   FileSizes:
   - Name: Desktop
-    Value: 9210624
+    Value: 9248288
   Exists: 1
 --- !u!114 &4867247044173022020
 MonoBehaviour:
@@ -1112,6 +1141,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1464
+--- !u!114 &4923495447351183731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Animals/PabloParrot/PabloPickup
+  m_EditorClassIdentifier: 
+  Path: event:/Animals/PabloParrot/PabloPickup
+  Guid:
+    Data1: -1228606030
+    Data2: 1171670969
+    Data3: -1351247743
+    Data4: 971223073
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 539
 --- !u!114 &5178793026395174547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1205,7 +1261,7 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 638492371765547635
+  lastModified: 638494002042578581
   FileSizes:
   - Name: Desktop
     Value: 2355776

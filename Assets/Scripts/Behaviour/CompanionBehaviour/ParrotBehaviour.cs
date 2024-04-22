@@ -9,10 +9,14 @@ public class ParrotBehaviour : MonoBehaviour
     public float moveSpeed = 5f;
     private GameObject targetLeafPoint;
     private Vector3 randomPosition;
+    
+    public float soundTriggerMinWait = 5f;
+    public float soundTriggerMaxWait = 15f;
 
     void Start()
     {
         randomPosition = GetRandomPosition();
+        Invoke("TriggerSound", Random.Range(soundTriggerMinWait, soundTriggerMaxWait));
     }
 
     void Update()
@@ -70,7 +74,7 @@ public class ParrotBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("collide!");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/PabloParrot/PabloPickup");
         if (other.gameObject.CompareTag("LowValue"))
         {
             other.gameObject.GetComponent<LowValueLeaf>().CollectLeafPoint();
@@ -78,5 +82,10 @@ public class ParrotBehaviour : MonoBehaviour
         {
             other.gameObject.GetComponent<HighValueLeaf>().CollectLeafPoint();
         }
+    }
+
+    void TriggerSound()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/PabloParrot/PabloIdle");
     }
 }

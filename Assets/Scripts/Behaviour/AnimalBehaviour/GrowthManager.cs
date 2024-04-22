@@ -28,7 +28,6 @@ public class GrowthManager : MonoBehaviour
     public void ProgressGrowth(int growthAmount)
     {
         growthProgressValue += growthAmount;
-        print(growthProgressValue);
         if (growthProgressValue >= adolescentTreshold && !isAdolescent)
         {
             FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/RabbitGrow");
