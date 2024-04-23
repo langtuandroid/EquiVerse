@@ -21,7 +21,6 @@ public class FoodQualityUpgradeManager : MonoBehaviour
     
     private int currentUpgradeCost;
     private int upgradeIndex = 0;
-    private bool stepCompleted = false;
 
     private void Start() 
     {
@@ -37,11 +36,6 @@ public class FoodQualityUpgradeManager : MonoBehaviour
             if (LeafPointManager.totalPoints >= currentUpgradeCost)
             {
                 FMODUnity.RuntimeManager.PlayOneShot("event:/UI/Buy");
-                if (!stepCompleted)
-                {
-                    TutorialManager.CompleteStepAndContinueToNextStep("Step_FoodQualityUpgrade");
-                    stepCompleted = true;
-                }
                 foodSpawner.foodPrefabsIndex++;
                 LeafPointManager.totalPoints -= currentUpgradeCost;
                 upgradeIndex++;
