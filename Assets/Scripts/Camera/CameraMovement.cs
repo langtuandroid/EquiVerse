@@ -14,7 +14,8 @@ namespace Input
         private void Start()
         {
             CameraLocked = true;
-            mainCam.gameObject.SetActive(false);
+            mainCam.m_XAxis.m_InputAxisName = "";
+            mainCam.m_YAxis.m_InputAxisName = "";
         }
 
         private void Update()
@@ -28,7 +29,9 @@ namespace Input
 
         private void CheckCameraInput()
         {
-            mainCam.gameObject.SetActive(true);
+            mainCam.m_XAxis.m_InputAxisName = "Horizontal";
+            mainCam.m_YAxis.m_InputAxisName = "Vertical";
+            
             if (UnityEngine.Input.GetKey(KeyCode.A))
             {
                 movedLeft = true;
