@@ -170,7 +170,7 @@ public class FoxBehaviour : MonoBehaviour
                 return;
             }
 
-            Transform closestRabbit = FindClosestRabbitTransform(rabbits);
+            Transform closestRabbit = FindClosestRabbitTransform(babyRabbits);
 
             if (closestRabbit != null)
                 HandleClosestRabbit(closestRabbit);
@@ -214,15 +214,15 @@ public class FoxBehaviour : MonoBehaviour
             HandleWanderAndIdle();
         }
 
-        private Transform FindClosestRabbitTransform(List<GameObject> rabbits) {
+        private Transform FindClosestRabbitTransform(List<Transform> rabbits) {
             Transform closestRabbit = null;
             float closestDistance = Mathf.Infinity;
         
-            foreach (GameObject rabbit in rabbits) {
-                float distance = Vector3.Distance(transform.position, rabbit.transform.position); //
+            foreach (Transform rabbit in rabbits) {
+                float distance = Vector3.Distance(transform.position, rabbit.position); 
                 if ( distance < closestDistance) {
                     closestDistance = distance;
-                    closestRabbit = rabbit.transform;
+                    closestRabbit = rabbit;
                 }
             }
             return closestRabbit;
