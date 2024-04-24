@@ -16,38 +16,44 @@ public class ParrotBehaviour : MonoBehaviour
     void Start()
     {
         randomPosition = GetRandomPosition();
-        Invoke("TriggerSound", Random.Range(soundTriggerMinWait, soundTriggerMaxWait));
+        InvokeRepeating("TriggerSound", 0, Random.Range(soundTriggerMinWait, soundTriggerMaxWait));
     }
 
     void Update()
     {
-        if (targetLeafPoint == null)
-        {
-            MoveTowardsPosition(randomPosition);
-            if (Vector3.Distance(transform.position, randomPosition) < 0.1f)
-            {
-                randomPosition = GetRandomPosition();
-            }
-        }
-        else
-        {
-            MoveTowardsPosition(targetLeafPoint.transform.position);
-            if (Vector3.Distance(transform.position, targetLeafPoint.transform.position) < 0.1f)
-            {
-                targetLeafPoint = null;
-            }
-        }
+        GameObject closestLeafPoint = null;
+        float closestDistance = Mathf.Infinity;
 
         Collider[] leafPoints = Physics.OverlapBox(areaCenter, areaSize / 2);
         foreach (Collider leafPointCollider in leafPoints)
         {
             if (leafPointCollider.CompareTag("HighValue") || leafPointCollider.CompareTag("LowValue"))
             {
-                targetLeafPoint = leafPointCollider.gameObject;
-                break;
+                float distance = Vector3.Distance(transform.position, leafPointCollider.transform.position);
+        
+                if (distance < closestDistance)
+                {
+                    closestLeafPoint = leafPointCollider.gameObject;
+                    closestDistance = distance;
+                }
+            }
+        }
+
+        if (closestLeafPoint != null)
+        {
+            MoveTowardsPosition(closestLeafPoint.transform.position);
+        }
+        else
+        {
+            MoveTowardsPosition(randomPosition);
+
+            if (Vector3.Distance(transform.position, randomPosition) < 0.1f)
+            {
+                randomPosition = GetRandomPosition();
             }
         }
     }
+
 
     void MoveTowardsPosition(Vector3 position)
     {
