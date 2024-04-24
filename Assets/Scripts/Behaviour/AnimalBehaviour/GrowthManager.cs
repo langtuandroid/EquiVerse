@@ -13,12 +13,15 @@ public class GrowthManager : MonoBehaviour
     private int adolescentTreshold;
     private int adultTreshold;
     [HideInInspector]
+    public bool isBaby = false;
+    [HideInInspector]
     public bool isAdolescent = false;
     [HideInInspector]
     public bool isAdult = false;
 
     private void Start()
     {
+        isBaby = true;
         growthProgressValue = 0;
         adolescentTreshold = Random.Range(150, 200);
         adultTreshold = Random.Range(500, 750);
@@ -29,19 +32,21 @@ public class GrowthManager : MonoBehaviour
     {
         growthProgressValue += growthAmount;
         if (growthProgressValue >= adolescentTreshold && !isAdolescent)
-        {
+        {   
+            isBaby = false;
+            isAdolescent = true;
             FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/RabbitGrow");
             growthParticleSystem.Play();
             transform.DOScale(0.75f, 1f).SetEase(Ease.OutElastic).SetDelay(0.5f);
-            isAdolescent = true;
         }
     
         if (isAdolescent && growthProgressValue >= adultTreshold && !isAdult)
         {
+            isAdolescent = false;
+            isAdult = true;
             FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/RabbitGrow");
             growthParticleSystem.Play();
             transform.DOScale(1.1f, 1f).SetEase(Ease.OutElastic).SetDelay(0.5f);
-            isAdult = true;
         }
     }
     

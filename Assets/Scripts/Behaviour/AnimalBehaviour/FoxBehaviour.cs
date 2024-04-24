@@ -156,6 +156,19 @@ public class FoxBehaviour : MonoBehaviour
                 HandleNoRabbitsFound();
                 return;
             }
+            
+            List<Transform> babyRabbits = new List<Transform>();
+            foreach (GameObject rabbit in rabbits) {
+                GrowthManager growthManager = rabbit.GetComponent<GrowthManager>();
+                if (growthManager != null && growthManager.isBaby) {
+                    babyRabbits.Add(rabbit.transform);
+                }
+            }
+
+            if (babyRabbits.Count == 0) {
+                HandleNoRabbitsFound();
+                return;
+            }
 
             Transform closestRabbit = FindClosestRabbitTransform(rabbits);
 
