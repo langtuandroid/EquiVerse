@@ -11,6 +11,7 @@ namespace UI
         public GraphicRaycaster graphicRaycaster;
         public GameObject pauseMenuUI;
         public GameObject quitWarningPanel;
+        public GameObject optionsMenu;
         public Raycaster raycaster;
 
         [Header("SceneTransition")]
@@ -80,6 +81,20 @@ namespace UI
                 soundController.StopAudioEvent("BattleMusic");
                 StartCoroutine(LoadAsynchronously(0));
             }).SetUpdate(true);
+        }
+        
+        public void ToggleOptionsMenu()
+        {
+            if (optionsMenu.activeSelf)
+            {
+                optionsMenu.SetActive(false);
+                pauseMenuUI.SetActive(true);
+            }
+            else
+            {
+                optionsMenu.SetActive(true);
+                pauseMenuUI.SetActive(false);
+            }
         }
 
         public void ToggleQuitWarning()
