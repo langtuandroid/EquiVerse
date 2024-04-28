@@ -10,7 +10,7 @@ Material:
   m_Name: Grass_Tall_Mat_01
   m_Shader: {fileID: 4800000, guid: 6697e1f185bc8b840a2f02567abf15b5, type: 3}
   m_ShaderKeywords: _FLATCOLOURSWITCH_ON _LEAFFLATCOLOURSWITCH_ON _LOD_FADE_CROSSFADE_ON
-  m_LightmapFlags: 2
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -69,7 +69,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _GustNoiseMap:
         m_Texture: {fileID: 2800000, guid: 95228cb87bc1fcf4b8b99b626dcf102c, type: 3}
-        m_Scale: {x: 0, y: 0}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LOD_DitheringMap:
         m_Texture: {fileID: 2800000, guid: 4199a601545ad164badaad1fe1733439, type: 3}
@@ -201,25 +201,25 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _GustAmount: 0
+    - _GustAmount: 0.166
     - _GustFreq: 0.224
-    - _GustLargeFreq: 0
-    - _GustScale: 0
-    - _GustSmallFreq: 0
+    - _GustLargeFreq: 0.094
+    - _GustScale: 0.311
+    - _GustSmallFreq: 0.468
     - _JitterAmount: 0.552
-    - _JitterFreq: 0.192
+    - _JitterFreq: 0.19
     - _LOD_FADE_CROSSFADE: 1
     - _LOD_FADE_CROSSFADE1: 0
     - _LOD_FADE_CROSSFADE2: 0
     - _LOD_FADE_CROSSFADE_in: 0
     - _LOD_FADE_CROSSFADE_out: 0
-    - _LeafBigNoiseAmount: 0
-    - _LeafBigNoiseScale: 0
+    - _LeafBigNoiseAmount: 0.459
+    - _LeafBigNoiseScale: 0.61
     - _LeafFlatColourSwitch: 1
-    - _LeafMetallic: 0.044
+    - _LeafMetallic: 0
     - _LeafNoiseAmount: 0.371
     - _LeafNoiseScale: 1
-    - _LeafNormalAmount: 0.5
+    - _LeafNormalAmount: 0.3
     - _LeafSmoothness: 0.2
     - _Metallic: 0.132
     - _Mode: 0
@@ -240,7 +240,7 @@ Material:
     - _SrcBlend: 1
     - _Tiling: 1
     - _Tint_Tiling: 0.5
-    - _TotalWindAmount: 0
+    - _TotalWindAmount: 0.5
     - _TrunkFlatColourSwitch: 0
     - _TrunkMetallic: 0
     - _TrunkNormalAmount: 0.5
@@ -248,14 +248,14 @@ Material:
     - _UVSec: 0
     - _WindAmount: 1
     - _WindBaseline: 0
-    - _WindDirection: 0
+    - _WindDirection: 0.77
     - _WindDirection1: 0
     - _WindNoiseScale: 1
     - _WindNoiseScale1: 14.76
     - _WindNoiseScale2: 0.5
     - _WindWorldScale: 0.08
     - _WindWorldScale1: 0.001
-    - _Y_multiplier: 0
+    - _Y_multiplier: -0.5
     - _ZWrite: 1
     - __dirty: 0
     - _leafNoiseScale: 1
