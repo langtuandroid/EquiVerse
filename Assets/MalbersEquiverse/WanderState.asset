@@ -1,0 +1,166 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2395320551319586182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc281e85e1710854c8185b80996cde20, type: 3}
+  m_Name: T_SetTargetTask
+  m_EditorClassIdentifier: 
+  active: 1
+  Description: Set a new Target to the AI Animal Control, it uses Run time sets Transforms
+    or GameObjects
+  MessageID:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  UpdateInterval: 0.2
+  WaitForPreviousTask: 0
+  targetType: 0
+  TargetT: {fileID: 11400000, guid: dde7ad29f73f8d7429a436625c91f62c, type: 2}
+  TargetG: {fileID: 0}
+  TargetRG: {fileID: 0}
+  rtype: 1
+  RTIndex:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  RTName:
+    UseConstant: 1
+    ConstantValue: 
+    Variable: {fileID: 0}
+  MoveToTarget: 1
+--- !u!114 &-1862003443412662458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b74a9381c853d664c87e919a6ed0253e, type: 3}
+  m_Name: CheckIfHungry
+  m_EditorClassIdentifier: 
+  active: 1
+  Description: Type Description Here
+  DecisionID:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  send: 1
+  interval:
+    UseConstant: 1
+    ConstantValue: 0.2
+    Variable: {fileID: 0}
+  WaitForAllTasks: 0
+  waitForTask: -1
+  ListenerID:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  checkOn: 0
+  PlacedOn: 0
+  tag: {fileID: 0}
+  Transform: {fileID: 0}
+  GameObject: {fileID: 0}
+  GameObjectSet: {fileID: 0}
+  varType: 0
+  comparer: 0
+  boolValue: 1
+  intValue: 0
+  floatValue: 0
+  debug: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e33e187dc72d4a48aaede99913c6393, type: 3}
+  m_Name: WanderState
+  m_EditorClassIdentifier: 
+  ID:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  tasks:
+  - {fileID: 7118953501211382089}
+  - {fileID: -2395320551319586182}
+  - {fileID: 6624423134145718659}
+  transitions:
+  - decision: {fileID: -1862003443412662458}
+    trueState: {fileID: 11400000, guid: 931ce11e27ee91344a1b71aa0f61f9c1, type: 2}
+    falseState: {fileID: 0}
+  GizmoStateColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  CreateTaskAsset: 1
+  CreateDecisionAsset: 1
+  TasksIndex: -1
+  DecisionIndex: -1
+--- !u!114 &6624423134145718659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f52ecadff7d8914eae97320934863d1, type: 3}
+  m_Name: T_PatrolTask
+  m_EditorClassIdentifier: 
+  active: 1
+  Description: Simple Patrol Logic using the Default AiAnimal Control Movement System
+  MessageID:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  UpdateInterval: 0.2
+  WaitForPreviousTask: 0
+  LookAtOnArrival: 0
+  IgnoreWaitTime: 0
+  patrolType: 0
+  RuntimeSet: {fileID: 0}
+  rtype: 1
+  RTIndex:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  RTName:
+    UseConstant: 1
+    ConstantValue: 
+    Variable: {fileID: 0}
+--- !u!114 &7118953501211382089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d55f5af15654a1848a5d62c35156dfe9, type: 3}
+  m_Name: T_ChangeSpeedTask
+  m_EditorClassIdentifier: 
+  active: 1
+  Description: Change the Speed on the Animal
+  MessageID:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  UpdateInterval: 0.2
+  WaitForPreviousTask: 0
+  affect: 0
+  SpeedSet: Ground
+  SpeedIndex:
+    UseConstant: 1
+    ConstantValue: 2
+    Variable: {fileID: 0}

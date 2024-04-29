@@ -65,7 +65,7 @@ public class WanderingEnemyBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!attacking && !attackCooldown && other.CompareTag("Rabbit"))
+        if (!attacking && !attackCooldown && other.CompareTag("Animal"))
         {
             StartCoroutine(AttackRabbit(other));
         }
@@ -81,14 +81,13 @@ public class WanderingEnemyBehaviour : MonoBehaviour
         wanderingEnemyFXController.attacking = true;
         animator.SetTrigger("AttackTrigger");
 
-        yield return new WaitForSeconds(1f);
 
         if (other != null && other.gameObject.activeSelf)
         {
-            RabbitBehaviour rabbitBehaviour = other.GetComponent<RabbitBehaviour>();
+            MalbersRabbitBehaviour rabbitBehaviour = other.GetComponent<MalbersRabbitBehaviour>();
             if (rabbitBehaviour != null)
             {
-                yield return new WaitForSeconds(0.75f);
+                yield return new WaitForSeconds(1.75f);
                 rabbitBehaviour.InstantDeath();
             }
         }

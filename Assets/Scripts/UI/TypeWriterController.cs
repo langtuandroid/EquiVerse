@@ -24,7 +24,7 @@ public class TypeWriterController : MonoBehaviour
 
     private IEnumerator ActivateButton(Button button)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         button.interactable = true;
     }
 }

@@ -12,6 +12,12 @@ TagManager:
   - LowValue
   - HighValue
   - Parrot
+  - Animal
+  - Water
+  - Fly
+  - Climb
+  - Stair
+  - WallRun
   layers:
   - Default
   - TransparentFX
@@ -28,22 +34,22 @@ TagManager:
   - 
   - 
   - 
+  - BodyPart
+  - 
+  - 
+  - 
+  - 
+  - Animal
+  - 
+  - 
+  - Enemy
   - 
   - 
   - 
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Item
   - 
   m_SortingLayers:
   - name: Default

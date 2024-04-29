@@ -24,7 +24,7 @@ namespace Spawners
 
         private void Start()
         {
-            spawnPosition = new Vector3(spawnLocation.transform.position.x / 2, 0.5f, spawnLocation.transform.position.z / 2);
+            spawnPosition = new Vector3(spawnLocation.transform.position.x / 2, 1f, spawnLocation.transform.position.z / 2);
         }
 
         private void FixedUpdate()

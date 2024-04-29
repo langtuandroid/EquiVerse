@@ -94,6 +94,8 @@ GameObject:
   - component: {fileID: 6464108476398953427}
   - component: {fileID: 4825878549496244398}
   - component: {fileID: 538489367390317496}
+  - component: {fileID: -6235107899353591872}
+  - component: {fileID: -2009742443260651228}
   m_Layer: 0
   m_Name: Food_HayBale
   m_TagString: Plant
@@ -152,6 +154,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodGrowthValue: 75
+--- !u!114 &-6235107899353591872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138003567446152561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e657d753e73c24bb1c6f15fe5ed005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Collection: {fileID: 11400000, guid: 1e94f914ee2aefb4ea92010a8c045b32, type: 2}
+--- !u!114 &-2009742443260651228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138003567446152561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a655ccd3e50784448de0db62dc59ac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Reference: {fileID: 6464108476398953427}
+  Hook: {fileID: 11400000, guid: 619c129a287d4a1439716a32ec7a7a44, type: 2}
 --- !u!1001 &2178032662343505287
 PrefabInstance:
   m_ObjectHideFlags: 0
