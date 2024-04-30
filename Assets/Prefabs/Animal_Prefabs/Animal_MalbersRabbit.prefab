@@ -1942,6 +1942,7 @@ GameObject:
   - component: {fileID: 9180037183481643101}
   - component: {fileID: -7619192102890970572}
   - component: {fileID: 6296517210535051278}
+  - component: {fileID: 2711437015317622600}
   m_Layer: 20
   m_Name: Animal_MalbersRabbit
   m_TagString: Animal
@@ -5104,6 +5105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d210902db1f884479a751b80cb4a825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rabbitGameObjects: {fileID: 11400000, guid: 4a94cb8ed8d087f41a594730afd77f36, type: 2}
   growthParticleSystem: {fileID: 198109754318447844, guid: f0695a3ad82651944ad6a17591aa2a60, type: 3}
   growthProgressValue: 0
   isBaby: 0
@@ -5207,6 +5209,19 @@ MonoBehaviour:
   OnFalse:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2711437015317622600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6323241760306788905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e657d753e73c24bb1c6f15fe5ed005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Collection: {fileID: 11400000, guid: 4a94cb8ed8d087f41a594730afd77f36, type: 2}
 --- !u!1 &6951670485539603844
 GameObject:
   m_ObjectHideFlags: 0

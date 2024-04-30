@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using MalbersAnimations.Scriptables;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class GrowthManager : MonoBehaviour
 {
+    public RuntimeGameObjects rabbitGameObjects;
     public ParticleSystem growthParticleSystem;
     
     public int growthProgressValue;
@@ -35,6 +37,7 @@ public class GrowthManager : MonoBehaviour
         {   
             isBaby = false;
             isAdolescent = true;
+            rabbitGameObjects.Item_Remove(gameObject);
             FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/RabbitGrow");
             growthParticleSystem.Play();
             transform.DOScale(0.75f, 1f).SetEase(Ease.OutElastic).SetDelay(0.5f);

@@ -94,6 +94,7 @@ public class MalbersRabbitBehaviour : MonoBehaviour
     public void InstantDeath()
     {
         Destroy(gameObject, 3f);
+        EntityManager.Get().RemoveRabbit(gameObject);
         if (!rabbitGhostParticleSystem.isPlaying)
         {
             FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/RabbitDeath");
@@ -105,6 +106,7 @@ public class MalbersRabbitBehaviour : MonoBehaviour
     private IEnumerator Die()
     {
         Destroy(gameObject, 3f);
+        EntityManager.Get().RemoveRabbit(gameObject);
         animal.StartNewState(deathState);
         yield return new WaitForSeconds(2f);
         if (!rabbitGhostParticleSystem.isPlaying)
