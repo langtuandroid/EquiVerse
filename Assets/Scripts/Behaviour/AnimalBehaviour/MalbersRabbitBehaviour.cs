@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using MalbersAnimations;
 using MalbersAnimations.Controller;
@@ -9,7 +7,6 @@ using MalbersAnimations.Scriptables;
 using Spawners;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
 
 public class MalbersRabbitBehaviour : MonoBehaviour
 {
@@ -23,13 +20,11 @@ public class MalbersRabbitBehaviour : MonoBehaviour
     public MAnimalBrain animal;
     public MAIState deathState;
     public NavMeshAgent agent;
+    private SkinnedMeshRenderer skinnedMeshRenderer;
     private Material rabbitMaterial;
-    public SkinnedMeshRenderer skinnedMeshRenderer;
     private bool localIsHungry;
-    private MAnimalBrain animalBrain;
     private bool inWarningState = false;
     private float currentHunger = 0f;
-
 
     private void Start()
     {
@@ -37,9 +32,8 @@ public class MalbersRabbitBehaviour : MonoBehaviour
         localIsHungry = false;
         EntityManager.Get().AddRabbit(gameObject);
         agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
-        
+        skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         rabbitMaterial = skinnedMeshRenderer.material;
-        
     }
 
     private void FixedUpdate()
@@ -48,7 +42,8 @@ public class MalbersRabbitBehaviour : MonoBehaviour
         MaterialChanger();
     }
 
-    private void HandleHunger() {
+    private void HandleHunger()
+    {
         currentHunger += 5f * Time.fixedDeltaTime;
 
         if (currentHunger >= deathThreshold)
@@ -58,34 +53,44 @@ public class MalbersRabbitBehaviour : MonoBehaviour
         {
             isHungry.Value = true;
             localIsHungry = true;
+            CheckFoodDistance();
 
-            if (currentHunger >= warningThreshold) {
+            if (currentHunger >= warningThreshold && !inWarningState)
+            {
                 LeafPointsSpawner.spawnLeafPoints = false;
                 inWarningState = true;
             }
         }
     }
-    
-    public void EatFood(GameObject closestFood) {
-        Food food = closestFood.GetComponent<Food>(); 
-        food.Consume(); 
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/RabbitEat");
-        currentHunger -= 100f;
-        growthManager.ProgressGrowth(food.foodGrowthValue);
-        LeafPointsSpawner.spawnLeafPoints = true;
-        inWarningState = false;
-    }
 
-    private void OnTriggerEnter(Collider other)
+    public void EatFood(GameObject closestFood)
     {
-        if (other.gameObject.CompareTag("Plant") && localIsHungry)
+        Food food = closestFood.GetComponent<Food>();
+        if (food != null && food.CanBeConsumed())
         {
+            food.Consume();
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/RabbitEat");
+            currentHunger -= 100f;
+            growthManager.ProgressGrowth(food.foodGrowthValue);
+            LeafPointsSpawner.spawnLeafPoints = true;
+            inWarningState = false;
             isHungry.Value = false;
             localIsHungry = false;
-            EatFood(other.gameObject);
         }
     }
-    
+
+    private void CheckFoodDistance()
+    {
+        if (animal.Target != null && localIsHungry)
+        {
+            float distance = Vector3.Distance(transform.position, animal.Target.position);
+            if (distance < 0.4f)
+            {
+                EatFood(animal.Target.gameObject);
+            }
+        }
+    }
+
     public void InstantDeath()
     {
         Destroy(gameObject, 3f);
@@ -109,8 +114,12 @@ public class MalbersRabbitBehaviour : MonoBehaviour
         }
         transform.DOScale(0, 0.5f).SetEase(Ease.OutBack);
     }
-    
-    private void MaterialChanger() {
-        skinnedMeshRenderer.material = inWarningState ? hungryMaterial : rabbitMaterial;
+
+    private void MaterialChanger()
+    {
+        if (skinnedMeshRenderer != null)
+        {
+            skinnedMeshRenderer.material = inWarningState ? hungryMaterial : rabbitMaterial;
+        }
     }
 }
