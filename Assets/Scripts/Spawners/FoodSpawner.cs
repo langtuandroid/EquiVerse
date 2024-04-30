@@ -57,7 +57,7 @@ namespace Spawners {
                     }
 
                     leafPointManager.DecrementPoints(grassCost);
-                    TutorialManager.CompleteStepAndContinueToNextStep("Step_GrassSpawn2");
+                    TutorialManager.CompleteStep("Step_GrassSpawn2");
 
                     currentPlantCount++;
 

@@ -67,12 +67,21 @@ public class TutorialManager : MonoBehaviour {
     public void PopInAnimation(GameObject gameObject) {
         gameObject.SetActive(true);
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
-        rectTransform?.DOScale(1, 0.5f).SetEase(Ease.OutExpo).From(Vector3.zero);
+        rectTransform?.DOScale(1, 0.5f).SetEase(Ease.OutExpo).From(Vector3.zero).SetUpdate(true);
     }
 
     public void PlayOpeningUIElementSound()
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
+    }
 
+    public void StopGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
     }
 }

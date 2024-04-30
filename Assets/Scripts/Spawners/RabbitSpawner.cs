@@ -95,11 +95,6 @@ namespace Spawners
                 rectTransform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutExpo);
             }
         }
-        
-        public void FinishLevelStep(bool finish)
-        {
-            finishLevelStepCompleted = finish;
-        }
 
         private void PlaySound(string eventName)
         {

@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Managers;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -6,6 +7,7 @@ namespace Spawners
 {
     public class LeafPointsSpawner : MonoBehaviour
     {
+        private GameManager gameManager;
         public GrowthManager growthManager;
         public GameObject lowValueleafPointPrefab, highValueleafPointPrefab;
         private float spawnTimer = 0f;
@@ -13,12 +15,15 @@ namespace Spawners
         public Vector2 timeBetweenLeafSpawnRange = new Vector2(10f, 18f);
         private float desiredHeight = 5f;
         private float duration = 5f;
+        private bool pickUpLeafpointStepCompleted = false;
 
         public static bool spawnLeafPoints = true;
 
         private void Start()
         {
             timeBetweenLeafSpawn = Random.Range(timeBetweenLeafSpawnRange.x, timeBetweenLeafSpawnRange.y);
+
+            gameManager = FindObjectOfType<GameManager>();
         }
 
         private void FixedUpdate()
@@ -34,6 +39,13 @@ namespace Spawners
                     newLeaf.transform.DOMoveY(desiredHeight, duration).SetEase(Ease.OutCubic)
                         .OnComplete(() => FadeAndDestroy(newLeaf));
                     spawnTimer = 0f;
+
+                    if (gameManager.tutorialActivated && !pickUpLeafpointStepCompleted)
+                    {
+                        TutorialManager.GoToNextStep();
+                        pickUpLeafpointStepCompleted = true;
+                    }
+                    
                     timeBetweenLeafSpawn = Random.Range(timeBetweenLeafSpawnRange.x, timeBetweenLeafSpawnRange.y);
                 }
             }
