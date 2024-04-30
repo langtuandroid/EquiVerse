@@ -31,7 +31,7 @@ public class GrowthManager : MonoBehaviour
     public void ProgressGrowth(int growthAmount)
     {
         growthProgressValue += growthAmount;
-        if (growthProgressValue >= adolescentTreshold && !isAdolescent)
+        if (growthProgressValue >= adolescentTreshold && !isAdolescent && !isAdult)
         {   
             isBaby = false;
             isAdolescent = true;

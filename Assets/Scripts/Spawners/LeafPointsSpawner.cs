@@ -30,18 +30,23 @@ namespace Spawners
                 {
                     Vector3 spawnPosition = transform.position + new Vector3(0, 0.5f, 0);
                     GameObject newLeaf;
-                    if (growthManager.isAdult)
-                    {
-                        newLeaf = Instantiate(highValueleafPointPrefab, spawnPosition, Quaternion.identity);
-                    }
-                    else
-                    {
-                        newLeaf = Instantiate(lowValueleafPointPrefab, spawnPosition, Quaternion.identity);
-                    }
-
+                    newLeaf = Instantiate(lowValueleafPointPrefab, spawnPosition, Quaternion.identity);
                     newLeaf.transform.DOMoveY(desiredHeight, duration).SetEase(Ease.OutCubic)
                         .OnComplete(() => FadeAndDestroy(newLeaf));
-
+                    spawnTimer = 0f;
+                    timeBetweenLeafSpawn = Random.Range(timeBetweenLeafSpawnRange.x, timeBetweenLeafSpawnRange.y);
+                }
+            }
+            if (spawnLeafPoints && growthManager.isAdult)
+            {
+                spawnTimer += Time.fixedDeltaTime;
+                if (spawnTimer >= timeBetweenLeafSpawn)
+                {
+                    Vector3 spawnPosition = transform.position + new Vector3(0, 0.5f, 0);
+                    GameObject newLeaf;
+                    newLeaf = Instantiate(highValueleafPointPrefab, spawnPosition, Quaternion.identity);
+                    newLeaf.transform.DOMoveY(desiredHeight, duration).SetEase(Ease.OutCubic)
+                        .OnComplete(() => FadeAndDestroy(newLeaf));
                     spawnTimer = 0f;
                     timeBetweenLeafSpawn = Random.Range(timeBetweenLeafSpawnRange.x, timeBetweenLeafSpawnRange.y);
                 }
