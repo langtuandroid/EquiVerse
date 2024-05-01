@@ -24,6 +24,7 @@ public class GrowthManager : MonoBehaviour
     private void Start()
     {
         isBaby = true;
+        EntityManager.Get().AddBabyRabbit(gameObject);
         growthProgressValue = 0;
         adolescentTreshold = Random.Range(150, 200);
         adultTreshold = Random.Range(500, 750);
@@ -36,6 +37,7 @@ public class GrowthManager : MonoBehaviour
         if (growthProgressValue >= adolescentTreshold && !isAdolescent && !isAdult)
         {   
             isBaby = false;
+            EntityManager.Get().RemoveBabyRabbit(gameObject);
             isAdolescent = true;
             rabbitGameObjects.Item_Remove(gameObject);
             FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/RabbitGrow");

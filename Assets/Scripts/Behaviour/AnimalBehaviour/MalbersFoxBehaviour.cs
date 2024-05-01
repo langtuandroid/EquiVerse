@@ -47,17 +47,16 @@ public class MalbersFoxBehaviour : MonoBehaviour
             if (currentHunger >= deathThreshold)
                 StartCoroutine(Die());
     
-            if (currentHunger >= hungerThreshold)
+            if (currentHunger >= hungerThreshold  && EntityManager.Get().GetBabyRabbits().Count >= 1)
             {
                 isHungry.Value = true;
                 localIsHungry = true;
                 CheckFoodDistance();
-    
-                if (currentHunger >= warningThreshold && !inWarningState)
-                {
-                    LeafPointsSpawner.spawnLeafPoints = false;
-                    inWarningState = true;
-                }
+            }
+            if (currentHunger >= warningThreshold && !inWarningState)
+            {
+                LeafPointsSpawner.spawnLeafPoints = false;
+                inWarningState = true;
             }
         }
     

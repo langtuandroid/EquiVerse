@@ -15,11 +15,17 @@ public class EntityManager : MonoBehaviour {
     }
 
     private List<GameObject> rabbits = new List<GameObject>();
+    private List<GameObject> babyRabbits = new List<GameObject>();
     private List<GameObject> foxes = new List<GameObject>();
     private List<GameObject> foods = new List<GameObject>();
 
     public void AddRabbit(GameObject rabbit) {
         rabbits.Add(rabbit);
+    }
+
+    public void AddBabyRabbit(GameObject babyRabbit)
+    {
+        babyRabbits.Add(babyRabbit);
     }
 
     public void AddFox(GameObject fox)
@@ -36,6 +42,11 @@ public class EntityManager : MonoBehaviour {
             rabbits.Remove(rabbit);
         }
     }
+
+    public void RemoveBabyRabbit(GameObject babyRabbit)
+    {
+        babyRabbits.Remove(babyRabbit);
+    }
     
     public void RemoveFox(GameObject fox) {
         if (foxes.Contains(fox)) {
@@ -51,6 +62,10 @@ public class EntityManager : MonoBehaviour {
 
     public List<GameObject> GetRabbits() {
         return rabbits;
+    }
+    
+    public List<GameObject> GetBabyRabbits() {
+        return babyRabbits;
     }
     
     public List<GameObject> GetFoxes() {

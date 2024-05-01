@@ -49,17 +49,16 @@ public class MalbersRabbitBehaviour : MonoBehaviour
         if (currentHunger >= deathThreshold)
             StartCoroutine(Die());
 
-        if (currentHunger >= hungerThreshold)
+        if (currentHunger >= hungerThreshold && EntityManager.Get().GetFoods().Count >= 1)
         {
             isHungry.Value = true;
             localIsHungry = true;
             CheckFoodDistance();
-
-            if (currentHunger >= warningThreshold && !inWarningState)
-            {
-                LeafPointsSpawner.spawnLeafPoints = false;
-                inWarningState = true;
-            }
+        }
+        if (currentHunger >= warningThreshold && !inWarningState)
+        {
+            LeafPointsSpawner.spawnLeafPoints = false;
+            inWarningState = true;
         }
     }
 
@@ -95,6 +94,10 @@ public class MalbersRabbitBehaviour : MonoBehaviour
     {
         Destroy(gameObject, 3f);
         EntityManager.Get().RemoveRabbit(gameObject);
+        if (growthManager.isBaby)
+        {
+            EntityManager.Get().RemoveBabyRabbit(gameObject);
+        }
         if (!rabbitGhostParticleSystem.isPlaying)
         {
             FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/RabbitDeath");
@@ -107,6 +110,10 @@ public class MalbersRabbitBehaviour : MonoBehaviour
     {
         Destroy(gameObject, 3f);
         EntityManager.Get().RemoveRabbit(gameObject);
+        if (growthManager.isBaby)
+        {
+            EntityManager.Get().RemoveBabyRabbit(gameObject);
+        }
         animal.StartNewState(deathState);
         yield return new WaitForSeconds(2f);
         if (!rabbitGhostParticleSystem.isPlaying)
