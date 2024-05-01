@@ -44,6 +44,7 @@ namespace UpgradeSystem
 
                     if (!tutorialStepCompleted)
                     {
+                        TutorialManager.CompleteStep("ShowPreviousUnlockedUpgrades");
                         TutorialManager.GoToNextStep();
                         tutorialStepCompleted = true;
                     }

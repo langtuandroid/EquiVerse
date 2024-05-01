@@ -50,7 +50,7 @@ public class GunUpgradeManager : MonoBehaviour
                 FMODUnity.RuntimeManager.PlayOneShot("event:/UI/Buy");
                 if (!gunTutorialStepCompleted)
                 {
-                    TutorialManager.CompleteStepAndContinueToNextStep("ShowUpgrades");
+                    TutorialManager.CompleteStepAndContinueToNextStep("ShowWeaponUpgrade");
                     gunTutorialStepCompleted = true;
                 }
                 LeafPointManager.totalPoints -= currentUpgradeCost;

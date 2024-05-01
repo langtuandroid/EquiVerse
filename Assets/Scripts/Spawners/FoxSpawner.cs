@@ -1,3 +1,4 @@
+using System;
 using System.Numerics;
 using DG.Tweening;
 using Managers;
@@ -24,26 +25,11 @@ namespace Spawners
         public Transform spawnLocation;
 
         private int amountOfFoxes;
+        private bool foxStepCompleted;
         
         private void Start()
         {
             spawnPosition = new Vector3(spawnLocation.transform.position.x/2,1f, spawnLocation.transform.position.z/2);
-        }
-
-        private void FixedUpdate()
-        {
-            if (LeafPointManager.totalPoints < foxCost)
-            {
-                FindAliveFoxes();
-                if (amountOfFoxes <= 0)
-                {
-                    if (gameManager.tutorialActivated)
-                    {
-                        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/PopupWarning");
-                        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
-                    }
-                }
-            }
         }
 
         public void SpawnFox()
@@ -56,6 +42,12 @@ namespace Spawners
                 foxInstance.transform.localScale = Vector3.zero;
                 foxInstance.transform.DOScale(Vector3.one, 0.25f).SetEase(Ease.OutBack);
                 FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/SpawnAnimal");
+                
+                if (!foxStepCompleted)
+                {
+                    TutorialManager.CompleteStepAndContinueToNextStep("ShowFoxButton");
+                    foxStepCompleted = true;
+                }
             }
             else
             {
@@ -64,7 +56,7 @@ namespace Spawners
             }
         }
 
-        private void FindAliveFoxes()
+        public void FindAliveFoxes()
         {
             amountOfFoxes = EntityManager.Get().GetFoxes().Count;
         }
