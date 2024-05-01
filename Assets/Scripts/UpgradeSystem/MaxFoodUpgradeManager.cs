@@ -21,6 +21,8 @@ namespace UpgradeSystem
         private int currentUpgradeCost;
         private int upgradeIndex = 0;
 
+        private bool tutorialStepCompleted = false;
+
         private void Start()
         {
             maxPlantValueText.text = (foodSpawner.maxPlants + 1).ToString();
@@ -39,6 +41,12 @@ namespace UpgradeSystem
 
                     LeafPointManager.totalPoints -= currentUpgradeCost;
                     upgradeIndex++;
+
+                    if (!tutorialStepCompleted)
+                    {
+                        TutorialManager.GoToNextStep();
+                        tutorialStepCompleted = true;
+                    }
 
                     if (upgradeIndex < upgradeAmount.Length) {
                         maxPlantUpgradeCostText.text = upgradeAmount[upgradeIndex].ToString();
