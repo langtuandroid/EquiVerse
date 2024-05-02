@@ -385,8 +385,8 @@ MonoBehaviour:
   companions:
   - companionTitle: Ferdinand
     companionSecondTitle: the goose
-    companionDescription: Ferdinand helps you a bit with your finances by laying
-      a valuable egg every now and then.
+    companionDescription: Ferdinand occasionally lays valuable eggs, giving you a
+      boost in your finances.
     companionPrefab: {fileID: 4810356167467281102, guid: 72b784daf2a51bc4d9093aa9373fe701, type: 3}
     companionSoundEventPath:
       Guid:
@@ -397,8 +397,7 @@ MonoBehaviour:
       Path: event:/Animals/FerdinandGoose/FerdinandHonk
   - companionTitle: Pablo
     companionSecondTitle: the parrot
-    companionDescription: Pablo's off to grab Leaf points for you, but honestly,
-      he's more talk than flight!
+    companionDescription: ' Pablo collects Leaf points but isn''t very quick'
     companionPrefab: {fileID: 1977361067276591308, guid: 7698ffffcd0baf640a03fe6a3c81c609, type: 3}
     companionSoundEventPath:
       Guid:
