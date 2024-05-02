@@ -54,13 +54,13 @@ namespace Spawners
                 
                 FindAliveRabbits();
                 
-                if (amountOfRabbits == 2 && !finishLevelStepCompleted && gameManager.tutorialActivated)
+                if (amountOfRabbits == 2 && !finishLevelStepCompleted && gameManager.level1)
                 {
                     TutorialManager.GoToNextStep();
                     finishLevelStepCompleted = true;
                 }
 
-                if (amountOfRabbits == 2 && !showUpgrades)
+                if (amountOfRabbits == 1 && !showUpgrades)
                 {
                     TutorialManager.CompleteStepAndContinueToNextStep("StartGame");
                     showUpgrades = true;

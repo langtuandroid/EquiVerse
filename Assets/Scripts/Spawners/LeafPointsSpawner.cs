@@ -40,7 +40,7 @@ namespace Spawners
                         .OnComplete(() => FadeAndDestroy(newLeaf));
                     spawnTimer = 0f;
 
-                    if (gameManager.tutorialActivated && !pickUpLeafpointStepCompleted)
+                    if (gameManager.level1 && !pickUpLeafpointStepCompleted)
                     {
                         TutorialManager.GoToNextStep();
                         pickUpLeafpointStepCompleted = true;

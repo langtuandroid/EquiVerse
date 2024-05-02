@@ -57,12 +57,12 @@ namespace Spawners {
                     }
 
                     leafPointManager.DecrementPoints(grassCost);
-                    TutorialManager.CompleteStep("Step_GrassSpawn2");
+                    TutorialManager.CompleteStep("Step_GrassSpawn");
 
                     currentPlantCount++;
 
                     FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/GrassPlacement");
-                } else if (!maxFoodPopup.activeInHierarchy && gameManager.tutorialActivated && timesPopupShown < 3) {
+                } else if (!maxFoodPopup.activeInHierarchy && gameManager.level1 && timesPopupShown < 3) {
                     maxFoodPopup.SetActive(true);
                     PopInAnimation(maxFoodPopup);
                     FMODUnity.RuntimeManager.PlayOneShot("event:/UI/PopupWarning");

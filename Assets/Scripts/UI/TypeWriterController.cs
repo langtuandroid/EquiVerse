@@ -27,4 +27,5 @@ public class TypeWriterController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         button.interactable = true;
     }
+
 }

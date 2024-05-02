@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using Managers;
 using TMPro;
 using UnityEngine;
@@ -23,6 +24,8 @@ public class EnemySpawner : MonoBehaviour
     private List<GameObject> activeEnemies = new List<GameObject>();
 
     public TextMeshProUGUI newEnemyTypeWarningText;
+    
+    private bool firstEnemyTutorialStepCompleted = false;
 
     public void SpawnEnemies()
     {
@@ -32,6 +35,12 @@ public class EnemySpawner : MonoBehaviour
     IEnumerator EnemySpawnSequence()
     {
         yield return new WaitForSeconds(initialSpawnDelay);
+
+        if (gameManager.level2 && !firstEnemyTutorialStepCompleted)
+        {
+            TutorialManager.GoToNextStep();
+            firstEnemyTutorialStepCompleted = true;
+        }
         newEnemyTypeWarningText.gameObject.SetActive(true);
         newEnemyTypeWarningText.text = "Alert! Portal fluctuations indicate a <b>Swamp Golem</b> is about to gatecrash the party!";
                     
