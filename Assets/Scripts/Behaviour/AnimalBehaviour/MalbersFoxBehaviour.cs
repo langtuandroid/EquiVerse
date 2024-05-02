@@ -17,7 +17,6 @@ public class MalbersFoxBehaviour : MonoBehaviour
         public BoolVarListener isHungry;
         public MAnimalBrain animal;
         public MAIState deathState;
-        public NavMeshAgent agent;
         private SkinnedMeshRenderer skinnedMeshRenderer;
         private Material foxMaterial;
         private bool localIsHungry;
@@ -29,7 +28,6 @@ public class MalbersFoxBehaviour : MonoBehaviour
             isHungry.Value = false;
             localIsHungry = false;
             EntityManager.Get().AddFox(gameObject);
-            agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
             skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
             foxMaterial = skinnedMeshRenderer.material;
         }

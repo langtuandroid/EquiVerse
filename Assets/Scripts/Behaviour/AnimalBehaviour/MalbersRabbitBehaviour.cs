@@ -19,7 +19,6 @@ public class MalbersRabbitBehaviour : MonoBehaviour
     public BoolVarListener isHungry;
     public MAnimalBrain animal;
     public MAIState deathState;
-    public NavMeshAgent agent;
     private SkinnedMeshRenderer skinnedMeshRenderer;
     private Material rabbitMaterial;
     private bool localIsHungry;
@@ -31,7 +30,6 @@ public class MalbersRabbitBehaviour : MonoBehaviour
         isHungry.Value = false;
         localIsHungry = false;
         EntityManager.Get().AddRabbit(gameObject);
-        agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         rabbitMaterial = skinnedMeshRenderer.material;
     }
@@ -83,7 +81,7 @@ public class MalbersRabbitBehaviour : MonoBehaviour
         if (animal.Target != null && localIsHungry)
         {
             float distance = Vector3.Distance(transform.position, animal.Target.position);
-            if (distance < 0.4f)
+            if (distance <= 0.75f)
             {
                 EatFood(animal.Target.gameObject);
             }

@@ -1135,7 +1135,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.058824994
   m_Height: 0.14399065
@@ -5091,7 +5091,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.23
+  m_Radius: 0.41
   m_Center: {x: 0, y: 0.13, z: 0.12}
 --- !u!114 &1138554416925459173
 MonoBehaviour:
@@ -5148,7 +5148,6 @@ MonoBehaviour:
   isHungry: {fileID: 6296517210535051278}
   animal: {fileID: 4791098212411378708}
   deathState: {fileID: 11400000, guid: 5f168be2ae7c74246b7f6e192ddc3b1b, type: 2}
-  agent: {fileID: 8130667172053581064}
 --- !u!114 &-7619192102890970572
 MonoBehaviour:
   m_ObjectHideFlags: 2

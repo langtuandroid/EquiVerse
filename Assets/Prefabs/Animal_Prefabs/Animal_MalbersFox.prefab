@@ -5016,7 +5016,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.095
   m_Center: {x: 0, y: 0.06, z: 0}
@@ -14408,7 +14408,6 @@ MonoBehaviour:
   isHungry: {fileID: 6504484499815380934}
   animal: {fileID: 2153187792410127972}
   deathState: {fileID: 11400000, guid: 796d51f29137c2c47927f5a085d0e943, type: 2}
-  agent: {fileID: 8446026899851408251}
 --- !u!114 &6504484499815380934
 MonoBehaviour:
   m_ObjectHideFlags: 0

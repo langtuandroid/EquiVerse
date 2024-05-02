@@ -2,6 +2,7 @@ using System.Text.RegularExpressions;
 using DG.Tweening;
 using Managers;
 using TMPro;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
@@ -12,7 +13,7 @@ namespace Spawners {
         public GameManager gameManager;
         [FormerlySerializedAs("ecManager")] public LeafPointManager leafPointManager;
 
-        public LayerMask groundLayer;
+        public NavMeshSurface navMeshSurface; 
         public GameObject[] foodPrefabs;
         [HideInInspector]
         public int foodPrefabsIndex = 0;
@@ -74,7 +75,7 @@ namespace Spawners {
 
         bool IsPointOnNavMesh(Vector3 point) {
             NavMeshHit hit;
-            return NavMesh.SamplePosition(point, out hit, 0.1f, NavMesh.AllAreas);
+            return NavMesh.SamplePosition(point, out hit, 0.1f, navMeshSurface.layerMask);
         }
 
         public void RemovePlant() {
