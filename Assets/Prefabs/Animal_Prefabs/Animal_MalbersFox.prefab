@@ -19607,19 +19607,19 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue:
       serializedVersion: 2
-      m_Bits: 1
+      m_Bits: 65
     Variable: {fileID: 0}
   Tracks: {fileID: 198000013136168986, guid: 7745c70da32263b4e86efaf5c965c60d, type: 3}
   Dust: {fileID: 198000010737321038, guid: f0185de6019ebaa4db45528f37bad8d2, type: 3}
   instantiateTracks: 0
   GroundIsStatic: 0
-  StepsVolume: 0.2
+  StepsVolume: 0
   DustParticles: 10
   Scale: {x: 1, y: 1, z: 1}
   sounds:
     UseConstant: 0
     ConstantValue: {fileID: 0}
-    Variable: {fileID: 11400000, guid: e8a7fe46436708d46acf9b4d39c7c860, type: 2}
+    Variable: {fileID: 0}
   trackOffset: 0.0085
 --- !u!1 &7166186491838993706
 GameObject:
