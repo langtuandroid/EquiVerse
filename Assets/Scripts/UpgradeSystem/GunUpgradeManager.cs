@@ -16,6 +16,7 @@ public class GunUpgrade
 
 public class GunUpgradeManager : MonoBehaviour
 {
+    public GameManager gameManager;
     private static GunUpgradeManager _instance;
     public List<GunUpgrade> gunUpgrades = new List<GunUpgrade>();
     public LeafPointManager leafPointManager;
@@ -48,9 +49,9 @@ public class GunUpgradeManager : MonoBehaviour
             if (LeafPointManager.totalPoints >= currentUpgradeCost)
             {
                 FMODUnity.RuntimeManager.PlayOneShot("event:/UI/Buy");
-                if (!gunTutorialStepCompleted)
+                if (!gunTutorialStepCompleted && gameManager.level3)
                 {
-                    TutorialManager.CompleteStepAndContinueToNextStep("ShowWeaponUpgrade");
+                    TutorialManager.GoToNextStep();
                     gunTutorialStepCompleted = true;
                 }
                 LeafPointManager.totalPoints -= currentUpgradeCost;

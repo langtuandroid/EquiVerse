@@ -12,6 +12,7 @@ namespace Managers
         public static int LEVEL_INDEX;
         public bool level1;
         public bool level2;
+        public bool level3;
         [NonSerialized]
         public static bool firstTimePlaying = true;
     }
