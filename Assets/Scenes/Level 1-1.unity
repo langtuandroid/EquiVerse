@@ -251,16 +251,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5427825644252771921, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6651d574c1f4cf84385d730a8563a051, type: 2}
     - target: {fileID: 5458285809254838674, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6382226088720904419, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6382226088720904419, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
-      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6382226089035399176, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
@@ -314,6 +310,14 @@ PrefabInstance:
     - target: {fileID: 6382226089716455116, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7255934214401225379, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.9683552
+      objectReference: {fileID: 0}
+    - target: {fileID: 7255934214401225379, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9194221979462372075, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
       propertyPath: m_IsActive
@@ -817,6 +821,11 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1281900916967877865, guid: 228006cb1b674504786775f3e83fe722, type: 3}
   m_PrefabInstance: {fileID: 1291068859}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1114047305 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9026290649605996636, guid: 3e10d0aa92f6c174db0b35b7488b8228, type: 3}
+  m_PrefabInstance: {fileID: 111410552}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1115811948 stripped
 GameObject:
@@ -4088,11 +4097,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 734809473133366266, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 5.280132e-12
+      value: 5.183909e-13
       objectReference: {fileID: 0}
     - target: {fileID: 734809473133366266, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -1.3596022e-12
+      value: -1.334835e-13
       objectReference: {fileID: 0}
     - target: {fileID: 734809473133366266, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4132,19 +4141,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 754685070953428508, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99983615
+      value: 0.99983305
       objectReference: {fileID: 0}
     - target: {fileID: 754685070953428508, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.018103406
+      value: 0.018275201
       objectReference: {fileID: 0}
     - target: {fileID: 754685070953428508, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00001303397
+      value: 0.0000024027343
       objectReference: {fileID: 0}
     - target: {fileID: 754685070953428508, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000075005355
+      value: -0.0000013802418
       objectReference: {fileID: 0}
     - target: {fileID: 1306418241256214495, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
       propertyPath: m_LookAt
@@ -4180,15 +4189,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3757077831241253647, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0000860095
+      value: 0.000085785985
       objectReference: {fileID: 0}
     - target: {fileID: 3757077831241253647, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000013168234
+      value: 0.0000024274425
       objectReference: {fileID: 0}
     - target: {fileID: 3757077831241253647, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000072622083
+      value: -0.0000013363092
       objectReference: {fileID: 0}
     - target: {fileID: 6198992241219544410, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
       propertyPath: m_LookAt
@@ -4228,19 +4237,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8741170429372105810, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99983394
+      value: 0.999837
       objectReference: {fileID: 0}
     - target: {fileID: 8741170429372105810, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.018227473
+      value: -0.01805569
       objectReference: {fileID: 0}
     - target: {fileID: 8741170429372105810, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000013297816
+      value: 0.0000024514295
       objectReference: {fileID: 0}
     - target: {fileID: 8741170429372105810, guid: 536a1eb56cc3ca04db654a4a4d9ba8ca, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000070221217
+      value: -0.0000012921278
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6444,6 +6453,10 @@ PrefabInstance:
       propertyPath: spawnLocation
       value: 
       objectReference: {fileID: 2064871621}
+    - target: {fileID: 5300777629731829054, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
+      propertyPath: spawnParticles
+      value: 
+      objectReference: {fileID: 1114047305}
     - target: {fileID: 5300777629731829054, guid: 93aaa0aae97108a4ab112a8f52716b74, type: 3}
       propertyPath: leafPointManager
       value: 

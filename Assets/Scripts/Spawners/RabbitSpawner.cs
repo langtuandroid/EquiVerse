@@ -14,6 +14,7 @@ namespace Spawners
         public GameObject rabbitPrefab;
         public int rabbitCost = 100;
         public Transform spawnLocation;
+        public ParticleSystem spawnParticles;
 
         public GameObject gameOverPopUp;
         
@@ -48,6 +49,7 @@ namespace Spawners
                 PlaySound("event:/UI/Buy");
                 leafPointManager.DecrementPoints(rabbitCost);
                 GameObject rabbitInstance = Instantiate(rabbitPrefab, spawnPosition, Quaternion.identity);
+                spawnParticles.Play();
                 rabbitInstance.transform.localScale = Vector3.zero;
                 rabbitInstance.transform.DOScale(Vector3.one * 0.5f, 0.25f).SetEase(Ease.OutBack);
                 PlaySound("event:/PlayerActions/SpawnAnimal");

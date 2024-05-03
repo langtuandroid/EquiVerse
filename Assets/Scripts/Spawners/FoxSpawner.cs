@@ -16,7 +16,7 @@ namespace Spawners
         
         [Header("SpawnPrefabs")]
         public GameObject foxPrefab;
-
+        public ParticleSystem spawnParticles;
         private Vector3 spawnPosition;
 
         [Header("SpawnCost")]
@@ -39,6 +39,7 @@ namespace Spawners
                 FMODUnity.RuntimeManager.PlayOneShot("event:/UI/Buy");
                 leafPointManager.DecrementPoints(foxCost);
                 GameObject foxInstance = Instantiate(foxPrefab, spawnPosition, Quaternion.identity);
+                spawnParticles.Play();
                 foxInstance.transform.localScale = Vector3.zero;
                 foxInstance.transform.DOScale(Vector3.one, 0.25f).SetEase(Ease.OutBack);
                 FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/SpawnAnimal");
