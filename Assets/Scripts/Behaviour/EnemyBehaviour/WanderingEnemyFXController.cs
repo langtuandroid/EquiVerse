@@ -6,7 +6,6 @@ public class WanderingEnemyFXController : MonoBehaviour
 {
     public bool attacking = false;
     public ParticleSystem leftFootImpact, rightFootImpact;
-    public ParticleSystem summonSpikesParticles;
     
     public void RightImpactEvent()
     {
@@ -18,10 +17,5 @@ public class WanderingEnemyFXController : MonoBehaviour
     {
         leftFootImpact.Play();
         FMODUnity.RuntimeManager.PlayOneShot("event:/World1/SwampGolem/FootGroundImpact");
-    }
-
-    public void SummonSpikesEvent()
-    {
-        summonSpikesParticles.Play();
     }
 }

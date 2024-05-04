@@ -13,7 +13,7 @@ public class WanderingEnemyBehaviour : MonoBehaviour
     public float speed = 3f;
     public float smoothRotationSpeed = 360f;
     public float attackDistance = 1.5f;
-
+    
     private bool attacking = false;
     private bool attackCooldown = false;
 
@@ -88,6 +88,7 @@ public class WanderingEnemyBehaviour : MonoBehaviour
             if (rabbitBehaviour != null)
             {
                 yield return new WaitForSeconds(1.75f);
+                rabbitBehaviour.SpawnStoneSpikeParticles();
                 rabbitBehaviour.InstantDeath();
             }
         }

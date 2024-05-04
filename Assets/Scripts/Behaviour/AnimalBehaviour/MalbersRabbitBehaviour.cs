@@ -15,6 +15,7 @@ public class MalbersRabbitBehaviour : MonoBehaviour
     [SerializeField] private float warningThreshold;
     [SerializeField] private float deathThreshold;
     [SerializeField] private ParticleSystem rabbitGhostParticleSystem;
+    [SerializeField] private ParticleSystem stoneSpikesParticleSystem;
     [SerializeField] private Material hungryMaterial;
     public BoolVarListener isHungry;
     public MAnimalBrain animal;
@@ -128,5 +129,10 @@ public class MalbersRabbitBehaviour : MonoBehaviour
         {
             skinnedMeshRenderer.material = inWarningState ? hungryMaterial : rabbitMaterial;
         }
+    }
+
+    public void SpawnStoneSpikeParticles()
+    {
+        stoneSpikesParticleSystem.Play();
     }
 }
