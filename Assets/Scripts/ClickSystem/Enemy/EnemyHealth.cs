@@ -43,7 +43,7 @@ public class EnemyHealth : Clickable
         }
     }
 
-    private void Die()
+    public void Die()
     {
         transform.DOScale(0, 0.2f).SetEase(Ease.OutQuint);
         FMODUnity.RuntimeManager.PlayOneShot("event:/World1/SwampGolem/Death");
