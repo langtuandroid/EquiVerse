@@ -647,12 +647,13 @@ MonoBehaviour:
   - {fileID: -3107469317855419406}
   - {fileID: -1460087074902682051}
   - {fileID: 4923495447351183731}
+  - {fileID: 8997085208028855266}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5304006631014352583}
   StringsBanks:
   - {fileID: 23253448088795587}
-  cacheTime: 638502767318297740
+  cacheTime: 638505083560703377
   cacheVersion: 131616
 --- !u!114 &23253448088795587
 MonoBehaviour:
@@ -669,10 +670,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
   Name: MainMenu.strings
   StudioPath: bank:/MainMenu.strings
-  lastModified: 638502767318297740
+  lastModified: 638505080529699476
   FileSizes:
   - Name: Desktop
-    Value: 3252
+    Value: 3306
   Exists: 1
 --- !u!114 &476426055693632330
 MonoBehaviour:
@@ -1109,10 +1110,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 638502766623643610
+  lastModified: 638505083560703377
   FileSizes:
   - Name: Desktop
-    Value: 9248288
+    Value: 10283040
   Exists: 1
 --- !u!114 &4867247044173022020
 MonoBehaviour:
@@ -1261,7 +1262,7 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 638502767318277741
+  lastModified: 638505080529689509
   FileSizes:
   - Name: Desktop
     Value: 4484576
@@ -1428,3 +1429,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1189
+--- !u!114 &8997085208028855266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Animals/BetsyBeeQueen/BetsyIdle
+  m_EditorClassIdentifier: 
+  Path: event:/Animals/BetsyBeeQueen/BetsyIdle
+  Guid:
+    Data1: 839714297
+    Data2: 1271989446
+    Data3: 495882650
+    Data4: -459895004
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 115781
