@@ -383,6 +383,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   companions:
+  - companionTitle: Betsy
+    companionSecondTitle: the queen bee
+    companionDescription: Betsy lends you her bee army to eliminate enemies!
+    companionPrefab: {fileID: 8062672837211983902, guid: 3fecfe0c36960014fa0a8fb6e7d714b9, type: 3}
+    companionSoundEventPath:
+      Guid:
+        Data1: 1492486045
+        Data2: 1088494965
+        Data3: -870480737
+        Data4: 518543215
+      Path: event:/Animals/PabloParrot/PabloIdle
   - companionTitle: Ferdinand
     companionSecondTitle: the goose
     companionDescription: Ferdinand occasionally lays valuable eggs, giving you a
