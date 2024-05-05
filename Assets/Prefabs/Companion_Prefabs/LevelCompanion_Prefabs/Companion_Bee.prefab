@@ -14554,10 +14554,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitParticles: {fileID: 4535253289192317483}
-  enemyTag: Enemy
-  detectionRadius: 10
-  returnSpeed: 2
-  beeSpeed: 5
+  betsyAttackSound:
+    Guid:
+      Data1: -2100896915
+      Data2: 1216950654
+      Data3: 558476465
+      Data4: 1735535686
+    Path: event:/Animals/BetsyBeeQueen/BetsyAttack
 --- !u!135 &4425405804264826792
 SphereCollider:
   m_ObjectHideFlags: 0

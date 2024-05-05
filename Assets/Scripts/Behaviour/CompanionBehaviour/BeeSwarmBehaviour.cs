@@ -1,11 +1,13 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using FMOD.Studio;
 using UnityEngine;
 
 public class BeeSwarmBehaviour : MonoBehaviour
 {
+    public World1LevelSoundController soundController;
     public ParticleSystem hitParticles;
+    public FMODUnity.EventReference betsyAttackSound;
     private string enemyTag = "Enemy";
     private float detectionRadius = 10f;
     private float returnSpeed = 2f;
@@ -16,6 +18,8 @@ public class BeeSwarmBehaviour : MonoBehaviour
 
     private Vector3 originalPosition;
     private bool hasTarget = false;
+    private bool isReturning = false;
+    private bool wasInPursuit = false; // Track if previously in pursuit
     private float yOffset = 1.0f;
 
     private void Start()
@@ -26,6 +30,7 @@ public class BeeSwarmBehaviour : MonoBehaviour
     private void Update()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, detectionRadius);
+        bool isInPursuit = false; // Flag to check if currently in pursuit
 
         foreach (Collider col in colliders)
         {
@@ -34,44 +39,55 @@ public class BeeSwarmBehaviour : MonoBehaviour
                 Vector3 targetPosition = col.transform.position;
                 // Add a y-axis offset to the target position
                 targetPosition.y += yOffset;
-        
+
                 Vector3 direction = (targetPosition - transform.position).normalized;
                 transform.position += direction * beeSpeed * Time.deltaTime;
-                hasTarget = true;
+                isInPursuit = true; // Set flag to true if in pursuit
             }
         }
 
-        if (!hasTarget)
+        // Check if state has changed, then update and fade accordingly
+        if (!wasInPursuit && isInPursuit)
+        {
+            soundController.FadeAudioParameter("BetsyZooming", "InPursuit", 1f, 0.4f);
+            hasTarget = true;
+            isReturning = false;
+        }
+        else if (wasInPursuit && !isInPursuit)
+        {
+            soundController.FadeAudioParameter("BetsyZooming", "InPursuit", 0f, 0.4f);
+            isReturning = true;
+        }
+
+        wasInPursuit = isInPursuit; // Update the previous state
+
+        if (!hasTarget && isReturning)
         {
             ReturnToOriginalPosition();
-        }
-        else
-        {
-            hasTarget = false;
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag(enemyTag))
+        if (other.gameObject.CompareTag(enemyTag) && Time.time >= nextAttackTime)
         {
-            if (Time.time >= nextAttackTime)
+            print("hit");
+            EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+            if (enemyHealth != null)
             {
-                print("hit");
-                EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
-                if (enemyHealth != null)
+                enemyHealth.enemyHealth -= 20;
+                hitParticles.Play();
+                FMODUnity.RuntimeManager.PlayOneShot(betsyAttackSound);
+
+                if (enemyHealth.enemyHealth <= 0)
                 {
-                    enemyHealth.enemyHealth -= 20;
-                    hitParticles.Play();
-
-                    if (enemyHealth.enemyHealth <= 0)
-                    {
-                        enemyHealth.Die();
-                    }
+                    enemyHealth.Die();
+                    hasTarget = false;
+                    isReturning = true;
                 }
-
-                nextAttackTime = Time.time + attackCooldown;
             }
+
+            nextAttackTime = Time.time + attackCooldown;
         }
     }
 

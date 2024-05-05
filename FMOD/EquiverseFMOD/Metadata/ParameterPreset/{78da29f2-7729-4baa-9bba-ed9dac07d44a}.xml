@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{78da29f2-7729-4baa-9bba-ed9dac07d44a}">
+		<property name="name">
+			<value>InPursuit</value>
+		</property>
+		<relationship name="folder">
+			<destination>{0885cd84-c8e3-4d9f-bb3b-e4dc7605ebca}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{165944d3-1b41-431b-a58e-cbc0f2d878be}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{165944d3-1b41-431b-a58e-cbc0f2d878be}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

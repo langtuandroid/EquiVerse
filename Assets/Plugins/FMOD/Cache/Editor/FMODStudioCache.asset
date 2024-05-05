@@ -158,6 +158,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 408
+--- !u!114 &-6375776260111647655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BetsyIdle/InPursuit
+  m_EditorClassIdentifier: 
+  Name: InPursuit
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2089756497
+    data2: 1512712206
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-5018250098232119722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,12 +672,13 @@ MonoBehaviour:
   - {fileID: -1460087074902682051}
   - {fileID: 4923495447351183731}
   - {fileID: 8997085208028855266}
+  - {fileID: 4497974055163412146}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5304006631014352583}
   StringsBanks:
   - {fileID: 23253448088795587}
-  cacheTime: 638505083560703377
+  cacheTime: 638505276311141950
   cacheVersion: 131616
 --- !u!114 &23253448088795587
 MonoBehaviour:
@@ -670,10 +695,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
   Name: MainMenu.strings
   StudioPath: bank:/MainMenu.strings
-  lastModified: 638505080529699476
+  lastModified: 638505264826567559
   FileSizes:
   - Name: Desktop
-    Value: 3306
+    Value: 3394
   Exists: 1
 --- !u!114 &476426055693632330
 MonoBehaviour:
@@ -1110,11 +1135,38 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 638505083560703377
+  lastModified: 638505276311141950
   FileSizes:
   - Name: Desktop
-    Value: 10283040
+    Value: 10300480
   Exists: 1
+--- !u!114 &4497974055163412146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Animals/BetsyBeeQueen/BetsyAttack
+  m_EditorClassIdentifier: 
+  Path: event:/Animals/BetsyBeeQueen/BetsyAttack
+  Guid:
+    Data1: -2100896915
+    Data2: 1216950654
+    Data3: 558476465
+    Data4: 1735535686
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 424
 --- !u!114 &4867247044173022020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1262,7 +1314,7 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 638505080529689509
+  lastModified: 638505264826547624
   FileSizes:
   - Name: Desktop
     Value: 4484576
@@ -1452,7 +1504,8 @@ MonoBehaviour:
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
-  Parameters: []
+  Parameters:
+  - {fileID: -6375776260111647655}
   MinDistance: 1
   MaxDistance: 20
   Length: 115781
