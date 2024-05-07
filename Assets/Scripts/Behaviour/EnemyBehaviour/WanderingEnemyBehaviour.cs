@@ -1,44 +1,28 @@
-using System.Collections;
-using Behaviour;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class WanderingEnemyBehaviour : MonoBehaviour
 {
-    private NavMeshAgent navMeshAgent;
-    private WanderingEnemyFXController wanderingEnemyFXController;
-    private Vector3 targetPosition;
-
-    public Animator animator;
+    public NavMeshAgent navMeshAgent;
     public float speed = 3f;
     public float smoothRotationSpeed = 360f;
-    public float attackDistance = 1.5f;
-    
-    private bool attacking = false;
-    private bool attackCooldown = false;
 
+    private NavMeshSurface navMeshSurface;
+    
     private void Start()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        wanderingEnemyFXController = GetComponentInChildren<WanderingEnemyFXController>();
         navMeshAgent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
-
-        if (navMeshAgent == null)
-        {
-            enabled = false;
-            return;
-        }
-
+        navMeshSurface = GetNavMeshSurfaceByAgentType(navMeshAgent.agentTypeID);
         navMeshAgent.speed = speed;
         SetRandomDestination();
     }
 
     private void FixedUpdate()
     {
-        if (!attacking && !attackCooldown && (Vector3.Distance(transform.position, targetPosition) < attackDistance || !navMeshAgent.hasPath))
+        if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance < 0.5f)
         {
             SetRandomDestination();
-            MoveAndRotateTowardsDestination();
         }
     }
 
@@ -47,59 +31,23 @@ public class WanderingEnemyBehaviour : MonoBehaviour
         Vector3 randomDirection = Random.insideUnitSphere * 10f;
         randomDirection += transform.position;
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(randomDirection, out hit, 10f, 1))
+        if (NavMesh.SamplePosition(randomDirection, out hit, 10f, navMeshSurface.layerMask))
         {
-            targetPosition = hit.position;
-            navMeshAgent.SetDestination(targetPosition);
+            navMeshAgent.SetDestination(hit.position);
         }
     }
-
-    private void MoveAndRotateTowardsDestination()
+    
+    private NavMeshSurface GetNavMeshSurfaceByAgentType(int agentTypeID)
     {
-        if (navMeshAgent.hasPath && navMeshAgent.desiredVelocity != Vector3.zero)
+        NavMeshSurface[] navMeshSurfaces = FindObjectsOfType<NavMeshSurface>();
+        foreach (NavMeshSurface surface in navMeshSurfaces)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(navMeshAgent.desiredVelocity);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * smoothRotationSpeed);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!attacking && !attackCooldown && other.CompareTag("Animal"))
-        {
-            StartCoroutine(AttackRabbit(other));
-        }
-    }
-
-    private IEnumerator AttackRabbit(Collider other)
-    {
-        attacking = true;
-        attackCooldown = true;
-
-        navMeshAgent.isStopped = true;
-        FMODUnity.RuntimeManager.PlayOneShot("event:/World1/SwampGolem/Attack");
-        wanderingEnemyFXController.attacking = true;
-        animator.SetTrigger("AttackTrigger");
-
-
-        if (other != null && other.gameObject.activeSelf)
-        {
-            MalbersRabbitBehaviour rabbitBehaviour = other.GetComponent<MalbersRabbitBehaviour>();
-            if (rabbitBehaviour != null)
+            if (surface.agentTypeID == agentTypeID)
             {
-                yield return new WaitForSeconds(1.75f);
-                rabbitBehaviour.SpawnStoneSpikeParticles();
-                rabbitBehaviour.InstantDeath();
+                return surface;
             }
         }
-
-        yield return new WaitForSeconds(2f);
-
-        wanderingEnemyFXController.attacking = false;
-        navMeshAgent.isStopped = false;
-        attacking = false;
-
-        yield return new WaitForSeconds(5f);
-        attackCooldown = false; // Reset attack cooldown after 5 seconds
+        return null;
     }
 }
+
