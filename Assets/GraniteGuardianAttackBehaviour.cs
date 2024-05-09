@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,6 +13,9 @@ public class GraniteGuardianAttackBehaviour : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     public float detectionRadius = 10f;
     public float attackCooldown = 5f;
+    public float initialAttackDelay = 20f;
+    private bool canAttack = false;
+    private bool initialDelayOver = false;
     private bool attacking = false;
     private bool attackCooldownActive = false;
     private GameObject target;
@@ -19,12 +23,16 @@ public class GraniteGuardianAttackBehaviour : MonoBehaviour
 
     private void Start()
     {
-        lastAttackTime = -attackCooldown; // Initialize lastAttackTime to ensure the first attack can occur immediately
+        StartCoroutine(InitialAttackDelay());
     }
-
+    
     private void Update()
     {
-        if (!attacking && !attackCooldownActive && Time.time - lastAttackTime >= attackCooldown)
+        if(target != null) { 
+            Vector3 direction = target.transform.position - beam.transform.position;
+            beam.transform.rotation = Quaternion.LookRotation(direction);
+        }
+        if (initialDelayOver && canAttack && !attacking && !attackCooldownActive && Time.time - lastAttackTime >= attackCooldown)
         {
             List<GameObject> rabbits = EntityManager.Get().GetRabbits();
 
@@ -73,6 +81,8 @@ public class GraniteGuardianAttackBehaviour : MonoBehaviour
 
         yield return new WaitForSeconds(2f); // Adjust the total duration of the attack as needed
 
+        target = null;
+        
         navMeshAgent.isStopped = false;
         attacking = false;
         lastAttackTime = Time.time; // Update lastAttackTime to current time
@@ -84,5 +94,12 @@ public class GraniteGuardianAttackBehaviour : MonoBehaviour
     {
         yield return new WaitForSeconds(attackCooldown);
         attackCooldownActive = false;
+    }
+    
+    private IEnumerator InitialAttackDelay()
+    {
+        yield return new WaitForSeconds(initialAttackDelay);
+        initialDelayOver = true;
+        canAttack = true;
     }
 }

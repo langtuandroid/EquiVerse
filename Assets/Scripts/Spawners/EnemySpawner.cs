@@ -9,6 +9,13 @@ using UnityEngine.AI;
 using Random = UnityEngine.Random;
 using DG.Tweening;
 
+[System.Serializable]
+public class Enemy
+{
+    public String enemyName;
+    public GameObject enemyPrefab;
+}
+
 public class EnemySpawner : MonoBehaviour
 {
     public GameManager gameManager;
@@ -19,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
     public float maxSpawnDelay = 5f;
     public Transform enemySpawnLocation;
     public ParticleSystem portalOpeningParticleSystem;
-    public GameObject enemyPrefab;
+    public List<Enemy> enemyTypes = new List<Enemy>();
 
     private List<GameObject> activeEnemies = new List<GameObject>();
 
@@ -41,8 +48,10 @@ public class EnemySpawner : MonoBehaviour
             TutorialManager.GoToNextStep();
             firstEnemyTutorialStepCompleted = true;
         }
+        Enemy randomEnemy = enemyTypes[Random.Range(0, enemyTypes.Count)];
+        
         newEnemyTypeWarningText.gameObject.SetActive(true);
-        newEnemyTypeWarningText.text = "Alert! Portal fluctuations indicate a <b>Swamp Golem</b> is about to gatecrash the party!";
+        newEnemyTypeWarningText.text = "Alert! Portal fluctuations indicate a <b>" + randomEnemy.enemyName + "</b> is about to gatecrash the party!";
                     
         soundController.FadeAudioParameter("Music", "World1LevelMainMusicVolume", 0f, 1.2f);
         soundController.StartAudioEvent("BattleMusic");
@@ -55,8 +64,9 @@ public class EnemySpawner : MonoBehaviour
         yield return new WaitForSeconds(5f);
         FMODUnity.RuntimeManager.PlayOneShot("event:/World1/SwampGolem/Spawn");
         soundController.FadeAudioParameter("BattleMusic", "Suspense_Action_Transition", 1f, 0.5f);
-        GameObject newEnemy = Instantiate(enemyPrefab, enemySpawnLocation.position, Quaternion.identity);
-        activeEnemies.Add(newEnemy); // Add the newly instantiated enemy to the active list.
+        
+        GameObject newEnemy = Instantiate(randomEnemy.enemyPrefab, enemySpawnLocation.position, Quaternion.identity);
+        activeEnemies.Add(newEnemy);
         AnimateEnemySpawnIn(newEnemy, 0.5f);
         portalOpeningParticleSystem.Stop();
     }
