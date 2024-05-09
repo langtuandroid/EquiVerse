@@ -182,6 +182,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-5074242975834151384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/World1/GraniteGuardian/Attack
+  m_EditorClassIdentifier: 
+  Path: event:/World1/GraniteGuardian/Attack
+  Guid:
+    Data1: 1035915180
+    Data2: 1294516617
+    Data3: -579247471
+    Data4: 1065949309
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 7354
 --- !u!114 &-5018250098232119722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +260,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-4532699054897486809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/World1/GraniteGuardian/FootGroundImpact
+  m_EditorClassIdentifier: 
+  Path: event:/World1/GraniteGuardian/FootGroundImpact
+  Guid:
+    Data1: -1504572830
+    Data2: 1292190128
+    Data3: -1459278963
+    Data4: -2106747049
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 560
 --- !u!114 &-4142303748516042694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -673,12 +727,15 @@ MonoBehaviour:
   - {fileID: 4923495447351183731}
   - {fileID: 8997085208028855266}
   - {fileID: 4497974055163412146}
+  - {fileID: -5074242975834151384}
+  - {fileID: -4532699054897486809}
+  - {fileID: 511503754331511772}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5304006631014352583}
   StringsBanks:
   - {fileID: 23253448088795587}
-  cacheTime: 638505276311141950
+  cacheTime: 638508885708056931
   cacheVersion: 131616
 --- !u!114 &23253448088795587
 MonoBehaviour:
@@ -695,10 +752,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
   Name: MainMenu.strings
   StudioPath: bank:/MainMenu.strings
-  lastModified: 638505264826567559
+  lastModified: 638508885708056931
   FileSizes:
   - Name: Desktop
-    Value: 3394
+    Value: 3542
   Exists: 1
 --- !u!114 &476426055693632330
 MonoBehaviour:
@@ -754,6 +811,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 190
+--- !u!114 &511503754331511772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/World1/GraniteGuardian/Death
+  m_EditorClassIdentifier: 
+  Path: event:/World1/GraniteGuardian/Death
+  Guid:
+    Data1: -699738745
+    Data2: 1248428521
+    Data3: -816286825
+    Data4: -1975022617
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1360
 --- !u!114 &842525933788318587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1135,10 +1219,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 638505276311141950
+  lastModified: 638508885707747964
   FileSizes:
   - Name: Desktop
-    Value: 10300480
+    Value: 10419264
   Exists: 1
 --- !u!114 &4497974055163412146
 MonoBehaviour:
@@ -1314,7 +1398,7 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 638505264826547624
+  lastModified: 638508885708046966
   FileSizes:
   - Name: Desktop
     Value: 4484576

@@ -10,6 +10,7 @@ public class EnemyHealth : Clickable
     public int enemyHealth;
     public GameObject reward;
     public GameObject deathParticles;
+    public FMODUnity.EventReference deathSound;
     private Tween punchTween;
 
     public override void OnClick(Vector3 point)
@@ -45,7 +46,7 @@ public class EnemyHealth : Clickable
     public void Die()
     {
         transform.DOScale(0, 0.2f).SetEase(Ease.OutQuint);
-        FMODUnity.RuntimeManager.PlayOneShot("event:/World1/SwampGolem/Death");
+        FMODUnity.RuntimeManager.PlayOneShot(deathSound);
         GameObject particlesInstance = Instantiate(deathParticles, gameObject.transform.position, Quaternion.identity);
         Instantiate(reward, gameObject.transform.position + new Vector3(0, 0.3f, 0), Quaternion.identity);
 

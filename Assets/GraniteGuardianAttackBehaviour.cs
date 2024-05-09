@@ -60,6 +60,8 @@ public class GraniteGuardianAttackBehaviour : MonoBehaviour
 
         leftHandParticles.Play();
         rightHandParticles.Play();
+        
+        FMODUnity.RuntimeManager.PlayOneShot("event:/World1/GraniteGuardian/Attack");
         yield return new WaitForSeconds(1);
         animator.SetTrigger("AttackTrigger");
         yield return new WaitForSeconds(1.5f);

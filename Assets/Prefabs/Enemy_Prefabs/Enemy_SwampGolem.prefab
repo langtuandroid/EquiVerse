@@ -89,6 +89,13 @@ MonoBehaviour:
   enemyHealth: 250
   reward: {fileID: 6456595118884574070, guid: 5d2d99bd280432e4d8e055e09bd74287, type: 3}
   deathParticles: {fileID: 6480188509525438637, guid: 8653ff61fe103e84183ab3d38e7f2415, type: 3}
+  deathSound:
+    Guid:
+      Data1: 796278735
+      Data2: 1107889242
+      Data3: -748084080
+      Data4: -107233319
+    Path: event:/World1/SwampGolem/Death
 --- !u!136 &1638808624207548588
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -303,6 +310,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftFootImpact: {fileID: 8397718153462794133}
   rightFootImpact: {fileID: 1703929131089070257}
+  footGroundImpactSound:
+    Guid:
+      Data1: 2087047488
+      Data2: 1231672197
+      Data3: -213460056
+      Data4: -1399488057
+    Path: event:/World1/SwampGolem/FootGroundImpact
 --- !u!4 &2391870079389727955 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4939805754032154, guid: 93c0dd75ddc1c9f4dabe9f061ef19748, type: 3}
