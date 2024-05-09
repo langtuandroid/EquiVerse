@@ -13,9 +13,6 @@ public class GraniteGuardianAttackBehaviour : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     public float detectionRadius = 10f;
     public float attackCooldown = 5f;
-    public float initialAttackDelay = 20f;
-    private bool canAttack = false;
-    private bool initialDelayOver = false;
     private bool attacking = false;
     private bool attackCooldownActive = false;
     private GameObject target;
@@ -23,7 +20,8 @@ public class GraniteGuardianAttackBehaviour : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(InitialAttackDelay());
+        attackCooldownActive = true;
+        StartCoroutine(ResetAttackCooldown());
     }
     
     private void Update()
@@ -32,7 +30,7 @@ public class GraniteGuardianAttackBehaviour : MonoBehaviour
             Vector3 direction = target.transform.position - beam.transform.position;
             beam.transform.rotation = Quaternion.LookRotation(direction);
         }
-        if (initialDelayOver && canAttack && !attacking && !attackCooldownActive && Time.time - lastAttackTime >= attackCooldown)
+        if (!attacking && !attackCooldownActive && Time.time - lastAttackTime >= attackCooldown)
         {
             List<GameObject> rabbits = EntityManager.Get().GetRabbits();
 
@@ -94,12 +92,5 @@ public class GraniteGuardianAttackBehaviour : MonoBehaviour
     {
         yield return new WaitForSeconds(attackCooldown);
         attackCooldownActive = false;
-    }
-    
-    private IEnumerator InitialAttackDelay()
-    {
-        yield return new WaitForSeconds(initialAttackDelay);
-        initialDelayOver = true;
-        canAttack = true;
     }
 }
