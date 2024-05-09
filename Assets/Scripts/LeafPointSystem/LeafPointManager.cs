@@ -158,7 +158,6 @@ namespace Managers {
             lockTween.Complete();
             if (lockIndex < locks.Length)
             {
-                print(locks.Length);
                 FMODUnity.RuntimeManager.PlayOneShot("event:/UI/Unlock");
                 lockTween = locks[lockIndex].transform.DOScale(0f, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
                 {

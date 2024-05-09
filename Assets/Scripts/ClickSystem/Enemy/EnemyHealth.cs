@@ -14,7 +14,6 @@ public class EnemyHealth : Clickable
 
     public override void OnClick(Vector3 point)
     {
-        print(GunUpgradeManager.GetInstance() == null ? "null" : "niet null" + " dus");
         GunUpgrade currentGunUpgrade = GunUpgradeManager.GetInstance().GetCurrentGunUpgrade();
         if (enemyHealth > currentGunUpgrade.gunDamage)
         {

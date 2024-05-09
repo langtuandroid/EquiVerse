@@ -63,8 +63,9 @@ public class EnemySpawner : MonoBehaviour
 
     public void AnimateEnemySpawnIn(GameObject enemy, float duration)
     {
+        Vector3 originalScale = enemy.transform.localScale;
         enemy.transform.localScale = Vector3.zero;
-        enemy.transform.DOScale(Vector3.one, duration).SetEase(Ease.OutBack);
+        enemy.transform.DOScale(originalScale, duration).SetEase(Ease.OutBack);
     }
 
     public void RemoveEnemy(GameObject enemyToRemove)

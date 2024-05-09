@@ -46,7 +46,6 @@ public class BeeSwarmBehaviour : MonoBehaviour
             }
         }
 
-        // Check if state has changed, then update and fade accordingly
         if (!wasInPursuit && isInPursuit)
         {
             soundController.FadeAudioParameter("BetsyZooming", "InPursuit", 1f, 0.4f);
@@ -71,7 +70,6 @@ public class BeeSwarmBehaviour : MonoBehaviour
     {
         if (other.gameObject.CompareTag(enemyTag) && Time.time >= nextAttackTime)
         {
-            print("hit");
             EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
             {

@@ -10355,8 +10355,8 @@ MonoBehaviour:
   target: {fileID: 0}
   nextTarget: {fileID: 0}
   debug: 0
-  debugGizmos: 1
-  debugStatus: 1
+  debugGizmos: 0
+  debugStatus: 0
   OnTargetPositionArrived:
     m_PersistentCalls:
       m_Calls: []
@@ -10373,7 +10373,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   AgentTransform: {fileID: 24050681078995999}
-  Editor_Tabs1: 0
+  Editor_Tabs1: 2
 --- !u!114 &2153187792410127972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11222,18 +11222,18 @@ MonoBehaviour:
   SelectedStance: 0
   ShowStateInInspector: 0
   Editor_Tabs1: 4
-  Editor_Tabs2: 1
+  Editor_Tabs2: 3
   SelectedMode: 3
   Mode_Tabs1: 0
   Ability_Tabs: 0
   Editor_EventTabs: 0
-  showPivots: 1
+  showPivots: 0
   showModeList: 1
   showStateList: 1
   debugStates: 0
   debugStances: 0
   debugModes: 0
-  debugGizmos: 1
+  debugGizmos: 0
   Runtime_Tabs1: 0
   Runtime_Tabs2: 4
   t: {fileID: 8595292941857753952}
