@@ -75,7 +75,7 @@ namespace Spawners {
 
         bool IsPointOnNavMesh(Vector3 point) {
             NavMeshHit hit;
-            return NavMesh.SamplePosition(point, out hit, 0.1f, navMeshSurface.layerMask);
+            return NavMesh.SamplePosition(point, out hit, 0.1f, new NavMeshQueryFilter{agentTypeID = NavMesh.GetSettingsByIndex(4).agentTypeID, areaMask = NavMesh.AllAreas});
         }
 
         public void RemovePlant() {
