@@ -44,9 +44,15 @@ namespace Spawners
                 foxInstance.transform.DOScale(Vector3.one, 0.25f).SetEase(Ease.OutBack);
                 FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/SpawnAnimal");
                 
-                if (!foxStepCompleted)
+                if (!foxStepCompleted && gameManager.level3)
                 {
                     TutorialManager.CompleteStepAndContinueToNextStep("ShowFoxButton");
+                    foxStepCompleted = true;
+                }
+                
+                if (!foxStepCompleted && gameManager.level4)
+                {
+                    TutorialManager.CompleteStepAndContinueToNextStep("ShowFoxAndWeaponUpgrades");
                     foxStepCompleted = true;
                 }
             }

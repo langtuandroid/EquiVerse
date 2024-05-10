@@ -9,7 +9,8 @@ namespace UpgradeSystem
 {
     public class MaxFoodUpgradeManager : MonoBehaviour
     {
-        [FormerlySerializedAs("ecManager")] public LeafPointManager leafPointManager;
+        public GameManager gameManager;
+        public LeafPointManager leafPointManager;
         public FoodSpawner foodSpawner;
         
         public int[] upgradeAmount;
@@ -42,10 +43,21 @@ namespace UpgradeSystem
                     LeafPointManager.totalPoints -= currentUpgradeCost;
                     upgradeIndex++;
 
-                    if (!tutorialStepCompleted)
+                    if (!tutorialStepCompleted && gameManager.level2)
+                    {
+                        TutorialManager.CompleteStepAndContinueToNextStep("Step_MaxPlantUpgrade");
+                        tutorialStepCompleted = true;
+                    }
+                    
+                    if (!tutorialStepCompleted && gameManager.level3)
                     {
                         TutorialManager.CompleteStep("ShowPreviousUnlockedUpgrades");
                         TutorialManager.GoToNextStep();
+                        tutorialStepCompleted = true;
+                    }
+                    if (!tutorialStepCompleted && gameManager.level4)
+                    {
+                        TutorialManager.CompleteStepAndContinueToNextStep("ShowFoodUpgrades");
                         tutorialStepCompleted = true;
                     }
 

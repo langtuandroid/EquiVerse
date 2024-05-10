@@ -13,6 +13,7 @@ namespace Managers
         public bool level1;
         public bool level2;
         public bool level3;
+        public bool level4;
         [NonSerialized]
         public static bool firstTimePlaying = true;
     }
