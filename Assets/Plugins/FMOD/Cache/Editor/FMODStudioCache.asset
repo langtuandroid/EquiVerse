@@ -27,6 +27,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2600
+--- !u!114 &-8615780116460904282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/World1/GraniteGuardian/AttackCharge
+  m_EditorClassIdentifier: 
+  Path: event:/World1/GraniteGuardian/AttackCharge
+  Guid:
+    Data1: -1098992902
+    Data2: 1077148775
+    Data3: 1299137157
+    Data4: -1298146586
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4000
 --- !u!114 &-8473568095422376001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +235,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 7354
+  Length: 4904
 --- !u!114 &-5018250098232119722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,12 +757,13 @@ MonoBehaviour:
   - {fileID: -5074242975834151384}
   - {fileID: -4532699054897486809}
   - {fileID: 511503754331511772}
+  - {fileID: -8615780116460904282}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5304006631014352583}
   StringsBanks:
   - {fileID: 23253448088795587}
-  cacheTime: 638509367781790539
+  cacheTime: 638509516426360770
   cacheVersion: 131616
 --- !u!114 &23253448088795587
 MonoBehaviour:
@@ -752,10 +780,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
   Name: MainMenu.strings
   StudioPath: bank:/MainMenu.strings
-  lastModified: 638508885708056931
+  lastModified: 638509516426360770
   FileSizes:
   - Name: Desktop
-    Value: 3542
+    Value: 3590
   Exists: 1
 --- !u!114 &476426055693632330
 MonoBehaviour:
@@ -1219,10 +1247,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 638509367781790539
+  lastModified: 638509516425862435
   FileSizes:
   - Name: Desktop
-    Value: 10419264
+    Value: 10419776
   Exists: 1
 --- !u!114 &4497974055163412146
 MonoBehaviour:
@@ -1398,7 +1426,7 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 638508885708046966
+  lastModified: 638509516426340836
   FileSizes:
   - Name: Desktop
     Value: 4484576
