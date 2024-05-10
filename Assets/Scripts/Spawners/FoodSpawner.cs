@@ -11,7 +11,7 @@ namespace Spawners {
     public class FoodSpawner : MonoBehaviour {
         [Header("Managers")]
         public GameManager gameManager;
-        [FormerlySerializedAs("ecManager")] public LeafPointManager leafPointManager;
+        public LeafPointManager leafPointManager;
 
         public NavMeshSurface navMeshSurface; 
         public GameObject[] foodPrefabs;
