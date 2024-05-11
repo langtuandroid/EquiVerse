@@ -31,6 +31,14 @@ public class LevelLoader : MonoBehaviour
         }));
     }
     
+    public void TestLoader(string sceneName)
+    {
+        transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
+        {
+            StartCoroutine(LoadAsynchronously(sceneName));
+        }));
+    }
+    
     IEnumerator LoadAsynchronously(string levelIndex)
     {
         loadingScreen.SetActive(true);

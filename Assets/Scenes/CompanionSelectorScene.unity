@@ -7102,18 +7102,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: NewCompanionSoundController, Assembly-CSharp
-        m_MethodName: StopMusic
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1989111029}
         m_TargetAssemblyTypeName: UISoundManager, Assembly-CSharp
         m_MethodName: PlayButtonClickSound
@@ -7126,9 +7114,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CompanionSelector, Assembly-CSharp
-        m_MethodName: IncrementCompanionIndex
+      - m_Target: {fileID: 416617051}
+        m_TargetAssemblyTypeName: CompanionSelectionButtonBehaviour, Assembly-CSharp
+        m_MethodName: PrintSelectedCompanions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2118123794}
+        m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
+        m_MethodName: LoadNextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8636,8 +8636,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuSoundController: {fileID: 0}
-  transitionOverlay: {fileID: 0}
-  loadingScreen: {fileID: 0}
+  transitionOverlay: {fileID: 286628095}
+  loadingScreen: {fileID: 235790320}
 --- !u!4 &2118123795
 Transform:
   m_ObjectHideFlags: 0

@@ -9,7 +9,9 @@ public class CompanionSelectionButtonBehaviour : MonoBehaviour
     public GameObject buttonsParent;
     public Button nextLevelButton;
     public Color defaultColor, markedColor;
-    
+
+    public static List<Companion> selectedCompanions = new List<Companion>();
+
     private GameObject currentCompanionPrefabInstance;
     private List<Button> markedButtons = new List<Button>();
 
@@ -57,7 +59,7 @@ public class CompanionSelectionButtonBehaviour : MonoBehaviour
         {
             if (markedButtons.Count < 3)
             {
-                MarkButton(button);
+                MarkButton(button, index);
             }
             else
             {
@@ -69,21 +71,28 @@ public class CompanionSelectionButtonBehaviour : MonoBehaviour
         SelectCompanion(index);
     }
 
-    void MarkButton(Button button)
+    void MarkButton(Button button, int index)
     {
         markedButtons.Add(button);
         button.image.color = markedColor;
+
+        selectedCompanions.Add(companionManager.companions[index]);
     }
 
     void UnmarkButton(Button button)
     {
         markedButtons.Remove(button);
         button.image.color = defaultColor;
+
+        Companion companionToRemove = companionManager.companions.Find(c => c.companionTitle == button.GetComponentInChildren<TextMeshProUGUI>().text);
+        if (companionToRemove != null)
+        {
+            selectedCompanions.Remove(companionToRemove);
+        }
     }
 
     void SelectCompanion(int index)
     {
-        Debug.Log("Button with companion " + companionManager.companions[index].companionTitle + " clicked!");
         GenerateCompanionOnPanel(index);
     }
 
@@ -97,9 +106,14 @@ public class CompanionSelectionButtonBehaviour : MonoBehaviour
             companionManager.companionSecondTitleText.text = companionManager.companions[index].companionSecondTitle;
             companionManager.companionDescriptionText.text = companionManager.companions[index].companionDescription;
         }
-        else
+    }
+    
+    public void PrintSelectedCompanions()
+    {
+        Debug.Log("Selected Companions:");
+        foreach (var companion in selectedCompanions)
         {
-            Debug.LogWarning("Invalid index provided for generating companion on panel.");
+            Debug.Log(companion.companionTitle);
         }
     }
 }
