@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -8,8 +7,11 @@ public class CompanionSelectionButtonBehaviour : MonoBehaviour
 {
     public CompanionManager companionManager;
     public GameObject buttonsParent;
+    public Button nextLevelButton;
+    public Color defaultColor, markedColor;
     
     private GameObject currentCompanionPrefabInstance;
+    private List<Button> markedButtons = new List<Button>();
 
     void Start()
     {
@@ -19,41 +21,77 @@ public class CompanionSelectionButtonBehaviour : MonoBehaviour
     void FillButtonNames()
     {
         Button[] buttons = buttonsParent.GetComponentsInChildren<Button>();
-        int buttonCount = buttons.Length;
-        int companionCount = companionManager.companions.Count;
 
-        for (int i = 0; i < buttonCount; i++)
+        for (int i = 0; i < buttons.Length; i++)
         {
-            if (i < companionCount)
+            if (i < companionManager.companions.Count)
             {
-                buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = companionManager.companions[i].companionTitle;
-                int companionIndex = i; // Capture the current value of i
-                buttons[i].onClick.AddListener(() => SelectCompanion(companionIndex));
+                ConfigureButton(buttons[i], i);
             }
             else
             {
-                buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = "?";
-                buttons[i].interactable = false;
+                SetButtonAsPlaceholder(buttons[i]);
             }
         }
     }
 
+    void ConfigureButton(Button button, int index)
+    {
+        button.GetComponentInChildren<TextMeshProUGUI>().text = companionManager.companions[index].companionTitle;
+        button.onClick.AddListener(() => ToggleMarkButton(button, index));
+    }
 
-    private void SelectCompanion(int index)
+    void SetButtonAsPlaceholder(Button button)
+    {
+        button.GetComponentInChildren<TextMeshProUGUI>().text = "?";
+        button.interactable = false;
+    }
+
+    void ToggleMarkButton(Button button, int index)
+    {
+        if (markedButtons.Contains(button))
+        {
+            UnmarkButton(button);
+        }
+        else
+        {
+            if (markedButtons.Count < 3)
+            {
+                MarkButton(button);
+            }
+            else
+            {
+                Debug.Log("Maximum number of marked buttons reached.");
+            }
+        }
+
+        nextLevelButton.interactable = markedButtons.Count == 3;
+        SelectCompanion(index);
+    }
+
+    void MarkButton(Button button)
+    {
+        markedButtons.Add(button);
+        button.image.color = markedColor;
+    }
+
+    void UnmarkButton(Button button)
+    {
+        markedButtons.Remove(button);
+        button.image.color = defaultColor;
+    }
+
+    void SelectCompanion(int index)
     {
         Debug.Log("Button with companion " + companionManager.companions[index].companionTitle + " clicked!");
         GenerateCompanionOnPanel(index);
     }
-    
-    private void GenerateCompanionOnPanel(int index)
+
+    void GenerateCompanionOnPanel(int index)
     {
         if (index >= 0 && index < companionManager.companions.Count)
         {
-            if (currentCompanionPrefabInstance != null)
-            {
-                Destroy(currentCompanionPrefabInstance);
-            }
-            
+            Destroy(currentCompanionPrefabInstance);
             currentCompanionPrefabInstance = Instantiate(companionManager.companions[index].companionPrefab, companionManager.companionPrefabInstanceLocation);
             companionManager.companionTitleText.text = companionManager.companions[index].companionTitle;
             companionManager.companionSecondTitleText.text = companionManager.companions[index].companionSecondTitle;
@@ -65,4 +103,3 @@ public class CompanionSelectionButtonBehaviour : MonoBehaviour
         }
     }
 }
-
