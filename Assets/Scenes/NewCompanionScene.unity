@@ -215,6 +215,18 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.8962264
       objectReference: {fileID: 0}
+    - target: {fileID: 4477920238870446243, guid: 2368b4828fad9424582e0db3009ca10d, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477920238870446243, guid: 2368b4828fad9424582e0db3009ca10d, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477920238870446243, guid: 2368b4828fad9424582e0db3009ca10d, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -397,7 +409,7 @@ MonoBehaviour:
       Path: event:/Animals/FerdinandGoose/FerdinandHonk
   - companionTitle: Pablo
     companionSecondTitle: the parrot
-    companionDescription: ' Pablo collects Leaf points but isn''t very quick'
+    companionDescription: ' Pablo collects Leaf points but isn''t very quick.'
     companionPrefab: {fileID: 1977361067276591308, guid: 7698ffffcd0baf640a03fe6a3c81c609, type: 3}
     companionSoundEventPath:
       Guid:
@@ -408,7 +420,7 @@ MonoBehaviour:
       Path: event:/Animals/PabloParrot/PabloIdle
   - companionTitle: Betsy
     companionSecondTitle: the queen bee
-    companionDescription: Betsy lends you her bee army to eliminate enemies!
+    companionDescription: Betsy lends you her bee army to eliminate enemies.
     companionPrefab: {fileID: 8062672837211983902, guid: 3fecfe0c36960014fa0a8fb6e7d714b9, type: 3}
     companionSoundEventPath:
       Guid:
@@ -417,6 +429,17 @@ MonoBehaviour:
         Data3: 495882650
         Data4: -459895004
       Path: event:/Animals/BetsyBeeQueen/BetsyIdle
+  - companionTitle: Daisy
+    companionSecondTitle: the momma rabbit
+    companionDescription: Daisy gives birth to a new baby rabbit every so often
+    companionPrefab: {fileID: 1843596818345988, guid: ab5a846386fd0e74fa43f60958adfcf0, type: 3}
+    companionSoundEventPath:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
   companionPrefabInstanceLocation: {fileID: 120734898}
   companionTitleText: {fileID: 1759051608}
   companionSecondTitleText: {fileID: 1612868432}
@@ -692,7 +715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RenderShadows: 1
+  m_RenderShadows: 0
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
@@ -704,7 +727,7 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
-  m_Antialiasing: 2
+  m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -2319,7 +2342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RenderShadows: 1
+  m_RenderShadows: 0
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
