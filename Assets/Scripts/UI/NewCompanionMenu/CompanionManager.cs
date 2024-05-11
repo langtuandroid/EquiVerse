@@ -16,8 +16,10 @@ public class Companion
     public FMODUnity.EventReference companionSoundEventPath;
 
 } 
-public class CompanionSelector : MonoBehaviour
+public class CompanionManager : MonoBehaviour
 {
+    public bool isNewCompanionScene;
+    public LevelLoader levelLoader;
     public List<Companion> companions;
     [HideInInspector]
     public static int currentCompanionIndex;
@@ -29,11 +31,18 @@ public class CompanionSelector : MonoBehaviour
 
     private void Start()
     {
+        if (isNewCompanionScene)
+        {
+            GenerateCompanionOnPanel();
+        }
+    }
+
+    public void GenerateCompanionOnPanel()
+    {
         Instantiate(companions[currentCompanionIndex].companionPrefab, companionPrefabInstanceLocation);
         companionTitleText.text = companions[currentCompanionIndex].companionTitle;
         companionSecondTitleText.text = companions[currentCompanionIndex].companionSecondTitle;
         companionDescriptionText.text = companions[currentCompanionIndex].companionDescription;
-
     }
 
     public void PlayCompanionSound()
@@ -44,5 +53,13 @@ public class CompanionSelector : MonoBehaviour
     public void IncrementCompanionIndex()
     {
         currentCompanionIndex++;
+        if (currentCompanionIndex < 4)
+        {
+            levelLoader.LoadNextLevel();
+        }
+        else
+        {
+            levelLoader.LoadCompanionSelector();
+        }
     }
 }

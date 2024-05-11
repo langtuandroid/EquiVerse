@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class CompanionRevealer : MonoBehaviour
 {
-    public CompanionSelector companionSelector;
+    [FormerlySerializedAs("companionSelector")] public CompanionManager companionManager;
     
     public Button giftButton;
     public RectTransform companion;
@@ -54,7 +55,7 @@ public class CompanionRevealer : MonoBehaviour
                 {
                     nextLevelButton.gameObject.SetActive(true);
                     soundController.NewCompanionMusicVolumeFade(1, 2f);
-                    companionSelector.PlayCompanionSound();
+                    companionManager.PlayCompanionSound();
                 }));
             });
     }

@@ -22,6 +22,15 @@ public class LevelLoader : MonoBehaviour
             StartCoroutine(LoadAsynchronously("Level " + GameManager.WORLD_INDEX.ToString() + "-" + GameManager.LEVEL_INDEX.ToString()));
         }));
     }
+
+    public void LoadCompanionSelector()
+    {
+        transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
+        {
+            StartCoroutine(LoadAsynchronously("CompanionSelectorScene"));
+        }));
+    }
+    
     IEnumerator LoadAsynchronously(string levelIndex)
     {
         loadingScreen.SetActive(true);

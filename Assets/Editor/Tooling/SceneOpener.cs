@@ -39,4 +39,10 @@ public class SceneOpener : EditorWindow {
         if (UnityEditor.SceneManagement.EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
             UnityEditor.SceneManagement.EditorSceneManager.OpenScene("Assets/Scenes/NewCompanionScene.unity");
     }
+    
+    [MenuItem("Scene/CompanionSelection")]
+    public static void CompanionSelection() {
+        if (UnityEditor.SceneManagement.EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+            UnityEditor.SceneManagement.EditorSceneManager.OpenScene("Assets/Scenes/CompanionSelectorScene.unity");
+    }
 }
