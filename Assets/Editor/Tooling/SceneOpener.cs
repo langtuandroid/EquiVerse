@@ -27,6 +27,12 @@ public class SceneOpener : EditorWindow {
         if (UnityEditor.SceneManagement.EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
             UnityEditor.SceneManagement.EditorSceneManager.OpenScene("Assets/Scenes/Level 1-4.unity");
     }
+    
+    [MenuItem("Scene/Level 1-5")]
+    public static void Level15() {
+        if (UnityEditor.SceneManagement.EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+            UnityEditor.SceneManagement.EditorSceneManager.OpenScene("Assets/Scenes/Level 1-5.unity");
+    }
 
     [MenuItem("Scene/Main Menu")]
     public static void MainMenu() {

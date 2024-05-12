@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class ParrotBehaviour : MonoBehaviour
+public class PabloBehaviour : MonoBehaviour
 {
     public Vector3 areaCenter;
     public Vector3 areaSize;
