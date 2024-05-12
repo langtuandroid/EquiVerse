@@ -67,3 +67,16 @@ MonoBehaviour:
     parameters:
     - name: World1LevelAmbienceVolume
       value: 0
+  - name: BattleMusic
+    eventReference:
+      Guid:
+        Data1: 302308046
+        Data2: 1207126371
+        Data3: -1449220457
+        Data4: 963137034
+      Path: event:/World1/World1LevelBattleMusic
+    parameters:
+    - name: Suspense_Action_Transition
+      value: 0
+    - name: EnemyMusicVolume
+      value: 0
