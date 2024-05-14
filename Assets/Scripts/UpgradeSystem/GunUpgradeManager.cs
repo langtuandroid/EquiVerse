@@ -43,7 +43,7 @@ public class GunUpgradeManager : MonoBehaviour
 
     public void UpgradeGun()
     {
-        if (gunUpgradeIndex <= gunUpgrades.Count)
+        if (gunUpgradeIndex < gunUpgrades.Count)
         {
             currentUpgradeCost = upgradeCostAmount[gunUpgradeIndex];
             if (LeafPointManager.totalPoints >= currentUpgradeCost)
@@ -56,24 +56,29 @@ public class GunUpgradeManager : MonoBehaviour
                 }
                 LeafPointManager.totalPoints -= currentUpgradeCost;
                 gunUpgradeIndex++;
-                
-                if (gunUpgradeIndex < upgradeCostAmount.Length) {
+
+                if (gunUpgradeIndex < upgradeCostAmount.Length)
+                {
                     weaponUpgradeCostText.text = upgradeCostAmount[gunUpgradeIndex].ToString();
-                } else {
+                }
+                else
+                {
                     Debug.LogWarning("No more upgrades available.");
                     upgradeImage.SetActive(false);
                     upgradeCostText.SetActive(false);
-                    maxUpgradeReachedText.SetActive(true); 
+                    maxUpgradeReachedText.SetActive(true);
                     weaponUpgradeUpgradeButton.interactable = false;
                 }
             }
-        } else
-        {
-            Debug.LogWarning("Insufficient points to upgrade.");
-            FMODUnity.RuntimeManager.PlayOneShot("event:/UI/CantBuy");
-            leafPointManager.FlickerTotalPointsElement();
+            else
+            {
+                Debug.LogWarning("Insufficient points to upgrade.");
+                FMODUnity.RuntimeManager.PlayOneShot("event:/UI/CantBuy");
+                leafPointManager.FlickerTotalPointsElement();
+            }
         }
     }
+
 
     public static GunUpgradeManager GetInstance()
     {

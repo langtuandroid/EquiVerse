@@ -5,8 +5,8 @@ using UnityEngine.AI;
 public class WanderingEnemyBehaviour : MonoBehaviour
 {
     public NavMeshAgent navMeshAgent;
-    public float speed = 3f;
-    public float smoothRotationSpeed = 360f;
+    public float speed;
+    public float smoothRotationSpeed;
 
     private NavMeshSurface navMeshSurface;
     
