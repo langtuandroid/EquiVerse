@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using FMODUnity;
+using Managers;
 using TMPro;
 using UnityEngine;
 
@@ -14,8 +15,8 @@ public class Companion
     
     public GameObject companionPrefab;
     public FMODUnity.EventReference companionSoundEventPath;
-
 } 
+
 public class CompanionManager : MonoBehaviour
 {
     public bool isNewCompanionScene;
@@ -43,6 +44,7 @@ public class CompanionManager : MonoBehaviour
         companionTitleText.text = companions[currentCompanionIndex].companionTitle;
         companionSecondTitleText.text = companions[currentCompanionIndex].companionSecondTitle;
         companionDescriptionText.text = companions[currentCompanionIndex].companionDescription;
+        GameManager.companionsUnlockedIndex++;
     }
 
     public void PlayCompanionSound()

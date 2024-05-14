@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d42377fe2fdf94a82f7c036b31f2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  companionSelector: {fileID: 6839408118244766011}
+  companionManager: {fileID: 0}
   giftButton: {fileID: 0}
   companion: {fileID: 0}
   nextLevelButton: {fileID: 0}
@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00bb2e109d68e9d489de6a7c81a55035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isNewCompanionScene: 0
   levelLoader: {fileID: 0}
   companions:
   - companionTitle: Ferdinand
@@ -110,6 +111,17 @@ MonoBehaviour:
         Data3: 0
         Data4: 0
       Path: 
+  - companionTitle: Test
+    companionSecondTitle: test
+    companionDescription: test
+    companionPrefab: {fileID: 4810356167467281102, guid: 72b784daf2a51bc4d9093aa9373fe701, type: 3}
+    companionSoundEventPath:
+      Guid:
+        Data1: 1938974745
+        Data2: 1089586350
+        Data3: 2130371225
+        Data4: -458802588
+      Path: event:/Animals/FoxEat
   companionPrefabInstanceLocation: {fileID: 0}
   companionTitleText: {fileID: 0}
   companionSecondTitleText: {fileID: 0}

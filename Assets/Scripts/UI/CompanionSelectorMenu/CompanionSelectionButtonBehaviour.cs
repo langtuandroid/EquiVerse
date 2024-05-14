@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,7 +27,7 @@ public class CompanionSelectionButtonBehaviour : MonoBehaviour
 
         for (int i = 0; i < buttons.Length; i++)
         {
-            if (i < companionManager.companions.Count)
+            if (i < GameManager.companionsUnlockedIndex)
             {
                 ConfigureButton(buttons[i], i);
             }

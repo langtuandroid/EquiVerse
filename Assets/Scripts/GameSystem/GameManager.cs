@@ -7,15 +7,13 @@ namespace Managers
 {
     public class GameManager : MonoBehaviour
     {
-        [NonSerialized]
         public static int WORLD_INDEX;
-        [NonSerialized]
         public static int LEVEL_INDEX;
+        public static int companionsUnlockedIndex;
         public bool level1;
         public bool level2;
         public bool level3;
         public bool level4;
-        [NonSerialized]
         public static bool firstTimePlaying = true;
         
         public TextMeshProUGUI currentLevelText;

@@ -2552,6 +2552,10 @@ PrefabInstance:
       propertyPath: companionPrefabInstanceLocation
       value: 
       objectReference: {fileID: 120734898}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[0].unlocked
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

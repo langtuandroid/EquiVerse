@@ -16,7 +16,6 @@ public class LevelLoader : MonoBehaviour
     
     public void LoadNextLevel()
     {
-        GameManager.LEVEL_INDEX++;
         transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
         {
             StartCoroutine(LoadAsynchronously("Level " + GameManager.WORLD_INDEX.ToString() + "-" + GameManager.LEVEL_INDEX.ToString()));

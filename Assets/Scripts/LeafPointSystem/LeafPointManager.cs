@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Net;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -40,6 +41,8 @@ namespace Managers {
         private const float updateInterval = 0.01666667f;
         private const int speedFactor = 15; //Higher is slower
 
+        private bool levelCompletedShortCutPressed = false;
+
         private void Start()
         {
             originalColor = totalPointsBackground.color;
@@ -55,6 +58,11 @@ namespace Managers {
             if (UnityEngine.Input.GetKey(KeyCode.LeftControl))
             {
                 totalPoints += 100;
+            }
+            if (UnityEngine.Input.GetKey(KeyCode.RightControl) && !levelCompletedShortCutPressed)
+            {
+                LevelCompleted();
+                levelCompletedShortCutPressed = true;
             }
             UpdateVisualPoints();
         }
@@ -134,6 +142,7 @@ namespace Managers {
                 soundController.StopAudioEvent("Music");
                 soundController.StopAudioEvent("Ambience");
                 StartCoroutine(LoadAsynchronously("NewCompanionScene"));
+                GameManager.LEVEL_INDEX++;
             })).SetUpdate(true);
         }
 
