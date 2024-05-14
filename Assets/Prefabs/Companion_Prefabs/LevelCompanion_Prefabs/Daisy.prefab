@@ -5125,6 +5125,7 @@ GameObject:
   - component: {fileID: 5433344352400242864}
   - component: {fileID: 6130886861857249416}
   - component: {fileID: -5890933600313648824}
+  - component: {fileID: -8288451397285029375}
   m_Layer: 20
   m_Name: Daisy
   m_TagString: Animal
@@ -5149,6 +5150,7 @@ Transform:
   - {fileID: 7772720220438848079}
   - {fileID: 137537798942819665}
   - {fileID: 8893372563025492420}
+  - {fileID: 8774833161030898497}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4296187565742506940
@@ -5283,8 +5285,8 @@ MonoBehaviour:
   SelectedState: 0
   SelectedStance: 0
   ShowStateInInspector: 0
-  Editor_Tabs1: 0
-  Editor_Tabs2: 4
+  Editor_Tabs1: 4
+  Editor_Tabs2: 2
   SelectedMode: 2
   Mode_Tabs1: 0
   Ability_Tabs: 0
@@ -8268,8 +8270,67 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rabbitPrefab: {fileID: 6323241760306788905, guid: 63b1203aa210c38408a8b1544c7313b7, type: 3}
   spawnPosition: {fileID: 8893372563025492420}
-  minSpawnTime: 7
-  maxSpawnTime: 16
+  minSpawnTime: 25
+  maxSpawnTime: 30
+  expandingSound:
+    Guid:
+      Data1: -637080991
+      Data2: 1115376556
+      Data3: -1592806728
+      Data4: 1598994209
+    Path: event:/Animals/DaisyMommaRabbit/Expanding
+  rabbitBornSound:
+    Guid:
+      Data1: -1419439901
+      Data2: 1324227926
+      Data3: -1380093294
+      Data4: -2091269077
+    Path: event:/Animals/DaisyMommaRabbit/RabbitBorn
+  spawnAnimalSound:
+    Guid:
+      Data1: 1746399278
+      Data2: 1303854595
+      Data3: 1979655336
+      Data4: -7709562
+    Path: event:/PlayerActions/SpawnAnimal
+  isPregnant: {fileID: -8288451397285029375}
+  rabbitBornParticles: {fileID: 8896536279825264589}
+--- !u!114 &-8288451397285029375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441118352601954252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7878c94402156f54bac49f74151e0507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowEvents: 0
+  ID:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  Auto: 1
+  InvokeOnEnable: 1
+  Description: 
+  ShowDescription: 0
+  debug: 0
+  value:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  invert: 0
+  OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTrue:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFalse:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1479829361514344366
 GameObject:
   m_ObjectHideFlags: 0
@@ -8701,7 +8762,7 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue:
       serializedVersion: 2
-      m_Bits: 1
+      m_Bits: 65
     Variable: {fileID: 0}
   Tracks: {fileID: 198000013136168986, guid: e9729704f56e47d43a5f1ffc707c156b, type: 3}
   Dust: {fileID: 198000010737321038, guid: f0185de6019ebaa4db45528f37bad8d2, type: 3}
@@ -13820,7 +13881,7 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue: 0.2
     Variable: {fileID: 0}
-  currentState: {fileID: 11400000, guid: 54fcf8a30cb061143a592eb5fd423f12, type: 2}
+  currentState: {fileID: 11400000, guid: 8ac4a5d741508404fb44d9001ed7b2e4, type: 2}
   DisableAIOnDeath: 1
   debug: 1
   debugAIStates: 0
@@ -13919,7 +13980,7 @@ Transform:
   m_GameObject: {fileID: 4190451254511936566}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1297, z: -0.083}
+  m_LocalPosition: {x: 0, y: 0.1297, z: -0.1491}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15133,3 +15194,70 @@ Transform:
   - {fileID: 3663651639763384654}
   m_Father: {fileID: 3303701940906495820}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &8775553005371295421
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3303701940906495820}
+    m_Modifications:
+    - target: {fileID: 1698068915230344, guid: aa9c20b44c7c99e48ae967efcf64b73f, type: 3}
+      propertyPath: m_Name
+      value: FX_Rabbit_Born
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361429739378172, guid: aa9c20b44c7c99e48ae967efcf64b73f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.4950414
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361429739378172, guid: aa9c20b44c7c99e48ae967efcf64b73f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8242522
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361429739378172, guid: aa9c20b44c7c99e48ae967efcf64b73f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.4237092
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361429739378172, guid: aa9c20b44c7c99e48ae967efcf64b73f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361429739378172, guid: aa9c20b44c7c99e48ae967efcf64b73f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361429739378172, guid: aa9c20b44c7c99e48ae967efcf64b73f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361429739378172, guid: aa9c20b44c7c99e48ae967efcf64b73f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361429739378172, guid: aa9c20b44c7c99e48ae967efcf64b73f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361429739378172, guid: aa9c20b44c7c99e48ae967efcf64b73f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361429739378172, guid: aa9c20b44c7c99e48ae967efcf64b73f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aa9c20b44c7c99e48ae967efcf64b73f, type: 3}
+--- !u!4 &8774833161030898497 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4361429739378172, guid: aa9c20b44c7c99e48ae967efcf64b73f, type: 3}
+  m_PrefabInstance: {fileID: 8775553005371295421}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8896536279825264589 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198121459679799664, guid: aa9c20b44c7c99e48ae967efcf64b73f, type: 3}
+  m_PrefabInstance: {fileID: 8775553005371295421}
+  m_PrefabAsset: {fileID: 0}

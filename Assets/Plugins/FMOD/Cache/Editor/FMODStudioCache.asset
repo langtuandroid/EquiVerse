@@ -474,6 +474,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-3487990503641872283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Animals/DaisyMommaRabbit/RabbitBorn
+  m_EditorClassIdentifier: 
+  Path: event:/Animals/DaisyMommaRabbit/RabbitBorn
+  Guid:
+    Data1: -1419439901
+    Data2: 1324227926
+    Data3: -1380093294
+    Data4: -2091269077
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1044
 --- !u!114 &-3107469317855419406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,6 +555,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 62
+--- !u!114 &-2565083369543562763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Animals/DaisyMommaRabbit/Expanding
+  m_EditorClassIdentifier: 
+  Path: event:/Animals/DaisyMommaRabbit/Expanding
+  Guid:
+    Data1: -637080991
+    Data2: 1115376556
+    Data3: -1592806728
+    Data4: 1598994209
+  Banks:
+  - {fileID: 3956151758206991042}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3000
 --- !u!114 &-2021504784237846920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -758,12 +812,14 @@ MonoBehaviour:
   - {fileID: -4532699054897486809}
   - {fileID: 511503754331511772}
   - {fileID: -8615780116460904282}
+  - {fileID: -2565083369543562763}
+  - {fileID: -3487990503641872283}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5304006631014352583}
   StringsBanks:
   - {fileID: 23253448088795587}
-  cacheTime: 638509516426360770
+  cacheTime: 638512287220198276
   cacheVersion: 131616
 --- !u!114 &23253448088795587
 MonoBehaviour:
@@ -780,10 +836,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
   Name: MainMenu.strings
   StudioPath: bank:/MainMenu.strings
-  lastModified: 638509516426360770
+  lastModified: 638512287026378711
   FileSizes:
   - Name: Desktop
-    Value: 3590
+    Value: 3700
   Exists: 1
 --- !u!114 &476426055693632330
 MonoBehaviour:
@@ -1247,10 +1303,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 638509516425862435
+  lastModified: 638512287220198276
   FileSizes:
   - Name: Desktop
-    Value: 10419776
+    Value: 10449280
   Exists: 1
 --- !u!114 &4497974055163412146
 MonoBehaviour:
@@ -1426,7 +1482,7 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 638509516426340836
+  lastModified: 638512287026368739
   FileSizes:
   - Name: Desktop
     Value: 4484576

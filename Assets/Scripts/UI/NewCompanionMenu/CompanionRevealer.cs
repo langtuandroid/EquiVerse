@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class CompanionRevealer : MonoBehaviour
 {
-    [FormerlySerializedAs("companionSelector")] public CompanionManager companionManager;
+    public CompanionManager companionManager;
     
     public Button giftButton;
     public RectTransform companion;
