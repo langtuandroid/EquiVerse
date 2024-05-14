@@ -73,10 +73,21 @@ namespace MainMenu
         public void ClickContinue()
         {
             mainMenuSoundController.FadeMainMenuVolume(1.0f, 1.1f);
-            transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
+            if ((GameManager.WORLD_INDEX == 1 && GameManager.LEVEL_INDEX == 5) || GameManager.WORLD_INDEX > 1)
             {
-                StartCoroutine(LoadAsynchronously("Level " + GameManager.WORLD_INDEX.ToString() + "-" + GameManager.LEVEL_INDEX.ToString()));
-            }));
+                transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
+                {
+                    StartCoroutine(LoadAsynchronously("CompanionSelectorScene"));
+                }));
+            }
+            else
+            {
+                transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
+                {
+                    StartCoroutine(LoadAsynchronously("Level " + GameManager.WORLD_INDEX.ToString() + "-" +
+                                                      GameManager.LEVEL_INDEX.ToString()));
+                }));
+            }
         }
 
         public void ClickQuit()
