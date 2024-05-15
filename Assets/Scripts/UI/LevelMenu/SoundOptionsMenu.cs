@@ -14,29 +14,35 @@ public class SoundOptionsMenu : MonoBehaviour
     private FMOD.Studio.Bus musicBus;
     private FMOD.Studio.Bus sfxBus;
     private FMOD.Studio.Bus masterBus;
+    
+    private string masterVolumeKey = "MasterVolume";
+    private string musicVolumeKey = "MusicVolume";
+    private string sfxVolumeKey = "SFXVolume";
+    private string ambienceVolumeKey = "AmbienceVolume";
 
     void Start()
     {
-        // Get references to the FMOD buses
         ambienceBus = FMODUnity.RuntimeManager.GetBus("bus:/Ambience");
         musicBus = FMODUnity.RuntimeManager.GetBus("bus:/Music");
         sfxBus = FMODUnity.RuntimeManager.GetBus("bus:/SFX");
         masterBus = FMODUnity.RuntimeManager.GetBus("bus:/");
 
-        // Set initial slider values to current bus volumes
-        ambienceSlider.value = GetBusVolume(ambienceBus);
-        musicSlider.value = GetBusVolume(musicBus);
-        sfxSlider.value = GetBusVolume(sfxBus);
-        masterSlider.value = GetBusVolume(masterBus);
+        ambienceSlider.value = PlayerPrefs.GetFloat(ambienceVolumeKey, GetBusVolume(ambienceBus));
+        musicSlider.value = PlayerPrefs.GetFloat(musicVolumeKey, GetBusVolume(musicBus));
+        sfxSlider.value = PlayerPrefs.GetFloat(sfxVolumeKey, GetBusVolume(sfxBus));
+        masterSlider.value = PlayerPrefs.GetFloat(masterVolumeKey, GetBusVolume(masterBus));
 
-        // Subscribe to slider value change events
+        SetAmbienceVolume(ambienceSlider.value);
+        SetMusicVolume(musicSlider.value);
+        SetSFXVolume(sfxSlider.value);
+        SetMasterVolume(masterSlider.value);
+
         ambienceSlider.onValueChanged.AddListener(SetAmbienceVolume);
         musicSlider.onValueChanged.AddListener(SetMusicVolume);
         sfxSlider.onValueChanged.AddListener(SetSFXVolume);
         masterSlider.onValueChanged.AddListener(SetMasterVolume);
     }
 
-    // Function to get the volume of a bus
     float GetBusVolume(FMOD.Studio.Bus bus)
     {
         float volume;
@@ -44,27 +50,27 @@ public class SoundOptionsMenu : MonoBehaviour
         return volume;
     }
 
-    // Function to set the volume of the Ambience bus
     void SetAmbienceVolume(float volume)
     {
         ambienceBus.setVolume(volume);
+        PlayerPrefs.SetFloat(ambienceVolumeKey, volume);
     }
 
-    // Function to set the volume of the Music bus
     void SetMusicVolume(float volume)
     {
         musicBus.setVolume(volume);
+        PlayerPrefs.SetFloat(musicVolumeKey, volume);
     }
 
-    // Function to set the volume of the SFX bus
     void SetSFXVolume(float volume)
     {
         sfxBus.setVolume(volume);
+        PlayerPrefs.SetFloat(sfxVolumeKey, volume);
     }
 
-    // Function to set the volume of the Master bus
     void SetMasterVolume(float volume)
     {
         masterBus.setVolume(volume);
+        PlayerPrefs.SetFloat(masterVolumeKey, volume);
     }
 }

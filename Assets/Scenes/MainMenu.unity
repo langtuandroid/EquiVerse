@@ -4899,6 +4899,70 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4896241521240112, guid: 579429fe71610c6458c591e53ae6cb43, type: 3}
   m_PrefabInstance: {fileID: 409984604}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &424371070
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 424371073}
+  - component: {fileID: 424371072}
+  - component: {fileID: 424371071}
+  m_Layer: 0
+  m_Name: OptionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &424371071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424371070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3626d509d9951a54f8ebb92b4baa3614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resolutionDropdown: {fileID: 53354052}
+  qualityDropdown: {fileID: 1945001464}
+  screenModeDropdown: {fileID: 1840248131}
+--- !u!114 &424371072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424371070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e39d234d14c738945889c6d3016c1739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterSlider: {fileID: 42638004}
+  musicSlider: {fileID: 244691113}
+  sfxSlider: {fileID: 1365144742}
+  ambienceSlider: {fileID: 1435698439}
+--- !u!4 &424371073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424371070}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 604.5339, y: 297.2377, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &430898527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6615,8 +6679,6 @@ GameObject:
   - component: {fileID: 555178966}
   - component: {fileID: 555178965}
   - component: {fileID: 555178964}
-  - component: {fileID: 555178967}
-  - component: {fileID: 555178968}
   m_Layer: 5
   m_Name: Options_Panel
   m_TagString: Untagged
@@ -6710,37 +6772,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 555178962}
   m_CullTransparentMesh: 1
---- !u!114 &555178967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 555178962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3626d509d9951a54f8ebb92b4baa3614, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resolutionDropdown: {fileID: 53354052}
-  qualityDropdown: {fileID: 1945001464}
-  screenModeDropdown: {fileID: 1840248131}
---- !u!114 &555178968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 555178962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e39d234d14c738945889c6d3016c1739, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  masterSlider: {fileID: 42638004}
-  musicSlider: {fileID: 244691113}
-  sfxSlider: {fileID: 1365144742}
-  ambienceSlider: {fileID: 1435698439}
 --- !u!1 &566935750
 GameObject:
   m_ObjectHideFlags: 0
@@ -25697,3 +25728,4 @@ SceneRoots:
   - {fileID: 2085861165}
   - {fileID: 190629691}
   - {fileID: 1988220907}
+  - {fileID: 424371073}

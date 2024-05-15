@@ -8,26 +8,88 @@ public class GraphicsOptionsMenu : MonoBehaviour
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown qualityDropdown;
     public TMP_Dropdown screenModeDropdown;
-    //public TMP_Dropdown frameRateDropdown;
 
     private List<Resolution> filteredResolutions;
     private Resolution[] resolutions;
 
     private int currentResolutionIndex = 0;
 
+    // Keys for PlayerPrefs
+    private string resolutionWidthKey = "ResolutionWidth";
+    private string resolutionHeightKey = "ResolutionHeight";
+    private string qualityLevelKey = "QualityLevel";
+    private string screenModeKey = "ScreenMode";
+
     void Start()
     {
         PopulateQualityDropdown();
         PopulateResolutionDropdown();
         PopulateScreenModeDropdown(); 
-        //PopulateFrameRateDropdown();
 
         screenModeDropdown.onValueChanged.AddListener(OnScreenModeChanged);
         resolutionDropdown.onValueChanged.AddListener(OnResolutionChanged);
         qualityDropdown.onValueChanged.AddListener(OnQualityChanged);
-        //frameRateDropdown.onValueChanged.AddListener(OnFrameRateChanged);
 
-        SetDefaultResolution();
+        // Check if there are saved settings in PlayerPrefs
+        if(PlayerPrefs.HasKey(resolutionWidthKey) && PlayerPrefs.HasKey(resolutionHeightKey) &&
+           PlayerPrefs.HasKey(qualityLevelKey) && PlayerPrefs.HasKey(screenModeKey))
+        {
+            // Load saved settings from PlayerPrefs
+            LoadGraphicsSettingsFromPlayerPrefs();
+        }
+        else
+        {
+            // Apply default settings
+            SetDefaultGraphicsSettings();
+        }
+    }
+    
+    void UpdateDropdownValues()
+    {
+        // Update resolution dropdown
+        int savedResolutionIndex = FindCurrentResolutionIndex();
+        resolutionDropdown.value = savedResolutionIndex;
+        resolutionDropdown.RefreshShownValue();
+
+        // Update quality dropdown
+        int savedQualityLevel = QualitySettings.GetQualityLevel();
+        qualityDropdown.value = savedQualityLevel;
+        qualityDropdown.RefreshShownValue();
+
+        // Update screen mode dropdown
+        screenModeDropdown.value = PlayerPrefs.GetInt(screenModeKey);
+    }
+    void LoadGraphicsSettingsFromPlayerPrefs()
+    {
+        int savedScreenWidth = PlayerPrefs.GetInt(resolutionWidthKey);
+        int savedScreenHeight = PlayerPrefs.GetInt(resolutionHeightKey);
+        int savedQualityLevel = PlayerPrefs.GetInt(qualityLevelKey);
+        int savedScreenModeIndex = PlayerPrefs.GetInt(screenModeKey); 
+
+        // Apply saved settings
+        Screen.SetResolution(savedScreenWidth, savedScreenHeight, true);
+        QualitySettings.SetQualityLevel(savedQualityLevel);
+        
+        switch (savedScreenModeIndex)
+        {
+            case 0:
+                Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+                break;
+            case 1:
+                Screen.fullScreenMode = FullScreenMode.Windowed;
+                break;
+            case 2:
+                Screen.fullScreenMode = FullScreenMode.MaximizedWindow;
+                break;
+            default:
+                break;
+        }
+
+        // Update currentResolutionIndex
+        currentResolutionIndex = FindCurrentResolutionIndex();
+
+        // Update dropdown values to reflect loaded settings
+        UpdateDropdownValues();
     }
 
     void PopulateResolutionDropdown()
@@ -55,17 +117,25 @@ public class GraphicsOptionsMenu : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
     }
 
-    void SetDefaultResolution()
+    void SetDefaultGraphicsSettings()
     {
-        Resolution currentResolution = Screen.currentResolution;
-        string currentResolutionString = $"{currentResolution.width}x{currentResolution.height}";
-        int defaultIndex = filteredResolutions.FindIndex(res => $"{res.width}x{res.height}" == currentResolutionString);
+        int defaultScreenWidth = Screen.currentResolution.width;
+        int defaultScreenHeight = Screen.currentResolution.height;
 
-        if (defaultIndex != -1)
-        {
-            resolutionDropdown.value = defaultIndex;
-            resolutionDropdown.RefreshShownValue();
-        }
+        PlayerPrefs.SetInt(resolutionWidthKey, defaultScreenWidth);
+        PlayerPrefs.SetInt(resolutionHeightKey, defaultScreenHeight);
+
+        int highestQualityLevel = QualitySettings.names.Length - 1;
+        PlayerPrefs.SetInt(qualityLevelKey, highestQualityLevel);
+
+        Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+        PlayerPrefs.SetInt(screenModeKey, 0);
+
+        Screen.SetResolution(defaultScreenWidth, defaultScreenHeight, true);
+        QualitySettings.SetQualityLevel(highestQualityLevel);
+        screenModeDropdown.value = 0;
+
+        currentResolutionIndex = FindCurrentResolutionIndex();
     }
 
     void PopulateQualityDropdown()
@@ -95,22 +165,6 @@ public class GraphicsOptionsMenu : MonoBehaviour
         SetDropdownValueBasedOnCurrentScreenMode();
     }
 
-    // void PopulateFrameRateDropdown()
-    // {
-    //     frameRateDropdown.ClearOptions();
-    //
-    //     List<string> frameRateOptions = new List<string>
-    //     {
-    //         "30 FPS",
-    //         "60 FPS",
-    //         "120 FPS"
-    //     };
-    //
-    //     frameRateDropdown.AddOptions(frameRateOptions);
-    //     frameRateDropdown.value = frameRateOptions.IndexOf($"{Application.targetFrameRate} FPS");
-    //     frameRateDropdown.RefreshShownValue();
-    // }
-
     void OnScreenModeChanged(int index)
     {
         switch (index)
@@ -127,6 +181,7 @@ public class GraphicsOptionsMenu : MonoBehaviour
             default:
                 break;
         }
+        PlayerPrefs.SetInt(screenModeKey, index);
     }
 
     void SetDropdownValueBasedOnCurrentScreenMode()
@@ -151,31 +206,15 @@ public class GraphicsOptionsMenu : MonoBehaviour
     {
         Resolution selectedResolution = filteredResolutions[index];
         Screen.SetResolution(selectedResolution.width, selectedResolution.height, true);
+        PlayerPrefs.SetInt(resolutionWidthKey, selectedResolution.width);
+        PlayerPrefs.SetInt(resolutionHeightKey, selectedResolution.height);
     }
 
     void OnQualityChanged(int index)
     {
         QualitySettings.SetQualityLevel(index);
+        PlayerPrefs.SetInt(qualityLevelKey, index);
     }
-
-    // void OnFrameRateChanged(int index)
-    // {
-    //     switch (index)
-    //     {
-    //         case 0:
-    //             Application.targetFrameRate = 30;
-    //             break;
-    //         case 1:
-    //             Application.targetFrameRate = 60;
-    //             break;
-    //         case 2:
-    //             Application.targetFrameRate = 120;
-    //             break;
-    //         // Add more options as needed
-    //         default:
-    //             break;
-    //     }
-    // }
 
     int FindCurrentResolutionIndex()
     {
