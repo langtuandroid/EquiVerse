@@ -21,6 +21,24 @@ namespace Managers
         private void Start()
         {
             currentLevelText.text = "Level " + WORLD_INDEX + " - " + LEVEL_INDEX;
+            SaveGameData();
+        }
+        
+        public static void SaveGameData()
+        {
+            PlayerPrefs.SetInt("WORLD_INDEX", WORLD_INDEX);
+            PlayerPrefs.SetInt("LEVEL_INDEX", LEVEL_INDEX);
+            PlayerPrefs.SetInt("companionsUnlockedIndex", companionsUnlockedIndex);
+            PlayerPrefs.SetInt("firstTimePlaying", firstTimePlaying ? 1 : 0);
+            PlayerPrefs.Save(); // Save changes to PlayerPrefs immediately
+        }
+        
+        public static void LoadGameData()
+        {
+            WORLD_INDEX = PlayerPrefs.GetInt("WORLD_INDEX", 0); // Default value is 0 if not found
+            LEVEL_INDEX = PlayerPrefs.GetInt("LEVEL_INDEX", 0); // Default value is 0 if not found
+            companionsUnlockedIndex = PlayerPrefs.GetInt("companionsUnlockedIndex", 0); // Default value is 0 if not found
+            firstTimePlaying = PlayerPrefs.GetInt("firstTimePlaying", 1) == 1; // Default value is true if not found
         }
     }
 }

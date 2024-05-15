@@ -29,6 +29,7 @@ namespace MainMenu
         
         private void Start()
         {
+            GameManager.LoadGameData();
             mainMenuCanvas.SetActive(false);
             logoCanvas.SetActive(true);
             mainMenuSoundController.FadeMainMenuVolume(0f, 3f);
@@ -64,6 +65,7 @@ namespace MainMenu
             mainMenuSoundController.FadeMainMenuVolume(1.0f, 1.1f);
             GameManager.WORLD_INDEX = 1;
             GameManager.LEVEL_INDEX = 1;
+            GameManager.companionsUnlockedIndex = 0;
             transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
             {
                 StartCoroutine(LoadAsynchronously("Level " + GameManager.WORLD_INDEX.ToString() + "-" + GameManager.LEVEL_INDEX.ToString()));
