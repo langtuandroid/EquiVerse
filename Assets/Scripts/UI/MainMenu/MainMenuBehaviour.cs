@@ -20,7 +20,8 @@ namespace MainMenu
         public GameObject optionsMenu;
 
         public GameObject continueAdventureObject;
-        public TextMeshProUGUI continueAdventureButton;
+        public TextMeshProUGUI continueAdventureButtonText;
+        public Button continueAdventureButton, newAdventureButton, optionsButton, quitButton;
 
         public GameObject logoCanvas;
         public GameObject mainMenuCanvas;
@@ -34,6 +35,11 @@ namespace MainMenu
             logoCanvas.SetActive(true);
             mainMenuSoundController.FadeMainMenuVolume(0f, 3f);
 
+            continueAdventureButton.enabled = true;
+            newAdventureButton.enabled = true;
+            optionsButton.enabled = true;
+            quitButton.enabled = true;
+
             if (GameManager.firstTimePlaying)
             {
                 GameManager.WORLD_INDEX = 1;
@@ -44,7 +50,7 @@ namespace MainMenu
             else
             {
                 continueAdventureObject.SetActive(true);
-                continueAdventureButton.text = "Continue adventure (" + GameManager.WORLD_INDEX.ToString() + "-" + GameManager.LEVEL_INDEX.ToString() + ")";
+                continueAdventureButtonText.text = "Continue adventure (" + GameManager.WORLD_INDEX.ToString() + "-" + GameManager.LEVEL_INDEX.ToString() + ")";
             }
         }
 
@@ -62,6 +68,10 @@ namespace MainMenu
 
         public void ClickNew()
         {
+            continueAdventureButton.enabled = false;
+            newAdventureButton.enabled = false;
+            optionsButton.enabled = false;
+            quitButton.enabled = false;
             mainMenuSoundController.FadeMainMenuVolume(1.0f, 1.1f);
             GameManager.WORLD_INDEX = 1;
             GameManager.LEVEL_INDEX = 1;
@@ -75,6 +85,10 @@ namespace MainMenu
         
         public void ClickContinue()
         {
+            continueAdventureButton.enabled = false;
+            newAdventureButton.enabled = false;
+            optionsButton.enabled = false;
+            quitButton.enabled = false;
             mainMenuSoundController.FadeMainMenuVolume(1.0f, 1.1f);
             if ((GameManager.WORLD_INDEX == 1 && GameManager.LEVEL_INDEX == 5) || GameManager.WORLD_INDEX > 1)
             {
@@ -95,6 +109,10 @@ namespace MainMenu
 
         public void ClickQuit()
         {
+            continueAdventureButton.enabled = false;
+            newAdventureButton.enabled = false;
+            optionsButton.enabled = false;
+            quitButton.enabled = false;
             Application.Quit();
         }
 
@@ -112,11 +130,19 @@ namespace MainMenu
             {
                 optionsMenu.SetActive(true);
                 mainMenu.SetActive(false);
+                continueAdventureButton.enabled = false;
+                newAdventureButton.enabled = false;
+                optionsButton.enabled = false;
+                quitButton.enabled = false;
             }
             else
             {
                 optionsMenu.SetActive(false);
                 mainMenu.SetActive(true);
+                continueAdventureButton.enabled = true;
+                newAdventureButton.enabled = true;
+                optionsButton.enabled = true;
+                quitButton.enabled = true;
             }
         }
 
