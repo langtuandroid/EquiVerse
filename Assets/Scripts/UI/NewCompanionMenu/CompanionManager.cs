@@ -23,12 +23,13 @@ public class CompanionManager : MonoBehaviour
     public LevelLoader levelLoader;
     public List<Companion> companions;
     [HideInInspector]
-    public static int currentCompanionIndex;
     public Transform companionPrefabInstanceLocation;
 
     public TextMeshProUGUI companionTitleText;
     public TextMeshProUGUI companionSecondTitleText;
     public TextMeshProUGUI companionDescriptionText;
+    
+    private const string CompanionIndexKey = "CurrentCompanionIndex";
 
     private void Start()
     {
@@ -40,22 +41,24 @@ public class CompanionManager : MonoBehaviour
 
     public void GenerateCompanionOnPanel()
     {
-        Instantiate(companions[currentCompanionIndex].companionPrefab, companionPrefabInstanceLocation);
-        companionTitleText.text = companions[currentCompanionIndex].companionTitle;
-        companionSecondTitleText.text = companions[currentCompanionIndex].companionSecondTitle;
-        companionDescriptionText.text = companions[currentCompanionIndex].companionDescription;
+        Instantiate(companions[GameManager.currentCompanionIndex].companionPrefab, companionPrefabInstanceLocation);
+        companionTitleText.text = companions[GameManager.currentCompanionIndex].companionTitle;
+        companionSecondTitleText.text = companions[GameManager.currentCompanionIndex].companionSecondTitle;
+        companionDescriptionText.text = companions[GameManager.currentCompanionIndex].companionDescription;
         GameManager.companionsUnlockedIndex++;
     }
 
     public void PlayCompanionSound()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(companions[currentCompanionIndex].companionSoundEventPath);
+        FMODUnity.RuntimeManager.PlayOneShot(companions[GameManager.currentCompanionIndex].companionSoundEventPath);
     }
 
     public void IncrementCompanionIndex()
     {
-        currentCompanionIndex++;
-        if (currentCompanionIndex < 4)
+        GameManager.currentCompanionIndex++;
+        PlayerPrefs.SetInt(CompanionIndexKey, GameManager.currentCompanionIndex);
+        PlayerPrefs.Save();
+        if (GameManager.currentCompanionIndex < 4)
         {
             levelLoader.LoadNextLevel();
         }

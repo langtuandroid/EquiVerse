@@ -66,7 +66,7 @@ namespace MainMenu
             GameManager.WORLD_INDEX = 1;
             GameManager.LEVEL_INDEX = 1;
             GameManager.companionsUnlockedIndex = 0;
-            CompanionManager.currentCompanionIndex = 0;
+            GameManager.currentCompanionIndex = 0;
             transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
             {
                 StartCoroutine(LoadAsynchronously("Level " + GameManager.WORLD_INDEX.ToString() + "-" + GameManager.LEVEL_INDEX.ToString()));
