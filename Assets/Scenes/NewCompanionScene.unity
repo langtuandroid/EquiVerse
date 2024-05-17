@@ -1695,6 +1695,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1524818286}
   m_CullTransparentMesh: 1
+--- !u!1 &1545639271 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 914133893989864605, guid: 026cb4d69bd0a024084ab49dfc3a0956, type: 3}
+  m_PrefabInstance: {fileID: 2437957618156784905}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1545639276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545639271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1 &1612868430
 GameObject:
   m_ObjectHideFlags: 0
@@ -2335,7 +2353,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 914133893989864605, guid: 026cb4d69bd0a024084ab49dfc3a0956, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1545639276}
   m_SourcePrefab: {fileID: 100100000, guid: 026cb4d69bd0a024084ab49dfc3a0956, type: 3}
 --- !u!1001 &2917812730334205359
 PrefabInstance:
@@ -2555,6 +2576,115 @@ PrefabInstance:
     - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
       propertyPath: companions.Array.data[0].unlocked
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[0].companionTitle
+      value: Ferdinand
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[1].companionTitle
+      value: Pablo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[2].companionTitle
+      value: Betsy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[0].companionPrefab
+      value: 
+      objectReference: {fileID: 4810356167467281102, guid: 72b784daf2a51bc4d9093aa9373fe701, type: 3}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[1].companionPrefab
+      value: 
+      objectReference: {fileID: 1977361067276591308, guid: 7698ffffcd0baf640a03fe6a3c81c609, type: 3}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[2].companionPrefab
+      value: 
+      objectReference: {fileID: 8062672837211983902, guid: 3fecfe0c36960014fa0a8fb6e7d714b9, type: 3}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[0].companionDescription
+      value: Ferdinand occasionally lays valuable eggs, giving you a boost in your
+        finances.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[0].companionSecondTitle
+      value: the goose
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[1].companionDescription
+      value: ' Pablo collects Leaf points but isn''t very quick.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[1].companionSecondTitle
+      value: the parrot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[2].companionDescription
+      value: Betsy lends you her bee army to eliminate enemies.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[2].companionSecondTitle
+      value: the queen bee
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[0].companionSoundEventPath.Path
+      value: event:/Animals/FerdinandGoose/FerdinandHonk
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[1].companionSoundEventPath.Path
+      value: event:/Animals/PabloParrot/PabloIdle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[2].companionSoundEventPath.Path
+      value: event:/Animals/BetsyBeeQueen/BetsyOneShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[0].companionSoundEventPath.Guid.Data1
+      value: 1162528105
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[0].companionSoundEventPath.Guid.Data2
+      value: 1264047014
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[0].companionSoundEventPath.Guid.Data3
+      value: 468396464
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[0].companionSoundEventPath.Guid.Data4
+      value: -977825043
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[1].companionSoundEventPath.Guid.Data1
+      value: 1492486045
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[1].companionSoundEventPath.Guid.Data2
+      value: 1088494965
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[1].companionSoundEventPath.Guid.Data3
+      value: -870480737
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[1].companionSoundEventPath.Guid.Data4
+      value: 518543215
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[2].companionSoundEventPath.Guid.Data1
+      value: -1602817716
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[2].companionSoundEventPath.Guid.Data2
+      value: 1240919088
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[2].companionSoundEventPath.Guid.Data3
+      value: -1794311268
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[2].companionSoundEventPath.Guid.Data4
+      value: -1390461633
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

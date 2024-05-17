@@ -97,10 +97,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/NewCompanion.bank
   Name: NewCompanion
   StudioPath: bank:/NewCompanion
-  lastModified: 638480245603016141
+  lastModified: 638515598785797070
   FileSizes:
   - Name: Desktop
-    Value: 3360608
+    Value: 4396128
   Exists: 1
 --- !u!114 &-7344631718792414954
 MonoBehaviour:
@@ -209,6 +209,34 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-5798325028069772107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Animals/BetsyBeeQueen/BetsyOneShot
+  m_EditorClassIdentifier: 
+  Path: event:/Animals/BetsyBeeQueen/BetsyOneShot
+  Guid:
+    Data1: -1602817716
+    Data2: 1240919088
+    Data3: -1794311268
+    Data4: -1390461633
+  Banks:
+  - {fileID: -8406122563154337033}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 7148414089391381234}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 5000
 --- !u!114 &-5074242975834151384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,12 +842,13 @@ MonoBehaviour:
   - {fileID: -8615780116460904282}
   - {fileID: -2565083369543562763}
   - {fileID: -3487990503641872283}
+  - {fileID: -5798325028069772107}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5304006631014352583}
   StringsBanks:
   - {fileID: 23253448088795587}
-  cacheTime: 638512814181384243
+  cacheTime: 638515599429261393
   cacheVersion: 131616
 --- !u!114 &23253448088795587
 MonoBehaviour:
@@ -836,10 +865,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
   Name: MainMenu.strings
   StudioPath: bank:/MainMenu.strings
-  lastModified: 638512287026378711
+  lastModified: 638515599429261393
   FileSizes:
   - Name: Desktop
-    Value: 3700
+    Value: 3738
   Exists: 1
 --- !u!114 &476426055693632330
 MonoBehaviour:
@@ -1303,7 +1332,7 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 638512814181384243
+  lastModified: 638515599428982084
   FileSizes:
   - Name: Desktop
     Value: 10449280
@@ -1482,7 +1511,7 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 638512287026368739
+  lastModified: 638515599429241460
   FileSizes:
   - Name: Desktop
     Value: 4484576
@@ -1541,6 +1570,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 760
+--- !u!114 &7148414089391381234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BetsyOneShot/InPursuit
+  m_EditorClassIdentifier: 
+  Name: InPursuit
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2089756497
+    data2: 1512712206
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &7299616907702014823
 MonoBehaviour:
   m_ObjectHideFlags: 0
