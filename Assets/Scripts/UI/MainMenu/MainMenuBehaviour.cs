@@ -18,6 +18,7 @@ namespace MainMenu
         [Header("ToggleMenu's")] 
         public GameObject mainMenu;
         public GameObject optionsMenu;
+        public GameObject creditsMenu;
 
         public GameObject continueAdventureObject;
         public TextMeshProUGUI continueAdventureButtonText;
@@ -138,6 +139,28 @@ namespace MainMenu
             else
             {
                 optionsMenu.SetActive(false);
+                mainMenu.SetActive(true);
+                continueAdventureButton.enabled = true;
+                newAdventureButton.enabled = true;
+                optionsButton.enabled = true;
+                quitButton.enabled = true;
+            }
+        }
+        
+        public void ToggleCreditsMenu()
+        {
+            if (!creditsMenu.activeInHierarchy)
+            {
+                creditsMenu.SetActive(true);
+                mainMenu.SetActive(false);
+                continueAdventureButton.enabled = false;
+                newAdventureButton.enabled = false;
+                optionsButton.enabled = false;
+                quitButton.enabled = false;
+            }
+            else
+            {
+                creditsMenu.SetActive(false);
                 mainMenu.SetActive(true);
                 continueAdventureButton.enabled = true;
                 newAdventureButton.enabled = true;
