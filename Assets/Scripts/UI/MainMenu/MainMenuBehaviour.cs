@@ -29,6 +29,8 @@ namespace MainMenu
         [Header("Sound")] 
         public MainMenuSoundController mainMenuSoundController;
         
+        public string discordUrl = "https://discord.gg/hay2fMBggT";
+        
         private void Start()
         {
             GameManager.LoadGameData();
@@ -167,6 +169,11 @@ namespace MainMenu
                 optionsButton.enabled = true;
                 quitButton.enabled = true;
             }
+        }
+        
+        public void OpenDiscord()
+        {
+            Application.OpenURL(discordUrl);
         }
 
         public void ScaleUpText(Button button)
