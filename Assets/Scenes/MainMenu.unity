@@ -14560,7 +14560,7 @@ GameObject:
   - component: {fileID: 1201137923}
   - component: {fileID: 1201137922}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: DiscordPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27450,10 +27450,10 @@ MonoBehaviour:
   newAdventureButton: {fileID: 1212163956}
   optionsButton: {fileID: 546275246}
   quitButton: {fileID: 1057011731}
+  DiscordPanel: {fileID: 1201137920}
   logoCanvas: {fileID: 60258559}
   mainMenuCanvas: {fileID: 1921179916}
   mainMenuSoundController: {fileID: 1993349737}
-  discordUrl: https://discord.gg/hay2fMBggT
 --- !u!1 &2119640559
 GameObject:
   m_ObjectHideFlags: 0

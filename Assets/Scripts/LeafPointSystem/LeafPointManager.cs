@@ -141,7 +141,14 @@ namespace Managers {
             transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() => {
                 soundController.StopAudioEvent("Music");
                 soundController.StopAudioEvent("Ambience");
-                StartCoroutine(LoadAsynchronously("NewCompanionScene"));
+                if (GameManager.WORLD_INDEX == 1 && GameManager.LEVEL_INDEX == 5)
+                {
+                    StartCoroutine(LoadAsynchronously("DemoFinishedScene"));
+                }
+                else
+                {
+                    StartCoroutine(LoadAsynchronously("NewCompanionScene")); 
+                }
                 GameManager.LEVEL_INDEX++;
             })).SetUpdate(true);
         }

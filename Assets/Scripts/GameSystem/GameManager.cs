@@ -16,6 +16,7 @@ namespace Managers
         public bool level3;
         public bool level4;
         public static bool firstTimePlaying = true;
+        public static string discordUrl = "https://discord.gg/hay2fMBggT";
         
         public TextMeshProUGUI currentLevelText;
 

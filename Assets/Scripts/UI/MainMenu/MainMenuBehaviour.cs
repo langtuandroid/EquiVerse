@@ -24,18 +24,19 @@ namespace MainMenu
         public TextMeshProUGUI continueAdventureButtonText;
         public Button continueAdventureButton, newAdventureButton, optionsButton, quitButton;
 
+        public GameObject DiscordPanel;
+
         public GameObject logoCanvas;
         public GameObject mainMenuCanvas;
         [Header("Sound")] 
         public MainMenuSoundController mainMenuSoundController;
-        
-        public string discordUrl = "https://discord.gg/hay2fMBggT";
         
         private void Start()
         {
             GameManager.LoadGameData();
             mainMenuCanvas.SetActive(false);
             logoCanvas.SetActive(true);
+            DiscordPanel.SetActive(true);
             mainMenuSoundController.FadeMainMenuVolume(0f, 3f);
 
             continueAdventureButton.enabled = true;
@@ -75,6 +76,7 @@ namespace MainMenu
             newAdventureButton.enabled = false;
             optionsButton.enabled = false;
             quitButton.enabled = false;
+            DiscordPanel.SetActive(false);
             mainMenuSoundController.FadeMainMenuVolume(1.0f, 1.1f);
             GameManager.WORLD_INDEX = 1;
             GameManager.LEVEL_INDEX = 1;
@@ -92,6 +94,7 @@ namespace MainMenu
             newAdventureButton.enabled = false;
             optionsButton.enabled = false;
             quitButton.enabled = false;
+            DiscordPanel.SetActive(false);
             mainMenuSoundController.FadeMainMenuVolume(1.0f, 1.1f);
             if ((GameManager.WORLD_INDEX == 1 && GameManager.LEVEL_INDEX == 5) || GameManager.WORLD_INDEX > 1)
             {
@@ -173,7 +176,7 @@ namespace MainMenu
         
         public void OpenDiscord()
         {
-            Application.OpenURL(discordUrl);
+            Application.OpenURL(GameManager.discordUrl);
         }
 
         public void ScaleUpText(Button button)

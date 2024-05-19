@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 734084870958539297}
+  - component: {fileID: 8730930680019352317}
   m_Layer: 0
   m_Name: NewCompanion_SoundController
   m_TagString: Untagged
@@ -23,10 +24,30 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847583941653504035}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8730930680019352317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847583941653504035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a2357355ee187f438f19799faac3a03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicEvent:
+    Guid:
+      Data1: -1331539754
+      Data2: 1174965096
+      Data3: 624511109
+      Data4: -1642228305
+    Path: event:/NewCompanionScene/NewCompanionMusic

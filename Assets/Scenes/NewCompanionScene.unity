@@ -123,30 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &29434163 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 847583941653504035, guid: eadbc402627fc2547b6183302406c03c, type: 3}
+--- !u!114 &29434164 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8730930680019352317, guid: eadbc402627fc2547b6183302406c03c, type: 3}
   m_PrefabInstance: {fileID: 1645807545}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &29434164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29434163}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a2357355ee187f438f19799faac3a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicEvent:
-    Guid:
-      Data1: -1331539754
-      Data2: 1174965096
-      Data3: 624511109
-      Data4: -1642228305
-    Path: event:/NewCompanionScene/NewCompanionMusic
 --- !u!1 &117476315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1856,10 +1843,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 734084870958539297, guid: eadbc402627fc2547b6183302406c03c, type: 3}
-      propertyPath: m_RootOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 734084870958539297, guid: eadbc402627fc2547b6183302406c03c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1906,10 +1889,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 847583941653504035, guid: eadbc402627fc2547b6183302406c03c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 29434164}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eadbc402627fc2547b6183302406c03c, type: 3}
 --- !u!1 &1663118575
 GameObject:
