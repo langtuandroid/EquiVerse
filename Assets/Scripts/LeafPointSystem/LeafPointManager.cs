@@ -55,15 +55,15 @@ namespace Managers {
         }
 
         public void Update() {
-            if (UnityEngine.Input.GetKey(KeyCode.LeftControl))
-            {
-                totalPoints += 100;
-            }
-            if (UnityEngine.Input.GetKey(KeyCode.RightControl) && !levelCompletedShortCutPressed)
-            {
-                LevelCompleted();
-                levelCompletedShortCutPressed = true;
-            }
+            // if (UnityEngine.Input.GetKey(KeyCode.LeftControl))
+            // {
+            //     totalPoints += 100;
+            // }
+            // if (UnityEngine.Input.GetKey(KeyCode.RightControl) && !levelCompletedShortCutPressed)
+            // {
+            //     LevelCompleted();
+            //     levelCompletedShortCutPressed = true;
+            // }
             UpdateVisualPoints();
         }
 
