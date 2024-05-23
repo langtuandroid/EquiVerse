@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Behaviour
 {
-    public class GooseBehaviour : MonoBehaviour
+    public class FerdinandBehaviour : MonoBehaviour
     {
         private Animator animator;
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using FMOD.Studio;
 using UnityEngine;
 
-public class BeeSwarmBehaviour : MonoBehaviour
+public class BetsyBehaviour : MonoBehaviour
 {
     public World1LevelSoundController soundController;
     public ParticleSystem hitParticles;
