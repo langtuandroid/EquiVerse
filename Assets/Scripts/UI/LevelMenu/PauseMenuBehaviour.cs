@@ -12,6 +12,7 @@ namespace UI
         public GameObject pauseMenuUI;
         public GameObject quitWarningPanel;
         public GameObject optionsMenu;
+        public GameObject howToPlayMenu;
         public Raycaster raycaster;
 
         [Header("SceneTransition")]
@@ -94,6 +95,20 @@ namespace UI
             else
             {
                 optionsMenu.SetActive(true);
+                pauseMenuUI.SetActive(false);
+            }
+        }
+        
+        public void ToggleHowToPlayMenu()
+        {
+            if (howToPlayMenu.activeSelf)
+            {
+                howToPlayMenu.SetActive(false);
+                pauseMenuUI.SetActive(true);
+            }
+            else
+            {
+                howToPlayMenu.SetActive(true);
                 pauseMenuUI.SetActive(false);
             }
         }
