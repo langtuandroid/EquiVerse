@@ -11,6 +11,7 @@ namespace Managers
         public static int LEVEL_INDEX;
         public static int companionsUnlockedIndex;
         public static int currentCompanionIndex;
+        public static int currentVideoStepIndex;
         public bool level1;
         public bool level2;
         public bool level3;

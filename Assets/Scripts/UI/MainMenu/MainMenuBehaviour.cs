@@ -19,6 +19,7 @@ namespace MainMenu
         public GameObject mainMenu;
         public GameObject optionsMenu;
         public GameObject creditsMenu;
+        public GameObject howToPlayMenu;
 
         public GameObject continueAdventureObject;
         public TextMeshProUGUI continueAdventureButtonText;
@@ -166,6 +167,28 @@ namespace MainMenu
             else
             {
                 creditsMenu.SetActive(false);
+                mainMenu.SetActive(true);
+                continueAdventureButton.enabled = true;
+                newAdventureButton.enabled = true;
+                optionsButton.enabled = true;
+                quitButton.enabled = true;
+            }
+        }
+        
+        public void ToggleHowToPlayMenu()
+        {
+            if (!howToPlayMenu.activeInHierarchy)
+            {
+                howToPlayMenu.SetActive(true);
+                mainMenu.SetActive(false);
+                continueAdventureButton.enabled = false;
+                newAdventureButton.enabled = false;
+                optionsButton.enabled = false;
+                quitButton.enabled = false;
+            }
+            else
+            {
+                howToPlayMenu.SetActive(false);
                 mainMenu.SetActive(true);
                 continueAdventureButton.enabled = true;
                 newAdventureButton.enabled = true;
