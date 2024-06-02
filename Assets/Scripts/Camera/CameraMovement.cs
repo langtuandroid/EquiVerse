@@ -10,6 +10,11 @@ namespace Input
         private bool cameraStepCompleted = false;
 
         public CinemachineFreeLook mainCam;
+        
+        [SerializeField]
+        private float keyboardSpeed = 0.75f;
+        [SerializeField]
+        private float mouseSpeed = 100f;
 
         private void Start()
         {
@@ -20,33 +25,68 @@ namespace Input
 
         private void Update()
         {
-            if (!CameraLocked && !cameraStepCompleted)
+            if (!CameraLocked)
             {
                 CheckCameraInput();
+            }
+
+            if (!cameraStepCompleted)
+            {
                 CheckCameraTutorial();
             }
         }
 
         private void CheckCameraInput()
         {
-            mainCam.m_XAxis.m_InputAxisName = "Horizontal";
-            mainCam.m_YAxis.m_InputAxisName = "Vertical";
-            
+            // Reset input values
+            mainCam.m_XAxis.m_InputAxisValue = 0;
+            mainCam.m_YAxis.m_InputAxisValue = 0;
+
+            // Keyboard input for horizontal movement
             if (UnityEngine.Input.GetKey(KeyCode.A))
             {
+                mainCam.m_XAxis.m_InputAxisValue = -keyboardSpeed;
                 movedLeft = true;
             }
             else if (UnityEngine.Input.GetKey(KeyCode.D))
             {
+                mainCam.m_XAxis.m_InputAxisValue = keyboardSpeed;
                 movedRight = true;
             }
+
+            // Keyboard input for vertical movement
             if (UnityEngine.Input.GetKey(KeyCode.W))
             {
+                mainCam.m_YAxis.m_InputAxisValue = keyboardSpeed;
                 movedUp = true;
             }
             else if (UnityEngine.Input.GetKey(KeyCode.S))
             {
+                mainCam.m_YAxis.m_InputAxisValue = -keyboardSpeed;
                 movedDown = true;
+            }
+
+            // Mouse input for vertical movement (scroll wheel)
+            float scroll = UnityEngine.Input.GetAxis("Mouse ScrollWheel");
+            if (scroll != 0)
+            {
+                mainCam.m_YAxis.m_InputAxisValue = scroll * mouseSpeed; // Adjust multiplier as needed
+                if (scroll > 0)
+                {
+                    movedUp = true;
+                }
+                else if (scroll < 0)
+                {
+                    movedDown = true;
+                }
+            }
+
+            if (UnityEngine.Input.GetMouseButton(2))
+            {
+                float mouseX = UnityEngine.Input.GetAxis("Mouse X");
+                mainCam.m_XAxis.m_InputAxisValue = -mouseX * mouseSpeed;
+                if (mouseX < 0) movedRight = true; 
+                if (mouseX > 0) movedLeft = true;
             }
         }
 
@@ -60,5 +100,3 @@ namespace Input
         }
     }
 }
-
-
