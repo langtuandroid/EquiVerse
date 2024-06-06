@@ -67,7 +67,7 @@ namespace Spawners {
                         }
 
                         leafPointManager.DecrementPoints(grassCost);
-                        TutorialManager.CompleteStep("Step_GrassSpawn");
+                        TutorialManager.CompleteStepAndContinueToNextStep("Step_GrassSpawn");
                         currentPlantCount++;
                         FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/GrassPlacement");
                     }

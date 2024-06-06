@@ -5,16 +5,25 @@ namespace Input
 {
     public class CameraMovement : MonoBehaviour
     {
-        private bool movedLeft = false, movedRight = false, movedUp = false, movedDown = false;
+        private bool movedLeft = false, movedRight = false, movedUp = false, movedDown = false, zoomedIn = false, zoomedOut = false;
         public bool CameraLocked { get; set; }
-        private bool cameraStepCompleted = false;
+        private bool rotateCameraStepCompleted = false;
+        private bool zoomCameraStepCompleted = false;
 
         public CinemachineFreeLook mainCam;
         
-        [SerializeField]
-        private float keyboardSpeed = 0.75f;
-        [SerializeField]
-        private float mouseSpeed = 100f;
+        public float keyboardSpeed;
+        public float mouseSpeed;
+        public float scrollSpeed;
+        public float minFieldOfView;
+        public float maxFieldOfView;
+        public float yAxisSpeedScale;
+        public float keyboardXAxisSpeedScale;
+        public float requiredDragTime = 2f; // Time in seconds the camera needs to be dragged
+
+        private float dragTime = 0f;
+        private bool draggedLeft = false, draggedRight = false, draggedUp = false, draggedDown = false;
+        private bool allDirectionsDragged = false;
 
         private void Start()
         {
@@ -30,72 +39,144 @@ namespace Input
                 CheckCameraInput();
             }
 
-            if (!cameraStepCompleted)
+            if (!rotateCameraStepCompleted)
             {
-                CheckCameraTutorial();
+                CheckCameraRotateTutorial();
+            }
+
+            if (rotateCameraStepCompleted)
+            {
+                CheckCameraZoomTutorial();
             }
         }
 
         private void CheckCameraInput()
         {
-            // Reset input values
-            mainCam.m_XAxis.m_InputAxisValue = 0;
-            mainCam.m_YAxis.m_InputAxisValue = 0;
+            float xAxisValue = 0;
+            float yAxisValue = 0;
 
-            // Keyboard input for horizontal movement
+            bool cameraMoved = false;
+
+            // Keyboard input
             if (UnityEngine.Input.GetKey(KeyCode.A))
             {
-                mainCam.m_XAxis.m_InputAxisValue = -keyboardSpeed;
+                xAxisValue = keyboardSpeed * keyboardXAxisSpeedScale;
                 movedLeft = true;
+                cameraMoved = true;
             }
             else if (UnityEngine.Input.GetKey(KeyCode.D))
             {
-                mainCam.m_XAxis.m_InputAxisValue = keyboardSpeed;
+                xAxisValue = -keyboardSpeed * keyboardXAxisSpeedScale;
                 movedRight = true;
+                cameraMoved = true;
             }
-
-            // Keyboard input for vertical movement
+            
             if (UnityEngine.Input.GetKey(KeyCode.W))
             {
-                mainCam.m_YAxis.m_InputAxisValue = keyboardSpeed;
+                yAxisValue = -keyboardSpeed;
                 movedUp = true;
+                cameraMoved = true;
             }
             else if (UnityEngine.Input.GetKey(KeyCode.S))
             {
-                mainCam.m_YAxis.m_InputAxisValue = -keyboardSpeed;
+                yAxisValue = keyboardSpeed;
                 movedDown = true;
+                cameraMoved = true;
             }
 
-            // Mouse input for vertical movement (scroll wheel)
             float scroll = UnityEngine.Input.GetAxis("Mouse ScrollWheel");
-            if (scroll != 0)
+            float zoom = 0;
+
+            if (UnityEngine.Input.GetKey(KeyCode.Q))
             {
-                mainCam.m_YAxis.m_InputAxisValue = scroll * mouseSpeed; // Adjust multiplier as needed
-                if (scroll > 0)
-                {
-                    movedUp = true;
-                }
-                else if (scroll < 0)
-                {
-                    movedDown = true;
-                }
+                zoom = scrollSpeed * Time.deltaTime * 10f;
+                zoomedIn = true;
+            }
+            else if (UnityEngine.Input.GetKey(KeyCode.E))
+            {
+                zoom = -scrollSpeed * Time.deltaTime * 10f;
+                zoomedOut = true;
             }
 
-            if (UnityEngine.Input.GetMouseButton(2))
+            mainCam.m_Lens.FieldOfView -= (scroll * scrollSpeed) + zoom;
+            mainCam.m_Lens.FieldOfView = Mathf.Clamp(mainCam.m_Lens.FieldOfView, minFieldOfView, maxFieldOfView);
+            
+            if (scroll > 0)
             {
+                zoomedIn = true;
+            }
+            else if (scroll < 0)
+            {
+                zoomedOut = true;
+            }
+            
+            // Mouse input
+            if (UnityEngine.Input.GetMouseButton(1))
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+
                 float mouseX = UnityEngine.Input.GetAxis("Mouse X");
-                mainCam.m_XAxis.m_InputAxisValue = -mouseX * mouseSpeed;
-                if (mouseX < 0) movedRight = true; 
-                if (mouseX > 0) movedLeft = true;
+                float mouseY = UnityEngine.Input.GetAxis("Mouse Y");
+                mainCam.m_XAxis.Value += mouseX * mouseSpeed * Time.deltaTime;
+                mainCam.m_YAxis.Value += mouseY * mouseSpeed * yAxisSpeedScale * Time.deltaTime;
+
+                // Track direction of movement for mouse drag
+                if (mouseX < 0) draggedLeft = true;
+                if (mouseX > 0) draggedRight = true;
+                if (mouseY < 0) draggedDown = true;
+                if (mouseY > 0) draggedUp = true;
+
+                // Increment drag time if the camera is being dragged in any direction
+                if (mouseX != 0 || mouseY != 0)
+                {
+                    dragTime += Time.deltaTime;
+                }
+
+                // Check if all directions have been dragged
+                if (draggedLeft && draggedRight && draggedUp && draggedDown && dragTime >= requiredDragTime)
+                {
+                    allDirectionsDragged = true;
+                }
+            }
+            else if (UnityEngine.Input.GetMouseButtonUp(1))
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+
+            // Apply keyboard inputs
+            mainCam.m_XAxis.Value += xAxisValue * Time.deltaTime;
+            mainCam.m_YAxis.Value += yAxisValue * Time.deltaTime;
+
+            // If there was any camera movement with keyboard
+            if (cameraMoved)
+            {
+                dragTime += Time.deltaTime;
+
+                // Check if all directions have been moved
+                if (movedLeft && movedRight && movedUp && movedDown && dragTime >= requiredDragTime)
+                {
+                    allDirectionsDragged = true;
+                }
             }
         }
 
-        private void CheckCameraTutorial()
+        private void CheckCameraRotateTutorial()
         {
-            if (movedLeft && movedRight && movedUp && movedDown)
+            if ((movedLeft && movedRight && movedUp && movedDown) || allDirectionsDragged)
             {
-                TutorialManager.CompleteStepAndContinueToNextStep("Step_Camera");
-                cameraStepCompleted = true;
+                TutorialManager.CompleteStepAndContinueToNextStep("Step_CameraRotate");
+                rotateCameraStepCompleted = true;
+            }
+        }
+        
+        private void CheckCameraZoomTutorial()
+        {
+            if (zoomedIn && zoomedOut)
+            {
+                TutorialManager.CompleteStepAndContinueToNextStep("Step_CameraZoom");
+                zoomCameraStepCompleted = true;
             }
         }
     }
