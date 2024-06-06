@@ -2607,6 +2607,10 @@ PrefabInstance:
       value: the queen bee
       objectReference: {fileID: 0}
     - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[3].companionDescription
+      value: Daisy gives birth to a new baby rabbit every so often.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
       propertyPath: companions.Array.data[0].companionSoundEventPath.Path
       value: event:/Animals/FerdinandGoose/FerdinandHonk
       objectReference: {fileID: 0}
