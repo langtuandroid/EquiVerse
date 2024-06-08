@@ -20229,7 +20229,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 150, y: 150}
+  m_AnchoredPosition: {x: 300, y: 150}
   m_SizeDelta: {x: 750, y: 750}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1467293760
@@ -29413,6 +29413,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1016601364416977665, guid: 8755bdf32941c154d94df51ed911fec2, type: 3}
+      propertyPath: steamManagerActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7158261197669249256, guid: 8755bdf32941c154d94df51ed911fec2, type: 3}
       propertyPath: m_Name
       value: SteamManager

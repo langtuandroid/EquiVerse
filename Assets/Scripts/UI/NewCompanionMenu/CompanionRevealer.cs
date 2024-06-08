@@ -21,6 +21,7 @@ public class CompanionRevealer : MonoBehaviour
 
     private void Start()
     {
+        nextLevelButton.interactable = true;
         clickOnChestText.SetActive(true);
         giftButton.interactable = true;
         shakeTween = DOVirtual.DelayedCall(2.5f, () =>

@@ -5,6 +5,7 @@ using FMODUnity;
 using Managers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Companion
@@ -28,6 +29,8 @@ public class CompanionManager : MonoBehaviour
     public TextMeshProUGUI companionTitleText;
     public TextMeshProUGUI companionSecondTitleText;
     public TextMeshProUGUI companionDescriptionText;
+    
+    public Button nextLevelButton;
     
     private const string CompanionIndexKey = "CurrentCompanionIndex";
 
@@ -55,6 +58,7 @@ public class CompanionManager : MonoBehaviour
 
     public void IncrementCompanionIndex()
     {
+        nextLevelButton.interactable = false;
         GameManager.currentCompanionIndex++;
         PlayerPrefs.SetInt(CompanionIndexKey, GameManager.currentCompanionIndex);
         PlayerPrefs.Save();
