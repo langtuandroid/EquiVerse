@@ -6,6 +6,7 @@ using UnityEngine;
 public class TutorialManager : MonoBehaviour {
     public List<TutorialStep> steps;
     private int currentStepIndex;
+    public static bool pickUpLeafpointStepCompleted = false;
 
     public void Start() {
         if (steps.Count == 0)

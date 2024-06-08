@@ -43,7 +43,7 @@ public class MalbersRabbitBehaviour : MonoBehaviour
 
     private void HandleHunger()
     {
-        currentHunger += 5f * Time.fixedDeltaTime;
+        currentHunger += 7.5f * Time.fixedDeltaTime;
 
         if (currentHunger >= deathThreshold)
             StartCoroutine(Die());

@@ -27,7 +27,7 @@ public class GrowthManager : MonoBehaviour
         EntityManager.Get().AddBabyRabbit(gameObject);
         growthProgressValue = 0;
         adolescentTreshold = Random.Range(150, 200);
-        adultTreshold = Random.Range(500, 750);
+        adultTreshold = Random.Range(300, 350);
 
     }
 

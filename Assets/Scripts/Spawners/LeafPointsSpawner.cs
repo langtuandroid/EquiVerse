@@ -15,7 +15,6 @@ namespace Spawners
         public Vector2 timeBetweenLeafSpawnRange = new Vector2(10f, 18f);
         private float desiredHeight = 5f;
         private float duration = 10f;
-        private bool pickUpLeafpointStepCompleted = false;
 
         public static bool spawnLeafPoints = true;
 
@@ -40,10 +39,10 @@ namespace Spawners
                         .OnComplete(() => FadeAndDestroy(newLeaf));
                     spawnTimer = 0f;
 
-                    if (gameManager.level1 && !pickUpLeafpointStepCompleted)
+                    if (gameManager.level1 && !TutorialManager.pickUpLeafpointStepCompleted)
                     {
                         TutorialManager.GoToNextStep();
-                        pickUpLeafpointStepCompleted = true;
+                        TutorialManager.pickUpLeafpointStepCompleted = true;
                     }
                     
                     timeBetweenLeafSpawn = Random.Range(timeBetweenLeafSpawnRange.x, timeBetweenLeafSpawnRange.y);
