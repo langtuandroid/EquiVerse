@@ -5,13 +5,8 @@ namespace Input
 {
     public class CameraMovement : MonoBehaviour
     {
-        private bool movedLeft = false, movedRight = false, movedUp = false, movedDown = false, zoomedIn = false, zoomedOut = false;
         public bool CameraLocked { get; set; }
-        private bool rotateCameraStepCompleted = false;
-        private bool zoomCameraStepCompleted = false;
-
         public CinemachineFreeLook mainCam;
-        
         public float keyboardSpeed;
         public float mouseSpeed;
         public float scrollSpeed;
@@ -19,11 +14,14 @@ namespace Input
         public float maxFieldOfView;
         public float yAxisSpeedScale;
         public float keyboardXAxisSpeedScale;
-        public float requiredDragTime = 2f; // Time in seconds the camera needs to be dragged
+        public float requiredDragTime;
 
-        private float dragTime = 0f;
+        private bool movedLeft = false, movedRight = false, movedUp = false, movedDown = false;
+        private bool zoomedIn = false, zoomedOut = false;
+        private bool rotateCameraStepCompleted = false, zoomCameraStepCompleted = false;
         private bool draggedLeft = false, draggedRight = false, draggedUp = false, draggedDown = false;
         private bool allDirectionsDragged = false;
+        private float dragTime = 0f;
 
         private void Start()
         {
@@ -54,10 +52,8 @@ namespace Input
         {
             float xAxisValue = 0;
             float yAxisValue = 0;
-
             bool cameraMoved = false;
 
-            // Keyboard input
             if (UnityEngine.Input.GetKey(KeyCode.A))
             {
                 xAxisValue = keyboardSpeed * keyboardXAxisSpeedScale;
@@ -70,7 +66,7 @@ namespace Input
                 movedRight = true;
                 cameraMoved = true;
             }
-            
+
             if (UnityEngine.Input.GetKey(KeyCode.W))
             {
                 yAxisValue = -keyboardSpeed;
@@ -100,7 +96,7 @@ namespace Input
 
             mainCam.m_Lens.FieldOfView -= (scroll * scrollSpeed) + zoom;
             mainCam.m_Lens.FieldOfView = Mathf.Clamp(mainCam.m_Lens.FieldOfView, minFieldOfView, maxFieldOfView);
-            
+
             if (scroll > 0)
             {
                 zoomedIn = true;
@@ -109,8 +105,7 @@ namespace Input
             {
                 zoomedOut = true;
             }
-            
-            // Mouse input
+
             if (UnityEngine.Input.GetMouseButton(1))
             {
                 Cursor.lockState = CursorLockMode.Locked;
@@ -121,19 +116,16 @@ namespace Input
                 mainCam.m_XAxis.Value += mouseX * mouseSpeed * Time.deltaTime;
                 mainCam.m_YAxis.Value += mouseY * mouseSpeed * yAxisSpeedScale * Time.deltaTime;
 
-                // Track direction of movement for mouse drag
                 if (mouseX < 0) draggedLeft = true;
                 if (mouseX > 0) draggedRight = true;
                 if (mouseY < 0) draggedDown = true;
                 if (mouseY > 0) draggedUp = true;
 
-                // Increment drag time if the camera is being dragged in any direction
                 if (mouseX != 0 || mouseY != 0)
                 {
                     dragTime += Time.deltaTime;
                 }
 
-                // Check if all directions have been dragged
                 if (draggedLeft && draggedRight && draggedUp && draggedDown && dragTime >= requiredDragTime)
                 {
                     allDirectionsDragged = true;
@@ -145,16 +137,13 @@ namespace Input
                 Cursor.visible = true;
             }
 
-            // Apply keyboard inputs
             mainCam.m_XAxis.Value += xAxisValue * Time.deltaTime;
             mainCam.m_YAxis.Value += yAxisValue * Time.deltaTime;
 
-            // If there was any camera movement with keyboard
             if (cameraMoved)
             {
                 dragTime += Time.deltaTime;
 
-                // Check if all directions have been moved
                 if (movedLeft && movedRight && movedUp && movedDown && dragTime >= requiredDragTime)
                 {
                     allDirectionsDragged = true;
@@ -170,7 +159,7 @@ namespace Input
                 rotateCameraStepCompleted = true;
             }
         }
-        
+
         private void CheckCameraZoomTutorial()
         {
             if (zoomedIn && zoomedOut)
