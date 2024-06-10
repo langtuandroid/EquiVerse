@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7031618644957140450}
+  - component: {fileID: 1459470340258871314}
   m_Layer: 0
   m_Name: Companions
   m_TagString: Untagged
@@ -33,8 +34,21 @@ Transform:
   - {fileID: 8191621257056634249}
   - {fileID: 2543100594030755981}
   - {fileID: 3365943136368239978}
+  - {fileID: 7942108078143850753}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1459470340258871314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031618644957140449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 278d299700928d444a221662779c3613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &247451807664876070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101,6 +115,75 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3303701940906495820, guid: 4065c9ab8b8a54144a6ff3c90be99ebd, type: 3}
   m_PrefabInstance: {fileID: 247451807664876070}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3356143724403247706
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7031618644957140450}
+    m_Modifications:
+    - target: {fileID: 4659928019911050075, guid: 21b597d7beea7734b8ebd4fcafbbd319, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.106
+      objectReference: {fileID: 0}
+    - target: {fileID: 4659928019911050075, guid: 21b597d7beea7734b8ebd4fcafbbd319, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.445
+      objectReference: {fileID: 0}
+    - target: {fileID: 4659928019911050075, guid: 21b597d7beea7734b8ebd4fcafbbd319, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.585
+      objectReference: {fileID: 0}
+    - target: {fileID: 4659928019911050075, guid: 21b597d7beea7734b8ebd4fcafbbd319, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4659928019911050075, guid: 21b597d7beea7734b8ebd4fcafbbd319, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4659928019911050075, guid: 21b597d7beea7734b8ebd4fcafbbd319, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4659928019911050075, guid: 21b597d7beea7734b8ebd4fcafbbd319, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4659928019911050075, guid: 21b597d7beea7734b8ebd4fcafbbd319, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4659928019911050075, guid: 21b597d7beea7734b8ebd4fcafbbd319, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4659928019911050075, guid: 21b597d7beea7734b8ebd4fcafbbd319, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686016986706254040, guid: 21b597d7beea7734b8ebd4fcafbbd319, type: 3}
+      propertyPath: m_Name
+      value: Toby
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686016986706254040, guid: 21b597d7beea7734b8ebd4fcafbbd319, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7328960193671844049, guid: 21b597d7beea7734b8ebd4fcafbbd319, type: 3}
+    - {fileID: 7328960193671844048, guid: 21b597d7beea7734b8ebd4fcafbbd319, type: 3}
+    - {fileID: 7328960193671844055, guid: 21b597d7beea7734b8ebd4fcafbbd319, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 21b597d7beea7734b8ebd4fcafbbd319, type: 3}
+--- !u!4 &7942108078143850753 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4659928019911050075, guid: 21b597d7beea7734b8ebd4fcafbbd319, type: 3}
+  m_PrefabInstance: {fileID: 3356143724403247706}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7031618645069848995
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -155,7 +238,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2813141170598521384, guid: f48b68b48e58b7040a408bdde074de4a, type: 3}
       propertyPath: m_Name
-      value: Goose_Companion
+      value: Ferdinand
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813141170598521384, guid: f48b68b48e58b7040a408bdde074de4a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3601377522556730738, guid: f48b68b48e58b7040a408bdde074de4a, type: 3}
       propertyPath: eggDropMinWait
@@ -249,7 +336,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1977361067276591308, guid: f13b5cec431950d4d923ae25fd4c17de, type: 3}
       propertyPath: m_Name
-      value: Companion_Parrot
+      value: Pablo
+      objectReference: {fileID: 0}
+    - target: {fileID: 1977361067276591308, guid: f13b5cec431950d4d923ae25fd4c17de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -304,6 +395,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7031618644957140450}
     m_Modifications:
+    - target: {fileID: 4535253289192317483, guid: 649434e70e37d964c91d400c215cf684, type: 3}
+      propertyPath: stopAction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535253289192317483, guid: 649434e70e37d964c91d400c215cf684, type: 3}
+      propertyPath: cullingMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5199456252090984258, guid: 649434e70e37d964c91d400c215cf684, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.199
@@ -346,7 +445,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8062672837211983902, guid: 649434e70e37d964c91d400c215cf684, type: 3}
       propertyPath: m_Name
-      value: Companion_Bee
+      value: Betsy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8062672837211983902, guid: 649434e70e37d964c91d400c215cf684, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

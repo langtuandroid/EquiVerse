@@ -8,6 +8,8 @@ public class Food : MonoBehaviour
 {
     public int foodGrowthValue;
     private bool canBeConsumed = true;
+    [HideInInspector]
+    public bool isSpawnedByExternal = false;
 
     void Start() {
         EntityManager.Get().AddFood(gameObject);
@@ -25,6 +27,9 @@ public class Food : MonoBehaviour
         canBeConsumed = false;
         gameObject.transform.DOScale(0, 0.6f).SetEase(Ease.OutBack);
         Destroy(gameObject, 0.6f);
-        FindObjectOfType<FoodSpawner>().RemovePlant();
+        if (!isSpawnedByExternal)
+        {
+            FindObjectOfType<FoodSpawner>().RemovePlant();
+        }
     }
 }

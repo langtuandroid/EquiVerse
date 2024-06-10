@@ -24,7 +24,7 @@ namespace Spawners {
 
         [Header("Maximum plants")]
         public int maxPlants = 2;
-        private int currentPlantCount;
+        public static int currentPlantCount;
         public bool CanSpawnPlants { get; set; }
 
         public GameObject maxFoodPopup;
