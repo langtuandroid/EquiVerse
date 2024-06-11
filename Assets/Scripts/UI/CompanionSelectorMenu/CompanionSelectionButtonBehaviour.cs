@@ -10,20 +10,24 @@ public class CompanionSelectionButtonBehaviour : MonoBehaviour
     public GameObject buttonsParent;
     public Button nextLevelButton;
     public Color defaultColor, markedColor;
+    public TextMeshProUGUI leftToChooseText;
 
     public static List<Companion> selectedCompanions = new List<Companion>();
 
     private GameObject currentCompanionPrefabInstance;
     private List<Button> markedButtons = new List<Button>();
 
+    private int maxCompanionsToSelect = 3;
+
     void Start()
     {
         selectedCompanions.Clear();
-
         ResetMarkedButtons();
 
         nextLevelButton.interactable = false;
         FillButtonNames();
+
+        UpdateLeftToChooseText();
     }
 
     void FillButtonNames()
@@ -63,7 +67,7 @@ public class CompanionSelectionButtonBehaviour : MonoBehaviour
         }
         else
         {
-            if (markedButtons.Count < 3)
+            if (markedButtons.Count < maxCompanionsToSelect)
             {
                 MarkButton(button, index);
             }
@@ -73,8 +77,10 @@ public class CompanionSelectionButtonBehaviour : MonoBehaviour
             }
         }
 
-        nextLevelButton.interactable = markedButtons.Count == 3;
+        nextLevelButton.interactable = markedButtons.Count == maxCompanionsToSelect;
         SelectCompanion(index);
+
+        UpdateLeftToChooseText();
     }
 
     void MarkButton(Button button, int index)
@@ -113,7 +119,13 @@ public class CompanionSelectionButtonBehaviour : MonoBehaviour
             companionManager.companionDescriptionText.text = companionManager.companions[index].companionDescription;
         }
     }
-    
+
+    void UpdateLeftToChooseText()
+    {
+        int leftToChoose = maxCompanionsToSelect - markedButtons.Count;
+        leftToChooseText.text = leftToChoose.ToString();
+    }
+
     public void PrintSelectedCompanions()
     {
         Debug.Log("Selected Companions:");
@@ -122,6 +134,7 @@ public class CompanionSelectionButtonBehaviour : MonoBehaviour
             Debug.Log(companion.companionTitle);
         }
     }
+
     private void ResetMarkedButtons()
     {
         foreach (Button button in markedButtons)
