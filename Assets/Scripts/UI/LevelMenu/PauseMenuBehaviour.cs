@@ -124,6 +124,16 @@ namespace UI
                 quitWarningPanel.SetActive(true);
             }
         }
+        
+        public void RestartLevel()
+        {
+            ResumeGame();
+            soundController.StopAudioEvent("Music");
+            soundController.StopAudioEvent("Ambience");
+            soundController.StopAudioEvent("BattleMusic");
+            soundController.StopAudioEvent("BetsyZooming");
+            StartCoroutine(LoadAsynchronously(SceneManager.GetActiveScene().buildIndex));
+        }
 
         private IEnumerator LoadAsynchronously(int sceneIndex)
         {
