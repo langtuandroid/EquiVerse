@@ -18,6 +18,11 @@ public class CompanionSelectionButtonBehaviour : MonoBehaviour
 
     void Start()
     {
+        selectedCompanions.Clear();
+
+        ResetMarkedButtons();
+
+        nextLevelButton.interactable = false;
         FillButtonNames();
     }
 
@@ -116,5 +121,13 @@ public class CompanionSelectionButtonBehaviour : MonoBehaviour
         {
             Debug.Log(companion.companionTitle);
         }
+    }
+    private void ResetMarkedButtons()
+    {
+        foreach (Button button in markedButtons)
+        {
+            button.image.color = defaultColor;
+        }
+        markedButtons.Clear();
     }
 }
