@@ -1676,6 +1676,114 @@ PrefabInstance:
       propertyPath: companionPrefabInstanceLocation
       value: 
       objectReference: {fileID: 1006647714}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[2].companionTitle
+      value: Toby
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[3].companionTitle
+      value: Daisy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[4].companionTitle
+      value: Betsy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[2].companionPrefab
+      value: 
+      objectReference: {fileID: 9197246841106397345, guid: af95b9e8ee4814b4690f9f8306762349, type: 3}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[3].companionPrefab
+      value: 
+      objectReference: {fileID: 1843596818345988, guid: ab5a846386fd0e74fa43f60958adfcf0, type: 3}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[4].companionPrefab
+      value: 
+      objectReference: {fileID: 8062672837211983902, guid: 3fecfe0c36960014fa0a8fb6e7d714b9, type: 3}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[2].companionDescription
+      value: Toby throws food on the ground for your rabbits.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[2].companionSecondTitle
+      value: the squirrel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[3].companionDescription
+      value: Daisy gives birth to a new baby rabbit every so often
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[3].companionSecondTitle
+      value: the momma rabbit
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[4].companionDescription
+      value: Betsy lends you her bee army to eliminate enemies.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[4].companionSecondTitle
+      value: the queen bee
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[2].companionSoundEventPath.Path
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[3].companionSoundEventPath.Path
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[4].companionSoundEventPath.Path
+      value: event:/Animals/BetsyBeeQueen/BetsyIdle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[2].companionSoundEventPath.Guid.Data1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[2].companionSoundEventPath.Guid.Data2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[2].companionSoundEventPath.Guid.Data3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[2].companionSoundEventPath.Guid.Data4
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[3].companionSoundEventPath.Guid.Data1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[3].companionSoundEventPath.Guid.Data2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[3].companionSoundEventPath.Guid.Data3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[3].companionSoundEventPath.Guid.Data4
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[4].companionSoundEventPath.Guid.Data1
+      value: 839714297
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[4].companionSoundEventPath.Guid.Data2
+      value: 1271989446
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[4].companionSoundEventPath.Guid.Data3
+      value: 495882650
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.data[4].companionSoundEventPath.Guid.Data4
+      value: -459895004
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4581356600901041033, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
     m_RemovedGameObjects: []

@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4659928019911050075
 Transform:
   m_ObjectHideFlags: 0
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 5301777308973257813}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &3602626695851703899
+--- !u!1001 &1879862734760720874
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -41,64 +41,64 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4659928019911050075}
     m_Modifications:
-    - target: {fileID: 6073855695994823536, guid: c18682d3e4c3fbf4cbf14216af86a1d9, type: 3}
+    - target: {fileID: 9197246841106397345, guid: af95b9e8ee4814b4690f9f8306762349, type: 3}
+      propertyPath: m_Name
+      value: Squirrel
+      objectReference: {fileID: 0}
+    - target: {fileID: 9197246841106556097, guid: af95b9e8ee4814b4690f9f8306762349, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.035
       objectReference: {fileID: 0}
-    - target: {fileID: 6073855695994823536, guid: c18682d3e4c3fbf4cbf14216af86a1d9, type: 3}
+    - target: {fileID: 9197246841106556097, guid: af95b9e8ee4814b4690f9f8306762349, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.76
       objectReference: {fileID: 0}
-    - target: {fileID: 6073855695994823536, guid: c18682d3e4c3fbf4cbf14216af86a1d9, type: 3}
+    - target: {fileID: 9197246841106556097, guid: af95b9e8ee4814b4690f9f8306762349, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.132
       objectReference: {fileID: 0}
-    - target: {fileID: 6073855695994823536, guid: c18682d3e4c3fbf4cbf14216af86a1d9, type: 3}
+    - target: {fileID: 9197246841106556097, guid: af95b9e8ee4814b4690f9f8306762349, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9544536
       objectReference: {fileID: 0}
-    - target: {fileID: 6073855695994823536, guid: c18682d3e4c3fbf4cbf14216af86a1d9, type: 3}
+    - target: {fileID: 9197246841106556097, guid: af95b9e8ee4814b4690f9f8306762349, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.008528911
       objectReference: {fileID: 0}
-    - target: {fileID: 6073855695994823536, guid: c18682d3e4c3fbf4cbf14216af86a1d9, type: 3}
+    - target: {fileID: 9197246841106556097, guid: af95b9e8ee4814b4690f9f8306762349, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0.29697505
       objectReference: {fileID: 0}
-    - target: {fileID: 6073855695994823536, guid: c18682d3e4c3fbf4cbf14216af86a1d9, type: 3}
+    - target: {fileID: 9197246841106556097, guid: af95b9e8ee4814b4690f9f8306762349, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.027411217
       objectReference: {fileID: 0}
-    - target: {fileID: 6073855695994823536, guid: c18682d3e4c3fbf4cbf14216af86a1d9, type: 3}
+    - target: {fileID: 9197246841106556097, guid: af95b9e8ee4814b4690f9f8306762349, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6073855695994823536, guid: c18682d3e4c3fbf4cbf14216af86a1d9, type: 3}
+    - target: {fileID: 9197246841106556097, guid: af95b9e8ee4814b4690f9f8306762349, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -34.567
       objectReference: {fileID: 0}
-    - target: {fileID: 6073855695994823536, guid: c18682d3e4c3fbf4cbf14216af86a1d9, type: 3}
+    - target: {fileID: 9197246841106556097, guid: af95b9e8ee4814b4690f9f8306762349, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -3.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 6073855695995191056, guid: c18682d3e4c3fbf4cbf14216af86a1d9, type: 3}
-      propertyPath: m_Name
-      value: Squirrel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6073855695995191056, guid: c18682d3e4c3fbf4cbf14216af86a1d9, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 9197246841106397345, guid: af95b9e8ee4814b4690f9f8306762349, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 603415387268334573}
-  m_SourcePrefab: {fileID: 100100000, guid: c18682d3e4c3fbf4cbf14216af86a1d9, type: 3}
+      addedObject: {fileID: 5066205470076144094}
+  m_SourcePrefab: {fileID: 100100000, guid: af95b9e8ee4814b4690f9f8306762349, type: 3}
 --- !u!1 &7328960194268021067 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 6073855695995191056, guid: c18682d3e4c3fbf4cbf14216af86a1d9, type: 3}
-  m_PrefabInstance: {fileID: 3602626695851703899}
+  m_CorrespondingSourceObject: {fileID: 9197246841106397345, guid: af95b9e8ee4814b4690f9f8306762349, type: 3}
+  m_PrefabInstance: {fileID: 1879862734760720874}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &603415387268334573
+--- !u!114 &5066205470076144094
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,15 +111,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwableFoodPrefab: {fileID: 9138003567446152561, guid: 842591236d551b8439baeb1ae94a441f, type: 3}
-  timeTillNextThrow: 5
-  navMeshSurface: {fileID: 0}
+  minTimeTillNextThrow: 8
+  maxTimeTillNextThrow: 10
   throwDuration: 1
-  arcHeight: 5
-  navMeshSampleDistance: 10
+  arcHeight: 2
+  navMeshSampleDistance: 4
+  minThrowDistance: 2
+  throwAngle: 90
+  throwSound:
+    Guid:
+      Data1: -535251592
+      Data2: 1220845727
+      Data3: -1560177003
+      Data4: 729733603
+    Path: event:/Animals/TobySquirrel/ThrowFood
+  landSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!4 &7328960194268192043 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 6073855695994823536, guid: c18682d3e4c3fbf4cbf14216af86a1d9, type: 3}
-  m_PrefabInstance: {fileID: 3602626695851703899}
+  m_CorrespondingSourceObject: {fileID: 9197246841106556097, guid: af95b9e8ee4814b4690f9f8306762349, type: 3}
+  m_PrefabInstance: {fileID: 1879862734760720874}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5297054933622790869
 PrefabInstance:
