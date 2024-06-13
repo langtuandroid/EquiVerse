@@ -52,7 +52,7 @@ namespace Spawners
                 
                 if (!foxStepCompleted && gameManager.level4)
                 {
-                    TutorialManager.CompleteStepAndContinueToNextStep("ShowFoxAndWeaponUpgrades");
+                    TutorialManager.CompleteStepAndContinueToNextStep("ShowFoxUpgrade");
                     foxStepCompleted = true;
                 }
             }
