@@ -7,7 +7,6 @@ public class PabloBehaviour : MonoBehaviour
     public Vector3 areaCenter;
     public Vector3 areaSize;
     public float moveSpeed = 5f;
-    private GameObject targetLeafPoint;
     private Vector3 randomPosition;
     
     public float soundTriggerMinWait = 5f;
@@ -21,27 +20,27 @@ public class PabloBehaviour : MonoBehaviour
 
     void Update()
     {
-        GameObject closestLeafPoint = null;
+        GameObject closestCollectable = null;
         float closestDistance = Mathf.Infinity;
 
-        Collider[] leafPoints = Physics.OverlapBox(areaCenter, areaSize / 2);
-        foreach (Collider leafPointCollider in leafPoints)
+        Collider[] collectables = Physics.OverlapBox(areaCenter, areaSize / 2);
+        foreach (Collider collectableCollider in collectables)
         {
-            if (leafPointCollider.CompareTag("HighValue") || leafPointCollider.CompareTag("LowValue"))
+            if (collectableCollider.CompareTag("HighValue") || collectableCollider.CompareTag("LowValue") || collectableCollider.CompareTag("CrystalShard"))
             {
-                float distance = Vector3.Distance(transform.position, leafPointCollider.transform.position);
+                float distance = Vector3.Distance(transform.position, collectableCollider.transform.position);
         
                 if (distance < closestDistance)
                 {
-                    closestLeafPoint = leafPointCollider.gameObject;
+                    closestCollectable = collectableCollider.gameObject;
                     closestDistance = distance;
                 }
             }
         }
 
-        if (closestLeafPoint != null)
+        if (closestCollectable != null)
         {
-            MoveTowardsPosition(closestLeafPoint.transform.position);
+            MoveTowardsPosition(closestCollectable.transform.position);
         }
         else
         {
@@ -87,6 +86,9 @@ public class PabloBehaviour : MonoBehaviour
         }else if (other.gameObject.CompareTag("HighValue"))
         {
             other.gameObject.GetComponent<HighValueLeaf>().CollectLeafPoint();
+        }else if (other.gameObject.CompareTag("CrystalShard"))
+        {
+            other.gameObject.GetComponent<CrystalShardFox>().CollectFoxCrystalShard();
         }
     }
 

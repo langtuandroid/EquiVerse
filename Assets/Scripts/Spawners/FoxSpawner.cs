@@ -50,7 +50,7 @@ namespace Spawners
                     foxStepCompleted = true;
                 }
                 
-                if (!foxStepCompleted && gameManager.level4)
+                if (!foxStepCompleted && (gameManager.level4 || gameManager.level5))
                 {
                     TutorialManager.CompleteStepAndContinueToNextStep("ShowFoxUpgrade");
                     foxStepCompleted = true;

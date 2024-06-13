@@ -28,8 +28,8 @@ public class CrystalShardEnemy : Clickable
         {
             Vector3 initialPosition = transform.position;
             transform.DOMoveY(initialPosition.y + 0.3f, 2.0f)
-                .SetEase(Ease.InOutQuad) // Adjust the easing function as needed
-                .SetLoops(-1, LoopType.Yoyo); // Set it to loop indefinitely 
+                .SetEase(Ease.InOutQuad)
+                .SetLoops(-1, LoopType.Yoyo);
         }));
         transform.DOScale(Vector3.one, 1f).SetEase(Ease.OutBack).SetDelay(0.5f);
     }

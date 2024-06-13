@@ -55,7 +55,7 @@ namespace UpgradeSystem
                         TutorialManager.GoToNextStep();
                         tutorialStepCompleted = true;
                     }
-                    if (!tutorialStepCompleted && gameManager.level4)
+                    if (!tutorialStepCompleted && (gameManager.level4 || gameManager.level5))
                     {
                         TutorialManager.CompleteStepAndContinueToNextStep("ShowFoodUpgrades");
                         tutorialStepCompleted = true;
