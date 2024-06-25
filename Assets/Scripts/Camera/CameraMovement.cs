@@ -14,6 +14,10 @@ namespace Input
         public float maxFieldOfView;
         public float yAxisSpeedScale;
         public float keyboardXAxisSpeedScale;
+        public float globalXAxisSpeedScale;
+        public float globalYAxisSpeedScale;
+        public int xAxisInversedValue;
+        public int yAxisInversedValue;
         public float requiredDragTime;
 
         private bool movedLeft = false, movedRight = false, movedUp = false, movedDown = false;
@@ -56,26 +60,26 @@ namespace Input
 
             if (UnityEngine.Input.GetKey(KeyCode.A))
             {
-                xAxisValue = keyboardSpeed * keyboardXAxisSpeedScale;
+                xAxisValue = keyboardSpeed * keyboardXAxisSpeedScale * globalXAxisSpeedScale * xAxisInversedValue;
                 movedLeft = true;
                 cameraMoved = true;
             }
             else if (UnityEngine.Input.GetKey(KeyCode.D))
             {
-                xAxisValue = -keyboardSpeed * keyboardXAxisSpeedScale;
+                xAxisValue = -keyboardSpeed * keyboardXAxisSpeedScale * globalXAxisSpeedScale * xAxisInversedValue;
                 movedRight = true;
                 cameraMoved = true;
             }
 
             if (UnityEngine.Input.GetKey(KeyCode.W))
             {
-                yAxisValue = -keyboardSpeed;
+                yAxisValue = -keyboardSpeed * globalYAxisSpeedScale * yAxisInversedValue;
                 movedUp = true;
                 cameraMoved = true;
             }
             else if (UnityEngine.Input.GetKey(KeyCode.S))
             {
-                yAxisValue = keyboardSpeed;
+                yAxisValue = keyboardSpeed * globalYAxisSpeedScale * yAxisInversedValue;
                 movedDown = true;
                 cameraMoved = true;
             }
@@ -113,8 +117,8 @@ namespace Input
 
                 float mouseX = UnityEngine.Input.GetAxis("Mouse X");
                 float mouseY = UnityEngine.Input.GetAxis("Mouse Y");
-                mainCam.m_XAxis.Value += mouseX * mouseSpeed * Time.deltaTime;
-                mainCam.m_YAxis.Value += mouseY * mouseSpeed * yAxisSpeedScale * Time.deltaTime;
+                mainCam.m_XAxis.Value += mouseX * mouseSpeed * globalXAxisSpeedScale * Time.deltaTime * xAxisInversedValue;
+                mainCam.m_YAxis.Value += mouseY * mouseSpeed * yAxisSpeedScale * globalYAxisSpeedScale * Time.deltaTime * yAxisInversedValue;
 
                 if (mouseX < 0) draggedLeft = true;
                 if (mouseX > 0) draggedRight = true;
