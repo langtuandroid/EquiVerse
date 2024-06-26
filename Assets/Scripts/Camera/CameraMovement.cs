@@ -6,26 +6,26 @@ namespace Input
     public class CameraMovement : MonoBehaviour
     {
         public bool CameraLocked { get; set; }
-        public CinemachineFreeLook mainCam;
-        public float keyboardSpeed;
-        public float mouseSpeed;
-        public float scrollSpeed;
-        public float minFieldOfView;
-        public float maxFieldOfView;
-        public float yAxisSpeedScale;
-        public float keyboardXAxisSpeedScale;
-        public float globalXAxisSpeedScale;
-        public float globalYAxisSpeedScale;
-        public int xAxisInversedValue;
-        public int yAxisInversedValue;
-        public float requiredDragTime;
+        [HideInInspector] public CinemachineFreeLook mainCam;
+        [HideInInspector] public float keyboardSpeed = 1;
+        [HideInInspector] public float mouseSpeed = 800;
+        [HideInInspector] public float scrollSpeed = 15;
+        [HideInInspector] public float minFieldOfView = 10;
+        [HideInInspector] public float maxFieldOfView = 70;
+        [HideInInspector] public float yAxisSpeedScale = 0.02f;
+        [HideInInspector] public float keyboardXAxisSpeedScale = 75;
+        [HideInInspector] public float globalXAxisSpeedScale = 1;
+        [HideInInspector] public float globalYAxisSpeedScale = 1;
+        [HideInInspector] public int xAxisInversedValue = 1;
+        [HideInInspector] public int yAxisInversedValue = 1;
+        [HideInInspector] public float requiredDragTime = 2;
 
-        private bool movedLeft = false, movedRight = false, movedUp = false, movedDown = false;
-        private bool zoomedIn = false, zoomedOut = false;
-        private bool rotateCameraStepCompleted = false, zoomCameraStepCompleted = false;
-        private bool draggedLeft = false, draggedRight = false, draggedUp = false, draggedDown = false;
-        private bool allDirectionsDragged = false;
-        private float dragTime = 0f;
+        private bool movedLeft, movedRight, movedUp, movedDown;
+        private bool zoomedIn, zoomedOut;
+        private bool rotateCameraStepCompleted, zoomCameraStepCompleted;
+        private bool draggedLeft, draggedRight, draggedUp, draggedDown;
+        private bool allDirectionsDragged;
+        private float dragTime;
 
         private void Start()
         {
@@ -58,33 +58,56 @@ namespace Input
             float yAxisValue = 0;
             bool cameraMoved = false;
 
-            if (UnityEngine.Input.GetKey(KeyCode.A))
-            {
-                xAxisValue = keyboardSpeed * keyboardXAxisSpeedScale * globalXAxisSpeedScale * xAxisInversedValue;
-                movedLeft = true;
-                cameraMoved = true;
-            }
-            else if (UnityEngine.Input.GetKey(KeyCode.D))
-            {
-                xAxisValue = -keyboardSpeed * keyboardXAxisSpeedScale * globalXAxisSpeedScale * xAxisInversedValue;
-                movedRight = true;
-                cameraMoved = true;
-            }
-
-            if (UnityEngine.Input.GetKey(KeyCode.W))
-            {
-                yAxisValue = -keyboardSpeed * globalYAxisSpeedScale * yAxisInversedValue;
-                movedUp = true;
-                cameraMoved = true;
-            }
-            else if (UnityEngine.Input.GetKey(KeyCode.S))
-            {
-                yAxisValue = keyboardSpeed * globalYAxisSpeedScale * yAxisInversedValue;
-                movedDown = true;
-                cameraMoved = true;
-            }
+            xAxisValue = GetKeyboardAxis(KeyCode.A, KeyCode.D, keyboardXAxisSpeedScale * globalXAxisSpeedScale * xAxisInversedValue, ref movedLeft, ref movedRight);
+            yAxisValue = GetKeyboardAxis(KeyCode.W, KeyCode.S, globalYAxisSpeedScale * yAxisInversedValue, ref movedUp, ref movedDown);
 
             float scroll = UnityEngine.Input.GetAxis("Mouse ScrollWheel");
+            HandleZoom(scroll);
+
+            if (UnityEngine.Input.GetMouseButton(1))
+            {
+                HandleMouseDrag();
+            }
+            else if (UnityEngine.Input.GetMouseButtonUp(1))
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+
+            mainCam.m_XAxis.Value += xAxisValue * Time.deltaTime;
+            mainCam.m_YAxis.Value += yAxisValue * Time.deltaTime;
+
+            if (cameraMoved)
+            {
+                dragTime += Time.deltaTime;
+
+                if (movedLeft && movedRight && movedUp && movedDown && dragTime >= requiredDragTime)
+                {
+                    allDirectionsDragged = true;
+                }
+            }
+        }
+        
+        private float GetKeyboardAxis(KeyCode negativeKey, KeyCode positiveKey, float scale, ref bool movedNegative, ref bool movedPositive)
+        {
+            float axisValue = 0;
+
+            if (UnityEngine.Input.GetKey(negativeKey))
+            {
+                axisValue = keyboardSpeed * scale;
+                movedNegative = true;
+            }
+            else if (UnityEngine.Input.GetKey(positiveKey))
+            {
+                axisValue = -keyboardSpeed * scale;
+                movedPositive = true;
+            }
+
+            return axisValue;
+        }
+        
+        private void HandleZoom(float scroll)
+        {
             float zoom = 0;
 
             if (UnityEngine.Input.GetKey(KeyCode.Q))
@@ -109,49 +132,31 @@ namespace Input
             {
                 zoomedOut = true;
             }
+        }
 
-            if (UnityEngine.Input.GetMouseButton(1))
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
+        private void HandleMouseDrag()
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
 
-                float mouseX = UnityEngine.Input.GetAxis("Mouse X");
-                float mouseY = UnityEngine.Input.GetAxis("Mouse Y");
-                mainCam.m_XAxis.Value += mouseX * mouseSpeed * globalXAxisSpeedScale * Time.deltaTime * xAxisInversedValue;
-                mainCam.m_YAxis.Value += mouseY * mouseSpeed * yAxisSpeedScale * globalYAxisSpeedScale * Time.deltaTime * yAxisInversedValue;
+            float mouseX = UnityEngine.Input.GetAxis("Mouse X");
+            float mouseY = UnityEngine.Input.GetAxis("Mouse Y");
+            mainCam.m_XAxis.Value += mouseX * mouseSpeed * globalXAxisSpeedScale * Time.deltaTime * xAxisInversedValue;
+            mainCam.m_YAxis.Value += mouseY * mouseSpeed * yAxisSpeedScale * globalYAxisSpeedScale * Time.deltaTime * yAxisInversedValue;
 
-                if (mouseX < 0) draggedLeft = true;
-                if (mouseX > 0) draggedRight = true;
-                if (mouseY < 0) draggedDown = true;
-                if (mouseY > 0) draggedUp = true;
+            if (mouseX < 0) draggedLeft = true;
+            if (mouseX > 0) draggedRight = true;
+            if (mouseY < 0) draggedDown = true;
+            if (mouseY > 0) draggedUp = true;
 
-                if (mouseX != 0 || mouseY != 0)
-                {
-                    dragTime += Time.deltaTime;
-                }
-
-                if (draggedLeft && draggedRight && draggedUp && draggedDown && dragTime >= requiredDragTime)
-                {
-                    allDirectionsDragged = true;
-                }
-            }
-            else if (UnityEngine.Input.GetMouseButtonUp(1))
-            {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-
-            mainCam.m_XAxis.Value += xAxisValue * Time.deltaTime;
-            mainCam.m_YAxis.Value += yAxisValue * Time.deltaTime;
-
-            if (cameraMoved)
+            if (mouseX != 0 || mouseY != 0)
             {
                 dragTime += Time.deltaTime;
+            }
 
-                if (movedLeft && movedRight && movedUp && movedDown && dragTime >= requiredDragTime)
-                {
-                    allDirectionsDragged = true;
-                }
+            if (draggedLeft && draggedRight && draggedUp && draggedDown && dragTime >= requiredDragTime)
+            {
+                allDirectionsDragged = true;
             }
         }
 
