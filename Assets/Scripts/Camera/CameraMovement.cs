@@ -32,6 +32,8 @@ namespace Input
             CameraLocked = true;
             mainCam.m_XAxis.m_InputAxisName = "";
             mainCam.m_YAxis.m_InputAxisName = "";
+
+            LoadSettings();
         }
 
         private void Update()
@@ -45,8 +47,7 @@ namespace Input
             {
                 CheckCameraRotateTutorial();
             }
-
-            if (rotateCameraStepCompleted)
+            else
             {
                 CheckCameraZoomTutorial();
             }
@@ -56,7 +57,6 @@ namespace Input
         {
             float xAxisValue = 0;
             float yAxisValue = 0;
-            bool cameraMoved = false;
 
             xAxisValue = GetKeyboardAxis(KeyCode.A, KeyCode.D, keyboardXAxisSpeedScale * globalXAxisSpeedScale * xAxisInversedValue, ref movedLeft, ref movedRight);
             yAxisValue = GetKeyboardAxis(KeyCode.W, KeyCode.S, globalYAxisSpeedScale * yAxisInversedValue, ref movedUp, ref movedDown);
@@ -76,18 +76,8 @@ namespace Input
 
             mainCam.m_XAxis.Value += xAxisValue * Time.deltaTime;
             mainCam.m_YAxis.Value += yAxisValue * Time.deltaTime;
-
-            if (cameraMoved)
-            {
-                dragTime += Time.deltaTime;
-
-                if (movedLeft && movedRight && movedUp && movedDown && dragTime >= requiredDragTime)
-                {
-                    allDirectionsDragged = true;
-                }
-            }
         }
-        
+
         private float GetKeyboardAxis(KeyCode negativeKey, KeyCode positiveKey, float scale, ref bool movedNegative, ref bool movedPositive)
         {
             float axisValue = 0;
@@ -105,7 +95,7 @@ namespace Input
 
             return axisValue;
         }
-        
+
         private void HandleZoom(float scroll)
         {
             float zoom = 0;
@@ -139,10 +129,11 @@ namespace Input
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-            float mouseX = UnityEngine.Input.GetAxis("Mouse X");
-            float mouseY = UnityEngine.Input.GetAxis("Mouse Y");
-            mainCam.m_XAxis.Value += mouseX * mouseSpeed * globalXAxisSpeedScale * Time.deltaTime * xAxisInversedValue;
-            mainCam.m_YAxis.Value += mouseY * mouseSpeed * yAxisSpeedScale * globalYAxisSpeedScale * Time.deltaTime * yAxisInversedValue;
+            float mouseX = UnityEngine.Input.GetAxis("Mouse X") * mouseSpeed * globalXAxisSpeedScale * Time.deltaTime * xAxisInversedValue;
+            float mouseY = UnityEngine.Input.GetAxis("Mouse Y") * mouseSpeed * yAxisSpeedScale * globalYAxisSpeedScale * Time.deltaTime * yAxisInversedValue;
+
+            mainCam.m_XAxis.Value += mouseX;
+            mainCam.m_YAxis.Value += mouseY;
 
             if (mouseX < 0) draggedLeft = true;
             if (mouseX > 0) draggedRight = true;
@@ -176,6 +167,15 @@ namespace Input
                 TutorialManager.CompleteStepAndContinueToNextStep("Step_CameraZoom");
                 zoomCameraStepCompleted = true;
             }
+        }
+
+        private void LoadSettings()
+        {
+            scrollSpeed = PlayerPrefs.GetFloat("ZoomSpeed", scrollSpeed);
+            globalXAxisSpeedScale = PlayerPrefs.GetFloat("XAxisSpeed", globalXAxisSpeedScale);
+            globalYAxisSpeedScale = PlayerPrefs.GetFloat("YAxisSpeed", globalYAxisSpeedScale);
+            xAxisInversedValue = PlayerPrefs.GetInt("XAxisInvert", xAxisInversedValue);
+            yAxisInversedValue = PlayerPrefs.GetInt("YAxisInvert", yAxisInversedValue);
         }
     }
 }

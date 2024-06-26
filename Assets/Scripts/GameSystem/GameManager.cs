@@ -35,16 +35,16 @@ namespace Managers
             PlayerPrefs.SetInt("companionsUnlockedIndex", companionsUnlockedIndex);
             PlayerPrefs.SetInt("CurrentCompanionIndex", currentCompanionIndex);
             PlayerPrefs.SetInt("firstTimePlaying", firstTimePlaying ? 1 : 0);
-            PlayerPrefs.Save(); // Save changes to PlayerPrefs immediately
+            PlayerPrefs.Save();
         }
         
         public static void LoadGameData()
         {
-            WORLD_INDEX = PlayerPrefs.GetInt("WORLD_INDEX", 0); // Default value is 0 if not found
-            LEVEL_INDEX = PlayerPrefs.GetInt("LEVEL_INDEX", 0); // Default value is 0 if not found
-            companionsUnlockedIndex = PlayerPrefs.GetInt("companionsUnlockedIndex", 0); // Default value is 0 if not found
+            WORLD_INDEX = PlayerPrefs.GetInt("WORLD_INDEX", 0);
+            LEVEL_INDEX = PlayerPrefs.GetInt("LEVEL_INDEX", 0);
+            companionsUnlockedIndex = PlayerPrefs.GetInt("companionsUnlockedIndex", 0);
             currentCompanionIndex = PlayerPrefs.GetInt("CurrentCompanionIndex", 0);
-            firstTimePlaying = PlayerPrefs.GetInt("firstTimePlaying", 1) == 1; // Default value is true if not found
+            firstTimePlaying = PlayerPrefs.GetInt("firstTimePlaying", 1) == 1;
         }
     }
 }
