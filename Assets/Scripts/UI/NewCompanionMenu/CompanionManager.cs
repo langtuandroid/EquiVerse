@@ -32,13 +32,14 @@ public class CompanionManager : MonoBehaviour
     
     public Button nextLevelButton;
     
-    private const string CompanionIndexKey = "CurrentCompanionIndex";
-
     private void Start()
     {
         if (isNewCompanionScene)
         {
             GenerateCompanionOnPanel();
+            GameManager.companionsUnlockedIndex++;
+            GameManager.currentCompanionIndex++;
+            GameManager.SaveGameData();
         }
     }
 
@@ -48,7 +49,6 @@ public class CompanionManager : MonoBehaviour
         companionTitleText.text = companions[GameManager.currentCompanionIndex].companionTitle;
         companionSecondTitleText.text = companions[GameManager.currentCompanionIndex].companionSecondTitle;
         companionDescriptionText.text = companions[GameManager.currentCompanionIndex].companionDescription;
-        GameManager.companionsUnlockedIndex++;
     }
 
     public void PlayCompanionSound()
@@ -59,9 +59,6 @@ public class CompanionManager : MonoBehaviour
     public void IncrementCompanionIndex()
     {
         nextLevelButton.interactable = false;
-        GameManager.currentCompanionIndex++;
-        PlayerPrefs.SetInt(CompanionIndexKey, GameManager.currentCompanionIndex);
-        PlayerPrefs.Save();
         if (GameManager.currentCompanionIndex < 4)
         {
             levelLoader.LoadNextLevel();
