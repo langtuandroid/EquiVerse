@@ -14,24 +14,22 @@ public class Enemy
 {
     public String enemyName;
     public GameObject enemyPrefab;
+    public int countToSpawn = 1;
 }
 
 public class EnemySpawner : MonoBehaviour
 {
     public GameManager gameManager;
     public World1LevelSoundController soundController;
-    
     public float initialSpawnDelay;
     public float minSpawnDelay = 1f;
     public float maxSpawnDelay = 5f;
     public Transform enemySpawnLocation;
     public ParticleSystem portalOpeningParticleSystem;
     public List<Enemy> enemyTypes = new List<Enemy>();
-
-    private List<GameObject> activeEnemies = new List<GameObject>();
-
     public TextMeshProUGUI newEnemyTypeWarningText;
     
+    private List<GameObject> activeEnemies = new List<GameObject>();
     private bool firstEnemyTutorialStepCompleted = false;
 
     public void SpawnEnemies()
@@ -65,9 +63,14 @@ public class EnemySpawner : MonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot("event:/World1/SwampGolem/Spawn");
         soundController.FadeAudioParameter("BattleMusic", "Suspense_Action_Transition", 1f, 0.5f);
         
-        GameObject newEnemy = Instantiate(randomEnemy.enemyPrefab, enemySpawnLocation.position, Quaternion.identity);
-        activeEnemies.Add(newEnemy);
-        AnimateEnemySpawnIn(newEnemy, 0.5f);
+        for (int i = 0; i < randomEnemy.countToSpawn; i++)
+        {
+            GameObject newEnemy = Instantiate(randomEnemy.enemyPrefab, enemySpawnLocation.position, Quaternion.identity);
+            activeEnemies.Add(newEnemy);
+            AnimateEnemySpawnIn(newEnemy, 0.5f);
+            yield return new WaitForSeconds(0.5f);
+        }
+        
         portalOpeningParticleSystem.Stop();
     }
 
