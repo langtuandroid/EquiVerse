@@ -5,6 +5,7 @@ using FMODUnity;
 using Managers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 [System.Serializable]
@@ -21,7 +22,7 @@ public class Companion
 public class CompanionManager : MonoBehaviour
 {
     public bool isNewCompanionScene;
-    public LevelLoader levelLoader;
+    public SceneLoader sceneLoader;
     public List<Companion> companions;
     [HideInInspector]
     public Transform companionPrefabInstanceLocation;
@@ -61,11 +62,11 @@ public class CompanionManager : MonoBehaviour
         nextLevelButton.interactable = false;
         if (GameManager.currentCompanionIndex < 4)
         {
-            levelLoader.LoadNextLevel();
+            sceneLoader.LoadNextLevel();
         }
         else
         {
-            levelLoader.LoadCompanionSelector();
+            sceneLoader.LoadCompanionSelector();
         }
     }
 }

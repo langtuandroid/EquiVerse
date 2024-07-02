@@ -22,8 +22,6 @@ public class NewCompanionSoundController : MonoBehaviour
         PARAMETER_DESCRIPTION volumeParameterDescription;
         volumeDescription.getParameterDescriptionByName("NewCompanionMusicVolume", out volumeParameterDescription);
         newCompanionMusicVolumeParameter = volumeParameterDescription.id;
-        
-        StartMusic();
     }
     
     public void NewCompanionMusicVolumeFade(float newCompanionMusicVolumeValue, float duration)
@@ -53,7 +51,7 @@ public class NewCompanionSoundController : MonoBehaviour
     public void StartMusic()
     {
         music.start();
-        NewCompanionMusicVolumeFade(1.0f, 5f);
+        NewCompanionMusicVolumeFade(1.0f, 3f);
     }
 
     public void StopMusic()

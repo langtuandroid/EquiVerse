@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -6,16 +7,26 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LevelLoader : MonoBehaviour
+public class SceneLoader : MonoBehaviour
 {
-    public MainMenuSoundController mainMenuSoundController;
+    public NewCompanionSoundController newCompanionSoundController;
     
     [Header("SceneTransition")]
     public Image transitionOverlay;
     public GameObject loadingScreen;
-    
+
+    public Button backToMainMenuButton;
+
+    private void Start()
+    {
+        backToMainMenuButton.gameObject.SetActive(true);
+        backToMainMenuButton.interactable = true;
+        newCompanionSoundController.StartMusic();
+    }
+
     public void LoadNextLevel()
     {
+        newCompanionSoundController.NewCompanionMusicVolumeFade(0, 1.2f);
         transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
         {
             StartCoroutine(LoadAsynchronously("Level " + GameManager.WORLD_INDEX.ToString() + "-" + GameManager.LEVEL_INDEX.ToString()));
@@ -29,12 +40,15 @@ public class LevelLoader : MonoBehaviour
             StartCoroutine(LoadAsynchronously("CompanionSelectorScene"));
         }));
     }
-    
-    public void TestLoader(string sceneName)
+
+    public void LoadMainMenu()
     {
+        backToMainMenuButton.interactable = false;
+        newCompanionSoundController.NewCompanionMusicVolumeFade(0, 1.2f);
         transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
         {
-            StartCoroutine(LoadAsynchronously(sceneName));
+            backToMainMenuButton.gameObject.SetActive(false);
+            StartCoroutine(LoadAsynchronously("MainMenu"));
         }));
     }
     
