@@ -38,12 +38,11 @@ namespace MainMenu
             mainMenuCanvas.SetActive(false);
             logoCanvas.SetActive(true);
             DiscordPanel.SetActive(true);
-            mainMenuSoundController.FadeMainMenuVolume(0f, 3f);
-
             continueAdventureButton.enabled = true;
             newAdventureButton.enabled = true;
             optionsButton.enabled = true;
             quitButton.enabled = true;
+            mainMenuSoundController.FadeMainMenuVolume(mainMenuSoundController.GetMainMenuVolume(), 3f);
 
             if (GameManager.firstTimePlaying)
             {

@@ -91,23 +91,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b063957f1b4aa2e4ba43aeae18686307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 5300777628840219943}
   gunUpgrades:
   - gunParticles: {fileID: 2198118001968454536, guid: 069faf179dd33424fad61525843141d3, type: 3}
     gunImpactSoundEventPath:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1951701674
+        Data2: 1269584342
+        Data3: 2086564789
+        Data4: -730353447
+      Path: event:/PlayerActions/Gun/Gun1Impact
     gunDamage: 10
-  leafPointManager: {fileID: 0}
+  - gunParticles: {fileID: 2198118001968454536, guid: a66c04f66097f7f4e8fedf4b277af4f9, type: 3}
+    gunImpactSoundEventPath:
+      Guid:
+        Data1: -1972871493
+        Data2: 1231938912
+        Data3: 1456426641
+        Data4: 1791044602
+      Path: event:/PlayerActions/Gun/Gun2Impact
+    gunDamage: 14
+  - gunParticles: {fileID: 2198118001968454536, guid: db246aff9dbf06b4fa2de32f22a6e357, type: 3}
+    gunImpactSoundEventPath:
+      Guid:
+        Data1: 1229965199
+        Data2: 1206567390
+        Data3: 293825685
+        Data4: 509520775
+      Path: event:/PlayerActions/Gun/Gun3Impact
+    gunDamage: 20
+  - gunParticles: {fileID: 2198118001968454536, guid: 7bbcfb60eb8c142418971cf7bbca7924, type: 3}
+    gunImpactSoundEventPath:
+      Guid:
+        Data1: 464631894
+        Data2: 1080502928
+        Data3: 501631131
+        Data4: -1137454868
+      Path: event:/PlayerActions/Gun/Gun4Impact
+    gunDamage: 28
+  leafPointManager: {fileID: 5300777628413590958}
   weaponUpgradeUpgradeButton: {fileID: 0}
   maxUpgradeReachedText: {fileID: 0}
   weaponUpgradeCostText: {fileID: 0}
   upgradeCostText: {fileID: 0}
-  upgradeCostAmount: 
+  upgradeCostAmount: 90010000ee020000dc050000
   upgradeImage: {fileID: 0}
 --- !u!1 &3130055666408576329
 GameObject:
@@ -343,6 +370,7 @@ MonoBehaviour:
   level2: 0
   level3: 0
   level4: 0
+  level5: 0
   currentLevelText: {fileID: 0}
 --- !u!1 &5300777629086163745
 GameObject:

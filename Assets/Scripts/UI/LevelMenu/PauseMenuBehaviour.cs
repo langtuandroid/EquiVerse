@@ -1,5 +1,7 @@
 using System.Collections;
 using DG.Tweening;
+using Input;
+using Managers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,6 +16,7 @@ namespace UI
         public GameObject optionsMenu;
         public GameObject howToPlayMenu;
         public Raycaster raycaster;
+        public CameraMovement cameraMovement;
 
         [Header("SceneTransition")]
         public Image transitionOverlay;
@@ -24,7 +27,8 @@ namespace UI
 
         private Tween pauseMenuAnimationTween;
 
-        private bool isPaused = false;
+        private bool isPaused;
+        private bool subMenuActive;
 
         private void Start()
         {
@@ -34,7 +38,7 @@ namespace UI
 
         private void Update()
         {
-            if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Escape) && !subMenuActive)
             {
                 if (isPaused)
                 {
@@ -53,6 +57,7 @@ namespace UI
         {
             graphicRaycaster.enabled = false;
             raycaster.gameObject.SetActive(false);
+            cameraMovement.CameraLocked = true;
             FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");   
             isPaused = true;
             pauseMenuUI.SetActive(true);
@@ -65,6 +70,7 @@ namespace UI
         {
             graphicRaycaster.enabled = true;
             raycaster.gameObject.SetActive(true);
+            cameraMovement.CameraLocked = false;
             FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");   
             isPaused = false;
             Time.timeScale = 1f;
@@ -89,11 +95,13 @@ namespace UI
         {
             if (optionsMenu.activeSelf)
             {
+                subMenuActive = false;
                 optionsMenu.SetActive(false);
                 pauseMenuUI.SetActive(true);
             }
             else
             {
+                subMenuActive = true;
                 optionsMenu.SetActive(true);
                 pauseMenuUI.SetActive(false);
             }
@@ -103,11 +111,13 @@ namespace UI
         {
             if (howToPlayMenu.activeSelf)
             {
+                subMenuActive = false;
                 howToPlayMenu.SetActive(false);
                 pauseMenuUI.SetActive(true);
             }
             else
             {
+                subMenuActive = true;
                 howToPlayMenu.SetActive(true);
                 pauseMenuUI.SetActive(false);
             }
@@ -117,10 +127,12 @@ namespace UI
         {
             if (quitWarningPanel.activeSelf)
             {
+                subMenuActive = false;
                 quitWarningPanel.SetActive(false);
             }
             else
             {
+                subMenuActive = true;
                 quitWarningPanel.SetActive(true);
             }
         }

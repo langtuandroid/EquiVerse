@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -23,13 +22,15 @@ public class GraniteGuardianAttackBehaviour : MonoBehaviour
         attackCooldownActive = true;
         StartCoroutine(ResetAttackCooldown());
     }
-    
+
     private void Update()
     {
-        if(target != null) { 
+        if (target != null)
+        {
             Vector3 direction = target.transform.position - beam.transform.position;
             beam.transform.rotation = Quaternion.LookRotation(direction);
         }
+
         if (!attacking && !attackCooldownActive && Time.time - lastAttackTime >= attackCooldown)
         {
             List<GameObject> rabbits = EntityManager.Get().GetRabbits();
@@ -47,14 +48,21 @@ public class GraniteGuardianAttackBehaviour : MonoBehaviour
         }
     }
 
-    private IEnumerator AttackTarget(GameObject target)
+    private IEnumerator AttackTarget(GameObject initialTarget)
     {
         attacking = true;
         attackCooldownActive = true;
         navMeshAgent.isStopped = true;
         animator.SetTrigger("ChargeTrigger");
         FMODUnity.RuntimeManager.PlayOneShot("event:/World1/GraniteGuardian/AttackCharge");
-        Vector3 targetDirection = target.transform.position - transform.position;
+        
+        if (initialTarget == null) // Check if the target still exists
+        {
+            ResetAttackState();
+            yield break;
+        }
+
+        Vector3 targetDirection = initialTarget.transform.position - transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
         transform.rotation = targetRotation;
 
@@ -63,28 +71,48 @@ public class GraniteGuardianAttackBehaviour : MonoBehaviour
         yield return new WaitForSeconds(1);
         animator.SetTrigger("AttackTrigger");
         yield return new WaitForSeconds(1.5f);
-        Vector3 direction = target.transform.position - beam.transform.position;
+
+        if (initialTarget == null) // Check again before accessing target properties
+        {
+            ResetAttackState();
+            yield break;
+        }
+
+        Vector3 direction = initialTarget.transform.position - beam.transform.position;
         beam.transform.rotation = Quaternion.LookRotation(direction);
         beam.Play();
         FMODUnity.RuntimeManager.PlayOneShot("event:/World1/GraniteGuardian/Attack");
-        if (target != null && target.gameObject.activeSelf)
+
+        if (initialTarget != null && initialTarget.gameObject.activeSelf)
         {
-            MalbersRabbitBehaviour rabbitBehaviour = target.GetComponent<MalbersRabbitBehaviour>();
+            MalbersRabbitBehaviour rabbitBehaviour = initialTarget.GetComponent<MalbersRabbitBehaviour>();
             if (rabbitBehaviour != null)
             {
                 yield return new WaitForSeconds(2f); // Adjust the delay as needed
-                rabbitBehaviour.InstantDeath();
+                if (initialTarget != null && initialTarget.gameObject.activeSelf) // Final check before applying damage
+                {
+                    rabbitBehaviour.InstantDeath();
+                }
             }
         }
 
         yield return new WaitForSeconds(2f); // Adjust the total duration of the attack as needed
 
         target = null;
-        
+
         navMeshAgent.isStopped = false;
         attacking = false;
         lastAttackTime = Time.time; // Update lastAttackTime to current time
 
+        StartCoroutine(ResetAttackCooldown());
+    }
+
+    private void ResetAttackState()
+    {
+        target = null;
+        navMeshAgent.isStopped = false;
+        attacking = false;
+        lastAttackTime = Time.time; // Update lastAttackTime to current time
         StartCoroutine(ResetAttackCooldown());
     }
 

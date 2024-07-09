@@ -46,7 +46,7 @@ public class SwampGolemAttackBehaviour : MonoBehaviour
             MalbersRabbitBehaviour rabbitBehaviour = other.GetComponent<MalbersRabbitBehaviour>();
             if (rabbitBehaviour != null)
             {
-                yield return new WaitForSeconds(1.75f);
+                yield return new WaitForSeconds(1f);
                 rabbitBehaviour.SpawnStoneSpikeParticles();
                 rabbitBehaviour.InstantDeath();
             }
@@ -57,7 +57,7 @@ public class SwampGolemAttackBehaviour : MonoBehaviour
         navMeshAgent.isStopped = false;
         attacking = false;
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         attackCooldown = false; // Reset attack cooldown after 5 seconds
     }
 }

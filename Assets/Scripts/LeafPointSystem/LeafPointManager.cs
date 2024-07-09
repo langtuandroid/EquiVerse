@@ -136,7 +136,6 @@ namespace Managers {
             soundController.FadeAudioParameter("Music", "World1LevelMainMusicVolume", 0f, 1.2f);
             soundController.FadeAudioParameter("Ambience", "World1LevelAmbienceVolume", 0f, 1.2f);
             soundController.FadeAudioParameter("BattleMusic", "EnemyMusicVolume", 0f, 1.2f);
-            soundController.StopAudioEvent("BetsyZooming");
             
             transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() => {
                 soundController.StopAudioEvent("Music");

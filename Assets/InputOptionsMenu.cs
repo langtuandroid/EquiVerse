@@ -32,8 +32,8 @@ public class InputOptionsMenu : MonoBehaviour
         zoomMovementSpeedSlider.value = cameraMovement.scrollSpeed;
         xAxisMovementSpeedSlider.value = cameraMovement.globalXAxisSpeedScale;
         yAxisMovementSpeedSlider.value = cameraMovement.globalYAxisSpeedScale;
-        xAxisInvertToggle.isOn = (cameraMovement.xAxisInversedValue == -1);
-        yAxisInvertToggle.isOn = (cameraMovement.yAxisInversedValue == -1);
+        xAxisInvertToggle.isOn = cameraMovement.xAxisInversedValue == -1;
+        yAxisInvertToggle.isOn = cameraMovement.yAxisInversedValue == -1;
     }
 
     public void SetZoomMovementSpeedValue()
