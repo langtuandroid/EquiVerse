@@ -10,8 +10,8 @@ public class GraniteGuardianAttackBehaviour : MonoBehaviour
     public ParticleSystem beam;
     public Animator animator;
     public NavMeshAgent navMeshAgent;
-    public float detectionRadius = 10f;
-    public float attackCooldown = 5f;
+    [HideInInspector] public float detectionRadius = 10f;
+    [HideInInspector] public float attackCooldown = 2f;
     private bool attacking = false;
     private bool attackCooldownActive = false;
     private GameObject target;
