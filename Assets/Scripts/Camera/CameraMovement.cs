@@ -91,11 +91,13 @@ namespace Input
             {
                 axisValue -= keyboardSpeed * scale * Time.deltaTime;
                 movedLeft = true;
+                movedDown = true;
             }
             if (UnityEngine.Input.GetKey(positiveKey))
             {
                 axisValue += keyboardSpeed * scale * Time.deltaTime;
                 movedRight = true;
+                movedUp = true;
             }
 
             return axisValue;
