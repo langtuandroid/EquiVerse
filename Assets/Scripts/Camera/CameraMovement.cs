@@ -7,19 +7,19 @@ namespace Input
     {
         public bool CameraLocked { get; set; }
         [HideInInspector] public CinemachineFreeLook mainCam;
-        [HideInInspector] public float keyboardSpeed = 1;
-        [HideInInspector] public float mouseSpeed = 800;
         [HideInInspector] public float scrollSpeed = 15;
-        [HideInInspector] public float minFieldOfView = 10;
-        [HideInInspector] public float maxFieldOfView = 70;
-        [HideInInspector] public float yAxisSpeedScale = 0.02f;
-        [HideInInspector] public float keyboardXAxisSpeedScale = 75;
         [HideInInspector] public float globalXAxisSpeedScale = 1;
         [HideInInspector] public float globalYAxisSpeedScale = 1;
         [HideInInspector] public int xAxisInversedValue = 1;
         [HideInInspector] public int yAxisInversedValue = 1;
         [HideInInspector] public float requiredDragTime = 2;
 
+        private float minFieldOfView = 10;
+        private float maxFieldOfView = 70;
+        private float yAxisSpeedScale = 0.02f;
+        private float keyboardXAxisSpeedScale = 75;
+        private float keyboardSpeed = 1;
+        private float mouseSpeed = 1f;
         private bool movedLeft, movedRight, movedUp, movedDown;
         private bool zoomedIn, zoomedOut;
         private bool rotateCameraStepCompleted, zoomCameraStepCompleted;
@@ -57,9 +57,17 @@ namespace Input
         {
             float xAxisValue = 0;
             float yAxisValue = 0;
+            
+            if (UnityEngine.Input.GetKeyDown(KeyCode.A) && UnityEngine.Input.GetKeyDown(KeyCode.D))
+            {
+                xAxisValue = 0;
+            }
 
-            xAxisValue = GetKeyboardAxis(KeyCode.A, KeyCode.D, keyboardXAxisSpeedScale * globalXAxisSpeedScale * xAxisInversedValue, ref movedLeft, ref movedRight);
-            yAxisValue = GetKeyboardAxis(KeyCode.W, KeyCode.S, globalYAxisSpeedScale * yAxisInversedValue, ref movedUp, ref movedDown);
+            xAxisValue = GetKeyboardAxis(KeyCode.D, KeyCode.A, keyboardXAxisSpeedScale * globalXAxisSpeedScale);
+            yAxisValue = GetKeyboardAxis(KeyCode.S, KeyCode.W, globalYAxisSpeedScale);
+
+            mainCam.m_XAxis.Value += xAxisValue * xAxisInversedValue;
+            mainCam.m_YAxis.Value += yAxisValue * yAxisInversedValue;
 
             float scroll = UnityEngine.Input.GetAxis("Mouse ScrollWheel");
             HandleZoom(scroll);
@@ -73,24 +81,21 @@ namespace Input
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }
-
-            mainCam.m_XAxis.Value += xAxisValue * Time.deltaTime;
-            mainCam.m_YAxis.Value += yAxisValue * Time.deltaTime;
         }
 
-        private float GetKeyboardAxis(KeyCode negativeKey, KeyCode positiveKey, float scale, ref bool movedNegative, ref bool movedPositive)
+        private float GetKeyboardAxis(KeyCode negativeKey, KeyCode positiveKey, float scale)
         {
             float axisValue = 0;
 
             if (UnityEngine.Input.GetKey(negativeKey))
             {
-                axisValue = keyboardSpeed * scale;
-                movedNegative = true;
+                axisValue -= keyboardSpeed * scale * Time.deltaTime;
+                movedLeft = true;
             }
-            else if (UnityEngine.Input.GetKey(positiveKey))
+            if (UnityEngine.Input.GetKey(positiveKey))
             {
-                axisValue = -keyboardSpeed * scale;
-                movedPositive = true;
+                axisValue += keyboardSpeed * scale * Time.deltaTime;
+                movedRight = true;
             }
 
             return axisValue;
@@ -102,12 +107,12 @@ namespace Input
 
             if (UnityEngine.Input.GetKey(KeyCode.Q))
             {
-                zoom = scrollSpeed * Time.deltaTime * 10f;
+                zoom = scrollSpeed * 10f * Time.deltaTime;
                 zoomedIn = true;
             }
             else if (UnityEngine.Input.GetKey(KeyCode.E))
             {
-                zoom = -scrollSpeed * Time.deltaTime * 10f;
+                zoom = -scrollSpeed * 10f * Time.deltaTime;
                 zoomedOut = true;
             }
 
@@ -129,11 +134,11 @@ namespace Input
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-            float mouseX = UnityEngine.Input.GetAxis("Mouse X") * mouseSpeed * globalXAxisSpeedScale * Time.deltaTime * xAxisInversedValue;
-            float mouseY = UnityEngine.Input.GetAxis("Mouse Y") * mouseSpeed * yAxisSpeedScale * globalYAxisSpeedScale * Time.deltaTime * yAxisInversedValue;
+            float mouseX = UnityEngine.Input.GetAxis("Mouse X") * mouseSpeed * globalXAxisSpeedScale;
+            float mouseY = UnityEngine.Input.GetAxis("Mouse Y") * mouseSpeed * yAxisSpeedScale * globalYAxisSpeedScale;
 
-            mainCam.m_XAxis.Value += mouseX;
-            mainCam.m_YAxis.Value += mouseY;
+            mainCam.m_XAxis.Value += mouseX * xAxisInversedValue;
+            mainCam.m_YAxis.Value += mouseY * yAxisInversedValue;
 
             if (mouseX < 0) draggedLeft = true;
             if (mouseX > 0) draggedRight = true;

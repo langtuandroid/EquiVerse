@@ -10,41 +10,64 @@ public class GraniteGuardianAttackBehaviour : MonoBehaviour
     public ParticleSystem beam;
     public Animator animator;
     public NavMeshAgent navMeshAgent;
-    [HideInInspector] public float detectionRadius = 10f;
-    [HideInInspector] public float attackCooldown = 2f;
+    
+    private float detectionRadius = 10f;
+    private float minimumDistance = 6f; // Minimum distance to target rabbits
+    private float attackCooldown = 3f;
     private bool attacking = false;
     private bool attackCooldownActive = false;
-    private GameObject target;
+    private Transform targetTransform;
     private float lastAttackTime;
+    private float rotationSpeed = 5f; // Rotation speed factor
 
     private void Start()
     {
-        attackCooldownActive = true;
         StartCoroutine(ResetAttackCooldown());
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (target != null)
+        if (targetTransform != null)
         {
-            Vector3 direction = target.transform.position - beam.transform.position;
-            beam.transform.rotation = Quaternion.LookRotation(direction);
+            RotateTowardsTarget(targetTransform.position);
         }
 
-        if (!attacking && !attackCooldownActive && Time.time - lastAttackTime >= attackCooldown)
+        if (!attacking && !attackCooldownActive && Time.fixedTime - lastAttackTime >= attackCooldown)
         {
-            List<GameObject> rabbits = EntityManager.Get().GetRabbits();
+            FindAndSetTarget();
+        }
+    }
 
-            foreach (GameObject rabbit in rabbits)
+    private void RotateTowardsTarget(Vector3 targetPosition)
+    {
+        Vector3 direction = targetPosition - beam.transform.position;
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+        // Smoothly rotate towards the target
+        beam.transform.rotation = Quaternion.Slerp(beam.transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+    }
+
+    private void FindAndSetTarget()
+    {
+        List<GameObject> rabbits = EntityManager.Get().GetRabbits();
+        GameObject closestRabbit = null;
+        float closestDistance = detectionRadius;
+
+        foreach (GameObject rabbit in rabbits)
+        {
+            float distance = Vector3.Distance(transform.position, rabbit.transform.position);
+            if (distance <= closestDistance && distance >= minimumDistance)
             {
-                float distance = Vector3.Distance(transform.position, rabbit.transform.position);
-                if (distance <= detectionRadius)
-                {
-                    target = rabbit;
-                    StartCoroutine(AttackTarget(target));
-                    break;
-                }
+                closestRabbit = rabbit;
+                closestDistance = distance;
             }
+        }
+
+        if (closestRabbit != null)
+        {
+            targetTransform = closestRabbit.transform;
+            StartCoroutine(AttackTarget(closestRabbit));
         }
     }
 
@@ -55,65 +78,52 @@ public class GraniteGuardianAttackBehaviour : MonoBehaviour
         navMeshAgent.isStopped = true;
         animator.SetTrigger("ChargeTrigger");
         FMODUnity.RuntimeManager.PlayOneShot("event:/World1/GraniteGuardian/AttackCharge");
-        
-        if (initialTarget == null) // Check if the target still exists
+
+        if (initialTarget == null)
         {
-            ResetAttackState();
+            yield return ResetAttack();
             yield break;
         }
-
-        Vector3 targetDirection = initialTarget.transform.position - transform.position;
-        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-        transform.rotation = targetRotation;
 
         leftHandParticles.Play();
         rightHandParticles.Play();
         yield return new WaitForSeconds(1);
+
         animator.SetTrigger("AttackTrigger");
         yield return new WaitForSeconds(1.5f);
 
-        if (initialTarget == null) // Check again before accessing target properties
+        if (initialTarget == null)
         {
-            ResetAttackState();
+            yield return ResetAttack();
             yield break;
         }
 
-        Vector3 direction = initialTarget.transform.position - beam.transform.position;
-        beam.transform.rotation = Quaternion.LookRotation(direction);
         beam.Play();
         FMODUnity.RuntimeManager.PlayOneShot("event:/World1/GraniteGuardian/Attack");
 
-        if (initialTarget != null && initialTarget.gameObject.activeSelf)
+        MalbersRabbitBehaviour rabbitBehaviour = initialTarget.GetComponent<MalbersRabbitBehaviour>();
+        if (rabbitBehaviour != null)
         {
-            MalbersRabbitBehaviour rabbitBehaviour = initialTarget.GetComponent<MalbersRabbitBehaviour>();
-            if (rabbitBehaviour != null)
+            yield return new WaitForSeconds(2f);
+            if (initialTarget != null && initialTarget.activeSelf)
             {
-                yield return new WaitForSeconds(2f); // Adjust the delay as needed
-                if (initialTarget != null && initialTarget.gameObject.activeSelf) // Final check before applying damage
-                {
-                    rabbitBehaviour.InstantDeath();
-                }
+                rabbitBehaviour.InstantDeath();
             }
         }
 
-        yield return new WaitForSeconds(2f); // Adjust the total duration of the attack as needed
+        yield return new WaitForSeconds(2f);
 
-        target = null;
-
-        navMeshAgent.isStopped = false;
-        attacking = false;
-        lastAttackTime = Time.time; // Update lastAttackTime to current time
-
-        StartCoroutine(ResetAttackCooldown());
+        yield return ResetAttack();
     }
 
-    private void ResetAttackState()
+    private IEnumerator ResetAttack()
     {
-        target = null;
+        targetTransform = null;
         navMeshAgent.isStopped = false;
         attacking = false;
-        lastAttackTime = Time.time; // Update lastAttackTime to current time
-        StartCoroutine(ResetAttackCooldown());
+        lastAttackTime = Time.time;
+        yield return new WaitForSeconds(attackCooldown);
+        attackCooldownActive = false;
     }
 
     private IEnumerator ResetAttackCooldown()

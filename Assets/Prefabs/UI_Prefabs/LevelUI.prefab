@@ -746,7 +746,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3541446107966341930}
+      - m_Target: {fileID: 9134405850574389684}
         m_TargetAssemblyTypeName: InputOptionsMenu, Assembly-CSharp
         m_MethodName: SetXAxisInvertValue
         m_Mode: 1
@@ -3098,7 +3098,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3541446107966341930}
+      - m_Target: {fileID: 9134405850574389684}
         m_TargetAssemblyTypeName: InputOptionsMenu, Assembly-CSharp
         m_MethodName: SetZoomMovementSpeedValue
         m_Mode: 1
@@ -9406,6 +9406,7 @@ Transform:
   m_Children:
   - {fileID: 8775201444037533286}
   - {fileID: 1281900916653089092}
+  - {fileID: 7056022340568052284}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1281900918142861425
@@ -9442,6 +9443,7 @@ MonoBehaviour:
   optionsMenu: {fileID: 7004556487513715666}
   howToPlayMenu: {fileID: 4650841437915188178}
   raycaster: {fileID: 0}
+  cameraMovement: {fileID: 0}
   transitionOverlay: {fileID: 586357112718192719}
   loadingScreen: {fileID: 6035396438326452440}
   soundController: {fileID: 0}
@@ -12449,7 +12451,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3541446107966341930}
+      - m_Target: {fileID: 9134405850574389684}
         m_TargetAssemblyTypeName: InputOptionsMenu, Assembly-CSharp
         m_MethodName: SetXAxisMovementSpeedValue
         m_Mode: 1
@@ -13560,6 +13562,89 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2641483090573737165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7056022340568052284}
+  - component: {fileID: 8580510326757845143}
+  - component: {fileID: 4829248628159670917}
+  - component: {fileID: 9134405850574389684}
+  m_Layer: 0
+  m_Name: OptionsMenuManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7056022340568052284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2641483090573737165}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1281900918142861426}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8580510326757845143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2641483090573737165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e39d234d14c738945889c6d3016c1739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterSlider: {fileID: 6488647896123314888}
+  musicSlider: {fileID: 5716658217127859670}
+  sfxSlider: {fileID: 432926201284614435}
+  ambienceSlider: {fileID: 3745845578568197964}
+--- !u!114 &4829248628159670917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2641483090573737165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3626d509d9951a54f8ebb92b4baa3614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resolutionDropdown: {fileID: 1189997262936919521}
+  qualityDropdown: {fileID: 6619766665945885882}
+  screenModeDropdown: {fileID: 3381866578292736633}
+--- !u!114 &9134405850574389684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2641483090573737165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6901ada5c78e73429af38ead3385be7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraMovement: {fileID: 0}
+  zoomMovementSpeedSlider: {fileID: 5771843097892034939}
+  xAxisMovementSpeedSlider: {fileID: 217631319887754550}
+  yAxisMovementSpeedSlider: {fileID: 5345271809151187180}
+  xAxisInvertToggle: {fileID: 3529939212870694644}
+  yAxisInvertToggle: {fileID: 7329076132589766841}
 --- !u!1 &2661751492111302307
 GameObject:
   m_ObjectHideFlags: 0
@@ -18159,7 +18244,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3541446107966341930}
+      - m_Target: {fileID: 9134405850574389684}
         m_TargetAssemblyTypeName: InputOptionsMenu, Assembly-CSharp
         m_MethodName: SetYAxisInvertValue
         m_Mode: 1
@@ -22448,11 +22533,8 @@ GameObject:
   - component: {fileID: 3393390889308214214}
   - component: {fileID: 2721920586329875475}
   - component: {fileID: 432053115388446750}
-  - component: {fileID: 2031985733819383650}
-  - component: {fileID: 874862711036676696}
   - component: {fileID: 3203183946944375528}
   - component: {fileID: 8930414458106443695}
-  - component: {fileID: 3541446107966341930}
   m_Layer: 5
   m_Name: Options_Panel
   m_TagString: Untagged
@@ -22520,37 +22602,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2031985733819383650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7004556487513715666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3626d509d9951a54f8ebb92b4baa3614, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resolutionDropdown: {fileID: 1189997262936919521}
-  qualityDropdown: {fileID: 6619766665945885882}
-  screenModeDropdown: {fileID: 3381866578292736633}
---- !u!114 &874862711036676696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7004556487513715666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e39d234d14c738945889c6d3016c1739, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  masterSlider: {fileID: 6488647896123314888}
-  musicSlider: {fileID: 5716658217127859670}
-  sfxSlider: {fileID: 432926201284614435}
-  ambienceSlider: {fileID: 3745845578568197964}
 --- !u!114 &3203183946944375528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22599,24 +22650,6 @@ MonoBehaviour:
   - optionTabName: Input
     optionTabButton: {fileID: 5904882986706289869}
     optionTabContent: {fileID: 5317641133787290049}
---- !u!114 &3541446107966341930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7004556487513715666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6901ada5c78e73429af38ead3385be7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraMovement: {fileID: 0}
-  zoomMovementSpeedSlider: {fileID: 5771843097892034939}
-  xAxisMovementSpeedSlider: {fileID: 217631319887754550}
-  yAxisMovementSpeedSlider: {fileID: 5345271809151187180}
-  xAxisInvertToggle: {fileID: 3529939212870694644}
-  yAxisInvertToggle: {fileID: 7329076132589766841}
 --- !u!1 &7204911057448045850
 GameObject:
   m_ObjectHideFlags: 0
@@ -25311,7 +25344,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3541446107966341930}
+      - m_Target: {fileID: 9134405850574389684}
         m_TargetAssemblyTypeName: InputOptionsMenu, Assembly-CSharp
         m_MethodName: SetYAxisMovementSpeedValue
         m_Mode: 1
