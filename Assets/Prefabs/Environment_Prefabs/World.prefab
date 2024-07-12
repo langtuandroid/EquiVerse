@@ -632,7 +632,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -5417,7 +5417,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6651d574c1f4cf84385d730a8563a051, type: 2}
+  - {fileID: 2100000, guid: 3bd0bff47a21f0b4089acd1d1b075bb3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -26063,7 +26063,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2372c82814ea2ed41aed3d611d81953d, type: 2}
+  - {fileID: 2100000, guid: f55d44db4612b10438c11e63bc1ea9ca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -26107,7 +26107,7 @@ ParticleSystemRenderer:
   m_VertexStreams: 00010304
   m_UseCustomTrailVertexStreams: 0
   m_TrailVertexStreams: 00010304
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -35291,6 +35291,7 @@ MonoBehaviour:
   enemyTypes:
   - enemyName: Swamp Golem
     enemyPrefab: {fileID: 4250166054841865360, guid: 2c5cadcd143f4434c8de321d297eaaba, type: 3}
+    countToSpawn: 1
   newEnemyTypeWarningText: {fileID: 0}
 --- !u!4 &5561132502726958421 stripped
 Transform:
