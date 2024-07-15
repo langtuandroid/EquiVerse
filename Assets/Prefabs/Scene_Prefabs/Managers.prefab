@@ -271,13 +271,8 @@ MonoBehaviour:
   totalPointsBackground: {fileID: 0}
   totalPointsText: {fileID: 0}
   endOfLevelCostText: {fileID: 0}
-  locks: []
-  endOfLevelButton: {fileID: 0}
   startingPoints: 220
   endOfLevelCost: 300
-  transitionOverlay: {fileID: 0}
-  loadingScreen: {fileID: 0}
-  soundController: {fileID: 0}
 --- !u!1 &5300777628524437898
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,6 +327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5300777628840219944}
   - component: {fileID: 5300777628840219943}
+  - component: {fileID: 7626449848230944487}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -372,6 +368,27 @@ MonoBehaviour:
   level4: 0
   level5: 0
   currentLevelText: {fileID: 0}
+--- !u!114 &7626449848230944487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5300777628840219945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8386fe0869a11ee40b6055b5f33f48db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundController: {fileID: 0}
+  endOfLevelButton: {fileID: 0}
+  leafPointManager: {fileID: 5300777628413590958}
+  transitionOverlay: {fileID: 0}
+  loadingScreen: {fileID: 0}
+  locks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &5300777629086163745
 GameObject:
   m_ObjectHideFlags: 0
