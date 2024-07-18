@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Managers;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AchievementChecker : MonoBehaviour
 {
+    public LevelTimer levelTimer;
     public AchievementManager achievementManager;
 
     public void CheckAchievements()
@@ -21,8 +23,7 @@ public class AchievementChecker : MonoBehaviour
         {
             if (achievement.achievementType == AchievementType.TimeBased && !achievement.isAchieved)
             {
-                //TODO: Change to actual data
-                if (achievement.timeLimit > 0)
+                if (achievement.timeLimit <= levelTimer.LoadCompletionTime())
                 {
                     achievement.isAchieved = true;
                     Debug.Log($"Achievement achieved: {achievement.achievementDescription}");

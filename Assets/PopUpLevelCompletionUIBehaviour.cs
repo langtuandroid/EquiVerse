@@ -11,6 +11,7 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
     public GameObject titleText;
     public GameObject popUpLevelCompletionPanelObject;
     public GameObject levelAchievementsPanelObject;
+    public GameObject levelStatsPanelObject;
     public GameObject totalEcoEssencePanelObject;
     public GameObject buttonsObject;
 
@@ -40,6 +41,8 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
         PopInAnimation(popUpLevelCompletionPanelObject);
         yield return new WaitForSeconds(0.2f);
         PopInAnimation(titleText);
+        yield return new WaitForSeconds(0.5f);
+        PopInAnimation(levelStatsPanelObject);
         yield return new WaitForSeconds(0.5f);
         PopInAnimation(levelAchievementsPanelObject);
         yield return new WaitForSeconds(0.25f);
