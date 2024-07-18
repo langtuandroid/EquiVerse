@@ -1,7 +1,5 @@
-using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Managers
 {
@@ -19,7 +17,7 @@ namespace Managers
         public bool level5;
         public static bool firstTimePlaying = true;
         public static string discordUrl = "https://discord.gg/hay2fMBggT";
-        
+
         public TextMeshProUGUI currentLevelText;
 
         private void Start()
@@ -27,7 +25,7 @@ namespace Managers
             currentLevelText.text = "Level " + WORLD_INDEX + " - " + LEVEL_INDEX;
             SaveGameData();
         }
-        
+
         public static void SaveGameData()
         {
             PlayerPrefs.SetInt("WORLD_INDEX", WORLD_INDEX);
@@ -37,7 +35,7 @@ namespace Managers
             PlayerPrefs.SetInt("firstTimePlaying", firstTimePlaying ? 1 : 0);
             PlayerPrefs.Save();
         }
-        
+
         public static void LoadGameData()
         {
             WORLD_INDEX = PlayerPrefs.GetInt("WORLD_INDEX", 0);

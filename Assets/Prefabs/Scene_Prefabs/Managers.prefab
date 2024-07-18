@@ -271,13 +271,8 @@ MonoBehaviour:
   totalPointsBackground: {fileID: 0}
   totalPointsText: {fileID: 0}
   endOfLevelCostText: {fileID: 0}
-  locks: []
-  endOfLevelButton: {fileID: 0}
   startingPoints: 220
   endOfLevelCost: 300
-  transitionOverlay: {fileID: 0}
-  loadingScreen: {fileID: 0}
-  soundController: {fileID: 0}
 --- !u!1 &5300777628524437898
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,6 +327,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5300777628840219944}
   - component: {fileID: 5300777628840219943}
+  - component: {fileID: 7626449848230944487}
+  - component: {fileID: 7657102840297125439}
+  - component: {fileID: 6352662589584021615}
+  - component: {fileID: 6291794855083723854}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -372,6 +371,114 @@ MonoBehaviour:
   level4: 0
   level5: 0
   currentLevelText: {fileID: 0}
+--- !u!114 &7626449848230944487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5300777628840219945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8386fe0869a11ee40b6055b5f33f48db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundController: {fileID: 0}
+  endOfLevelButton: {fileID: 0}
+  leafPointManager: {fileID: 5300777628413590958}
+  transitionOverlay: {fileID: 0}
+  loadingScreen: {fileID: 0}
+  locks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &7657102840297125439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5300777628840219945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f47557a3f9d6e534c9b690fdc185326a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  achievementManager: {fileID: 0}
+--- !u!114 &6352662589584021615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5300777628840219945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99b509ff22e407144a729a719107f632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelAchievements:
+  - achievementReward: 50
+    achievementType: 0
+    timeLimit: 0
+    maxAnimalDeaths: 0
+    leafPointsCollected: 0
+    achievementImage: {fileID: 0}
+    achievementDescription: 
+    backGroundImage: {fileID: 0}
+    isAchieved: 0
+  - achievementReward: 20
+    achievementType: 1
+    timeLimit: 2
+    maxAnimalDeaths: 0
+    leafPointsCollected: 0
+    achievementImage: {fileID: 0}
+    achievementDescription: 
+    backGroundImage: {fileID: 0}
+    isAchieved: 0
+  - achievementReward: 10
+    achievementType: 2
+    timeLimit: 0
+    maxAnimalDeaths: 5
+    leafPointsCollected: 0
+    achievementImage: {fileID: 0}
+    achievementDescription: 
+    backGroundImage: {fileID: 0}
+    isAchieved: 0
+  - achievementReward: 20
+    achievementType: 3
+    timeLimit: 0
+    maxAnimalDeaths: 0
+    leafPointsCollected: 500
+    achievementImage: {fileID: 0}
+    achievementDescription: 
+    backGroundImage: {fileID: 0}
+    isAchieved: 0
+  popUpUIBehaviour: {fileID: 0}
+  finishedLevelImage: {fileID: 21300000, guid: b9ac1d2133b554e90bb4aa9350f2ce66, type: 3}
+  timeBasedImage: {fileID: 21300000, guid: 4bcea60354aeb44a4a6d83a5685d3d79, type: 3}
+  animalDeathsImage: {fileID: 21300000, guid: 146de7443157b48b88a971e86583c9e2, type: 3}
+  leafPointsImage: {fileID: 21300000, guid: 3796e3edf15984dfa97f8b05788fc016, type: 3}
+--- !u!114 &6291794855083723854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5300777628840219945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953cafdf1ab6c9249897257bb30db0d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleText: {fileID: 0}
+  popUpLevelCompletionPanelObject: {fileID: 0}
+  levelAchievementsPanelObject: {fileID: 0}
+  totalEcoEssencePanelObject: {fileID: 0}
+  buttonsObject: {fileID: 0}
+  achievementUIPrefab: {fileID: 7521910993066862668, guid: ddd46bf442a59924288a8a12097b780c, type: 3}
+  achievedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  notAchievedColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &5300777629086163745
 GameObject:
   m_ObjectHideFlags: 0

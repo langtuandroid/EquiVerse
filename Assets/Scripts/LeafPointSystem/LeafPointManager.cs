@@ -16,21 +16,10 @@ namespace Managers {
         public TextMeshProUGUI totalPointsText;
         public TextMeshProUGUI endOfLevelCostText;
         public static int totalPoints, visualPoints;
-        public GameObject[] locks;
-        private int lockIndex = 0;
-        public Button endOfLevelButton;
-        private Tween lockTween;
         
         [Header("LevelValues")]
         public int startingPoints;
         public int endOfLevelCost;
-
-        [Header("SceneTransition")]
-        public Image transitionOverlay;
-        public GameObject loadingScreen;
-
-        [Header("Sound")] 
-        public World1LevelSoundController soundController;
 
         private static int lowValuePoints = 15;
         private static int highValuePoints = 35;
@@ -40,8 +29,6 @@ namespace Managers {
         private DateTime lastVisualUpdate = DateTime.Now;
         private const float updateInterval = 0.01666667f;
         private const int speedFactor = 15; //Higher is slower
-
-        private bool levelCompletedShortCutPressed = false;
 
         private void Start()
         {
@@ -55,10 +42,10 @@ namespace Managers {
         }
 
         public void Update() {
-            // if (UnityEngine.Input.GetKey(KeyCode.LeftControl))
-            // {
-            //     totalPoints += 100;
-            // }
+            if (UnityEngine.Input.GetKey(KeyCode.LeftControl))
+            {
+                totalPoints += 100;
+            }
             // if (UnityEngine.Input.GetKey(KeyCode.RightControl) && !levelCompletedShortCutPressed)
             // {
             //     LevelCompleted();
@@ -82,20 +69,6 @@ namespace Managers {
         public void AddCrystalShardPoints() {
             IncrementPoints(crystalShardPoints);
         }
-
-        public void BuyEndOfLevel() {
-            if (totalPoints >= endOfLevelCost) {
-                FMODUnity.RuntimeManager.PlayOneShot("event:/UI/Buy");
-                DecrementPoints(endOfLevelCost);
-                RemoveLock();
-            }
-            else
-            {
-                FMODUnity.RuntimeManager.PlayOneShot("event:/UI/CantBuy");
-                FlickerTotalPointsElement();
-            }
-        }
-
 
         public void UpdateVisualPoints() {
             DateTime now = DateTime.Now;
@@ -127,37 +100,6 @@ namespace Managers {
         public void DecrementPoints(int amount) {
             totalPoints -= amount;
         }
-        
-        private void LevelCompleted()
-        {
-            endOfLevelButton.interactable = false;
-            FMODUnity.RuntimeManager.PlayOneShot("event:/UI/CompleteLevel");
-            
-            soundController.FadeAudioParameter("Music", "World1LevelMainMusicVolume", 0f, 1.2f);
-            soundController.FadeAudioParameter("Ambience", "World1LevelAmbienceVolume", 0f, 1.2f);
-            soundController.FadeAudioParameter("BattleMusic", "EnemyMusicVolume", 0f, 1.2f);
-            
-            transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() => {
-                soundController.StopAudioEvent("Music");
-                soundController.StopAudioEvent("Ambience");
-                if (GameManager.WORLD_INDEX == 1 && GameManager.LEVEL_INDEX == 5)
-                {
-                    StartCoroutine(LoadAsynchronously("DemoFinishedScene"));
-                }
-                else
-                {
-                    StartCoroutine(LoadAsynchronously("NewCompanionScene")); 
-                }
-                GameManager.LEVEL_INDEX++;
-            })).SetUpdate(true);
-        }
-
-        IEnumerator LoadAsynchronously(string sceneIndex) {
-            loadingScreen.SetActive(true);
-            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Single);
-            yield return operation;
-            loadingScreen.SetActive(false);
-        }
 
         public void FlickerTotalPointsElement()
         {
@@ -168,29 +110,5 @@ namespace Managers {
                     totalPointsBackground.color = originalColor;
                 });
         }
-
-        private void RemoveLock()
-        {
-            lockTween.Complete();
-            if (lockIndex < locks.Length)
-            {
-                FMODUnity.RuntimeManager.PlayOneShot("event:/UI/Unlock");
-                lockTween = locks[lockIndex].transform.DOScale(0f, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
-                {
-                    locks[lockIndex].SetActive(false);
-                    if (lockIndex == locks.Length - 1)
-                    {
-                        LevelCompleted();
-                    }
-                    else
-                    {
-                        lockIndex++; 
-                    }
-                });
-            }
-        }
-
-
-
     }
 }
