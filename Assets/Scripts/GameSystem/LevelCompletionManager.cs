@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Input;
 using Managers;
 using TMPro;
 using UnityEngine;
@@ -27,30 +28,50 @@ public class LevelCompletionManager : MonoBehaviour
     public TextMeshProUGUI completionTimeText;
     public AchievementManager achievementManager;
     private LevelTimer levelTimer;
-
+    
+    public Raycaster raycaster;
+    public CameraMovement cameraMovement;
+    public GameObject gameUI;
+    
     private void Start()
     {
         levelTimer = gameObject.AddComponent<LevelTimer>();
         levelTimer.StartLevelTimer(); 
     }
-    
+
+    private void Update()
+    {
+        if (UnityEngine.Input.GetKeyDown(KeyCode.RightControl))
+        {
+            LevelCompleted();
+        }
+    }
+
     private void LevelCompleted()
     {
+        raycaster.gameObject.SetActive(false);
+        cameraMovement.CameraLocked = true;
         endOfLevelButton.interactable = false;
-        
+        gameUI.SetActive(false);
         levelTimer.EndLevelTimer();
         levelTimer.DisplayCompletionTime(completionTimeText);
-        
+        soundController.FadeAudioParameter("Music", "World1LevelMainMusicVolume", 0f, 1.2f);
+        soundController.FadeAudioParameter("Ambience", "World1LevelAmbienceVolume", 0f, 1.2f);
+        soundController.FadeAudioParameter("BattleMusic", "EnemyMusicVolume", 0f, 1.2f);
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/CompleteLevel");
         
         achievementManager.ActivateAchievements();
+        StartCoroutine(DisplayPopupAfterDelay());
+    }
+
+    private IEnumerator DisplayPopupAfterDelay()
+    {
+        yield return new WaitForSecondsRealtime(5f);
+        Time.timeScale = 0;
     }
 
     public void TransitionToNextScene()
     {
-        soundController.FadeAudioParameter("Music", "World1LevelMainMusicVolume", 0f, 1.2f);
-        soundController.FadeAudioParameter("Ambience", "World1LevelAmbienceVolume", 0f, 1.2f);
-        soundController.FadeAudioParameter("BattleMusic", "EnemyMusicVolume", 0f, 1.2f);
         transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() => {
             soundController.StopAudioEvent("Music");
             soundController.StopAudioEvent("Ambience");
@@ -66,7 +87,9 @@ public class LevelCompletionManager : MonoBehaviour
         })).SetUpdate(true);
     }
     
-    IEnumerator LoadAsynchronously(string sceneIndex) {
+    IEnumerator LoadAsynchronously(string sceneIndex)
+    {
+        Time.timeScale = 1.0f;
         loadingScreen.SetActive(true);
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Single);
         yield return operation;

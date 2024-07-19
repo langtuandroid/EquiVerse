@@ -20,6 +20,7 @@ namespace Spawners
 
         private void Start()
         {
+            TutorialManager.pickUpLeafpointStepCompleted = false;
             timeBetweenLeafSpawn = Random.Range(timeBetweenLeafSpawnRange.x, timeBetweenLeafSpawnRange.y);
 
             gameManager = FindObjectOfType<GameManager>();

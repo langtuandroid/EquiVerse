@@ -32,6 +32,8 @@ namespace Managers {
 
         private void Start()
         {
+            GameManager.totalLeafPointsCollected = 0;
+            
             originalColor = totalPointsBackground.color;
             
             totalPoints = startingPoints;
@@ -46,11 +48,6 @@ namespace Managers {
             {
                 totalPoints += 100;
             }
-            // if (UnityEngine.Input.GetKey(KeyCode.RightControl) && !levelCompletedShortCutPressed)
-            // {
-            //     LevelCompleted();
-            //     levelCompletedShortCutPressed = true;
-            // }
             UpdateVisualPoints();
         }
 
@@ -95,6 +92,7 @@ namespace Managers {
 
         public void IncrementPoints(int amount) {
             totalPoints += amount;
+            GameManager.totalLeafPointsCollected += amount;
         }
 
         public void DecrementPoints(int amount) {

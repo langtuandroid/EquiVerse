@@ -4,6 +4,7 @@ using MalbersAnimations;
 using MalbersAnimations.Controller;
 using MalbersAnimations.Controller.AI;
 using MalbersAnimations.Scriptables;
+using Managers;
 using Spawners;
 using UnityEngine;
 using UnityEngine.AI;
@@ -91,6 +92,7 @@ public class MalbersRabbitBehaviour : MonoBehaviour
 
     public void InstantDeath()
     {
+        GameManager.animalDeaths++;
         Destroy(gameObject, 3f);
         EntityManager.Get().RemoveRabbit(gameObject);
         if (growthManager.isBaby)
@@ -107,6 +109,7 @@ public class MalbersRabbitBehaviour : MonoBehaviour
 
     private IEnumerator Die()
     {
+        GameManager.animalDeaths++;
         Destroy(gameObject, 3f);
         EntityManager.Get().RemoveRabbit(gameObject);
         if (growthManager.isBaby)

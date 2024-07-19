@@ -86,7 +86,6 @@ namespace UI
                 soundController.StopAudioEvent("Music");
                 soundController.StopAudioEvent("Ambience");
                 soundController.StopAudioEvent("BattleMusic");
-                soundController.StopAudioEvent("BetsyZooming");
                 StartCoroutine(LoadAsynchronously(0));
             }).SetUpdate(true);
         }

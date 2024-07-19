@@ -4,6 +4,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+public class LevelStat
+{
+    public string statName;
+    public string statValue;
+}
+
 public enum AchievementType
 {
     FinishedLevel,
@@ -34,6 +40,7 @@ public class LevelAchievement
 public class AchievementManager : MonoBehaviour
 {
     public AchievementChecker achievementChecker;
+    public List<LevelStat> levelStats; 
     public List<LevelAchievement> levelAchievements;
     public PopUpLevelCompletionUIBehaviour popUpUIBehaviour;
 
@@ -57,13 +64,13 @@ public class AchievementManager : MonoBehaviour
             }
         }
         
-        ActivateAchievements();
+        InitializeLevelStats();
     }
 
     public void ActivateAchievements()
     {
         achievementChecker.CheckAchievements();
-        popUpUIBehaviour.DisplayAchievements(levelAchievements);
+        popUpUIBehaviour.DisplayAchievements(levelAchievements, levelStats);
     }
 
     private void InitializeAchievementTypeData()
@@ -74,6 +81,16 @@ public class AchievementManager : MonoBehaviour
             { AchievementType.TimeBased, (timeBasedImage, "Complete the level within {value} minutes") },
             { AchievementType.AnimalDeaths, (animalDeathsImage, "Keep the animal deaths below {value}") },
             { AchievementType.LeafPoints, (leafPointsImage, "Collect {value} leaf points") }
+        };
+    }
+    
+    private void InitializeLevelStats()
+    {
+        levelStats = new List<LevelStat>
+        {
+            new LevelStat { statName = "Completion Time", statValue = "00:00" },
+            new LevelStat { statName = "Enemies Defeated", statValue = "0" },
+            new LevelStat { statName = "Points Collected", statValue = "0" }
         };
     }
 

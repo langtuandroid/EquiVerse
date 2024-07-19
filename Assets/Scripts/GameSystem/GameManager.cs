@@ -17,6 +17,8 @@ namespace Managers
         public bool level5;
         public static bool firstTimePlaying = true;
         public static string discordUrl = "https://discord.gg/hay2fMBggT";
+        public static int animalDeaths;
+        public static int totalLeafPointsCollected;
 
         public TextMeshProUGUI currentLevelText;
 

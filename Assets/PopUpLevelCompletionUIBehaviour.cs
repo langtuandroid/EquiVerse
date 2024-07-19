@@ -17,6 +17,7 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
 
     [Header("Prefabs")]
     public GameObject achievementUIPrefab;
+    public GameObject statUIPrefab;
     
     public Color achievedColor = Color.yellow;
     public Color notAchievedColor = Color.green;
@@ -30,22 +31,78 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
         originalPositions = new Dictionary<GameObject, Vector2>();
     }
 
-    public void DisplayAchievements(List<LevelAchievement> achievements)
+    public void DisplayAchievements(List<LevelAchievement> achievements, List<LevelStat> levelStats)
     {
-        StartCoroutine(OpenPopUpSequence(achievements));
+        StartCoroutine(OpenPopUpSequence(achievements, levelStats));
+    }
+    
+    public void DisplayLevelStats(List<LevelStat> stats)
+    {
+        foreach (Transform child in levelStatsPanelObject.transform)
+        {
+            Destroy(child.gameObject);  // Clear existing stats
+        }
+
+        foreach (var stat in stats)
+        {
+            GameObject statUI = Instantiate(statUIPrefab, levelStatsPanelObject.transform);
+            TextMeshProUGUI statNameText = statUI.transform.Find("StatName").GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI statValueText = statUI.transform.Find("StatValue").GetComponent<TextMeshProUGUI>();
+
+            statNameText.text = stat.statName;
+            statValueText.text = stat.statValue;
+
+            CanvasGroup canvasGroup = statUI.GetComponent<CanvasGroup>();
+            if (canvasGroup == null)
+            {
+                canvasGroup = statUI.AddComponent<CanvasGroup>();
+            }
+            canvasGroup.alpha = 0f;
+            RectTransform rectTransform = statUI.GetComponent<RectTransform>();
+            rectTransform.localScale = Vector3.zero;
+        }
+
+        StartCoroutine(OpenStatsSequence(stats));
+    }
+    
+    private IEnumerator OpenStatsSequence(List<LevelStat> stats)
+    {
+        foreach (Transform child in levelStatsPanelObject.transform)
+        {
+            RectTransform rectTransform = child.GetComponent<RectTransform>();
+            CanvasGroup canvasGroup = child.GetComponent<CanvasGroup>();
+
+            if (rectTransform != null && canvasGroup != null)
+            {
+                Sequence sequence = DOTween.Sequence();
+                sequence.Append(rectTransform.DOScale(1, 0.1f).SetEase(Ease.OutExpo))
+                    .Join(canvasGroup.DOFade(1, 0.1f).SetEase(Ease.InOutQuad))
+                    .SetUpdate(true);
+
+                yield return sequence.WaitForCompletion();
+            }
+        }
     }
 
-    private IEnumerator OpenPopUpSequence(List<LevelAchievement> achievements)
+
+    private IEnumerator OpenPopUpSequence(List<LevelAchievement> achievements, List<LevelStat> levelStats)
     {
         popUpLevelCompletionPanelObject.transform.localScale = Vector3.zero;
         PopInAnimation(popUpLevelCompletionPanelObject);
-        yield return new WaitForSeconds(0.2f);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");  
+        yield return new WaitForSecondsRealtime(0.2f);
         PopInAnimation(titleText);
-        yield return new WaitForSeconds(0.5f);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");  
+        yield return new WaitForSecondsRealtime(0.5f);
         PopInAnimation(levelStatsPanelObject);
-        yield return new WaitForSeconds(0.5f);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");  
+        yield return new WaitForSecondsRealtime(0.5f);
         PopInAnimation(levelAchievementsPanelObject);
-        yield return new WaitForSeconds(0.25f);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");  
+        yield return new WaitForSecondsRealtime(0.25f);
+        
+        DisplayLevelStats(levelStats);
+        
 
         List<GameObject> achievementUIs = new List<GameObject>();
 
@@ -86,6 +143,7 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
 
             if (rectTransform != null && canvasGroup != null)
             {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");  
                 originalPositions[achievementUI] = rectTransform.anchoredPosition;
 
                 Sequence sequence = DOTween.Sequence();
@@ -97,10 +155,12 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSecondsRealtime(0.5f);
         PopInAnimation(totalEcoEssencePanelObject);
-        yield return new WaitForSeconds(1f);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");  
+        yield return new WaitForSecondsRealtime(1f);
         PopInAnimation(buttonsObject);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");  
     }
 
     public void PopInAnimation(GameObject gameObject)

@@ -44,7 +44,7 @@ public class AchievementChecker : MonoBehaviour
             if (achievement.achievementType == AchievementType.AnimalDeaths && !achievement.isAchieved)
             {
                 //TODO: Change to actual data
-                if (2 <= achievement.maxAnimalDeaths)
+                if (GameManager.animalDeaths <= achievement.maxAnimalDeaths)
                 {
                     achievement.isAchieved = true;
                     Debug.Log($"Achievement achieved: {achievement.achievementDescription}");
@@ -65,7 +65,7 @@ public class AchievementChecker : MonoBehaviour
             if (achievement.achievementType == AchievementType.LeafPoints && !achievement.isAchieved)
             {
                 //TODO: Change to actual data
-                if (achievement.leafPointsCollected > 5)
+                if (achievement.leafPointsCollected > GameManager.totalLeafPointsCollected)
                 {
                     achievement.isAchieved = true;
                     Debug.Log($"Achievement achieved: {achievement.achievementDescription}");

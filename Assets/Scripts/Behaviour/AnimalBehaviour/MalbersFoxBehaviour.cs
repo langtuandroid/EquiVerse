@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using MalbersAnimations;
 using MalbersAnimations.Controller.AI;
+using Managers;
 using Spawners;
 using UnityEngine;
 using UnityEngine.AI;
@@ -86,6 +87,7 @@ public class MalbersFoxBehaviour : MonoBehaviour
     
         public void InstantDeath()
         {
+            GameManager.animalDeaths++;
             Destroy(gameObject, 3f);
             EntityManager.Get().RemoveFox(gameObject);
             if (!foxGhostParticleSystem.isPlaying)
@@ -98,6 +100,7 @@ public class MalbersFoxBehaviour : MonoBehaviour
     
         private IEnumerator Die()
         {
+            GameManager.animalDeaths++;
             Destroy(gameObject, 3f);
             EntityManager.Get().RemoveFox(gameObject);
             animal.StartNewState(deathState);
