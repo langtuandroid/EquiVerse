@@ -47,7 +47,6 @@ public class AchievementChecker : MonoBehaviour
             if (achievement.achievementType == AchievementType.TimeBased && !achievement.isAchieved)
             {
                 float completionTime = levelTimer.LoadCompletionTime();
-                print(completionTime);
                 if (completionTime > 0 && completionTime <= (achievement.timeLimit * 60))
                 {
                     print(achievement.timeLimit);

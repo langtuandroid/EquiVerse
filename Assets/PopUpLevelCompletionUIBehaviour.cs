@@ -20,8 +20,8 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
     public GameObject achievementUIPrefab;
     public GameObject statUIPrefab;
 
-    public Color achievedColor = Color.yellow;
-    public Color notAchievedColor = Color.green;
+    public Color achievedColor;
+    public Color notAchievedColor;
 
     private Dictionary<GameObject, Vector2> originalPositions;
 
@@ -39,6 +39,7 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
 
     private IEnumerator OpenPopUpSequence(List<LevelAchievement> achievements, List<LevelStat> stats)
     {
+        float achievementDelay = 0;
         popUpLevelCompletionPanelObject.transform.localScale = Vector3.zero;
         PopInAnimation(popUpLevelCompletionPanelObject);
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
@@ -62,10 +63,16 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
             achievementImage.sprite = achievement.achievementImage;
             descriptionText.text = achievement.achievementDescription;
             rewardText.text = achievement.achievementReward.ToString();
-
+            
             backGroundImage.color = achievement.isAchieved ? achievedColor : notAchievedColor;
 
-            achievement.backGroundImage = backGroundImage;
+            if (achievement.isAchieved)
+            {
+                backGroundImage.DOColor(achievedColor, 0.1f).SetDelay(1f + achievementDelay);
+                achievementUI.transform.DOPunchScale(new Vector2(0.1f, 0.1f), 0.7f, 8, 0.8f).SetDelay(1f + achievementDelay);
+                achievementDelay += 0.5f;
+            }
+
 
             CanvasGroup canvasGroup = achievementUI.GetComponent<CanvasGroup>();
             if (canvasGroup == null)
@@ -76,11 +83,9 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
             RectTransform rectTransform = achievementUI.GetComponent<RectTransform>();
             rectTransform.localScale = Vector3.zero;
 
-            // Ensure new elements appear on top
             rectTransform.SetAsLastSibling();
         }
 
-        // Force layout rebuild if necessary
         yield return new WaitForEndOfFrame(); 
 
         foreach (var achievementUI in achievementUIs)
@@ -102,7 +107,7 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
             }
         }
 
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(2f);
         PopInAnimation(totalEcoEssencePanelObject);
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
         yield return new WaitForSecondsRealtime(1f);

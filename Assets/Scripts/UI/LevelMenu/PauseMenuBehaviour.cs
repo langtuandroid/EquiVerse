@@ -10,6 +10,7 @@ namespace UI
 {
     public class PauseMenuBehaviour : MonoBehaviour
     {
+        public static bool pauseMenuEnabled;
         public GraphicRaycaster graphicRaycaster;
         public GameObject pauseMenuUI;
         public GameObject quitWarningPanel;
@@ -34,11 +35,12 @@ namespace UI
         {
             quitWarningPanel.SetActive(false);
             pauseMenuUI.SetActive(false);
+            pauseMenuEnabled = true;
         }
 
         private void Update()
         {
-            if (UnityEngine.Input.GetKeyDown(KeyCode.Escape) && !subMenuActive)
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Escape) && !subMenuActive && pauseMenuEnabled)
             {
                 if (isPaused)
                 {
