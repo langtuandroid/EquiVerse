@@ -436,8 +436,9 @@ MonoBehaviour:
     leafpointsCollected: 0
     achievementImage: {fileID: 0}
     achievementDescription: 
-    backGroundImage: {fileID: 0}
     isAchieved: 0
+    backGroundImage: {fileID: 0}
+    achievementState: 0
   - achievementReward: 15
     achievementType: 1
     timeLimit: 1
@@ -446,8 +447,9 @@ MonoBehaviour:
     leafpointsCollected: 0
     achievementImage: {fileID: 0}
     achievementDescription: 
-    backGroundImage: {fileID: 0}
     isAchieved: 0
+    backGroundImage: {fileID: 0}
+    achievementState: 0
   - achievementReward: 15
     achievementType: 2
     timeLimit: 0
@@ -456,8 +458,9 @@ MonoBehaviour:
     leafpointsCollected: 0
     achievementImage: {fileID: 0}
     achievementDescription: 
-    backGroundImage: {fileID: 0}
     isAchieved: 0
+    backGroundImage: {fileID: 0}
+    achievementState: 0
   - achievementReward: 15
     achievementType: 3
     timeLimit: 0
@@ -466,8 +469,9 @@ MonoBehaviour:
     leafpointsCollected: 0
     achievementImage: {fileID: 0}
     achievementDescription: 
-    backGroundImage: {fileID: 0}
     isAchieved: 0
+    backGroundImage: {fileID: 0}
+    achievementState: 0
   popUpUIBehaviour: {fileID: 6291794855083723854}
   finishedLevelImage: {fileID: 21300000, guid: b9ac1d2133b554e90bb4aa9350f2ce66, type: 3}
   timeBasedImage: {fileID: 21300000, guid: 4bcea60354aeb44a4a6d83a5685d3d79, type: 3}
@@ -486,7 +490,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 953cafdf1ab6c9249897257bb30db0d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStatManager: {fileID: 0}
+  levelStatManager: {fileID: 5532110041508366129}
+  achievementManager: {fileID: 6352662589584021615}
   popUpLevelCompletionPanelObject: {fileID: 0}
   levelAchievementsPanelObject: {fileID: 0}
   levelStatsPanelObject: {fileID: 0}
@@ -494,7 +499,9 @@ MonoBehaviour:
   buttonsObject: {fileID: 0}
   achievementUIPrefab: {fileID: 7521910993066862668, guid: ddd46bf442a59924288a8a12097b780c, type: 3}
   statUIPrefab: {fileID: 7521910993066862668, guid: 512e04b7fc2d9c94b930687416162405, type: 3}
-  achievedColor: {r: 1, g: 0.84705883, b: 0, a: 1}
+  skipButton: {fileID: 0}
+  achievedColor: {r: 0.6509434, g: 0.56312746, b: 0.076762185, a: 1}
+  newlyAchievedColor: {r: 1, g: 0.84705883, b: 0, a: 1}
   notAchievedColor: {r: 0.30588236, g: 0.42352942, b: 0.3137255, a: 1}
 --- !u!114 &4108649883938382023
 MonoBehaviour:

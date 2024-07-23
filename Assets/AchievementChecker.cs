@@ -24,18 +24,19 @@ public class AchievementChecker : MonoBehaviour
 
         foreach (var achievement in achievementManager.GetLevelAchievements())
         {
-            if (achievement.achievementType == AchievementType.FinishedLevel && !achievement.isAchieved)
+            if (achievement.achievementType == AchievementType.FinishedLevel && (achievement.achievementState == LevelAchievement.AchievementState.NotAchieved))
             {
                 if (GameManager.levelCompletionStatus.TryGetValue(currentLevelKey, out bool isCompleted) && isCompleted)
                 {
-                    achievement.isAchieved = true;
-                    Debug.Log($"Achievement achieved: {achievement.achievementDescription}");
+                    achievement.achievementState = LevelAchievement.AchievementState.NewlyAchieved;
                 }
                 else
                 {
-                    achievement.isAchieved = false;
-                    Debug.Log($"Achievement not achieved: {achievement.achievementDescription}");
+                    achievement.achievementState = LevelAchievement.AchievementState.NotAchieved;
                 }
+            }else if (achievement.achievementType == AchievementType.FinishedLevel && (achievement.achievementState == LevelAchievement.AchievementState.NewlyAchieved))
+            {
+                achievement.achievementState = LevelAchievement.AchievementState.AlreadyAchieved;
             }
         }
     }
@@ -44,21 +45,22 @@ public class AchievementChecker : MonoBehaviour
     {
         foreach (var achievement in achievementManager.GetLevelAchievements())
         {
-            if (achievement.achievementType == AchievementType.TimeBased && !achievement.isAchieved)
+            if (achievement.achievementType == AchievementType.TimeBased && (achievement.achievementState == LevelAchievement.AchievementState.NotAchieved))
             {
                 float completionTime = levelTimer.LoadCompletionTime();
                 if (completionTime > 0 && completionTime <= (achievement.timeLimit * 60))
                 {
                     print(achievement.timeLimit);
                     print(levelTimer.LoadCompletionTime());
-                    achievement.isAchieved = true;
-                    Debug.Log($"Achievement achieved: {achievement.achievementDescription}");
+                    achievement.achievementState = LevelAchievement.AchievementState.NewlyAchieved;
                 }
                 else
                 {
-                    achievement.isAchieved = false;
-                    Debug.Log($"Achievement not achieved: {achievement.achievementDescription}");
+                    achievement.achievementState = LevelAchievement.AchievementState.NotAchieved;
                 }
+            }else if (achievement.achievementType == AchievementType.TimeBased && (achievement.achievementState == LevelAchievement.AchievementState.NewlyAchieved))
+            {
+                achievement.achievementState = LevelAchievement.AchievementState.AlreadyAchieved;
             }
         }
     }
@@ -67,19 +69,20 @@ public class AchievementChecker : MonoBehaviour
     {
         foreach (var achievement in achievementManager.GetLevelAchievements())
         {
-            if (achievement.achievementType == AchievementType.AnimalDeaths && !achievement.isAchieved)
+            if (achievement.achievementType == AchievementType.AnimalDeaths && (achievement.achievementState == LevelAchievement.AchievementState.NotAchieved))
             {
                 //TODO: Change to actual data
                 if (GameManager.animalDeaths <= achievement.maxAnimalDeaths)
                 {
-                    achievement.isAchieved = true;
-                    Debug.Log($"Achievement achieved: {achievement.achievementDescription}");
+                    achievement.achievementState = LevelAchievement.AchievementState.NewlyAchieved;
                 }
                 else
                 {
-                    achievement.isAchieved = false;
-                    Debug.Log($"Achievement not achieved: {achievement.achievementDescription}");
+                    achievement.achievementState = LevelAchievement.AchievementState.NotAchieved;
                 }
+            }else if (achievement.achievementType == AchievementType.AnimalDeaths && (achievement.achievementState == LevelAchievement.AchievementState.NewlyAchieved))
+            {
+                achievement.achievementState = LevelAchievement.AchievementState.AlreadyAchieved;
             }
         }
     }
@@ -88,18 +91,19 @@ public class AchievementChecker : MonoBehaviour
     {
         foreach (var achievement in achievementManager.GetLevelAchievements())
         {
-            if (achievement.achievementType == AchievementType.LeafpointsCollected && !achievement.isAchieved)
+            if (achievement.achievementType == AchievementType.LeafpointsCollected && (achievement.achievementState == LevelAchievement.AchievementState.NotAchieved))
             {
                 if (achievement.leafpointsCollected >= GameManager.totalLeafPointsCollected)
                 {
-                    achievement.isAchieved = true;
-                    Debug.Log($"Achievement achieved: {achievement.achievementDescription}");
+                    achievement.achievementState = LevelAchievement.AchievementState.NewlyAchieved;
                 }
                 else
                 {
-                    achievement.isAchieved = false;
-                    Debug.Log($"Achievement not achieved: {achievement.achievementDescription}");
+                    achievement.achievementState = LevelAchievement.AchievementState.NotAchieved;
                 }
+            }else if (achievement.achievementType == AchievementType.LeafpointsCollected && (achievement.achievementState == LevelAchievement.AchievementState.NewlyAchieved))
+            {
+                achievement.achievementState = LevelAchievement.AchievementState.AlreadyAchieved;
             }
         }
     }
@@ -107,18 +111,19 @@ public class AchievementChecker : MonoBehaviour
     {
         foreach (var achievement in achievementManager.GetLevelAchievements())
         {
-            if (achievement.achievementType == AchievementType.AnimalsSpawned && !achievement.isAchieved)
+            if (achievement.achievementType == AchievementType.AnimalsSpawned && (achievement.achievementState == LevelAchievement.AchievementState.NotAchieved))
             {
                 if (GameManager.animalsSpawned >= achievement.animalsSpawned)
                 {
-                    achievement.isAchieved = true;
-                    Debug.Log($"Achievement achieved: {achievement.achievementDescription}");
+                    achievement.achievementState = LevelAchievement.AchievementState.NewlyAchieved;
                 }
                 else
                 {
-                    achievement.isAchieved = false;
-                    Debug.Log($"Achievement not achieved: {achievement.achievementDescription}");
+                    achievement.achievementState = LevelAchievement.AchievementState.NotAchieved;
                 }
+            }else if (achievement.achievementType == AchievementType.AnimalsSpawned && (achievement.achievementState == LevelAchievement.AchievementState.NewlyAchieved))
+            {
+                achievement.achievementState = LevelAchievement.AchievementState.AlreadyAchieved;
             }
         }
     }

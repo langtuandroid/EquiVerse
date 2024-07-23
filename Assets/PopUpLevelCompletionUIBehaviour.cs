@@ -8,7 +8,8 @@ using UnityEngine.UI;
 public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
 {
     public LevelStatManager levelStatManager;
-    
+    public AchievementManager achievementManager;
+
     [Header("GameObjects")]
     public GameObject popUpLevelCompletionPanelObject;
     public GameObject levelAchievementsPanelObject;
@@ -20,16 +21,29 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
     public GameObject achievementUIPrefab;
     public GameObject statUIPrefab;
 
+    public Button skipButton; // Reference to the Skip button
+
     public Color achievedColor;
+    public Color newlyAchievedColor;
     public Color notAchievedColor;
 
     private Dictionary<GameObject, Vector2> originalPositions;
+    private bool skipRequested = false; // Flag to check if skip is requested
 
     private void Start()
     {
         totalEcoEssencePanelObject.SetActive(false);
         buttonsObject.SetActive(false);
         originalPositions = new Dictionary<GameObject, Vector2>();
+
+        skipButton.onClick.AddListener(OnSkipButtonClicked); // Add listener to the skip button
+    }
+
+    private void OnSkipButtonClicked()
+    {
+        skipRequested = true;
+        StopAllCoroutines(); // Stop all ongoing coroutines
+        DisplayAllImmediately(); // Display everything immediately
     }
 
     public void DisplayAchievements(List<LevelAchievement> achievements)
@@ -63,16 +77,24 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
             achievementImage.sprite = achievement.achievementImage;
             descriptionText.text = achievement.achievementDescription;
             rewardText.text = achievement.achievementReward.ToString();
-            
-            backGroundImage.color = achievement.isAchieved ? achievedColor : notAchievedColor;
 
-            if (achievement.isAchieved)
+            switch (achievement.achievementState)
             {
-                backGroundImage.DOColor(achievedColor, 0.1f).SetDelay(1f + achievementDelay);
-                achievementUI.transform.DOPunchScale(new Vector2(0.1f, 0.1f), 0.7f, 8, 0.8f).SetDelay(1f + achievementDelay);
-                achievementDelay += 0.5f;
+                case LevelAchievement.AchievementState.AlreadyAchieved:
+                    backGroundImage.color = achievedColor;
+                    break;
+                case LevelAchievement.AchievementState.NewlyAchieved:
+                    backGroundImage.color = notAchievedColor;
+                    backGroundImage.DOColor(newlyAchievedColor, 0.1f).SetDelay(1f + achievementDelay);
+                    achievementUI.transform.DOPunchScale(new Vector2(0.1f, 0.1f), 0.7f, 8, 0.8f).SetDelay(1f + achievementDelay);
+                    achievementDelay += 0.5f;
+                    break;
+                case LevelAchievement.AchievementState.NotAchieved:
+                    backGroundImage.color = notAchievedColor;
+                    break;
             }
 
+            achievement.backGroundImage = backGroundImage;
 
             CanvasGroup canvasGroup = achievementUI.GetComponent<CanvasGroup>();
             if (canvasGroup == null)
@@ -86,10 +108,12 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
             rectTransform.SetAsLastSibling();
         }
 
-        yield return new WaitForEndOfFrame(); 
+        yield return new WaitForEndOfFrame();
 
         foreach (var achievementUI in achievementUIs)
         {
+            if (skipRequested) yield break; // Skip animations if skip is requested
+
             RectTransform rectTransform = achievementUI.GetComponent<RectTransform>();
             CanvasGroup canvasGroup = achievementUI.GetComponent<CanvasGroup>();
 
@@ -139,15 +163,15 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
             RectTransform rectTransform = statUI.GetComponent<RectTransform>();
             rectTransform.localScale = Vector3.zero;
 
-            // Ensure new elements appear on top
             rectTransform.SetAsLastSibling();
         }
 
-        // Force layout rebuild if necessary
-        yield return new WaitForEndOfFrame(); 
+        yield return new WaitForEndOfFrame();
 
         foreach (var statUI in statUIs)
         {
+            if (skipRequested) yield break; // Skip animations if skip is requested
+
             RectTransform rectTransform = statUI.GetComponent<RectTransform>();
             CanvasGroup canvasGroup = statUI.GetComponent<CanvasGroup>();
 
@@ -165,6 +189,68 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
                 yield return sequence.WaitForCompletion();
             }
         }
+    }
+
+    private void DisplayAllImmediately()
+    {
+        popUpLevelCompletionPanelObject.transform.localScale = Vector3.one;
+        popUpLevelCompletionPanelObject.SetActive(true);
+
+        for (int i = 1; i < levelStatsPanelObject.transform.childCount; i++)
+        {
+            GameObject.Destroy(levelStatsPanelObject.transform.GetChild(i).gameObject);
+        }
+
+        foreach (var stat in levelStatManager.GetLevelStats())
+        {
+            GameObject statUI = Instantiate(statUIPrefab, levelStatsPanelObject.transform);
+            TextMeshProUGUI statNameText = statUI.transform.Find("StatName").GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI statValueText = statUI.transform.Find("StatValue").GetComponent<TextMeshProUGUI>();
+            statNameText.text = stat.statName;
+            statValueText.text = stat.statValue;
+            statUI.GetComponent<CanvasGroup>().alpha = 1f;
+            statUI.GetComponent<RectTransform>().localScale = Vector3.one;
+        }
+
+        for (int i = 1; i < levelAchievementsPanelObject.transform.childCount; i++)
+        {
+            GameObject.Destroy(levelAchievementsPanelObject.transform.GetChild(i).gameObject);
+        }
+
+        foreach (var achievement in achievementManager.GetLevelAchievements())
+        {
+            GameObject achievementUI = Instantiate(achievementUIPrefab, levelAchievementsPanelObject.transform);
+            Image achievementImage = achievementUI.transform.Find("AchievementImage").GetComponent<Image>();
+            Image backGroundImage = achievementUI.GetComponent<Image>();
+            TextMeshProUGUI descriptionText = achievementUI.transform.Find("DescriptionText").GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI rewardText = achievementUI.transform.Find("Reward").GetComponentInChildren<TextMeshProUGUI>();
+
+            achievementImage.sprite = achievement.achievementImage;
+            descriptionText.text = achievement.achievementDescription;
+            rewardText.text = achievement.achievementReward.ToString();
+
+            switch (achievement.achievementState)
+            {
+                case LevelAchievement.AchievementState.AlreadyAchieved:
+                    backGroundImage.color = achievedColor;
+                    break;
+                case LevelAchievement.AchievementState.NewlyAchieved:
+                    backGroundImage.color = newlyAchievedColor;
+                    break;
+                case LevelAchievement.AchievementState.NotAchieved:
+                    backGroundImage.color = notAchievedColor;
+                    break;
+            }
+
+            achievementUI.GetComponent<CanvasGroup>().alpha = 1f;
+            achievementUI.GetComponent<RectTransform>().localScale = Vector3.one;
+        }
+
+        totalEcoEssencePanelObject.SetActive(true);
+        totalEcoEssencePanelObject.GetComponent<RectTransform>().localScale = Vector3.one;
+
+        buttonsObject.SetActive(true);
+        buttonsObject.GetComponent<RectTransform>().localScale = Vector3.one;
     }
 
     public void PopInAnimation(GameObject gameObject)
