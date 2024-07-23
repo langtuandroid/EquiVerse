@@ -32,8 +32,6 @@ namespace Managers {
 
         private void Start()
         {
-            GameManager.totalLeafPointsCollected = 0;
-            
             originalColor = totalPointsBackground.color;
             
             totalPoints = startingPoints;

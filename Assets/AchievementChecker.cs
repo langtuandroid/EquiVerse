@@ -11,20 +11,47 @@ public class AchievementChecker : MonoBehaviour
 
     public void CheckAchievements()
     {
+        CheckFinishedLevelAchievement();
         CheckTimeBasedAchievement();
         CheckAnimalDeathsAchievement();
         CheckLeafPointsAchievement();
+        CheckAnimalsSpawnedAchievement();
     }
-    
-    
+
+    private void CheckFinishedLevelAchievement()
+    {
+        string currentLevelKey = $"WORLD_{GameManager.WORLD_INDEX}_LEVEL_{GameManager.LEVEL_INDEX}";
+
+        foreach (var achievement in achievementManager.GetLevelAchievements())
+        {
+            if (achievement.achievementType == AchievementType.FinishedLevel && !achievement.isAchieved)
+            {
+                if (GameManager.levelCompletionStatus.TryGetValue(currentLevelKey, out bool isCompleted) && isCompleted)
+                {
+                    achievement.isAchieved = true;
+                    Debug.Log($"Achievement achieved: {achievement.achievementDescription}");
+                }
+                else
+                {
+                    achievement.isAchieved = false;
+                    Debug.Log($"Achievement not achieved: {achievement.achievementDescription}");
+                }
+            }
+        }
+    }
+
     private void CheckTimeBasedAchievement()
     {
         foreach (var achievement in achievementManager.GetLevelAchievements())
         {
             if (achievement.achievementType == AchievementType.TimeBased && !achievement.isAchieved)
             {
-                if (achievement.timeLimit <= levelTimer.LoadCompletionTime())
+                float completionTime = levelTimer.LoadCompletionTime();
+                print(completionTime);
+                if (completionTime > 0 && completionTime <= (achievement.timeLimit * 60))
                 {
+                    print(achievement.timeLimit);
+                    print(levelTimer.LoadCompletionTime());
                     achievement.isAchieved = true;
                     Debug.Log($"Achievement achieved: {achievement.achievementDescription}");
                 }
@@ -62,10 +89,28 @@ public class AchievementChecker : MonoBehaviour
     {
         foreach (var achievement in achievementManager.GetLevelAchievements())
         {
-            if (achievement.achievementType == AchievementType.LeafPoints && !achievement.isAchieved)
+            if (achievement.achievementType == AchievementType.LeafpointsCollected && !achievement.isAchieved)
             {
-                //TODO: Change to actual data
-                if (achievement.leafPointsCollected > GameManager.totalLeafPointsCollected)
+                if (achievement.leafpointsCollected >= GameManager.totalLeafPointsCollected)
+                {
+                    achievement.isAchieved = true;
+                    Debug.Log($"Achievement achieved: {achievement.achievementDescription}");
+                }
+                else
+                {
+                    achievement.isAchieved = false;
+                    Debug.Log($"Achievement not achieved: {achievement.achievementDescription}");
+                }
+            }
+        }
+    }
+    private void CheckAnimalsSpawnedAchievement()
+    {
+        foreach (var achievement in achievementManager.GetLevelAchievements())
+        {
+            if (achievement.achievementType == AchievementType.AnimalsSpawned && !achievement.isAchieved)
+            {
+                if (GameManager.animalsSpawned >= achievement.animalsSpawned)
                 {
                     achievement.isAchieved = true;
                     Debug.Log($"Achievement achieved: {achievement.achievementDescription}");

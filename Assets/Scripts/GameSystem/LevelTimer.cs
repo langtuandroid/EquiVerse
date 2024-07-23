@@ -13,7 +13,7 @@ namespace Managers
         public void StartLevelTimer()
         {
             startTime = Time.time;
-            levelKey = $"Level_{GameManager.WORLD_INDEX}_{GameManager.LEVEL_INDEX}_CompletionTime";
+            levelKey = GetLevelKey();
         }
 
         public void EndLevelTimer()
@@ -34,12 +34,11 @@ namespace Managers
             return PlayerPrefs.GetFloat(levelKey, 0f); // Default to 0 if no time is saved
         }
 
-        public void DisplayCompletionTime(TextMeshProUGUI textComponent)
+        private string GetLevelKey()
         {
-            float completionTime = LoadCompletionTime();
-            TimeSpan timeSpan = TimeSpan.FromSeconds(completionTime);
-            textComponent.text = $"Level {GameManager.WORLD_INDEX} - {GameManager.LEVEL_INDEX} Completion Time: {timeSpan:mm\\:ss}";
+            return $"Level_{GameManager.WORLD_INDEX}_{GameManager.LEVEL_INDEX}_CompletionTime";
         }
     }
 }
+
 

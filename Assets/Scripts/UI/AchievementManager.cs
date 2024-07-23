@@ -1,21 +1,15 @@
 using System;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class LevelStat
-{
-    public string statName;
-    public string statValue;
-}
 
 public enum AchievementType
 {
     FinishedLevel,
     TimeBased,
     AnimalDeaths,
-    LeafPoints
+    AnimalsSpawned,
+    LeafpointsCollected
 }
 
 [System.Serializable]
@@ -23,10 +17,11 @@ public class LevelAchievement
 {
     public int achievementReward;
     public AchievementType achievementType;
-    
+
     public float timeLimit;
     public int maxAnimalDeaths;
-    public int leafPointsCollected;
+    public int animalsSpawned;
+    public int leafpointsCollected;
 
     [HideInInspector]
     public Sprite achievementImage;
@@ -40,7 +35,6 @@ public class LevelAchievement
 public class AchievementManager : MonoBehaviour
 {
     public AchievementChecker achievementChecker;
-    public List<LevelStat> levelStats; 
     public List<LevelAchievement> levelAchievements;
     public PopUpLevelCompletionUIBehaviour popUpUIBehaviour;
 
@@ -50,6 +44,7 @@ public class AchievementManager : MonoBehaviour
     public Sprite timeBasedImage;
     public Sprite animalDeathsImage;
     public Sprite leafPointsImage;
+    public Sprite AnimalsSpawnedImage;
 
     private void Start()
     {
@@ -63,14 +58,12 @@ public class AchievementManager : MonoBehaviour
                 achievement.achievementDescription = GenerateDescription(data.Item2, achievement);
             }
         }
-        
-        InitializeLevelStats();
     }
 
     public void ActivateAchievements()
     {
         achievementChecker.CheckAchievements();
-        popUpUIBehaviour.DisplayAchievements(levelAchievements, levelStats);
+        popUpUIBehaviour.DisplayAchievements(levelAchievements);
     }
 
     private void InitializeAchievementTypeData()
@@ -80,17 +73,8 @@ public class AchievementManager : MonoBehaviour
             { AchievementType.FinishedLevel, (finishedLevelImage, "Completed the level") },
             { AchievementType.TimeBased, (timeBasedImage, "Complete the level within {value} minutes") },
             { AchievementType.AnimalDeaths, (animalDeathsImage, "Keep the animal deaths below {value}") },
-            { AchievementType.LeafPoints, (leafPointsImage, "Collect {value} leaf points") }
-        };
-    }
-    
-    private void InitializeLevelStats()
-    {
-        levelStats = new List<LevelStat>
-        {
-            new LevelStat { statName = "Completion Time", statValue = "00:00" },
-            new LevelStat { statName = "Enemies Defeated", statValue = "0" },
-            new LevelStat { statName = "Points Collected", statValue = "0" }
+            { AchievementType.AnimalsSpawned, (AnimalsSpawnedImage, "Spawn at least {value} animals") },
+            { AchievementType.LeafpointsCollected, (leafPointsImage, "Collect at least {value} Leaf points") }
         };
     }
 
@@ -104,8 +88,10 @@ public class AchievementManager : MonoBehaviour
                 return template.Replace("{value}", achievement.timeLimit.ToString());
             case AchievementType.AnimalDeaths:
                 return template.Replace("{value}", achievement.maxAnimalDeaths.ToString());
-            case AchievementType.LeafPoints:
-                return template.Replace("{value}", achievement.leafPointsCollected.ToString());
+            case AchievementType.AnimalsSpawned:
+                return template.Replace("{value}", achievement.animalsSpawned.ToString());
+            case AchievementType.LeafpointsCollected:
+                return template.Replace("{value}", achievement.leafpointsCollected.ToString());
             default:
                 return template;
         }

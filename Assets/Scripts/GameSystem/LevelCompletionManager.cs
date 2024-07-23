@@ -16,6 +16,7 @@ public class LevelCompletionManager : MonoBehaviour
     
     public Button endOfLevelButton;
     public LeafPointManager leafPointManager;
+    public LevelStatManager levelStatManager;
     
     [Header("SceneTransition")]
     public Image transitionOverlay;
@@ -25,9 +26,8 @@ public class LevelCompletionManager : MonoBehaviour
     private int lockIndex = 0;
     public GameObject[] locks;
     
-    public TextMeshProUGUI completionTimeText;
     public AchievementManager achievementManager;
-    private LevelTimer levelTimer;
+    public LevelTimer levelTimer;
     
     public Raycaster raycaster;
     public CameraMovement cameraMovement;
@@ -35,7 +35,6 @@ public class LevelCompletionManager : MonoBehaviour
     
     private void Start()
     {
-        levelTimer = gameObject.AddComponent<LevelTimer>();
         levelTimer.StartLevelTimer(); 
     }
 
@@ -54,12 +53,13 @@ public class LevelCompletionManager : MonoBehaviour
         endOfLevelButton.interactable = false;
         gameUI.SetActive(false);
         levelTimer.EndLevelTimer();
-        levelTimer.DisplayCompletionTime(completionTimeText);
         soundController.FadeAudioParameter("Music", "World1LevelMainMusicVolume", 0f, 1.2f);
         soundController.FadeAudioParameter("Ambience", "World1LevelAmbienceVolume", 0f, 1.2f);
         soundController.FadeAudioParameter("BattleMusic", "EnemyMusicVolume", 0f, 1.2f);
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/CompleteLevel");
-        
+        UpdateLevelStats();
+        string currentLevelKey = $"WORLD_{GameManager.WORLD_INDEX}_LEVEL_{GameManager.LEVEL_INDEX}";
+        GameManager.levelCompletionStatus[currentLevelKey] = true; 
         achievementManager.ActivateAchievements();
         StartCoroutine(DisplayPopupAfterDelay());
     }
@@ -68,6 +68,16 @@ public class LevelCompletionManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(5f);
         Time.timeScale = 0;
+    }
+
+    private void UpdateLevelStats()
+    {
+        float completionTime = levelTimer.LoadCompletionTime();
+        TimeSpan timeSpan = TimeSpan.FromSeconds(completionTime);
+        levelStatManager.UpdateStat("Completion Time", $"{timeSpan:mm\\:ss}");
+        levelStatManager.UpdateStat("Leaf Points Collected", GameManager.totalLeafPointsCollected.ToString());
+        levelStatManager.UpdateStat("Animals Spawned", GameManager.animalsSpawned.ToString());
+        levelStatManager.UpdateStat("Animals Deaths", GameManager.animalDeaths.ToString());
     }
 
     public void TransitionToNextScene()

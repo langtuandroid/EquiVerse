@@ -43,6 +43,7 @@ namespace Spawners
                 foxInstance.transform.localScale = Vector3.zero;
                 foxInstance.transform.DOScale(Vector3.one, 0.25f).SetEase(Ease.OutBack);
                 FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/SpawnAnimal");
+                GameManager.animalsSpawned++;
                 
                 if (!foxStepCompleted && gameManager.level3)
                 {

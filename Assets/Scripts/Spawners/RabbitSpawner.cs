@@ -53,6 +53,7 @@ namespace Spawners
                 rabbitInstance.transform.localScale = Vector3.zero;
                 rabbitInstance.transform.DOScale(Vector3.one * 0.5f, 0.25f).SetEase(Ease.OutBack);
                 PlaySound("event:/PlayerActions/SpawnAnimal");
+                GameManager.animalsSpawned++;
                 
                 FindAliveRabbits();
                 

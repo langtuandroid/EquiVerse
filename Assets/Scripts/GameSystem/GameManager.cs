@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -19,11 +20,22 @@ namespace Managers
         public static string discordUrl = "https://discord.gg/hay2fMBggT";
         public static int animalDeaths;
         public static int totalLeafPointsCollected;
-
+        public static int animalsSpawned;
+        public static Dictionary<string, bool> levelCompletionStatus = new Dictionary<string, bool>();
         public TextMeshProUGUI currentLevelText;
 
         private void Start()
         {
+            animalDeaths = 0;
+            totalLeafPointsCollected = 0;
+            animalsSpawned = 0;
+            
+            string currentLevelKey = GetCurrentLevelKey();
+            if (!levelCompletionStatus.ContainsKey(currentLevelKey))
+            {
+                levelCompletionStatus[currentLevelKey] = false;
+            }
+            
             currentLevelText.text = "Level " + WORLD_INDEX + " - " + LEVEL_INDEX;
             SaveGameData();
         }
@@ -36,6 +48,11 @@ namespace Managers
             PlayerPrefs.SetInt("CurrentCompanionIndex", currentCompanionIndex);
             PlayerPrefs.SetInt("firstTimePlaying", firstTimePlaying ? 1 : 0);
             PlayerPrefs.Save();
+            
+            foreach (var kvp in levelCompletionStatus)
+            {
+                PlayerPrefs.SetInt(kvp.Key, kvp.Value ? 1 : 0);
+            }
         }
 
         public static void LoadGameData()
@@ -45,6 +62,21 @@ namespace Managers
             companionsUnlockedIndex = PlayerPrefs.GetInt("companionsUnlockedIndex", 0);
             currentCompanionIndex = PlayerPrefs.GetInt("CurrentCompanionIndex", 0);
             firstTimePlaying = PlayerPrefs.GetInt("firstTimePlaying", 1) == 1;
+            
+            levelCompletionStatus.Clear();
+            for (int world = 0; world <= WORLD_INDEX; world++)
+            {
+                for (int level = 0; level <= LEVEL_INDEX; level++)
+                {
+                    string key = $"WORLD_{world}_LEVEL_{level}";
+                    levelCompletionStatus[key] = PlayerPrefs.GetInt(key, 0) == 1;
+                }
+            }
+        }
+        
+        private string GetCurrentLevelKey()
+        {
+            return $"WORLD_{WORLD_INDEX}_LEVEL_{LEVEL_INDEX}";
         }
     }
 }

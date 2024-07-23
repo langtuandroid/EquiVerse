@@ -42,10 +42,16 @@ public class LevelAchievementEditor : PropertyDrawer
                 EditorGUI.PropertyField(maxAnimalDeathsRect, maxAnimalDeaths);
                 currentY += lineHeight + padding;
                 break;
-            case AchievementType.LeafPoints:
-                SerializedProperty leafPointsCollected = property.FindPropertyRelative("leafPointsCollected");
-                Rect leafPointsCollectedRect = new Rect(position.x, currentY, position.width, lineHeight);
-                EditorGUI.PropertyField(leafPointsCollectedRect, leafPointsCollected);
+            case AchievementType.AnimalsSpawned:
+                SerializedProperty animalsSpawned = property.FindPropertyRelative("animalsSpawned");
+                Rect animalsSpawnedRect = new Rect(position.x, currentY, position.width, lineHeight);
+                EditorGUI.PropertyField(animalsSpawnedRect, animalsSpawned);
+                currentY += lineHeight + padding;
+                break;
+            case AchievementType.LeafpointsCollected:
+                SerializedProperty leafpointsCollected = property.FindPropertyRelative("leafpointsCollected");
+                Rect leafpointsCollectedRect = new Rect(position.x, currentY, position.width, lineHeight);
+                EditorGUI.PropertyField(leafpointsCollectedRect, leafpointsCollected);
                 currentY += lineHeight + padding;
                 break;
         }
@@ -64,7 +70,9 @@ public class LevelAchievementEditor : PropertyDrawer
         {
             case AchievementType.TimeBased:
             case AchievementType.AnimalDeaths:
-            case AchievementType.LeafPoints:
+            case AchievementType.AnimalsSpawned:
+            case AchievementType.LeafpointsCollected:
+                
                 lines += 1;
                 break;
         }
