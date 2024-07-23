@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using Managers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +19,6 @@ public class LevelAchievement
 {
     public int achievementReward;
     public AchievementType achievementType;
-
     public float timeLimit;
     public int maxAnimalDeaths;
     public int animalsSpawned;
@@ -28,8 +29,32 @@ public class LevelAchievement
     [HideInInspector]
     public string achievementDescription;
 
-    public Image backGroundImage;
     public bool isAchieved;
+    public Image backGroundImage;
+    public AchievementState achievementState;
+
+    public enum AchievementState
+    {
+        NotAchieved,
+        NewlyAchieved,
+        AlreadyAchieved
+    }
+
+    public void SaveAchievement(string levelKey)
+    {
+        string achievementKey = $"{levelKey}_{achievementType}";
+        int stateValue = (int)achievementState;
+        PlayerPrefs.SetInt(achievementKey, stateValue);
+        Debug.Log($"Saved achievement: {achievementKey} with state {achievementState}");
+    }
+
+    public void LoadAchievement(string levelKey)
+    {
+        string achievementKey = $"{levelKey}_{achievementType}";
+        int stateValue = PlayerPrefs.GetInt(achievementKey, (int)AchievementState.NotAchieved);
+        achievementState = (AchievementState)stateValue;
+        Debug.Log($"Loaded achievement: {achievementKey} with state {achievementState}");
+    }
 }
 
 public class AchievementManager : MonoBehaviour
@@ -45,6 +70,8 @@ public class AchievementManager : MonoBehaviour
     public Sprite animalDeathsImage;
     public Sprite leafPointsImage;
     public Sprite AnimalsSpawnedImage;
+    
+    
 
     private void Start()
     {
@@ -58,12 +85,44 @@ public class AchievementManager : MonoBehaviour
                 achievement.achievementDescription = GenerateDescription(data.Item2, achievement);
             }
         }
+
+        LoadAchievements();
     }
 
     public void ActivateAchievements()
     {
         achievementChecker.CheckAchievements();
+        foreach (var achievement in levelAchievements)
+        {
+            if (achievement.isAchieved && achievement.achievementState == LevelAchievement.AchievementState.NotAchieved)
+            {
+                achievement.achievementState = LevelAchievement.AchievementState.NewlyAchieved;
+            }
+            else if (achievement.isAchieved && achievement.achievementState == LevelAchievement.AchievementState.NewlyAchieved)
+            {
+                achievement.achievementState = LevelAchievement.AchievementState.AlreadyAchieved;
+            }
+        }
         popUpUIBehaviour.DisplayAchievements(levelAchievements);
+        SaveAchievements();
+    }
+    
+    public void SaveAchievements()
+    {
+        string currentLevelKey = GetCurrentLevelKey();
+        foreach (var achievement in levelAchievements)
+        {
+            achievement.SaveAchievement(currentLevelKey);
+        }
+    }
+
+    public void LoadAchievements()
+    {
+        string currentLevelKey = GetCurrentLevelKey();
+        foreach (var achievement in levelAchievements)
+        {
+            achievement.LoadAchievement(currentLevelKey);
+        }
     }
 
     private void InitializeAchievementTypeData()
@@ -76,6 +135,11 @@ public class AchievementManager : MonoBehaviour
             { AchievementType.AnimalsSpawned, (AnimalsSpawnedImage, "Spawn at least {value} animals") },
             { AchievementType.LeafpointsCollected, (leafPointsImage, "Collect at least {value} Leaf points") }
         };
+    }
+    
+    private string GetCurrentLevelKey()
+    {
+        return $"WORLD_{GameManager.WORLD_INDEX}_LEVEL_{GameManager.LEVEL_INDEX}";
     }
 
     private string GenerateDescription(string template, LevelAchievement achievement)

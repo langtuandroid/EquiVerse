@@ -21,6 +21,7 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
     public GameObject statUIPrefab;
 
     public Color achievedColor;
+    public Color newlyAchievedColor;
     public Color notAchievedColor;
 
     private Dictionary<GameObject, Vector2> originalPositions;
@@ -63,16 +64,25 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
             achievementImage.sprite = achievement.achievementImage;
             descriptionText.text = achievement.achievementDescription;
             rewardText.text = achievement.achievementReward.ToString();
-            
-            backGroundImage.color = achievement.isAchieved ? achievedColor : notAchievedColor;
 
-            if (achievement.isAchieved)
+            switch (achievement.achievementState)
             {
-                backGroundImage.DOColor(achievedColor, 0.1f).SetDelay(1f + achievementDelay);
-                achievementUI.transform.DOPunchScale(new Vector2(0.1f, 0.1f), 0.7f, 8, 0.8f).SetDelay(1f + achievementDelay);
-                achievementDelay += 0.5f;
+                case LevelAchievement.AchievementState.AlreadyAchieved:
+                    backGroundImage.color = achievedColor;
+                    break;
+                case LevelAchievement.AchievementState.NewlyAchieved:
+                    backGroundImage.color = newlyAchievedColor;
+                    backGroundImage.DOColor(newlyAchievedColor, 0.1f).SetDelay(1f + achievementDelay);
+                    achievementUI.transform.DOPunchScale(new Vector2(0.1f, 0.1f), 0.7f, 8, 0.8f).SetDelay(1f + achievementDelay);
+                    achievementDelay += 0.5f;
+                    break;
+                case LevelAchievement.AchievementState.NotAchieved:
+                    backGroundImage.color = notAchievedColor;
+                    break;
             }
+        
 
+            achievement.backGroundImage = backGroundImage;
 
             CanvasGroup canvasGroup = achievementUI.GetComponent<CanvasGroup>();
             if (canvasGroup == null)
@@ -83,9 +93,11 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
             RectTransform rectTransform = achievementUI.GetComponent<RectTransform>();
             rectTransform.localScale = Vector3.zero;
 
+            // Ensure new elements appear on top
             rectTransform.SetAsLastSibling();
         }
 
+        // Force layout rebuild if necessary
         yield return new WaitForEndOfFrame(); 
 
         foreach (var achievementUI in achievementUIs)
@@ -143,7 +155,6 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
             rectTransform.SetAsLastSibling();
         }
 
-        // Force layout rebuild if necessary
         yield return new WaitForEndOfFrame(); 
 
         foreach (var statUI in statUIs)
