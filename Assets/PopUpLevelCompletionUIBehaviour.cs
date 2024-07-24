@@ -15,7 +15,8 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
     public GameObject levelAchievementsPanelObject;
     public GameObject levelStatsPanelObject;
     public GameObject totalEcoEssencePanelObject;
-    public GameObject buttonsObject;
+    public GameObject nextSceneButtonObject;
+    public GameObject retryLevelButtonObject;
 
     [Header("Prefabs")]
     public GameObject achievementUIPrefab;
@@ -33,7 +34,8 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
     private void Start()
     {
         totalEcoEssencePanelObject.SetActive(false);
-        buttonsObject.SetActive(false);
+        nextSceneButtonObject.SetActive(false);
+        retryLevelButtonObject.SetActive(false);
         originalPositions = new Dictionary<GameObject, Vector2>();
 
         skipButton.onClick.AddListener(OnSkipButtonClicked); // Add listener to the skip button
@@ -56,11 +58,10 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
         float achievementDelay = 0;
         popUpLevelCompletionPanelObject.transform.localScale = Vector3.zero;
         PopInAnimation(popUpLevelCompletionPanelObject);
-        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.25f);
 
         yield return StartCoroutine(DisplayLevelStats(stats));
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.25f);
 
         List<GameObject> achievementUIs = new List<GameObject>();
 
@@ -131,12 +132,12 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
             }
         }
 
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(0.5f);
         PopInAnimation(totalEcoEssencePanelObject);
-        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
-        yield return new WaitForSecondsRealtime(1f);
-        PopInAnimation(buttonsObject);
-        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
+        yield return new WaitForSecondsRealtime(0.25f);
+        PopInAnimation(nextSceneButtonObject);
+        yield return new WaitForSecondsRealtime(0.5f);
+        PopInAnimation(retryLevelButtonObject);
     }
 
     private IEnumerator DisplayLevelStats(List<LevelStat> stats)
@@ -249,8 +250,10 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
         totalEcoEssencePanelObject.SetActive(true);
         totalEcoEssencePanelObject.GetComponent<RectTransform>().localScale = Vector3.one;
 
-        buttonsObject.SetActive(true);
-        buttonsObject.GetComponent<RectTransform>().localScale = Vector3.one;
+        nextSceneButtonObject.SetActive(true);
+        retryLevelButtonObject.SetActive(true);
+        nextSceneButtonObject.GetComponent<RectTransform>().localScale = Vector3.one;
+        retryLevelButtonObject.GetComponent<RectTransform>().localScale = Vector3.one;
     }
 
     public void PopInAnimation(GameObject gameObject)
