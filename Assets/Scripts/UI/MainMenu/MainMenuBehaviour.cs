@@ -11,6 +11,8 @@ namespace MainMenu
 {
     public class MainMenuBehaviour : MonoBehaviour
     {
+        public LevelSelectionManager levelSelectionManager;
+        
         [Header("SceneTransition")]
         public Image transitionOverlay;
         public GameObject loadingScreen;
@@ -20,6 +22,7 @@ namespace MainMenu
         public GameObject optionsMenu;
         public GameObject creditsMenu;
         public GameObject howToPlayMenu;
+        public GameObject levelSelectionMenu;
 
         public GameObject continueAdventureObject;
         public TextMeshProUGUI continueAdventureButtonText;
@@ -193,6 +196,31 @@ namespace MainMenu
                 newAdventureButton.enabled = true;
                 optionsButton.enabled = true;
                 quitButton.enabled = true;
+            }
+        }
+        
+        public void ToggleLevelSelectionMenu()
+        {
+            if (!levelSelectionMenu.activeInHierarchy)
+            {
+                levelSelectionMenu.SetActive(true);
+                mainMenu.SetActive(false);
+                continueAdventureButton.enabled = false;
+                newAdventureButton.enabled = false;
+                optionsButton.enabled = false;
+                quitButton.enabled = false;
+                levelSelectionManager.RefreshButtons();
+                print("dingen2");
+            }
+            else
+            {
+                levelSelectionMenu.SetActive(false);
+                mainMenu.SetActive(true);
+                continueAdventureButton.enabled = true;
+                newAdventureButton.enabled = true;
+                optionsButton.enabled = true;
+                quitButton.enabled = true;
+                print("dingen1");
             }
         }
         

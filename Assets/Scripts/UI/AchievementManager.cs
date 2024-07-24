@@ -11,7 +11,8 @@ public enum AchievementType
     TimeBased,
     AnimalDeaths,
     AnimalsSpawned,
-    LeafpointsCollected
+    LeafpointsCollected,
+    _Count
 }
 
 [System.Serializable]
@@ -51,6 +52,7 @@ public class LevelAchievement
     public void LoadAchievement(string levelKey)
     {
         string achievementKey = $"{levelKey}_{achievementType}";
+        Debug.Log($"loadachiements: {achievementKey}");
         int stateValue = PlayerPrefs.GetInt(achievementKey, (int)AchievementState.NotAchieved);
         achievementState = (AchievementState)stateValue;
         Debug.Log($"Loaded achievement: {achievementKey} with state {achievementState}");
@@ -85,7 +87,7 @@ public class AchievementManager : MonoBehaviour
                 achievement.achievementDescription = GenerateDescription(data.Item2, achievement);
             }
         }
-
+        
         LoadAchievements();
     }
 

@@ -21,6 +21,9 @@ namespace Managers
         public static int animalDeaths;
         public static int totalLeafPointsCollected;
         public static int animalsSpawned;
+        public static int totalLevels = 5;
+        public static int totalWorlds = 4;
+        
         public static Dictionary<string, bool> levelCompletionStatus = new Dictionary<string, bool>();
         public TextMeshProUGUI currentLevelText;
 
@@ -62,7 +65,7 @@ namespace Managers
             companionsUnlockedIndex = PlayerPrefs.GetInt("companionsUnlockedIndex", 0);
             currentCompanionIndex = PlayerPrefs.GetInt("CurrentCompanionIndex", 0);
             firstTimePlaying = PlayerPrefs.GetInt("firstTimePlaying", 1) == 1;
-
+            
             levelCompletionStatus.Clear();
             for (int world = 0; world <= WORLD_INDEX; world++)
             {
