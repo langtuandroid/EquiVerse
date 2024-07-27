@@ -36,7 +36,8 @@ namespace Managers
 
         private string GetLevelKey()
         {
-            return $"Level_{GameManager.WORLD_INDEX}_{GameManager.LEVEL_INDEX}_CompletionTime";
+            GameManager gm = GetComponent<GameManager>();
+            return $"Level_{gm.currentSceneWorldIndex}_{gm.currentSceneLevelIndex}_CompletionTime";
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Managers;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public enum AchievementType
@@ -30,9 +31,8 @@ public class LevelAchievement
     [HideInInspector]
     public string achievementDescription;
 
-    public bool isAchieved;
     public Image backGroundImage;
-    public AchievementState achievementState;
+    public AchievementState achievementState = AchievementState.NotAchieved;
 
     public enum AchievementState
     {
@@ -46,16 +46,13 @@ public class LevelAchievement
         string achievementKey = $"{levelKey}_{achievementType}";
         int stateValue = (int)achievementState;
         PlayerPrefs.SetInt(achievementKey, stateValue);
-        Debug.Log($"Saved achievement: {achievementKey} with state {achievementState}");
     }
 
     public void LoadAchievement(string levelKey)
     {
         string achievementKey = $"{levelKey}_{achievementType}";
-        Debug.Log($"loadachiements: {achievementKey}");
         int stateValue = PlayerPrefs.GetInt(achievementKey, (int)AchievementState.NotAchieved);
         achievementState = (AchievementState)stateValue;
-        Debug.Log($"Loaded achievement: {achievementKey} with state {achievementState}");
     }
 }
 
@@ -93,38 +90,42 @@ public class AchievementManager : MonoBehaviour
 
     public void ActivateAchievements()
     {
-        achievementChecker.CheckAchievements();
         foreach (var achievement in levelAchievements)
         {
-            if (achievement.isAchieved && achievement.achievementState == LevelAchievement.AchievementState.NotAchieved)
+            if (achievement.achievementState == LevelAchievement.AchievementState.NewlyAchieved)
             {
-                achievement.achievementState = LevelAchievement.AchievementState.NewlyAchieved;
-            }
-            else if (achievement.isAchieved && achievement.achievementState == LevelAchievement.AchievementState.NewlyAchieved)
-            {
+                print("Set to already achieved: " + achievement.achievementType);
                 achievement.achievementState = LevelAchievement.AchievementState.AlreadyAchieved;
             }
         }
-        popUpUIBehaviour.DisplayAchievements(levelAchievements);
+        achievementChecker.CheckAchievements();
         SaveAchievements();
+        popUpUIBehaviour.DisplayAchievements(levelAchievements);
     }
     
     public void SaveAchievements()
     {
-        string currentLevelKey = GetCurrentLevelKey();
+        GameManager gm = GetComponent<GameManager>();
         foreach (var achievement in levelAchievements)
         {
-            achievement.SaveAchievement(currentLevelKey);
+            achievement.SaveAchievement(gm.GetCurrentLevelKey());
         }
     }
 
     public void LoadAchievements()
     {
-        string currentLevelKey = GetCurrentLevelKey();
+        GameManager gm = GetComponent<GameManager>();
         foreach (var achievement in levelAchievements)
         {
-            achievement.LoadAchievement(currentLevelKey);
+            achievement.LoadAchievement(gm.GetCurrentLevelKey());
         }
+    }
+    
+    public static bool IsLevelPreviouslyCompleted(string levelKey)
+    {
+        string achievementKey = $"{levelKey}_{AchievementType.FinishedLevel}";
+        int stateValue = PlayerPrefs.GetInt(achievementKey, (int)LevelAchievement.AchievementState.NotAchieved);
+        return stateValue != (int)LevelAchievement.AchievementState.NotAchieved;
     }
 
     private void InitializeAchievementTypeData()
@@ -137,11 +138,6 @@ public class AchievementManager : MonoBehaviour
             { AchievementType.AnimalsSpawned, (AnimalsSpawnedImage, "Spawn at least {value} animals") },
             { AchievementType.LeafpointsCollected, (leafPointsImage, "Collect at least {value} Leaf points") }
         };
-    }
-    
-    private string GetCurrentLevelKey()
-    {
-        return $"WORLD_{GameManager.WORLD_INDEX}_LEVEL_{GameManager.LEVEL_INDEX}";
     }
 
     private string GenerateDescription(string template, LevelAchievement achievement)

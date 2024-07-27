@@ -72,7 +72,6 @@ public class World1LevelSoundController : MonoBehaviour
             return;
         }
 
-        Debug.Log("Fading parameter: " + parameterName + " in event: " + eventName); // Debug log
         var tweener = DOTween
             .To(() => parameter.value, x => parameter.value = x, targetValue, duration)
             .SetEase(Ease.Linear)

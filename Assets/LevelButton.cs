@@ -29,18 +29,15 @@ public class LevelButton : MonoBehaviour
         this.levelIndex = levelIndex;
         levelText.text = $"{worldIndex} - {levelIndex}";
         
-        //Check level completion
         string levelKey = $"WORLD_{worldIndex}_LEVEL_{levelIndex}";
-        bool isCompleted = PlayerPrefs.GetInt(levelKey, 0) == 1;
+        bool isCompleted = AchievementManager.IsLevelPreviouslyCompleted(levelKey);
         levelButton.interactable = isCompleted;
         
-        //Update achievements
         int achievementIndex = 0;
         for (int i = 0; i < (int)AchievementType._Count; i++)
         {
             string achievementKey = $"{levelKey}_{(AchievementType)i}";
             int stateValue = PlayerPrefs.GetInt(achievementKey, -999);
-            print($"{achievementKey}: {stateValue}");
             if (stateValue != -999)
             {
                 LevelAchievement.AchievementState state = (LevelAchievement.AchievementState)stateValue;

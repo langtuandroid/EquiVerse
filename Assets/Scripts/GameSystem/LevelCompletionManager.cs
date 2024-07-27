@@ -49,16 +49,19 @@ public class LevelCompletionManager : MonoBehaviour
 
     private void LevelCompleted()
     {
+        
         DisableGameplay();
         levelTimer.EndLevelTimer();
         PlayCompletionSounds();
         UpdateLevelStats();
 
-        string currentLevelKey = $"WORLD_{GameManager.WORLD_INDEX}_LEVEL_{GameManager.LEVEL_INDEX}";
-        GameManager.levelCompletionStatus[currentLevelKey] = true;
-        
+        //bool increment = !AchievementManager.IsLevelPreviouslyCompleted(achievementManager.GetCurrentLevelKey());
         achievementManager.ActivateAchievements();
-        achievementManager.SaveAchievements();
+        //if (increment)
+        //{
+        //    print("increment dus");
+        //}
+        GameManager.SaveGameData();
         StartCoroutine(DisplayPopupAfterDelay());
     }
 
@@ -107,8 +110,10 @@ public class LevelCompletionManager : MonoBehaviour
 
     private void LoadNextScene()
     {
-        string nextScene = (GameManager.WORLD_INDEX == 1 && GameManager.LEVEL_INDEX == 5) ? "DemoFinishedScene" : "NewCompanionScene";
-        GameManager.LEVEL_INDEX++;
+        GameManager gm = GetComponent<GameManager>();
+        
+        PlayerPrefs.SetInt("CompanionIndex", gm.GetCurrentLevelCompanionIndex() + 1);
+        string nextScene = (gm.currentSceneWorldIndex == 1 && gm.currentSceneLevelIndex == 5) ? "DemoFinishedScene" : "NewCompanionScene";
         StartCoroutine(LoadAsynchronously(nextScene));
     }
 

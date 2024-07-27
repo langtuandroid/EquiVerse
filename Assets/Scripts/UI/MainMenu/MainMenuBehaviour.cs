@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using Managers;
 using TMPro;
@@ -46,21 +47,20 @@ namespace MainMenu
             optionsButton.enabled = true;
             quitButton.enabled = true;
             mainMenuSoundController.FadeMainMenuVolume(mainMenuSoundController.GetMainMenuVolume(), 3f);
-
+            
             if (GameManager.firstTimePlaying)
             {
-                GameManager.WORLD_INDEX = 1;
-                GameManager.LEVEL_INDEX = 1;
                 GameManager.firstTimePlaying = false;
                 continueAdventureObject.SetActive(false);
             }
             else
             {
                 continueAdventureObject.SetActive(true);
-                continueAdventureButtonText.text = "Continue adventure (" + GameManager.WORLD_INDEX.ToString() + "-" + GameManager.LEVEL_INDEX.ToString() + ")";
+                (int levelIndex, int world, int level) = GameManager.FindFirstUncompletedLevel();
+                continueAdventureButtonText.text = "Continue adventure (" + world + "-" + level + ")";
             }
         }
-
+        
         private void Update()
         {
             if (logoCanvas.activeInHierarchy)
@@ -70,6 +70,12 @@ namespace MainMenu
                     logoCanvas.SetActive(false);
                     mainMenuCanvas.SetActive(true); 
                 }
+            }
+
+            if (UnityEngine.Input.GetKeyDown(KeyCode.U))
+            {
+                PlayerPrefs.DeleteAll();
+                Debug.Log("Delete all playerprefs");
             }
         }
 
@@ -81,14 +87,18 @@ namespace MainMenu
             quitButton.enabled = false;
             DiscordPanel.SetActive(false);
             mainMenuSoundController.FadeMainMenuVolume(1.0f, 1.1f);
-            GameManager.WORLD_INDEX = 1;
-            GameManager.LEVEL_INDEX = 1;
-            GameManager.companionsUnlockedIndex = 0;
-            GameManager.currentCompanionIndex = 0;
+            //GameManager.companionsUnlockedIndex = 0;
+            //GameManager.currentCompanionIndex = 0;
             transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
             {
-                StartCoroutine(LoadAsynchronously("Level " + GameManager.WORLD_INDEX.ToString() + "-" + GameManager.LEVEL_INDEX.ToString()));
+                StartCoroutine(LoadAsynchronously("Level 1-1"));
             }));
+        }
+        
+        private void StoreNextLevelInPlayerPrefs(int world, int level)
+        {
+            PlayerPrefs.SetInt("nextSceneLevelIndex", level);
+            PlayerPrefs.SetInt("nextSceneWorldIndex", world);
         }
         
         public void ClickContinue()
@@ -99,7 +109,10 @@ namespace MainMenu
             quitButton.enabled = false;
             DiscordPanel.SetActive(false);
             mainMenuSoundController.FadeMainMenuVolume(1.0f, 1.1f);
-            if ((GameManager.WORLD_INDEX == 1 && GameManager.LEVEL_INDEX == 5) || GameManager.WORLD_INDEX > 1)
+            //TODO
+            (int levelIndex, int world, int level) = GameManager.FindFirstUncompletedLevel();
+            StoreNextLevelInPlayerPrefs(world, level);
+            if ((world == 1 && level == 5) || world > 1)
             {
                 transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
                 {
@@ -110,8 +123,7 @@ namespace MainMenu
             {
                 transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
                 {
-                    StartCoroutine(LoadAsynchronously("Level " + GameManager.WORLD_INDEX.ToString() + "-" +
-                                                      GameManager.LEVEL_INDEX.ToString()));
+                    StartCoroutine(LoadAsynchronously("Level " + world + "-" + level));
                 }));
             }
         }
@@ -204,23 +216,23 @@ namespace MainMenu
             if (!levelSelectionMenu.activeInHierarchy)
             {
                 levelSelectionMenu.SetActive(true);
+                DiscordPanel.SetActive(false);
                 mainMenu.SetActive(false);
                 continueAdventureButton.enabled = false;
                 newAdventureButton.enabled = false;
                 optionsButton.enabled = false;
                 quitButton.enabled = false;
                 levelSelectionManager.RefreshButtons();
-                print("dingen2");
             }
             else
             {
                 levelSelectionMenu.SetActive(false);
+                DiscordPanel.SetActive(true);
                 mainMenu.SetActive(true);
                 continueAdventureButton.enabled = true;
                 newAdventureButton.enabled = true;
                 optionsButton.enabled = true;
                 quitButton.enabled = true;
-                print("dingen1");
             }
         }
         

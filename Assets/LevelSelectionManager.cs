@@ -8,14 +8,11 @@ public class LevelSelectionManager : MonoBehaviour
     public GameObject levelButtonPrefab;
     public Transform levelButtonContainer;
 
-    private Dictionary<string, bool> levelCompletionStatus;
     private List<LevelButton> levelButtons = new List<LevelButton>();
 
     void Start()
     {
-        levelCompletionStatus = GameManager.levelCompletionStatus;
         RefreshButtons();
-        UpdateLevelButtons();
     }
 
     public void RefreshButtons()
@@ -32,17 +29,6 @@ public class LevelSelectionManager : MonoBehaviour
                 levelButton.Initialize(worldIndex, levelIndex);
                 levelButtons.Add(levelButton);
             }
-        }
-    }
-
-    void UpdateLevelButtons()
-    {
-        foreach (var levelButton in levelButtons)
-        {
-            //tring levelKey = $"WORLD_{GameManager.WORLD_INDEX}_LEVEL_{GameManager.LEVEL_INDEX}";
-            //levelButton.levelText.text = GameManager.WORLD_INDEX + " - " + GameManager.LEVEL_INDEX;
-            //bool isCompleted = levelCompletionStatus.ContainsKey(levelKey) && levelCompletionStatus[levelKey];
-            //levelButton.UpdateButton(isCompleted);
         }
     }
 }

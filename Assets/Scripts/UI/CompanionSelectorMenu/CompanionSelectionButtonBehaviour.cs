@@ -32,11 +32,14 @@ public class CompanionSelectionButtonBehaviour : MonoBehaviour
 
     void FillButtonNames()
     {
+        
+        int companionIndex = PlayerPrefs.GetInt("CompanionIndex", -1) + 1;
+
         Button[] buttons = buttonsParent.GetComponentsInChildren<Button>();
 
         for (int i = 0; i < buttons.Length; i++)
         {
-            if (i < GameManager.companionsUnlockedIndex)
+            if (i < companionIndex)
             {
                 ConfigureButton(buttons[i], i);
             }
@@ -124,15 +127,6 @@ public class CompanionSelectionButtonBehaviour : MonoBehaviour
     {
         int leftToChoose = maxCompanionsToSelect - markedButtons.Count;
         leftToChooseText.text = leftToChoose.ToString();
-    }
-
-    public void PrintSelectedCompanions()
-    {
-        Debug.Log("Selected Companions:");
-        foreach (var companion in selectedCompanions)
-        {
-            Debug.Log(companion.companionTitle);
-        }
     }
 
     private void ResetMarkedButtons()

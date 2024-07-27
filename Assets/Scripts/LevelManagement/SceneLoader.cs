@@ -27,10 +27,11 @@ public class SceneLoader : MonoBehaviour
     public void LoadNextLevel()
     {
         newCompanionSoundController.NewCompanionMusicVolumeFade(0, 1.2f);
-        transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
+        transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete(() =>
         {
-            StartCoroutine(LoadAsynchronously("Level " + GameManager.WORLD_INDEX.ToString() + "-" + GameManager.LEVEL_INDEX.ToString()));
-        }));
+            (int level, int world) = GameManager.GetNextLevelFromPlayerPrefs();
+            StartCoroutine(LoadAsynchronously("Level " + world + "-" + level));
+        });
     }
 
     public void LoadCompanionSelector()

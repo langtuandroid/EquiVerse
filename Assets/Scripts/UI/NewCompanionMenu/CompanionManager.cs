@@ -32,35 +32,38 @@ public class CompanionManager : MonoBehaviour
     public TextMeshProUGUI companionDescriptionText;
     
     public Button nextLevelButton;
-    
+
     private void Start()
     {
         if (isNewCompanionScene)
         {
             GenerateCompanionOnPanel();
-            GameManager.companionsUnlockedIndex++;
-            GameManager.currentCompanionIndex++;
+            //GameManager.companionsUnlockedIndex++;
+            //GameManager.currentCompanionIndex++;
             GameManager.SaveGameData();
         }
     }
 
     public void GenerateCompanionOnPanel()
     {
-        Instantiate(companions[GameManager.currentCompanionIndex].companionPrefab, companionPrefabInstanceLocation);
-        companionTitleText.text = companions[GameManager.currentCompanionIndex].companionTitle;
-        companionSecondTitleText.text = companions[GameManager.currentCompanionIndex].companionSecondTitle;
-        companionDescriptionText.text = companions[GameManager.currentCompanionIndex].companionDescription;
+        int companionIndex = PlayerPrefs.GetInt("CompanionIndex", -1);
+        Instantiate(companions[companionIndex].companionPrefab, companionPrefabInstanceLocation);
+        companionTitleText.text = companions[companionIndex].companionTitle;
+        companionSecondTitleText.text = companions[companionIndex].companionSecondTitle;
+        companionDescriptionText.text = companions[companionIndex].companionDescription;
     }
 
     public void PlayCompanionSound()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(companions[GameManager.currentCompanionIndex].companionSoundEventPath);
+        int companionIndex = PlayerPrefs.GetInt("CompanionIndex", -1);
+        FMODUnity.RuntimeManager.PlayOneShot(companions[companionIndex].companionSoundEventPath);
     }
 
     public void IncrementCompanionIndex()
     {
+        int companionIndex = PlayerPrefs.GetInt("CompanionIndex", -1) + 1;
         nextLevelButton.interactable = false;
-        if (GameManager.currentCompanionIndex < 4)
+        if (companionIndex < 4)
         {
             sceneLoader.LoadNextLevel();
         }
