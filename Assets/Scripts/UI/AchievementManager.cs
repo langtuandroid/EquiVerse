@@ -94,7 +94,6 @@ public class AchievementManager : MonoBehaviour
         {
             if (achievement.achievementState == LevelAchievement.AchievementState.NewlyAchieved)
             {
-                print("Set to already achieved: " + achievement.achievementType);
                 achievement.achievementState = LevelAchievement.AchievementState.AlreadyAchieved;
             }
         }

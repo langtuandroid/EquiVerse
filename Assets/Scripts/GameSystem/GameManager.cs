@@ -46,18 +46,12 @@ namespace Managers
         
         public static void SaveGameData()
         {
-            //PlayerPrefs.SetInt("WORLD_INDEX", WORLD_INDEX);
-            //PlayerPrefs.SetInt("LEVEL_INDEX", LEVEL_INDEX);
-            //PlayerPrefs.SetInt("companionsUnlockedIndex", companionsUnlockedIndex);
-            //PlayerPrefs.SetInt("CurrentCompanionIndex", currentCompanionIndex);
             PlayerPrefs.SetInt("firstTimePlaying", firstTimePlaying ? 1 : 0);
             PlayerPrefs.Save();
         }
 
         public static void LoadGameData()
         {
-            //companionsUnlockedIndex = PlayerPrefs.GetInt("companionsUnlockedIndex", 0);
-            //currentCompanionIndex = PlayerPrefs.GetInt("CurrentCompanionIndex", 0);
             firstTimePlaying = PlayerPrefs.GetInt("firstTimePlaying", 1) == 1;
         }
 

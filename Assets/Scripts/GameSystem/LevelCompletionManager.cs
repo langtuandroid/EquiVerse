@@ -54,13 +54,7 @@ public class LevelCompletionManager : MonoBehaviour
         levelTimer.EndLevelTimer();
         PlayCompletionSounds();
         UpdateLevelStats();
-
-        //bool increment = !AchievementManager.IsLevelPreviouslyCompleted(achievementManager.GetCurrentLevelKey());
         achievementManager.ActivateAchievements();
-        //if (increment)
-        //{
-        //    print("increment dus");
-        //}
         GameManager.SaveGameData();
         StartCoroutine(DisplayPopupAfterDelay());
     }

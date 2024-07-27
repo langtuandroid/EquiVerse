@@ -81,14 +81,14 @@ namespace MainMenu
 
         public void ClickNew()
         {
+            PlayerPrefs.DeleteAll();
+            
             continueAdventureButton.enabled = false;
             newAdventureButton.enabled = false;
             optionsButton.enabled = false;
             quitButton.enabled = false;
             DiscordPanel.SetActive(false);
             mainMenuSoundController.FadeMainMenuVolume(1.0f, 1.1f);
-            //GameManager.companionsUnlockedIndex = 0;
-            //GameManager.currentCompanionIndex = 0;
             transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
             {
                 StartCoroutine(LoadAsynchronously("Level 1-1"));

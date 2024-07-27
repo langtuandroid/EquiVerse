@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using Managers;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +10,13 @@ public class AchievementChecker : MonoBehaviour
 {
     public LevelTimer levelTimer;
     public AchievementManager achievementManager;
+
+    public static bool firstTimeCompletion;
+
+    private void Start()
+    {
+        firstTimeCompletion = false;
+    }
 
     public void CheckAchievements()
     {
@@ -25,8 +34,9 @@ public class AchievementChecker : MonoBehaviour
             if (achievement.achievementType != AchievementType.FinishedLevel) continue;
             if (achievement.achievementState == LevelAchievement.AchievementState.NotAchieved)
             {
-                print("Set to newly achieved: " + achievement.achievementType);
                 achievement.achievementState = LevelAchievement.AchievementState.NewlyAchieved;
+                firstTimeCompletion = true;
+
             }
         }
     }

@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Managers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
 {
     public LevelStatManager levelStatManager;
     public AchievementManager achievementManager;
+    public GameManager gameManager;
 
     [Header("GameObjects")]
     public GameObject popUpLevelCompletionPanelObject;
@@ -17,6 +20,7 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
     public GameObject totalEcoEssencePanelObject;
     public GameObject nextSceneButtonObject;
     public GameObject retryLevelButtonObject;
+    public GameObject returnToMainMenuButtonObject;
 
     [Header("Prefabs")]
     public GameObject achievementUIPrefab;
@@ -36,6 +40,7 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
         totalEcoEssencePanelObject.SetActive(false);
         nextSceneButtonObject.SetActive(false);
         retryLevelButtonObject.SetActive(false);
+        returnToMainMenuButtonObject.SetActive(false);
         originalPositions = new Dictionary<GameObject, Vector2>();
 
         skipButton.onClick.AddListener(OnSkipButtonClicked); // Add listener to the skip button
@@ -135,7 +140,15 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.5f);
         PopInAnimation(totalEcoEssencePanelObject);
         yield return new WaitForSecondsRealtime(0.25f);
-        PopInAnimation(nextSceneButtonObject);
+        if (AchievementChecker.firstTimeCompletion)
+        {
+            PopInAnimation(nextSceneButtonObject);
+        }
+        else
+        {
+            PopInAnimation(returnToMainMenuButtonObject);
+        }
+
         yield return new WaitForSecondsRealtime(0.5f);
         PopInAnimation(retryLevelButtonObject);
     }
@@ -250,9 +263,19 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
         totalEcoEssencePanelObject.SetActive(true);
         totalEcoEssencePanelObject.GetComponent<RectTransform>().localScale = Vector3.one;
 
-        nextSceneButtonObject.SetActive(true);
+
+        if (AchievementChecker.firstTimeCompletion)
+        {
+            nextSceneButtonObject.SetActive(true);
+        }
+        else
+        {
+            returnToMainMenuButtonObject.SetActive(true);
+        }
+
         retryLevelButtonObject.SetActive(true);
         nextSceneButtonObject.GetComponent<RectTransform>().localScale = Vector3.one;
+        returnToMainMenuButtonObject.GetComponent<RectTransform>().localScale = Vector3.one;
         retryLevelButtonObject.GetComponent<RectTransform>().localScale = Vector3.one;
     }
 

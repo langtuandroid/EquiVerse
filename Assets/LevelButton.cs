@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Managers;
 using TMPro;
 using UnityEngine;
@@ -63,41 +64,11 @@ public class LevelButton : MonoBehaviour
 
     }
 
-    public void UpdateButton(bool isCompleted)
-    {
-        levelButton.interactable = isCompleted;
-        //UpdateAchievements();
-    }
-
-    // void UpdateAchievements()
-    // {
-    //     string levelKey = $"WORLD_{GameManager.WORLD_INDEX}_LEVEL_{levelIndex}";
-    //     var levelAchievements = achievementManager.GetLevelAchievements();
-    //
-    //     for (int i = 0; i < achievementImages.Length; i++)
-    //     {
-    //         if (i < levelAchievements.Count)
-    //         {
-    //             var achievement = levelAchievements[i];
-    //             switch (achievement.achievementState)
-    //             {
-    //                 case LevelAchievement.AchievementState.NotAchieved:
-    //                     achievementImages[i].color = notAchievedColor;
-    //                     break;
-    //                 case LevelAchievement.AchievementState.NewlyAchieved:
-    //                     achievementImages[i].color = newlyAchievedColor;
-    //                     break;
-    //                 case LevelAchievement.AchievementState.AlreadyAchieved:
-    //                     achievementImages[i].color = alreadyAchievedColor;
-    //                     break;
-    //             }
-    //         }
-    //     }
-    // }
-
     void OnButtonClicked()
     {
-        // Load the level corresponding to levelIndex
-        SceneManager.LoadScene($"Level {worldIndex}-{levelIndex}");
+        MainMenuSoundController soundController = FindObjectOfType<MainMenuSoundController>();
+        soundController.FadeMainMenuVolume(1.0f, 1.1f);
+        SceneManager.LoadSceneAsync($"Level {worldIndex}-{levelIndex}", LoadSceneMode.Single);
     }
+
 }
