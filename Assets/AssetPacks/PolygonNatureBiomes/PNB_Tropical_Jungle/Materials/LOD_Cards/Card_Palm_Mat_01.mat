@@ -165,7 +165,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AO_Amount: 1
-    - _AlphaCutoff: 0.5
     - _Big_Wave: 10
     - _Big_WindAmount: 1.22
     - _Big_Windspeed: 1.84
@@ -212,6 +211,8 @@ Material:
     - _PanningSpeed: 0.007
     - _PanningSpeed1: 0.127
     - _Parallax: 0.02
+    - _PulseSpeed: 0.04
+    - _PulseTiling: 0.03
     - _Small_Wave: 2.1
     - _Smoothness: 0.2
     - _SmoothnessTextureChannel: 0

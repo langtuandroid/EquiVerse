@@ -10,7 +10,7 @@ Material:
   m_Name: Biolumin_05
   m_Shader: {fileID: 4800000, guid: 6697e1f185bc8b840a2f02567abf15b5, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 2
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -181,7 +181,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AO_Amount: 1.7
-    - _AlphaCutoff: 0.5
     - _Big_Wave: 10
     - _Big_WindAmount: 1.22
     - _Big_Windspeed: 1.84

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028373, g: 0.22571398, b: 0.30692294, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -593,7 +593,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763719095}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24936022, y: -0.00000003988482, z: 0.000000010270113, w: 0.96841085}
+  m_LocalRotation: {x: 0.24936013, y: -0, z: -0, w: 0.96841085}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -672,7 +672,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771723911}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23175089, y: -0.000000006187312, z: 0.0000000014740458, w: 0.97277516}
+  m_LocalRotation: {x: 0.23175088, y: -0, z: -0, w: 0.97277516}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -970,7 +970,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 874615874}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24936023, y: -0.000000039884824, z: 0.000000010270114, w: 0.9684108}
+  m_LocalRotation: {x: 0.24936014, y: 0, z: 0, w: 0.96841085}
   m_LocalPosition: {x: 0, y: 4.05, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1763,7 +1763,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515477368}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.26693356, y: 0.00000002872095, z: -0.000000007955242, w: 0.96371496}
+  m_LocalRotation: {x: 0.26693365, y: -0, z: -0, w: 0.96371496}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1971,7 +1971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4250166054841865360, guid: 2c5cadcd143f4434c8de321d297eaaba, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

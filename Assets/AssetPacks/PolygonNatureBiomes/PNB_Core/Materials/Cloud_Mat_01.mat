@@ -92,6 +92,18 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
@@ -103,6 +115,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DirectLight: 0.32
     - _DstBlend: 0
+    - _EnvironmentReflections: 1
     - _Float0: 2.26
     - _Float2: 0.45
     - _Float3: 0.0823
@@ -115,6 +128,9 @@ Material:
     - _PanningSpeed: 0.015
     - _PanningSpeed1: 1
     - _Parallax: 0.02
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
     - _SmoothnessTextureChannel: 0
     - _Specular: 0.876
     - _SpecularHighlights: 1
@@ -147,7 +163,7 @@ Material:
     - _lightMin: 0.246
     - _lightingContrast: 121.99
     - _maxEmit: 1.301
-    - _minEmit: 0.942
+    - _minEmit: 0.912
     - _minEmit1: 0.19
     - _minEmit_dir: 0.611
     - _poster: 9.08

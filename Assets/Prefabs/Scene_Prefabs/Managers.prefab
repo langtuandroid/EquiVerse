@@ -333,6 +333,7 @@ GameObject:
   - component: {fileID: 6291794855083723854}
   - component: {fileID: 4108649883938382023}
   - component: {fileID: 5532110041508366129}
+  - component: {fileID: 9070114687066029362}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -372,6 +373,10 @@ MonoBehaviour:
   level3: 0
   level4: 0
   level5: 0
+  currentSceneWorldIndex: 0
+  currentSceneLevelIndex: 0
+  nextSceneWorldIndex: 0
+  nextSceneLevelIndex: 0
   currentLevelText: {fileID: 0}
 --- !u!114 &7626449848230944487
 MonoBehaviour:
@@ -436,7 +441,6 @@ MonoBehaviour:
     leafpointsCollected: 0
     achievementImage: {fileID: 0}
     achievementDescription: 
-    isAchieved: 0
     backGroundImage: {fileID: 0}
     achievementState: 0
   - achievementReward: 15
@@ -447,7 +451,6 @@ MonoBehaviour:
     leafpointsCollected: 0
     achievementImage: {fileID: 0}
     achievementDescription: 
-    isAchieved: 0
     backGroundImage: {fileID: 0}
     achievementState: 0
   - achievementReward: 15
@@ -458,7 +461,6 @@ MonoBehaviour:
     leafpointsCollected: 0
     achievementImage: {fileID: 0}
     achievementDescription: 
-    isAchieved: 0
     backGroundImage: {fileID: 0}
     achievementState: 0
   - achievementReward: 15
@@ -469,7 +471,6 @@ MonoBehaviour:
     leafpointsCollected: 0
     achievementImage: {fileID: 0}
     achievementDescription: 
-    isAchieved: 0
     backGroundImage: {fileID: 0}
     achievementState: 0
   popUpUIBehaviour: {fileID: 6291794855083723854}
@@ -492,11 +493,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelStatManager: {fileID: 5532110041508366129}
   achievementManager: {fileID: 6352662589584021615}
+  gameManager: {fileID: 0}
   popUpLevelCompletionPanelObject: {fileID: 0}
   levelAchievementsPanelObject: {fileID: 0}
   levelStatsPanelObject: {fileID: 0}
   totalEcoEssencePanelObject: {fileID: 0}
-  buttonsObject: {fileID: 0}
+  nextSceneButtonObject: {fileID: 0}
+  retryLevelButtonObject: {fileID: 0}
+  returnToMainMenuButtonObject: {fileID: 0}
   achievementUIPrefab: {fileID: 7521910993066862668, guid: ddd46bf442a59924288a8a12097b780c, type: 3}
   statUIPrefab: {fileID: 7521910993066862668, guid: 512e04b7fc2d9c94b930687416162405, type: 3}
   skipButton: {fileID: 0}
@@ -527,6 +531,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455bd77261e92544f8809461b6832491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9070114687066029362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5300777628840219945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acaf72466d3c4da4daba9ff3d89ddbf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ecoEssenceText: {fileID: 0}
 --- !u!1 &5300777629086163745
 GameObject:
   m_ObjectHideFlags: 0
