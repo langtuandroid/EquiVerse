@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Managers;
 using Input;
+using Spawners;
 using UI;
 
 public class LevelCompletionManager : MonoBehaviour
@@ -25,6 +26,7 @@ public class LevelCompletionManager : MonoBehaviour
     public LeafPointManager leafPointManager;
     public LevelStatManager levelStatManager;
     public AchievementManager achievementManager;
+    public FoodSpawner foodSpawner;
     public LevelTimer levelTimer;
     
     [Header("Other Components")]
@@ -56,11 +58,12 @@ public class LevelCompletionManager : MonoBehaviour
         UpdateLevelStats();
         achievementManager.ActivateAchievements();
         GameManager.SaveGameData();
-        StartCoroutine(DisplayPopupAfterDelay());
+        Time.timeScale = 0;
     }
 
     private void DisableGameplay()
     {
+        foodSpawner.CanSpawnPlants = false;
         raycaster.gameObject.SetActive(false);
         cameraMovement.CameraLocked = true;
         endOfLevelButton.interactable = false;
@@ -74,12 +77,6 @@ public class LevelCompletionManager : MonoBehaviour
         soundController.FadeAudioParameter("Ambience", "World1LevelAmbienceVolume", 0f, 1.2f);
         soundController.FadeAudioParameter("BattleMusic", "EnemyMusicVolume", 0f, 1.2f);
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/CompleteLevel");
-    }
-
-    private IEnumerator DisplayPopupAfterDelay()
-    {
-        yield return new WaitForSecondsRealtime(8f);
-        Time.timeScale = 0;
     }
 
     private void UpdateLevelStats()

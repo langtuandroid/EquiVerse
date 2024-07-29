@@ -114,7 +114,7 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
             rectTransform.SetAsLastSibling();
         }
 
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSecondsRealtime(0.1f);
 
         foreach (var achievementUI in achievementUIs)
         {
@@ -128,7 +128,7 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
                 FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
                 originalPositions[achievementUI] = rectTransform.anchoredPosition;
 
-                Sequence sequence = DOTween.Sequence();
+                Sequence sequence = DOTween.Sequence().SetUpdate(true);
                 sequence.Append(rectTransform.DOScale(1, 0.1f).SetEase(Ease.OutExpo))
                         .Join(canvasGroup.DOFade(1, 0.1f).SetEase(Ease.InOutQuad))
                         .Append(rectTransform.DOAnchorPos(originalPositions[achievementUI], 0.1f).SetEase(Ease.OutBack));
@@ -177,7 +177,7 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
             rectTransform.SetAsLastSibling();
         }
 
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSecondsRealtime(0.1f);
 
         foreach (var statUI in statUIs)
         {
@@ -191,7 +191,7 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
                 FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
                 originalPositions[statUI] = rectTransform.anchoredPosition;
 
-                Sequence sequence = DOTween.Sequence();
+                Sequence sequence = DOTween.Sequence().SetUpdate(true);
                 sequence.Append(rectTransform.DOScale(1, 0.1f).SetEase(Ease.OutExpo))
                         .Join(canvasGroup.DOFade(1, 0.1f).SetEase(Ease.InOutQuad))
                         .Append(rectTransform.DOAnchorPos(originalPositions[statUI], 0.1f).SetEase(Ease.OutBack))
@@ -283,7 +283,7 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
         if (rectTransform != null)
         {
             rectTransform.localScale = Vector3.zero;
-            rectTransform.DOScale(1, 0.5f).SetEase(Ease.OutExpo);
+            rectTransform.DOScale(1, 0.5f).SetEase(Ease.OutExpo).SetUpdate(true);
         }
     }
 }
