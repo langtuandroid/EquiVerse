@@ -13,7 +13,7 @@ namespace Spawners
         private float desiredHeight = 5f;
         private float duration = 5f;
 
-        public static bool spawnCrystalShardPoints = true;
+        public bool spawnCrystalShardPoints = true;
 
         private void Start()
         {
@@ -22,7 +22,7 @@ namespace Spawners
 
         private void FixedUpdate()
         {
-            if (spawnCrystalShardPoints)
+            if (spawnCrystalShardPoints && !EnemySpawner.enemyDanger)
             {
                 spawnTimer += Time.fixedDeltaTime;
                 if (spawnTimer >= timeBetweenCrystalShardSpawn)

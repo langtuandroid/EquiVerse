@@ -34,8 +34,11 @@ public class EnemyHealth : Clickable
             Destroy(gunParticleInstance, 1f);
 
             FMODUnity.RuntimeManager.PlayOneShot(currentGunUpgrade.gunImpactSoundEventPath);
-            
-            CameraShake.Instance.ShakeCamera(2f, 0.15f);
+
+            if (InputOptionsMenu.screenShakeEnabled)
+            {
+                CameraShake.Instance.ShakeCamera(2f, 0.15f);
+            }
         }
         else
         {

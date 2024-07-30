@@ -10,6 +10,7 @@ using UnityEngine.AI;
 
 public class MalbersFoxBehaviour : MonoBehaviour
 {
+        [SerializeField] private CrystalShardSpawner crystalShardSpawner;
         [SerializeField] private float hungerThreshold;
         [SerializeField] private float warningThreshold;
         [SerializeField] private float deathThreshold;
@@ -41,8 +42,11 @@ public class MalbersFoxBehaviour : MonoBehaviour
     
         private void HandleHunger()
         {
-            currentHunger += 5f * Time.fixedDeltaTime;
-    
+            if (EnemySpawner.enemyDanger)
+            {
+                currentHunger += 5f * Time.fixedDeltaTime;
+            }
+
             if (currentHunger >= deathThreshold)
                 StartCoroutine(Die());
     
@@ -54,7 +58,7 @@ public class MalbersFoxBehaviour : MonoBehaviour
             }
             if (currentHunger >= warningThreshold && !inWarningState)
             {
-                LeafPointsSpawner.spawnLeafPoints = false;
+                crystalShardSpawner.spawnCrystalShardPoints = false;
                 inWarningState = true;
             }
         }
@@ -67,6 +71,7 @@ public class MalbersFoxBehaviour : MonoBehaviour
                 rabbit.InstantDeath();
                 FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/FoxEat");
                 currentHunger -= 100f;
+                crystalShardSpawner.spawnCrystalShardPoints = true;
                 inWarningState = false;
                 isHungry.Value = false;
                 localIsHungry = false;

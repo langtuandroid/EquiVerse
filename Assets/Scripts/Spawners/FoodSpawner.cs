@@ -71,7 +71,7 @@ namespace Spawners {
                         currentPlantCount++;
                         FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/GrassPlacement");
                     }
-                    else if (!maxFoodPopup.activeInHierarchy && gameManager.level1 && timesPopupShown < 3) 
+                    else if (!maxFoodPopup.activeInHierarchy && gameManager.level1 && timesPopupShown < 2) 
                     {
                         maxFoodPopup.SetActive(true);
                         PopInAnimation(maxFoodPopup);

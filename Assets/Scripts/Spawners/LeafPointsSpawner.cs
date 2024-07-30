@@ -16,7 +16,7 @@ namespace Spawners
         private float desiredHeight = 5f;
         private float duration = 10f;
 
-        public static bool spawnLeafPoints = true;
+        public bool spawnLeafPoints = true;
 
         private void Start()
         {
@@ -28,7 +28,7 @@ namespace Spawners
 
         private void FixedUpdate()
         {
-            if (spawnLeafPoints && growthManager.isAdolescent)
+            if (spawnLeafPoints && growthManager.isAdolescent && !EnemySpawner.enemyDanger)
             {
                 spawnTimer += Time.fixedDeltaTime;
                 if (spawnTimer >= timeBetweenLeafSpawn)

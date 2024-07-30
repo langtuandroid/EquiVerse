@@ -14,26 +14,32 @@ public class InputOptionsMenu : MonoBehaviour
     public Slider yAxisMovementSpeedSlider;
     public Toggle xAxisInvertToggle;
     public Toggle yAxisInvertToggle;
+    public Toggle screenShakeToggle;
     
     private const string ZoomSpeedKey = "ZoomSpeed";
     private const string XAxisSpeedKey = "XAxisSpeed";
     private const string YAxisSpeedKey = "YAxisSpeed";
     private const string XAxisInvertKey = "XAxisInvert";
     private const string YAxisInvertKey = "YAxisInvert";
+    private const string ScreenShakeKey = "ScreenShake";
+    
+    public static bool screenShakeEnabled = true;
 
     private void Start()
     {
         cameraMovement.scrollSpeed = PlayerPrefs.GetFloat(ZoomSpeedKey, cameraMovement.scrollSpeed);
         cameraMovement.globalXAxisSpeedScale = PlayerPrefs.GetFloat(XAxisSpeedKey, cameraMovement.globalXAxisSpeedScale);
         cameraMovement.globalYAxisSpeedScale = PlayerPrefs.GetFloat(YAxisSpeedKey, cameraMovement.globalYAxisSpeedScale);
-        cameraMovement.xAxisInversedValue = PlayerPrefs.GetInt(XAxisInvertKey, cameraMovement.xAxisInversedValue);
-        cameraMovement.yAxisInversedValue = PlayerPrefs.GetInt(YAxisInvertKey, cameraMovement.yAxisInversedValue);
+        cameraMovement.xAxisInversedValue = PlayerPrefs.GetInt(XAxisInvertKey, cameraMovement.xAxisInversedValue == -1 ? -1 : 1);
+        cameraMovement.yAxisInversedValue = PlayerPrefs.GetInt(YAxisInvertKey, cameraMovement.yAxisInversedValue == -1 ? -1 : 1);
+        screenShakeEnabled = PlayerPrefs.GetInt(ScreenShakeKey, screenShakeEnabled ? 1 : 0) == 1;
 
         zoomMovementSpeedSlider.value = cameraMovement.scrollSpeed;
         xAxisMovementSpeedSlider.value = cameraMovement.globalXAxisSpeedScale;
         yAxisMovementSpeedSlider.value = cameraMovement.globalYAxisSpeedScale;
         xAxisInvertToggle.isOn = cameraMovement.xAxisInversedValue == -1;
         yAxisInvertToggle.isOn = cameraMovement.yAxisInversedValue == -1;
+        screenShakeToggle.isOn = screenShakeEnabled;
     }
 
     public void SetZoomMovementSpeedValue()
@@ -64,5 +70,11 @@ public class InputOptionsMenu : MonoBehaviour
     {
         cameraMovement.yAxisInversedValue = yAxisInvertToggle.isOn ? -1 : 1;
         PlayerPrefs.SetInt(YAxisInvertKey, cameraMovement.yAxisInversedValue);
+    }
+
+    public void SetScreenShakeValue()
+    {
+        screenShakeEnabled = screenShakeToggle.isOn;
+        PlayerPrefs.SetInt(ScreenShakeKey, screenShakeEnabled ? 1 : 0);
     }
 }

@@ -14400,6 +14400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca540eebe574033479f6dd9b5638d4ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crystalShardSpawner: {fileID: 4206576196078446789}
   hungerThreshold: 100
   warningThreshold: 150
   deathThreshold: 200
@@ -14458,6 +14459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crystalShardPrefab: {fileID: 6456595118884574070, guid: b02721908b131924cb146ae639427580, type: 3}
   timeBetweenCrystalShardSpawnRange: {x: 10, y: 18}
+  spawnCrystalShardPoints: 1
 --- !u!1 &5526524563046455768
 GameObject:
   m_ObjectHideFlags: 0

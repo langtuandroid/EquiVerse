@@ -5129,6 +5129,7 @@ MonoBehaviour:
   lowValueleafPointPrefab: {fileID: 5271623836368792421, guid: de1ea59a051e68b41906b9cbb7d59dd4, type: 3}
   highValueleafPointPrefab: {fileID: 5271623836368792421, guid: 96792812f2c54e647939cfd12b0bcdcf, type: 3}
   timeBetweenLeafSpawnRange: {x: 6, y: 12}
+  spawnLeafPoints: 1
 --- !u!114 &9180037183481643101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5142,6 +5143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   growthManager: {fileID: 1138554416925459173}
+  leafPointsSpawner: {fileID: 7998059124693266919}
   hungerThreshold: 100
   warningThreshold: 150
   deathThreshold: 250

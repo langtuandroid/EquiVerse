@@ -12,6 +12,7 @@ using UnityEngine.AI;
 public class MalbersRabbitBehaviour : MonoBehaviour
 {
     [SerializeField] private GrowthManager growthManager;
+    [SerializeField] private LeafPointsSpawner leafPointsSpawner;
     [SerializeField] private float hungerThreshold;
     [SerializeField] private float warningThreshold;
     [SerializeField] private float deathThreshold;
@@ -44,7 +45,10 @@ public class MalbersRabbitBehaviour : MonoBehaviour
 
     private void HandleHunger()
     {
-        currentHunger += 7.5f * Time.fixedDeltaTime;
+        if (!EnemySpawner.enemyDanger)
+        {
+            currentHunger += 7.5f * Time.fixedDeltaTime;
+        }
 
         if (currentHunger >= deathThreshold)
             StartCoroutine(Die());
@@ -57,7 +61,7 @@ public class MalbersRabbitBehaviour : MonoBehaviour
         }
         if (currentHunger >= warningThreshold && !inWarningState)
         {
-            LeafPointsSpawner.spawnLeafPoints = false;
+            leafPointsSpawner.spawnLeafPoints = false;
             inWarningState = true;
         }
     }
@@ -71,7 +75,7 @@ public class MalbersRabbitBehaviour : MonoBehaviour
             FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/RabbitEat");
             currentHunger -= 100f;
             growthManager.ProgressGrowth(food.foodGrowthValue);
-            LeafPointsSpawner.spawnLeafPoints = true;
+            leafPointsSpawner.spawnLeafPoints = true;
             inWarningState = false;
             isHungry.Value = false;
             localIsHungry = false;
