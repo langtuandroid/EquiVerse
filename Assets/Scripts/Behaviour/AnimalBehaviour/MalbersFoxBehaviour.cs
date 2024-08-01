@@ -42,7 +42,7 @@ public class MalbersFoxBehaviour : MonoBehaviour
     
         private void HandleHunger()
         {
-            if (EnemySpawner.enemyDanger)
+            if (!EnemySpawner.enemyDanger)
             {
                 currentHunger += 5f * Time.fixedDeltaTime;
             }
@@ -68,7 +68,8 @@ public class MalbersFoxBehaviour : MonoBehaviour
             MalbersRabbitBehaviour rabbit = closestRabbit.GetComponent<MalbersRabbitBehaviour>();
             if (rabbit != null)
             {
-                rabbit.InstantDeath();
+                rabbit.InstantDeath(true);
+                GameManager.animalDeaths--;
                 FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/FoxEat");
                 currentHunger -= 100f;
                 crystalShardSpawner.spawnCrystalShardPoints = true;
@@ -105,7 +106,6 @@ public class MalbersFoxBehaviour : MonoBehaviour
     
         private IEnumerator Die()
         {
-            GameManager.animalDeaths++;
             Destroy(gameObject, 3f);
             EntityManager.Get().RemoveFox(gameObject);
             animal.StartNewState(deathState);
@@ -114,6 +114,7 @@ public class MalbersFoxBehaviour : MonoBehaviour
             {
                 FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/RabbitDeath");
                 foxGhostParticleSystem.Play();
+                GameManager.animalDeaths++;
             }
             transform.DOScale(0, 0.5f).SetEase(Ease.OutBack);
         }

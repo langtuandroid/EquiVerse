@@ -7,8 +7,6 @@ namespace Managers
 {
     public class GameManager : MonoBehaviour
     {
-        //public static int companionsUnlockedIndex;
-        //public static int currentCompanionIndex;
         public static int currentVideoStepIndex;
         public bool level1;
         public bool level2;

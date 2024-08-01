@@ -40,14 +40,14 @@ public class LevelCompletionManager : MonoBehaviour
     {
         levelTimer.StartLevelTimer();
     }
-
-    private void Update()
-    {
-        if (UnityEngine.Input.GetKeyDown(KeyCode.RightControl))
-        {
-            LevelCompleted();
-        }
-    }
+    //
+    // private void Update()
+    // {
+    //     if (UnityEngine.Input.GetKeyDown(KeyCode.RightControl))
+    //     {
+    //         LevelCompleted();
+    //     }
+    // }
 
     private void LevelCompleted()
     {

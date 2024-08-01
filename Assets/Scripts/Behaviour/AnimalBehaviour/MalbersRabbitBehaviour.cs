@@ -94,26 +94,26 @@ public class MalbersRabbitBehaviour : MonoBehaviour
         }
     }
 
-    public void InstantDeath()
+    public void InstantDeath(bool killedByFox)
     {
-        GameManager.animalDeaths++;
         Destroy(gameObject, 3f);
+        GameManager.animalDeaths++;
         EntityManager.Get().RemoveRabbit(gameObject);
         if (growthManager.isBaby)
         {
             EntityManager.Get().RemoveBabyRabbit(gameObject);
         }
-        if (!rabbitGhostParticleSystem.isPlaying)
+
+        if (!killedByFox && !rabbitGhostParticleSystem.isPlaying)
         {
             FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/RabbitDeath");
             rabbitGhostParticleSystem.Play();
-            transform.DOScale(0, 0.5f).SetEase(Ease.OutBack);
         }
+        transform.DOScale(0, 0.5f).SetEase(Ease.OutBack);
     }
 
     private IEnumerator Die()
     {
-        GameManager.animalDeaths++;
         Destroy(gameObject, 3f);
         EntityManager.Get().RemoveRabbit(gameObject);
         if (growthManager.isBaby)
@@ -126,6 +126,7 @@ public class MalbersRabbitBehaviour : MonoBehaviour
         {
             FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/RabbitDeath");
             rabbitGhostParticleSystem.Play();
+            GameManager.animalDeaths++;
         }
         transform.DOScale(0, 0.5f).SetEase(Ease.OutBack);
     }

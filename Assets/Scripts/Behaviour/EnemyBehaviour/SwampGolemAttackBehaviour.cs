@@ -48,7 +48,7 @@ public class SwampGolemAttackBehaviour : MonoBehaviour
             {
                 yield return new WaitForSeconds(1f);
                 rabbitBehaviour.SpawnStoneSpikeParticles();
-                rabbitBehaviour.InstantDeath();
+                rabbitBehaviour.InstantDeath(false);
             }
         }
 

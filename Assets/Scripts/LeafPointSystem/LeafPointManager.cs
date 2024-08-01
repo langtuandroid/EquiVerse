@@ -28,7 +28,7 @@ namespace Managers {
         
         private DateTime lastVisualUpdate = DateTime.Now;
         private const float updateInterval = 0.01666667f;
-        private const int speedFactor = 15; //Higher is slower
+        private const int speedFactor = 15;
 
         private void Start()
         {

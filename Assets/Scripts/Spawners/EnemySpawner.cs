@@ -39,6 +39,7 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         firstEnemySpawned = false;
+        enemyDanger = false;
     }
 
     public void SpawnEnemies()
@@ -64,7 +65,7 @@ public class EnemySpawner : MonoBehaviour
         string enemyName = randomEnemy.enemyName;
         
         newEnemyTypeWarningText.gameObject.SetActive(true);
-        newEnemyTypeWarningText.text = $"Alert! Portal fluctuations indicate {enemyCount} <b>{enemyName}</b>(s) are about to gatecrash the party!";
+        newEnemyTypeWarningText.text = $"ALERT! {enemyCount} <b>{enemyName}</b>(s) are about to invade!";
                     
         soundController.FadeAudioParameter("Music", "World1LevelMainMusicVolume", 0f, 1.2f);
         soundController.StartAudioEvent("BattleMusic");
@@ -94,7 +95,11 @@ public class EnemySpawner : MonoBehaviour
     public void AnimateEnemySpawnIn(GameObject enemy, float duration)
     {
         Vector3 originalScale = enemy.transform.localScale;
-        enemy.transform.localScale = Vector3.zero;
+        if (enemy.transform.localScale != Vector3.zero)
+        {
+            enemy.transform.localScale = Vector3.zero;
+        }
+        enemy.transform.DOKill();
         enemy.transform.DOScale(originalScale, duration).SetEase(Ease.OutBack);
     }
 

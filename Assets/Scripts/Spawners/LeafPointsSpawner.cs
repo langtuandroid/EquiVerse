@@ -28,39 +28,43 @@ namespace Spawners
 
         private void FixedUpdate()
         {
-            if (spawnLeafPoints && growthManager.isAdolescent && !EnemySpawner.enemyDanger)
+            if (!EnemySpawner.enemyDanger)
             {
-                spawnTimer += Time.fixedDeltaTime;
-                if (spawnTimer >= timeBetweenLeafSpawn)
+                if (spawnLeafPoints && growthManager.isAdolescent)
                 {
-                    Vector3 spawnPosition = transform.position + new Vector3(0, 0.5f, 0);
-                    GameObject newLeaf;
-                    newLeaf = Instantiate(lowValueleafPointPrefab, spawnPosition, Quaternion.identity);
-                    newLeaf.transform.DOMoveY(desiredHeight, duration).SetEase(Ease.OutCubic)
-                        .OnComplete(() => FadeAndDestroy(newLeaf));
-                    spawnTimer = 0f;
-
-                    if (gameManager.level1 && !TutorialManager.pickUpLeafpointStepCompleted)
+                    spawnTimer += Time.fixedDeltaTime;
+                    if (spawnTimer >= timeBetweenLeafSpawn)
                     {
-                        TutorialManager.GoToNextStep();
-                        TutorialManager.pickUpLeafpointStepCompleted = true;
+                        Vector3 spawnPosition = transform.position + new Vector3(0, 0.5f, 0);
+                        GameObject newLeaf;
+                        newLeaf = Instantiate(lowValueleafPointPrefab, spawnPosition, Quaternion.identity);
+                        newLeaf.transform.DOMoveY(desiredHeight, duration).SetEase(Ease.OutCubic)
+                            .OnComplete(() => FadeAndDestroy(newLeaf));
+                        spawnTimer = 0f;
+
+                        if (gameManager.level1 && !TutorialManager.pickUpLeafpointStepCompleted)
+                        {
+                            TutorialManager.GoToNextStep();
+                            TutorialManager.pickUpLeafpointStepCompleted = true;
+                        }
+
+                        timeBetweenLeafSpawn = Random.Range(timeBetweenLeafSpawnRange.x, timeBetweenLeafSpawnRange.y);
                     }
-                    
-                    timeBetweenLeafSpawn = Random.Range(timeBetweenLeafSpawnRange.x, timeBetweenLeafSpawnRange.y);
                 }
-            }
-            if (spawnLeafPoints && growthManager.isAdult)
-            {
-                spawnTimer += Time.fixedDeltaTime;
-                if (spawnTimer >= timeBetweenLeafSpawn)
+
+                if (spawnLeafPoints && growthManager.isAdult)
                 {
-                    Vector3 spawnPosition = transform.position + new Vector3(0, 0.5f, 0);
-                    GameObject newLeaf;
-                    newLeaf = Instantiate(highValueleafPointPrefab, spawnPosition, Quaternion.identity);
-                    newLeaf.transform.DOMoveY(desiredHeight, duration).SetEase(Ease.OutCubic)
-                        .OnComplete(() => FadeAndDestroy(newLeaf));
-                    spawnTimer = 0f;
-                    timeBetweenLeafSpawn = Random.Range(timeBetweenLeafSpawnRange.x, timeBetweenLeafSpawnRange.y);
+                    spawnTimer += Time.fixedDeltaTime;
+                    if (spawnTimer >= timeBetweenLeafSpawn)
+                    {
+                        Vector3 spawnPosition = transform.position + new Vector3(0, 0.5f, 0);
+                        GameObject newLeaf;
+                        newLeaf = Instantiate(highValueleafPointPrefab, spawnPosition, Quaternion.identity);
+                        newLeaf.transform.DOMoveY(desiredHeight, duration).SetEase(Ease.OutCubic)
+                            .OnComplete(() => FadeAndDestroy(newLeaf));
+                        spawnTimer = 0f;
+                        timeBetweenLeafSpawn = Random.Range(timeBetweenLeafSpawnRange.x, timeBetweenLeafSpawnRange.y);
+                    }
                 }
             }
         }

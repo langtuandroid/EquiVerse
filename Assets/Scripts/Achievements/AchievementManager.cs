@@ -134,7 +134,7 @@ public class AchievementManager : MonoBehaviour
             { AchievementType.FinishedLevel, (finishedLevelImage, "Completed the level") },
             { AchievementType.TimeBased, (timeBasedImage, "Complete the level within {value} minutes") },
             { AchievementType.AnimalDeaths, (animalDeathsImage, "Keep the animal deaths below {value}") },
-            { AchievementType.AnimalsSpawned, (AnimalsSpawnedImage, "Spawn at least {value} animals") },
+            { AchievementType.AnimalsSpawned, (AnimalsSpawnedImage, "Spawn a maximal of {value} animals") },
             { AchievementType.LeafpointsCollected, (leafPointsImage, "Collect at least {value} Leaf points") }
         };
     }

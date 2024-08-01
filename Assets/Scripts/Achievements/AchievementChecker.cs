@@ -43,7 +43,6 @@ public class AchievementChecker : MonoBehaviour
 
     private void CheckTimeBasedAchievement()
     {
-        var fiets = achievementManager.GetLevelAchievements();
         foreach (var achievement in achievementManager.GetLevelAchievements())
         {
             if (achievement.achievementType != AchievementType.TimeBased) continue;
@@ -95,7 +94,7 @@ public class AchievementChecker : MonoBehaviour
             if (achievement.achievementType != AchievementType.AnimalsSpawned) continue;
             if (achievement.achievementState == LevelAchievement.AchievementState.NotAchieved)
             {
-                if (GameManager.animalsSpawned >= achievement.animalsSpawned)
+                if (GameManager.animalsSpawned <= achievement.animalsSpawned)
                 {
                     achievement.achievementState = LevelAchievement.AchievementState.NewlyAchieved;
                 }

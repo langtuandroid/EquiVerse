@@ -24,6 +24,7 @@ namespace MainMenu
         public GameObject creditsMenu;
         public GameObject howToPlayMenu;
         public GameObject levelSelectionMenu;
+        public GameObject newAdventureWarningPanel;
 
         public GameObject continueAdventureObject;
         public TextMeshProUGUI continueAdventureButtonText;
@@ -46,6 +47,7 @@ namespace MainMenu
             newAdventureButton.enabled = true;
             optionsButton.enabled = true;
             quitButton.enabled = true;
+            newAdventureWarningPanel.SetActive(false);
             mainMenuSoundController.FadeMainMenuVolume(mainMenuSoundController.GetMainMenuVolume(), 3f);
             
             if (GameManager.firstTimePlaying)
@@ -79,15 +81,36 @@ namespace MainMenu
             }
         }
 
-        public void ClickNew()
+        public void ToggleNewAdventureWarning()
+        {
+            if (!newAdventureWarningPanel.activeInHierarchy)
+            {
+                newAdventureWarningPanel.SetActive(true);
+                mainMenu.SetActive(false);
+                continueAdventureButton.enabled = false;
+                newAdventureButton.enabled = false;
+                optionsButton.enabled = false;
+                quitButton.enabled = false;
+                DiscordPanel.SetActive(false);
+            }
+            else
+            {
+                newAdventureWarningPanel.SetActive(false);
+                mainMenu.SetActive(true);
+                continueAdventureButton.enabled = true;
+                newAdventureButton.enabled = true;
+                optionsButton.enabled = true;
+                quitButton.enabled = true;
+                DiscordPanel.SetActive(true); 
+            }
+
+        }
+
+        public void LoadNewAdventure()
         {
             PlayerPrefs.DeleteAll();
-            
-            continueAdventureButton.enabled = false;
-            newAdventureButton.enabled = false;
-            optionsButton.enabled = false;
-            quitButton.enabled = false;
-            DiscordPanel.SetActive(false);
+            newAdventureWarningPanel.SetActive(false);
+ 
             mainMenuSoundController.FadeMainMenuVolume(1.0f, 1.1f);
             transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
             {

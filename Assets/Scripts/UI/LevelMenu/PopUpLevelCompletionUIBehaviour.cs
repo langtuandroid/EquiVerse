@@ -91,8 +91,8 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
                     break;
                 case LevelAchievement.AchievementState.NewlyAchieved:
                     backGroundImage.color = notAchievedColor;
-                    backGroundImage.DOColor(newlyAchievedColor, 0.1f).SetDelay(1f + achievementDelay);
-                    achievementUI.transform.DOPunchScale(new Vector2(0.1f, 0.1f), 0.7f, 8, 0.8f).SetDelay(1f + achievementDelay);
+                    backGroundImage.DOColor(newlyAchievedColor, 0.1f).SetDelay(1f + achievementDelay).SetUpdate(true);
+                    achievementUI.transform.DOPunchScale(new Vector2(0.1f, 0.1f), 0.7f, 8, 0.8f).SetDelay(1f + achievementDelay).SetUpdate(true);
                     achievementDelay += 0.5f;
                     break;
                 case LevelAchievement.AchievementState.NotAchieved:

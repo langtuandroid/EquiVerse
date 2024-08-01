@@ -12,16 +12,22 @@ public class GraniteGuardianAttackBehaviour : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     
     private float detectionRadius = 10f;
-    private float minimumDistance = 6f; // Minimum distance to target rabbits
+    private float minimumDistance = 6f;
     private float attackCooldown = 3f;
     private bool attacking = false;
     private bool attackCooldownActive = false;
     private Transform targetTransform;
     private float lastAttackTime;
-    private float rotationSpeed = 5f; // Rotation speed factor
+    private float rotationSpeed = 5f;
 
     private void Start()
     {
+        StartCoroutine(HandleSpawnDelay());
+    }
+
+    private IEnumerator HandleSpawnDelay()
+    {
+        yield return new WaitForSeconds(attackCooldown);
         StartCoroutine(ResetAttackCooldown());
     }
 
@@ -43,7 +49,6 @@ public class GraniteGuardianAttackBehaviour : MonoBehaviour
         Vector3 direction = targetPosition - beam.transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(direction);
 
-        // Smoothly rotate towards the target
         beam.transform.rotation = Quaternion.Slerp(beam.transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
     }
@@ -107,7 +112,7 @@ public class GraniteGuardianAttackBehaviour : MonoBehaviour
             yield return new WaitForSeconds(2f);
             if (initialTarget != null && initialTarget.activeSelf)
             {
-                rabbitBehaviour.InstantDeath();
+                rabbitBehaviour.InstantDeath(false);
             }
         }
 

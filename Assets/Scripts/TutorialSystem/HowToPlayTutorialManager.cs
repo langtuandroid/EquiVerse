@@ -27,20 +27,22 @@ public class HowToPlayTutorialManager : MonoBehaviour
 
     public void GoNext()
     {
-        if (GameManager.currentVideoStepIndex < videosteps.Count - 1)
+        GameManager.currentVideoStepIndex++;
+        if (GameManager.currentVideoStepIndex >= videosteps.Count)
         {
-            GameManager.currentVideoStepIndex++;
-            UpdateTutorialStep();
+            GameManager.currentVideoStepIndex = 0;
         }
+        UpdateTutorialStep();
     }
     
     public void GoPrevious()
     {
-        if (GameManager.currentVideoStepIndex > 0)
+        GameManager.currentVideoStepIndex--;
+        if (GameManager.currentVideoStepIndex < 0)
         {
-            GameManager.currentVideoStepIndex--;
-            UpdateTutorialStep();
+            GameManager.currentVideoStepIndex = videosteps.Count - 1;
         }
+        UpdateTutorialStep();
     }
 
     private void UpdateTutorialStep()
