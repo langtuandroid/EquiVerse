@@ -42,10 +42,6 @@ namespace Managers {
         }
 
         public void Update() {
-            if (UnityEngine.Input.GetKey(KeyCode.LeftControl))
-            {
-                totalPoints += 100;
-            }
             UpdateVisualPoints();
         }
 

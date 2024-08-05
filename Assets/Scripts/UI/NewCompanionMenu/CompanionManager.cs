@@ -38,8 +38,6 @@ public class CompanionManager : MonoBehaviour
         if (isNewCompanionScene)
         {
             GenerateCompanionOnPanel();
-            //GameManager.companionsUnlockedIndex++;
-            //GameManager.currentCompanionIndex++;
             GameManager.SaveGameData();
         }
     }

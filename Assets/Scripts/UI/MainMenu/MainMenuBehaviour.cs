@@ -57,9 +57,16 @@ namespace MainMenu
             }
             else
             {
-                continueAdventureObject.SetActive(true);
                 (int levelIndex, int world, int level) = GameManager.FindFirstUncompletedLevel();
-                continueAdventureButtonText.text = "Continue adventure (" + world + "-" + level + ")";
+                if (world == 1)
+                {
+                    continueAdventureObject.SetActive(true);
+                    continueAdventureButtonText.text = "Continue adventure (" + world + "-" + level + ")";
+                }
+                else
+                {
+                    continueAdventureObject.SetActive(false); 
+                }
             }
         }
         
@@ -72,12 +79,6 @@ namespace MainMenu
                     logoCanvas.SetActive(false);
                     mainMenuCanvas.SetActive(true); 
                 }
-            }
-
-            if (UnityEngine.Input.GetKeyDown(KeyCode.U))
-            {
-                PlayerPrefs.DeleteAll();
-                Debug.Log("Delete all playerprefs");
             }
         }
 

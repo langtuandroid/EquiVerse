@@ -68,7 +68,14 @@ public class LevelButton : MonoBehaviour
     {
         MainMenuSoundController soundController = FindObjectOfType<MainMenuSoundController>();
         soundController.FadeMainMenuVolume(1.0f, 1.1f);
-        SceneManager.LoadSceneAsync($"Level {worldIndex}-{levelIndex}", LoadSceneMode.Single);
+        if ((worldIndex == 1 && levelIndex == 5) || worldIndex > 1)
+        {
+            SceneManager.LoadSceneAsync("CompanionSelectorScene", LoadSceneMode.Single);
+        }
+        else
+        {
+            SceneManager.LoadSceneAsync($"Level {worldIndex}-{levelIndex}", LoadSceneMode.Single);
+        }
     }
 
 }

@@ -1673,6 +1673,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 642018846}
     - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
+      propertyPath: companions.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
       propertyPath: companionDescriptionText
       value: 
       objectReference: {fileID: 1496267280}
@@ -1694,7 +1698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
       propertyPath: companions.Array.data[4].companionTitle
-      value: Betsy
+      value: Daisy
       objectReference: {fileID: 0}
     - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
       propertyPath: companions.Array.data[2].companionPrefab
@@ -1707,7 +1711,7 @@ PrefabInstance:
     - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
       propertyPath: companions.Array.data[4].companionPrefab
       value: 
-      objectReference: {fileID: 8062672837211983902, guid: 3fecfe0c36960014fa0a8fb6e7d714b9, type: 3}
+      objectReference: {fileID: 1843596818345988, guid: ab5a846386fd0e74fa43f60958adfcf0, type: 3}
     - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
       propertyPath: companions.Array.data[2].companionDescription
       value: Toby throws food on the ground for your rabbits.
@@ -1726,11 +1730,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
       propertyPath: companions.Array.data[4].companionDescription
-      value: Betsy lends you her bee army to eliminate enemies.
+      value: Daisy gives birth to a new baby rabbit every so often
       objectReference: {fileID: 0}
     - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
       propertyPath: companions.Array.data[4].companionSecondTitle
-      value: the queen bee
+      value: the momma rabbit
       objectReference: {fileID: 0}
     - target: {fileID: 6839408118244766011, guid: 49ad086b2573a3f4dabf6f9de310b5d2, type: 3}
       propertyPath: companions.Array.data[2].companionSoundEventPath.Path

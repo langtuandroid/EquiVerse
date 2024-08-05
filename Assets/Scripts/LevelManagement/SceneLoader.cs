@@ -30,7 +30,14 @@ public class SceneLoader : MonoBehaviour
         transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete(() =>
         {
             (int level, int world) = GameManager.GetNextLevelFromPlayerPrefs();
-            StartCoroutine(LoadAsynchronously("Level " + world + "-" + level));
+            if (world == 1)
+            {
+                StartCoroutine(LoadAsynchronously("Level " + world + "-" + level));
+            }
+            else
+            {
+                StartCoroutine(LoadAsynchronously("Level " + 1 + "-" + 5)); 
+            }
         });
     }
 
