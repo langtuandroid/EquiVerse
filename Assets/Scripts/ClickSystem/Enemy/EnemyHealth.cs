@@ -24,8 +24,6 @@ public class EnemyHealth : Clickable
                 punchTween = null;
             }
 
-            print(currentGunUpgrade.gunDamage);
-
             enemyHealth -= currentGunUpgrade.gunDamage;
         
             punchTween = transform.DOPunchScale(Vector3.one * 0.05f, 0.5f, 8, 1);

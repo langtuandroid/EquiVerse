@@ -10,10 +10,10 @@ public class GraniteGuardianAttackBehaviour : MonoBehaviour
     public ParticleSystem beam;
     public Animator animator;
     public NavMeshAgent navMeshAgent;
-    
+
     private float detectionRadius = 10f;
     private float minimumDistance = 6f;
-    private float attackCooldown = 3f;
+    private float attackCooldown = 4f;
     private bool attacking = false;
     private bool attackCooldownActive = false;
     private Transform targetTransform;
@@ -22,12 +22,7 @@ public class GraniteGuardianAttackBehaviour : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(HandleSpawnDelay());
-    }
-
-    private IEnumerator HandleSpawnDelay()
-    {
-        yield return new WaitForSeconds(attackCooldown);
+        attackCooldownActive = true;
         StartCoroutine(ResetAttackCooldown());
     }
 
@@ -38,7 +33,7 @@ public class GraniteGuardianAttackBehaviour : MonoBehaviour
             RotateTowardsTarget(targetTransform.position);
         }
 
-        if (!attacking && !attackCooldownActive && Time.fixedTime - lastAttackTime >= attackCooldown)
+        if (!attacking && !attackCooldownActive && (Time.fixedTime - lastAttackTime >= attackCooldown))
         {
             FindAndSetTarget();
         }

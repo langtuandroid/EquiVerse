@@ -791,6 +791,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198841082715856408, guid: 706333c6431ba8c4ea48f7fe578e3e37, type: 3}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198841082715856408, guid: 706333c6431ba8c4ea48f7fe578e3e37, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -1102,6 +1106,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198841082715856408, guid: 706333c6431ba8c4ea48f7fe578e3e37, type: 3}
       propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198841082715856408, guid: 706333c6431ba8c4ea48f7fe578e3e37, type: 3}
+      propertyPath: moveWithTransform
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198841082715856408, guid: 706333c6431ba8c4ea48f7fe578e3e37, type: 3}

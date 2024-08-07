@@ -42,6 +42,12 @@ namespace Managers {
         }
 
         public void Update() {
+#if(UNITY_EDITOR)
+            if (UnityEngine.Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                IncrementPoints(300);
+            }
+#endif
             UpdateVisualPoints();
         }
 
