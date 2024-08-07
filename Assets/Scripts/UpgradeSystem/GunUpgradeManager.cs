@@ -17,7 +17,6 @@ public class GunUpgrade
 public class GunUpgradeManager : MonoBehaviour
 {
     public GameManager gameManager;
-    private static GunUpgradeManager _instance;
     public List<GunUpgrade> gunUpgrades = new List<GunUpgrade>();
     public LeafPointManager leafPointManager;
     
@@ -38,7 +37,6 @@ public class GunUpgradeManager : MonoBehaviour
         gunUpgradeIndex = 0;
         currentUpgradeCost = upgradeCostAmount[0];
         weaponUpgradeCostText.text = currentUpgradeCost.ToString();
-        _instance = this;
     }
 
     public void UpgradeGun()
@@ -78,12 +76,7 @@ public class GunUpgradeManager : MonoBehaviour
             }
         }
     }
-
-
-    public static GunUpgradeManager GetInstance()
-    {
-        return _instance;
-    }
+    
     public GunUpgrade GetCurrentGunUpgrade()
     {
         return gunUpgrades[gunUpgradeIndex];

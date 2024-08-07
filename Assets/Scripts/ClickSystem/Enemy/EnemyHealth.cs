@@ -15,14 +15,16 @@ public class EnemyHealth : Clickable
 
     public override void OnClick(Vector3 point)
     {
-        GunUpgrade currentGunUpgrade = GunUpgradeManager.GetInstance().GetCurrentGunUpgrade();
+        GunUpgrade currentGunUpgrade = FindObjectOfType<GunUpgradeManager>().GetCurrentGunUpgrade();
         if (enemyHealth > currentGunUpgrade.gunDamage)
         {
             if (punchTween != null && punchTween.IsActive())
             {
-                punchTween.Complete(); // Complete the previous tween
-                punchTween = null; // Reset the tween reference
+                punchTween.Complete();
+                punchTween = null;
             }
+
+            print(currentGunUpgrade.gunDamage);
 
             enemyHealth -= currentGunUpgrade.gunDamage;
         
