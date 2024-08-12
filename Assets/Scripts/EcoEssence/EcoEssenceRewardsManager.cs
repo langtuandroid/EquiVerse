@@ -5,15 +5,17 @@ using UnityEngine;
 public class EcoEssenceRewardsManager : MonoBehaviour
 {
     public TextMeshProUGUI ecoEssenceText;
-    public static int totalEcoEssence, visualEcoEssence;
-    
-    private float lastVisualUpdate = 0f;
+    public static int totalEcoEssence;
+
+    private int visualEcoEssence;
+
     private const float updateInterval = 0.01666667f;
     private const int speedFactor = 150;
+    
+    private DateTime lastVisualUpdate = DateTime.Now;
 
     private void Start()
     {
-        totalEcoEssence = 0;
         visualEcoEssence = totalEcoEssence;
     }
 
@@ -24,26 +26,29 @@ public class EcoEssenceRewardsManager : MonoBehaviour
 
     public void UpdateVisualEcoEssence()
     {
-        if (Time.time - lastVisualUpdate > updateInterval)
+        DateTime now = DateTime.Now;
+        if ((now - lastVisualUpdate).TotalSeconds > updateInterval)
         {
-            int difference = totalEcoEssence - visualEcoEssence;
-            int changeAmount = (int)(difference * Time.deltaTime * speedFactor);
-            changeAmount = Math.Max(1, Math.Abs(changeAmount)); // Ensure at least a change of 1
+            int difference = Math.Abs(visualEcoEssence - totalEcoEssence);
+            int changeAmount = Math.Max(1, difference / speedFactor); 
 
-            visualEcoEssence += Math.Sign(difference) * changeAmount;
-            visualEcoEssence = Mathf.Clamp(visualEcoEssence, 0, totalEcoEssence); // Clamp to ensure it doesn't go beyond total
+            if (visualEcoEssence < totalEcoEssence) {
+                visualEcoEssence = Math.Min(visualEcoEssence + changeAmount, totalEcoEssence);
+            } else if (visualEcoEssence > totalEcoEssence) {
+                visualEcoEssence = Math.Max(visualEcoEssence - changeAmount, totalEcoEssence);
+            }
 
-            lastVisualUpdate = Time.time;
+            lastVisualUpdate = now;
             UpdateEcoEssenceText();
         }
     }
-    
+
     public static void IncrementEcoEssence(int amount)
     {
         totalEcoEssence += amount;
     }
-    
-    void UpdateEcoEssenceText()
+
+    private void UpdateEcoEssenceText()
     {
         if (ecoEssenceText != null)
         {

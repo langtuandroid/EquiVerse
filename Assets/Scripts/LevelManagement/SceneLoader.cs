@@ -41,11 +41,11 @@ public class SceneLoader : MonoBehaviour
         });
     }
 
-    public void LoadCompanionSelector()
+    public void LoadProgressHub()
     {
         transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
         {
-            StartCoroutine(LoadAsynchronously("CompanionSelectorScene"));
+            StartCoroutine(LoadAsynchronously("ProgressHubScene"));
         }));
     }
 

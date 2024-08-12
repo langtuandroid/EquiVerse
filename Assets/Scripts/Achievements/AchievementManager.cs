@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Managers;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public enum AchievementType
@@ -25,6 +26,7 @@ public class LevelAchievement
     public int maxAnimalDeaths;
     public int animalsSpawned;
     public int leafpointsCollected;
+    public bool isEcoEssenceRewarded = false;
 
     [HideInInspector]
     public Sprite achievementImage;
@@ -60,7 +62,7 @@ public class AchievementManager : MonoBehaviour
 {
     public AchievementChecker achievementChecker;
     public List<LevelAchievement> levelAchievements;
-    public PopUpLevelCompletionUIBehaviour popUpUIBehaviour;
+    [FormerlySerializedAs("popUpUIBehaviour")] public LevelCompletionPopupUI popupUI;
 
     private Dictionary<AchievementType, (Sprite, string)> achievementTypeData;
 
@@ -99,7 +101,7 @@ public class AchievementManager : MonoBehaviour
         }
         achievementChecker.CheckAchievements();
         SaveAchievements();
-        popUpUIBehaviour.DisplayAchievements(levelAchievements);
+        popupUI.DisplayAchievements(levelAchievements);
     }
     
     public void SaveAchievements()

@@ -67,7 +67,7 @@ public class CompanionManager : MonoBehaviour
         }
         else
         {
-            sceneLoader.LoadCompanionSelector();
+            sceneLoader.LoadProgressHub();
         }
     }
 }

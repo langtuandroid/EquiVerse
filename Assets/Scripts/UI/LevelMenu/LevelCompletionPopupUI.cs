@@ -7,17 +7,17 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
-public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
+public class LevelCompletionPopupUI : MonoBehaviour
 {
     public LevelStatManager levelStatManager;
     public AchievementManager achievementManager;
-    public GameManager gameManager;
 
     [Header("GameObjects")]
     public GameObject popUpLevelCompletionPanelObject;
     public GameObject levelAchievementsPanelObject;
     public GameObject levelStatsPanelObject;
     public GameObject totalEcoEssencePanelObject;
+    public GameObject ecoEssenceValueTextObject;
     public GameObject nextSceneButtonObject;
     public GameObject retryLevelButtonObject;
     public GameObject returnToMainMenuButtonObject;
@@ -26,31 +26,36 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
     public GameObject achievementUIPrefab;
     public GameObject statUIPrefab;
 
-    public Button skipButton; // Reference to the Skip button
+    public Button skipButton;
 
     public Color achievedColor;
     public Color newlyAchievedColor;
     public Color notAchievedColor;
 
     private Dictionary<GameObject, Vector2> originalPositions;
-    private bool skipRequested = false; // Flag to check if skip is requested
+    private bool skipRequested = false;
+
+    private int ecoEssenseRewardedThisLevel;
+    private bool ecoEssenceRewarded;
 
     private void Start()
     {
+        ecoEssenceRewarded = false;
         totalEcoEssencePanelObject.SetActive(false);
         nextSceneButtonObject.SetActive(false);
         retryLevelButtonObject.SetActive(false);
         returnToMainMenuButtonObject.SetActive(false);
+        ecoEssenceValueTextObject.SetActive(false);
         originalPositions = new Dictionary<GameObject, Vector2>();
 
-        skipButton.onClick.AddListener(OnSkipButtonClicked); // Add listener to the skip button
+        skipButton.onClick.AddListener(OnSkipButtonClicked);
     }
 
     private void OnSkipButtonClicked()
     {
         skipRequested = true;
-        StopAllCoroutines(); // Stop all ongoing coroutines
-        DisplayAllImmediately(); // Display everything immediately
+        StopAllCoroutines();
+        DisplayAllImmediately();
     }
 
     public void DisplayAchievements(List<LevelAchievement> achievements)
@@ -65,8 +70,6 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
         PopInAnimation(popUpLevelCompletionPanelObject);
         yield return new WaitForSecondsRealtime(0.25f);
         yield return StartCoroutine(DisplayLevelStats(stats));
-        yield return new WaitForSecondsRealtime(0.25f);
-        PopInAnimation(totalEcoEssencePanelObject);
         yield return new WaitForSecondsRealtime(0.25f);
         List<GameObject> achievementUIs = new List<GameObject>();
 
@@ -93,6 +96,12 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
                     backGroundImage.color = notAchievedColor;
                     backGroundImage.DOColor(newlyAchievedColor, 0.1f).SetDelay(1f + achievementDelay).SetUpdate(true);
                     achievementUI.transform.DOPunchScale(new Vector2(0.1f, 0.1f), 0.7f, 8, 0.8f).SetDelay(1f + achievementDelay).SetUpdate(true);
+                    if (!achievement.isEcoEssenceRewarded)
+                    {
+                        ecoEssenseRewardedThisLevel += achievement.achievementReward;
+                        achievement.isEcoEssenceRewarded = true;
+                    }
+
                     achievementDelay += 0.5f;
                     break;
                 case LevelAchievement.AchievementState.NotAchieved:
@@ -118,7 +127,7 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
 
         foreach (var achievementUI in achievementUIs)
         {
-            if (skipRequested) yield break; // Skip animations if skip is requested
+            if (skipRequested) yield break;
 
             RectTransform rectTransform = achievementUI.GetComponent<RectTransform>();
             CanvasGroup canvasGroup = achievementUI.GetComponent<CanvasGroup>();
@@ -136,6 +145,16 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
                 yield return sequence.WaitForCompletion();
             }
         }
+        yield return new WaitForSecondsRealtime(0.25f);
+        PopInAnimation(totalEcoEssencePanelObject);
+        yield return new WaitForSecondsRealtime(0.5f);
+        PopInAnimation(ecoEssenceValueTextObject);
+        if (!ecoEssenceRewarded)
+        {
+            EcoEssenceRewardsManager.IncrementEcoEssence(ecoEssenseRewardedThisLevel);
+            ecoEssenceRewarded = true;
+        }
+
         yield return new WaitForSecondsRealtime(0.25f);
         if (AchievementChecker.firstTimeCompletion)
         {
@@ -181,7 +200,7 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
 
         foreach (var statUI in statUIs)
         {
-            if (skipRequested) yield break; // Skip animations if skip is requested
+            if (skipRequested) yield break;
 
             RectTransform rectTransform = statUI.GetComponent<RectTransform>();
             CanvasGroup canvasGroup = statUI.GetComponent<CanvasGroup>();
@@ -239,6 +258,11 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
             achievementImage.sprite = achievement.achievementImage;
             descriptionText.text = achievement.achievementDescription;
             rewardText.text = achievement.achievementReward.ToString();
+            
+            totalEcoEssencePanelObject.SetActive(true);
+            totalEcoEssencePanelObject.GetComponent<RectTransform>().localScale = Vector3.one;
+            ecoEssenceValueTextObject.SetActive(true);
+            ecoEssenceValueTextObject.GetComponent<RectTransform>().localScale = Vector3.one;
 
             switch (achievement.achievementState)
             {
@@ -247,6 +271,12 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
                     break;
                 case LevelAchievement.AchievementState.NewlyAchieved:
                     backGroundImage.color = newlyAchievedColor;
+                    if (!achievement.isEcoEssenceRewarded)
+                    {
+                        ecoEssenseRewardedThisLevel += achievement.achievementReward;
+                        achievement.isEcoEssenceRewarded = true;
+                    }
+
                     break;
                 case LevelAchievement.AchievementState.NotAchieved:
                     backGroundImage.color = notAchievedColor;
@@ -256,10 +286,12 @@ public class PopUpLevelCompletionUIBehaviour : MonoBehaviour
             achievementUI.GetComponent<CanvasGroup>().alpha = 1f;
             achievementUI.GetComponent<RectTransform>().localScale = Vector3.one;
         }
-
-        totalEcoEssencePanelObject.SetActive(true);
-        totalEcoEssencePanelObject.GetComponent<RectTransform>().localScale = Vector3.one;
-
+        
+        if (!ecoEssenceRewarded)
+        {
+            EcoEssenceRewardsManager.IncrementEcoEssence(ecoEssenseRewardedThisLevel);
+            ecoEssenceRewarded = true;
+        }
 
         if (AchievementChecker.firstTimeCompletion)
         {

@@ -40,9 +40,15 @@ public class LevelCompletionManager : MonoBehaviour
     {
         levelTimer.StartLevelTimer();
     }
-    
+
     private void Update()
     {
+        #if(UNITY_EDITOR)
+        if (UnityEngine.Input.GetKeyDown(KeyCode.RightControl))
+        {
+            LevelCompleted();
+        }
+        #endif
     }
 
     private void LevelCompleted()

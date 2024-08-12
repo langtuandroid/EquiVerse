@@ -234,6 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5300777628413590957}
   - component: {fileID: 5300777628413590958}
+  - component: {fileID: 1340550269779126635}
   m_Layer: 0
   m_Name: PointManager
   m_TagString: Untagged
@@ -273,6 +274,19 @@ MonoBehaviour:
   endOfLevelCostText: {fileID: 0}
   startingPoints: 220
   endOfLevelCost: 300
+--- !u!114 &1340550269779126635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5300777628413590959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acaf72466d3c4da4daba9ff3d89ddbf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ecoEssenceText: {fileID: 0}
 --- !u!1 &5300777628524437898
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,7 +487,7 @@ MonoBehaviour:
     achievementDescription: 
     backGroundImage: {fileID: 0}
     achievementState: 0
-  popUpUIBehaviour: {fileID: 6291794855083723854}
+  popupUI: {fileID: 6291794855083723854}
   finishedLevelImage: {fileID: 21300000, guid: b9ac1d2133b554e90bb4aa9350f2ce66, type: 3}
   timeBasedImage: {fileID: 21300000, guid: 4bcea60354aeb44a4a6d83a5685d3d79, type: 3}
   animalDeathsImage: {fileID: 21300000, guid: 146de7443157b48b88a971e86583c9e2, type: 3}
@@ -493,7 +507,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelStatManager: {fileID: 5532110041508366129}
   achievementManager: {fileID: 6352662589584021615}
-  gameManager: {fileID: 0}
   popUpLevelCompletionPanelObject: {fileID: 0}
   levelAchievementsPanelObject: {fileID: 0}
   levelStatsPanelObject: {fileID: 0}
