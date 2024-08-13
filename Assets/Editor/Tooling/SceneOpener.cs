@@ -46,9 +46,9 @@ public class SceneOpener : EditorWindow {
             UnityEditor.SceneManagement.EditorSceneManager.OpenScene("Assets/Scenes/NewCompanionScene.unity");
     }
     
-    [MenuItem("Scene/CompanionSelection")]
+    [MenuItem("Scene/ProgressHubScene")]
     public static void CompanionSelection() {
         if (UnityEditor.SceneManagement.EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
-            UnityEditor.SceneManagement.EditorSceneManager.OpenScene("Assets/Scenes/CompanionSelectorScene.unity");
+            UnityEditor.SceneManagement.EditorSceneManager.OpenScene("Assets/Scenes/ProgressHubScene.unity");
     }
 }

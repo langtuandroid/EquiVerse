@@ -15,7 +15,7 @@ public class CompanionActivator : MonoBehaviour
             companion.gameObject.SetActive(false);
         }
 
-        foreach (var selectedCompanion in CompanionSelectionButtonBehaviour.selectedCompanions)
+        foreach (var selectedCompanion in CompanionSelectionManager.selectedCompanions)
         {
             Transform companionPrefab = transform.Find(selectedCompanion.companionTitle);
 

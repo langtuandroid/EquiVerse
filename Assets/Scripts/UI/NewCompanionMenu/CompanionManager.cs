@@ -61,13 +61,6 @@ public class CompanionManager : MonoBehaviour
     {
         int companionIndex = PlayerPrefs.GetInt("CompanionIndex", -1) + 1;
         nextLevelButton.interactable = false;
-        if (companionIndex < 4)
-        {
-            sceneLoader.LoadNextLevel();
-        }
-        else
-        {
-            sceneLoader.LoadProgressHub();
-        }
+        sceneLoader.LoadProgressHub();
     }
 }

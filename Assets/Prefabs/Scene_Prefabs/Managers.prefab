@@ -404,6 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundController: {fileID: 0}
+  gameManager: {fileID: 5300777628840219943}
   endOfLevelButton: {fileID: 0}
   transitionOverlay: {fileID: 0}
   loadingScreen: {fileID: 0}
@@ -453,6 +454,7 @@ MonoBehaviour:
     maxAnimalDeaths: 0
     animalsSpawned: 0
     leafpointsCollected: 0
+    isEcoEssenceRewarded: 0
     achievementImage: {fileID: 0}
     achievementDescription: 
     backGroundImage: {fileID: 0}
@@ -463,6 +465,7 @@ MonoBehaviour:
     maxAnimalDeaths: 0
     animalsSpawned: 0
     leafpointsCollected: 0
+    isEcoEssenceRewarded: 0
     achievementImage: {fileID: 0}
     achievementDescription: 
     backGroundImage: {fileID: 0}
@@ -473,6 +476,7 @@ MonoBehaviour:
     maxAnimalDeaths: 2
     animalsSpawned: 0
     leafpointsCollected: 0
+    isEcoEssenceRewarded: 0
     achievementImage: {fileID: 0}
     achievementDescription: 
     backGroundImage: {fileID: 0}
@@ -483,6 +487,7 @@ MonoBehaviour:
     maxAnimalDeaths: 0
     animalsSpawned: 10
     leafpointsCollected: 0
+    isEcoEssenceRewarded: 0
     achievementImage: {fileID: 0}
     achievementDescription: 
     backGroundImage: {fileID: 0}
@@ -511,6 +516,7 @@ MonoBehaviour:
   levelAchievementsPanelObject: {fileID: 0}
   levelStatsPanelObject: {fileID: 0}
   totalEcoEssencePanelObject: {fileID: 0}
+  ecoEssenceValueTextObject: {fileID: 0}
   nextSceneButtonObject: {fileID: 0}
   retryLevelButtonObject: {fileID: 0}
   returnToMainMenuButtonObject: {fileID: 0}

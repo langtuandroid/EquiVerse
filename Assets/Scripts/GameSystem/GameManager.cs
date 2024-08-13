@@ -114,7 +114,7 @@ namespace Managers
             return (-1, -1, -1);
         }
 
-        public int GetCurrentLevelIndex() //The current level index is also the companion index + 1
+        public int GetCurrentLevelIndex()
         {
             for (int i = 0; i < levels.Count; i++)
             {

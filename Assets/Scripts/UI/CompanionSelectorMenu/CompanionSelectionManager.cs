@@ -4,11 +4,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CompanionSelectionButtonBehaviour : MonoBehaviour
+public class CompanionSelectionManager : MonoBehaviour
 {
     public CompanionManager companionManager;
     public GameObject buttonsParent;
-    public Button nextLevelButton;
     public Color defaultColor, markedColor;
     public TextMeshProUGUI leftToChooseText;
 
@@ -19,12 +18,14 @@ public class CompanionSelectionButtonBehaviour : MonoBehaviour
 
     private int maxCompanionsToSelect = 3;
 
+    public static bool maxCompanionsSelected;
+
     void Start()
     {
+        maxCompanionsSelected = false;
         selectedCompanions.Clear();
         ResetMarkedButtons();
 
-        nextLevelButton.interactable = false;
         FillButtonNames();
 
         UpdateLeftToChooseText();
@@ -32,7 +33,6 @@ public class CompanionSelectionButtonBehaviour : MonoBehaviour
 
     void FillButtonNames()
     {
-        
         int companionIndex = PlayerPrefs.GetInt("CompanionIndex", -1) + 1;
 
         Button[] buttons = buttonsParent.GetComponentsInChildren<Button>();
@@ -80,7 +80,7 @@ public class CompanionSelectionButtonBehaviour : MonoBehaviour
             }
         }
 
-        nextLevelButton.interactable = markedButtons.Count == maxCompanionsToSelect;
+        maxCompanionsSelected = markedButtons.Count == maxCompanionsToSelect;
         SelectCompanion(index);
 
         UpdateLeftToChooseText();

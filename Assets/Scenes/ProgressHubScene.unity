@@ -11143,7 +11143,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1721430404}
   m_HandleRect: {fileID: 1721430403}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 1.0000004
   m_Size: 0.72
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -16398,6 +16398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6364fc2d5d367a748b10b00a9a305d9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextLevelButton: {fileID: 1690338335}
   companionSelectionButton: {fileID: 1899304102}
   shopEcoEssenceButton: {fileID: 565011536}
   companionSelectionMenu: {fileID: 1732039808}

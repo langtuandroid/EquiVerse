@@ -136,18 +136,18 @@ namespace MainMenu
             //TODO
             (int levelIndex, int world, int level) = GameManager.FindFirstUncompletedLevel();
             StoreNextLevelInPlayerPrefs(world, level);
-            if ((world == 1 && level == 5) || world > 1)
+            if (level > 1 && world >= 1)
             {
                 transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
                 {
-                    StartCoroutine(LoadAsynchronously("CompanionSelectorScene"));
+                    StartCoroutine(LoadAsynchronously("ProgressHubScene"));
                 }));
             }
             else
             {
                 transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
                 {
-                    StartCoroutine(LoadAsynchronously("Level " + world + "-" + level));
+                    StartCoroutine(LoadAsynchronously("Level 1-1"));
                 }));
             }
         }

@@ -64,8 +64,7 @@ public class AchievementChecker : MonoBehaviour
             if (achievement.achievementType != AchievementType.AnimalDeaths) continue;
             if (achievement.achievementState == LevelAchievement.AchievementState.NotAchieved)
             {
-                //TODO: Change to actual data
-                if (GameManager.animalDeaths <= achievement.maxAnimalDeaths)
+                if (GameManager.animalDeaths < achievement.maxAnimalDeaths)
                 {
                     achievement.achievementState = LevelAchievement.AchievementState.NewlyAchieved;
                 }

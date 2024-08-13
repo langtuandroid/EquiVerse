@@ -14,6 +14,8 @@ public class LevelCompletionManager : MonoBehaviour
 {
     [Header("Sound")]
     public World1LevelSoundController soundController;
+
+    public GameManager gameManager;
     
     [Header("UI Elements")]
     public Button endOfLevelButton;
@@ -53,7 +55,7 @@ public class LevelCompletionManager : MonoBehaviour
 
     private void LevelCompleted()
     {
-        
+        PlayerPrefs.SetInt("CompanionIndex", gameManager.GetCurrentLevelCompanionIndex() + 1);
         DisableGameplay();
         levelTimer.EndLevelTimer();
         PlayCompletionSounds();
@@ -103,10 +105,7 @@ public class LevelCompletionManager : MonoBehaviour
 
     private void LoadNextScene()
     {
-        GameManager gm = GetComponent<GameManager>();
-        
-        PlayerPrefs.SetInt("CompanionIndex", gm.GetCurrentLevelCompanionIndex() + 1);
-        string nextScene = (gm.currentSceneWorldIndex == 1 && gm.currentSceneLevelIndex == 5) ? "DemoFinishedScene" : "NewCompanionScene";
+        string nextScene = (gameManager.currentSceneWorldIndex == 1 && gameManager.currentSceneLevelIndex == 5) ? "DemoFinishedScene" : "NewCompanionScene";
         StartCoroutine(LoadAsynchronously(nextScene));
     }
 
