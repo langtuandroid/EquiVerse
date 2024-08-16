@@ -47,6 +47,11 @@ public class EcoEssenceRewardsManager : MonoBehaviour
     {
         totalEcoEssence += amount;
     }
+    
+    public static void DecrementEcoEssence(int amount)
+    {
+        totalEcoEssence -= amount;
+    }
 
     private void UpdateEcoEssenceText()
     {
