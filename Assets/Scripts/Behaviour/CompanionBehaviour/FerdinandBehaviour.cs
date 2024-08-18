@@ -13,11 +13,10 @@ namespace Behaviour
         public float secondIdleTriggerMinWait = 5f;
         public float secondIdleTriggerMaxWait = 15f;
 
-        public float eggDropMinWait = 45f;
-        public float eggDropMaxWait = 60f;
+        public static float eggDropMinWait = 45f;
+        public static float eggDropMaxWait = 60f;
         
         
-
         void Start()
         {
             animator = GetComponent<Animator>();

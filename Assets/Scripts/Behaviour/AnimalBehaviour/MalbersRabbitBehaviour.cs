@@ -13,15 +13,17 @@ public class MalbersRabbitBehaviour : MonoBehaviour
 {
     [SerializeField] private GrowthManager growthManager;
     [SerializeField] private LeafPointsSpawner leafPointsSpawner;
-    [SerializeField] private float hungerThreshold;
-    [SerializeField] private float warningThreshold;
-    [SerializeField] private float deathThreshold;
     [SerializeField] private ParticleSystem rabbitGhostParticleSystem;
     [SerializeField] private ParticleSystem stoneSpikesParticleSystem;
     [SerializeField] private Material hungryMaterial;
     public BoolVarListener isHungry;
     public MAnimalBrain animal;
     public MAIState deathState;
+    
+    public static float hungerThreshold = 100f;
+    public static float warningThreshold = 150f;
+    public static float deathThreshold = 250f;
+    
     private SkinnedMeshRenderer skinnedMeshRenderer;
     private Material rabbitMaterial;
     private bool localIsHungry;

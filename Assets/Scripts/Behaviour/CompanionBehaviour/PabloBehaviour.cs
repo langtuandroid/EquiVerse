@@ -6,7 +6,7 @@ public class PabloBehaviour : MonoBehaviour
 {
     public Vector3 areaCenter;
     public Vector3 areaSize;
-    public float moveSpeed = 5f;
+    public static float moveSpeed = 1.5f;
     private Vector3 randomPosition;
     
     public float soundTriggerMinWait = 5f;

@@ -60,6 +60,10 @@ public class PermanentUpgradeManagerEditor : Editor
                     // Upgrade Image
                     upgrade.upgradeImage = (Sprite)EditorGUILayout.ObjectField("Upgrade Image", upgrade.upgradeImage, typeof(Sprite), false);
 
+                    // Required World and Level
+                    upgrade.requiredWorld = EditorGUILayout.IntField("Required World", upgrade.requiredWorld);
+                    upgrade.requiredLevel = EditorGUILayout.IntField("Required Level", upgrade.requiredLevel);
+
                     // Remove button
                     if (GUILayout.Button("Remove Upgrade"))
                     {
@@ -90,10 +94,11 @@ public class PermanentUpgradeManagerEditor : Editor
     {
         List<PermanentUpgradeType> validTypes = new List<PermanentUpgradeType>();
 
-        // Filter the PermanentUpgradeType options based on the selected category
         switch (category)
         {
             case PermanentUpgradeCategory.companionUpgrade:
+                validTypes.Add(PermanentUpgradeType.increaseEggValueUpgrade);
+                validTypes.Add(PermanentUpgradeType.increaseEggSpawnFrequencyUpgrade);
                 validTypes.Add(PermanentUpgradeType.increasePabloMoveSpeedUpgrade);
                 validTypes.Add(PermanentUpgradeType.increaseTobyThrowRateUpgrade);
                 validTypes.Add(PermanentUpgradeType.increaseTobyFoodQualityUpgrade);
@@ -106,13 +111,12 @@ public class PermanentUpgradeManagerEditor : Editor
                 break;
 
             case PermanentUpgradeCategory.combatUpgrade:
-                validTypes.Add(PermanentUpgradeType.decreaseMoveSpeedLeafpointsUpgrade);
+                validTypes.Add(PermanentUpgradeType.decreaseFoxHungerRate);
                 break;
 
             case PermanentUpgradeCategory.financialUpgrade:
+                validTypes.Add(PermanentUpgradeType.decreaseMoveSpeedLeafpointsUpgrade);
                 validTypes.Add(PermanentUpgradeType.increaseStartingCapitalUpgrade);
-                validTypes.Add(PermanentUpgradeType.increaseEggValueUpgrade);
-                validTypes.Add(PermanentUpgradeType.increaseEggSpawnFrequencyUpgrade);
                 validTypes.Add(PermanentUpgradeType.increaseLeafpointValueUpgrade);
                 break;
         }

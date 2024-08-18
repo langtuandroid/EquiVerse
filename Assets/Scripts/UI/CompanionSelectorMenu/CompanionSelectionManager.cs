@@ -37,9 +37,11 @@ public class CompanionSelectionManager : MonoBehaviour
 
         Button[] buttons = buttonsParent.GetComponentsInChildren<Button>();
 
+        int maxCompanions = Mathf.Min(companionIndex, companionManager.companions.Count);
+
         for (int i = 0; i < buttons.Length; i++)
         {
-            if (i < companionIndex)
+            if (i < maxCompanions)
             {
                 ConfigureButton(buttons[i], i);
             }

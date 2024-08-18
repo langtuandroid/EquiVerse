@@ -7,8 +7,8 @@ using Unity.AI.Navigation;
 
 public class TobyBehaviour : MonoBehaviour
 {
-    public GameObject throwableFoodPrefab;
-    public float minTimeTillNextThrow, maxTimeTillNextThrow;
+    public GameObject throwableHayPrefab, throwableCarrotPrefab;
+    public static float minTimeTillNextThrow = 8, maxTimeTillNextThrow = 10;
     public float throwDuration;
     public float arcHeight;
     public float navMeshSampleDistance;
@@ -19,9 +19,21 @@ public class TobyBehaviour : MonoBehaviour
     private NavMeshSurface navMeshSurface;
     private float timer;
     private Animator animator;
+    private GameObject throwableFoodPrefab;
+
+    public static bool foodQualityUpgrade = false;
 
     void Start()
     {
+        if (!foodQualityUpgrade)
+        {
+            throwableFoodPrefab = throwableHayPrefab;
+        }
+        else
+        {
+            throwableFoodPrefab = throwableCarrotPrefab;
+        }
+
         animator = GetComponent<Animator>();
         GameObject navMeshObject = GameObject.Find("PlantPlacement_NavMesh_Surface");
         if (navMeshObject != null)

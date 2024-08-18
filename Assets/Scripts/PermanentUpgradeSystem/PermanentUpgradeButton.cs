@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PermanentUpgradeButton : MonoBehaviour
 {
     public Button buttonComponent;
-    public TextMeshProUGUI titleText; 
+    public TextMeshProUGUI titleText;
     public Image upgradeImage;
     public TextMeshProUGUI costText;
     public GameObject boughtBanner;
@@ -19,6 +19,17 @@ public class PermanentUpgradeButton : MonoBehaviour
         titleText.text = upgrade.upgradeName;
         upgradeImage.sprite = upgrade.upgradeImage;
         costText.text = upgrade.upgradeCost.ToString();
+
+        string key = $"UPGRADE_{upgrade.upgradeName}";
+        if (PlayerPrefs.GetInt(key, 0) == 1)
+        {
+            UpgradeBought();
+        }
+        else
+        {
+            buttonComponent.interactable = true;
+            boughtBanner.SetActive(false);
+        }
     }
 
     public void OnClick()

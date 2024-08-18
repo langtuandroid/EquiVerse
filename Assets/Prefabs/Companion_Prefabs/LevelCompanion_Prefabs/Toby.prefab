@@ -110,9 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e85b10053245f349820d127b5b49d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwableFoodPrefab: {fileID: 9138003567446152561, guid: 842591236d551b8439baeb1ae94a441f, type: 3}
-  minTimeTillNextThrow: 8
-  maxTimeTillNextThrow: 10
+  throwableHayPrefab: {fileID: 9138003567446152561, guid: 842591236d551b8439baeb1ae94a441f, type: 3}
+  throwableCarrotPrefab: {fileID: 9138003567446152561, guid: 8e1aae06e4ecad945b094a403999fb55, type: 3}
   throwDuration: 1
   arcHeight: 2
   navMeshSampleDistance: 4

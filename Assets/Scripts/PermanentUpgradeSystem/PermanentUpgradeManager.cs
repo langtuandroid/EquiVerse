@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Mime;
+using Behaviour;
 using DG.Tweening;
+using Managers;
+using Spawners;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -39,6 +42,71 @@ public class PermanentUpgrade
     public float effectValue;
     public int upgradeCost;
     public Sprite upgradeImage;
+    public int requiredWorld;
+    public int requiredLevel;
+
+    public void ApplyUpgrade()
+    {
+        switch (upgradeType)
+        {
+            case PermanentUpgradeType.increaseStartingCapitalUpgrade:
+                LeafPointManager.startingPointsBonus += (int)effectValue;
+                break;
+
+            case PermanentUpgradeType.increaseRabbitDeathThresholdUpgrade:
+                MalbersRabbitBehaviour.deathThreshold += (int)effectValue;
+                break;
+
+            case PermanentUpgradeType.increaseEggValueUpgrade:
+                LeafPointManager.gooseEggPoints += (int)effectValue;
+                break;
+
+            case PermanentUpgradeType.increaseEggSpawnFrequencyUpgrade:
+                FerdinandBehaviour.eggDropMinWait -= effectValue;
+                FerdinandBehaviour.eggDropMaxWait -= effectValue;
+                break;
+
+            case PermanentUpgradeType.decreaseMoveSpeedLeafpointsUpgrade:
+                LeafPointsSpawner.duration += effectValue;
+                break;
+
+            case PermanentUpgradeType.increasePabloMoveSpeedUpgrade:
+                PabloBehaviour.moveSpeed += effectValue;
+                break;
+
+            case PermanentUpgradeType.increaseRabbitMoveSpeedUpgrade:
+                //Rabb.RabbitMoveSpeed += effectValue;
+                break;
+
+            case PermanentUpgradeType.increaseLeafpointValueUpgrade:
+                LeafPointManager.lowValuePoints += (int)effectValue;
+                LeafPointManager.highValuePoints += (int)effectValue;
+                break;
+
+            case PermanentUpgradeType.increaseTobyThrowRateUpgrade:
+                TobyBehaviour.minTimeTillNextThrow -= effectValue;
+                TobyBehaviour.maxTimeTillNextThrow -= effectValue;
+                break;
+
+            case PermanentUpgradeType.increaseTobyFoodQualityUpgrade:
+                TobyBehaviour.foodQualityUpgrade = true;
+                break;
+
+            case PermanentUpgradeType.decreaseFoxHungerRate:
+                MalbersFoxBehaviour.foxHungerDecrementValue = (int)effectValue;
+                break;
+
+            default:
+                Debug.LogWarning($"Upgrade {upgradeName} does not have a valid upgrade type.");
+                break;
+        }
+    }
+    
+    public bool IsUnlocked()
+    {
+        string levelKey = $"WORLD_{requiredWorld}_LEVEL_{requiredLevel}";
+        return AchievementManager.IsLevelPreviouslyCompleted(levelKey);
+    }
 }
 
 public class PermanentUpgradeManager : MonoBehaviour
@@ -51,7 +119,7 @@ public class PermanentUpgradeManager : MonoBehaviour
 
     public TextMeshProUGUI ecoEssenceValueText;
 
-    [Header("Explanation Panel Elements")] 
+    [Header("Explanation Panel Elements")]
     public TextMeshProUGUI explanationPanelTitleText;
     public Image explanationPanelImage;
     public TextMeshProUGUI explanationPanelDescriptionText;
@@ -60,7 +128,7 @@ public class PermanentUpgradeManager : MonoBehaviour
     private Dictionary<PermanentUpgrade, PermanentUpgradeButton> upgradeButtonDictionary =
         new Dictionary<PermanentUpgrade, PermanentUpgradeButton>();
 
-    private PermanentUpgrade currentlySelectedUpgrade;  // Reference to the currently selected upgrade
+    private PermanentUpgrade currentlySelectedUpgrade;
 
     private void Awake()
     {
@@ -77,13 +145,13 @@ public class PermanentUpgradeManager : MonoBehaviour
     private void Start()
     {
         ecoEssenceValueText.text = EcoEssenceRewardsManager.totalEcoEssence.ToString();
-        EcoEssenceRewardsManager.IncrementEcoEssence(3000);
-        
+
         explanationPanelTitleText.gameObject.SetActive(false);
         explanationPanelImage.gameObject.SetActive(false);
         explanationPanelDescriptionText.gameObject.SetActive(false);
         explanationPanelCostText.gameObject.SetActive(false);
-        
+
+        LoadPurchasedUpgrades();
         PopulateGrid();
     }
 
@@ -91,7 +159,10 @@ public class PermanentUpgradeManager : MonoBehaviour
     {
         foreach (var upgrade in availableUpgrades)
         {
-            CreateButton(upgrade);
+            if (upgrade.IsUnlocked())
+            {
+                CreateButton(upgrade);
+            }
         }
     }
 
@@ -109,7 +180,7 @@ public class PermanentUpgradeManager : MonoBehaviour
         explanationPanelImage.gameObject.SetActive(true);
         explanationPanelDescriptionText.gameObject.SetActive(true);
         explanationPanelCostText.gameObject.SetActive(true);
-        
+
         currentlySelectedUpgrade = upgrade;
 
         explanationPanelTitleText.text = upgrade.upgradeName;
@@ -120,16 +191,20 @@ public class PermanentUpgradeManager : MonoBehaviour
 
     public void BuyUpgrade()
     {
-        if (currentlySelectedUpgrade == null) return;  // Ensure an upgrade is selected
+        if (currentlySelectedUpgrade == null) return;
 
         if (EcoEssenceRewardsManager.totalEcoEssence >= currentlySelectedUpgrade.upgradeCost)
         {
             EcoEssenceRewardsManager.DecrementEcoEssence(currentlySelectedUpgrade.upgradeCost);
 
+            currentlySelectedUpgrade.ApplyUpgrade();
+            SaveUpgradeState(currentlySelectedUpgrade);
+
             if (upgradeButtonDictionary.TryGetValue(currentlySelectedUpgrade, out PermanentUpgradeButton button))
             {
                 button.UpgradeBought();
             }
+
             explanationPanelTitleText.gameObject.SetActive(false);
             explanationPanelImage.gameObject.SetActive(false);
             explanationPanelDescriptionText.gameObject.SetActive(false);
@@ -138,5 +213,25 @@ public class PermanentUpgradeManager : MonoBehaviour
             currentlySelectedUpgrade = null;
         }
     }
+
+    private void SaveUpgradeState(PermanentUpgrade upgrade)
+    {
+        string key = $"UPGRADE_{upgrade.upgradeName}";
+        PlayerPrefs.SetInt(key, 1);
+        PlayerPrefs.Save();
+    }
+
+    private void LoadPurchasedUpgrades()
+    {
+        foreach (var upgrade in availableUpgrades)
+        {
+            string key = $"UPGRADE_{upgrade.upgradeName}";
+            if (PlayerPrefs.GetInt(key, 0) == 1)
+            {
+                upgrade.ApplyUpgrade();
+            }
+        }
+    }
 }
+
 

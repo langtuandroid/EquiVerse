@@ -18,13 +18,14 @@ namespace Managers {
         public static int totalPoints, visualPoints;
         
         [Header("LevelValues")]
-        public int startingPoints;
+        private int startingPoints = 395;
         public int endOfLevelCost;
 
-        private static int lowValuePoints = 15;
-        private static int highValuePoints = 35;
-        private static int gooseEggPoints = 200;
+        public static int lowValuePoints = 15;
+        public static int highValuePoints = 35;
+        public static int gooseEggPoints = 200;
         private static int crystalShardPoints = 200;
+        public static int startingPointsBonus = 0;
         
         private DateTime lastVisualUpdate = DateTime.Now;
         private const float updateInterval = 0.01666667f;
@@ -34,7 +35,7 @@ namespace Managers {
         {
             originalColor = totalPointsBackground.color;
             
-            totalPoints = startingPoints;
+            totalPoints = startingPoints + startingPointsBonus;
             visualPoints = totalPoints;
             UpdatePointText();
 

@@ -14,7 +14,7 @@ namespace Spawners
         private float timeBetweenLeafSpawn;
         public Vector2 timeBetweenLeafSpawnRange = new Vector2(10f, 18f);
         private float desiredHeight = 5f;
-        private float duration = 10f;
+        public static float duration = 10f;
 
         public bool spawnLeafPoints = true;
 
