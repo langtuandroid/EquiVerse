@@ -13,28 +13,33 @@ namespace MainMenu
     public class MainMenuBehaviour : MonoBehaviour
     {
         public LevelSelectionManager levelSelectionManager;
-        
-        [Header("SceneTransition")]
+
+        [Header("Scene Transition")]
         public Image transitionOverlay;
         public GameObject loadingScreen;
 
-        [Header("ToggleMenu's")] 
+        [Header("Menus")]
         public GameObject mainMenu;
         public GameObject optionsMenu;
         public GameObject creditsMenu;
         public GameObject howToPlayMenu;
         public GameObject levelSelectionMenu;
         public GameObject newAdventureWarningPanel;
+        public GameObject discordPanel;
 
-        public GameObject continueAdventureObject;
-        public TextMeshProUGUI continueAdventureButtonText;
-        public Button continueAdventureButton, newAdventureButton, optionsButton, quitButton;
-
-        public GameObject DiscordPanel;
-
+        [Header("Menu Canvases")]
         public GameObject logoCanvas;
         public GameObject mainMenuCanvas;
-        [Header("Sound")] 
+
+        [Header("Continue Adventure")]
+        public GameObject continueAdventureObject;
+        public TextMeshProUGUI continueAdventureButtonText;
+        public Button continueAdventureButton;
+        public Button newAdventureButton;
+        public Button optionsButton;
+        public Button quitButton;
+
+        [Header("Sound")]
         public MainMenuSoundController mainMenuSoundController;
         
         private void Start()
@@ -42,7 +47,7 @@ namespace MainMenu
             GameManager.LoadGameData();
             mainMenuCanvas.SetActive(false);
             logoCanvas.SetActive(true);
-            DiscordPanel.SetActive(true);
+            discordPanel.SetActive(true);
             continueAdventureButton.enabled = true;
             newAdventureButton.enabled = true;
             optionsButton.enabled = true;
@@ -92,7 +97,7 @@ namespace MainMenu
                 newAdventureButton.enabled = false;
                 optionsButton.enabled = false;
                 quitButton.enabled = false;
-                DiscordPanel.SetActive(false);
+                discordPanel.SetActive(false);
             }
             else
             {
@@ -102,7 +107,7 @@ namespace MainMenu
                 newAdventureButton.enabled = true;
                 optionsButton.enabled = true;
                 quitButton.enabled = true;
-                DiscordPanel.SetActive(true); 
+                discordPanel.SetActive(true); 
             }
 
         }
@@ -131,9 +136,9 @@ namespace MainMenu
             newAdventureButton.enabled = false;
             optionsButton.enabled = false;
             quitButton.enabled = false;
-            DiscordPanel.SetActive(false);
+            discordPanel.SetActive(false);
             mainMenuSoundController.FadeMainMenuVolume(1.0f, 1.1f);
-            //TODO
+            
             (int levelIndex, int world, int level) = GameManager.FindFirstUncompletedLevel();
             StoreNextLevelInPlayerPrefs(world, level);
             if (level > 1 && world >= 1)
@@ -240,7 +245,7 @@ namespace MainMenu
             if (!levelSelectionMenu.activeInHierarchy)
             {
                 levelSelectionMenu.SetActive(true);
-                DiscordPanel.SetActive(false);
+                discordPanel.SetActive(false);
                 mainMenu.SetActive(false);
                 continueAdventureButton.enabled = false;
                 newAdventureButton.enabled = false;
@@ -251,7 +256,7 @@ namespace MainMenu
             else
             {
                 levelSelectionMenu.SetActive(false);
-                DiscordPanel.SetActive(true);
+                discordPanel.SetActive(true);
                 mainMenu.SetActive(true);
                 continueAdventureButton.enabled = true;
                 newAdventureButton.enabled = true;
