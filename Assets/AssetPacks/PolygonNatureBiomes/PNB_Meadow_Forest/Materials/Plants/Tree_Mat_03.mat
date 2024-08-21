@@ -206,6 +206,7 @@ Material:
     - _FrostingFalloff: 0.8
     - _FrostingHeight: 1.8
     - _FrostingSwitch: 0
+    - _FrostingWorldObjectSwitch2: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -214,8 +215,8 @@ Material:
     - _GustLargeFreq: 0.094
     - _GustScale: 0.311
     - _GustSmallFreq: 0.468
-    - _JitterAmount: 0.315
-    - _JitterFreq: 0.507
+    - _JitterAmount: 0.184
+    - _JitterFreq: 0.248
     - _LOD_FADE_CROSSFADE: 1
     - _LOD_FADE_CROSSFADE1: 1
     - _LOD_FADE_CROSSFADE2: 1
@@ -252,7 +253,7 @@ Material:
     - _SrcBlend: 1
     - _Tiling: 1
     - _Tint_Tiling: 0.5
-    - _TotalWindAmount: 0.5
+    - _TotalWindAmount: 0.062
     - _TrunkFlatColourSwitch: 0
     - _TrunkMetallic: 0
     - _TrunkNormalAmount: 0.5
@@ -260,7 +261,7 @@ Material:
     - _UVSec: 0
     - _WindAmount: 1
     - _WindBaseline: 0
-    - _WindDirection: 0.77
+    - _WindDirection: 0.324
     - _WindDirection1: 0
     - _WindNoiseScale: 1
     - _WindNoiseScale1: 14.76

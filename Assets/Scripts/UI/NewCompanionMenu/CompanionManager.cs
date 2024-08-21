@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using FMODUnity;
 using Managers;
 using TMPro;
@@ -35,14 +36,10 @@ public class CompanionManager : MonoBehaviour
 
     private void Start()
     {
-        if (isNewCompanionScene)
-        {
-            GenerateCompanionOnPanel();
-            GameManager.SaveGameData();
-        }
+        GameManager.SaveGameData();
     }
 
-    public void GenerateCompanionOnPanel()
+    public void GenerateCompanionOnPedestal()
     {
         int companionIndex = PlayerPrefs.GetInt("CompanionIndex", -1);
         Instantiate(companions[companionIndex].companionPrefab, companionPrefabInstanceLocation);

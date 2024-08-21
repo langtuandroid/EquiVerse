@@ -9,11 +9,13 @@ using UnityEngine.UI;
 public class CompanionRevealer : MonoBehaviour
 {
     public CompanionManager companionManager;
-    
-    public Button giftButton;
-    public RectTransform companion;
+
+    public GameObject chestCompanion;
     public Button nextLevelButton;
     public GameObject clickOnChestText;
+    public GameObject clickOnChestNavigationArrow;
+    public GameObject companionHeaderPanel;
+    public Animator animator;
 
     private Tween shakeTween;
 
@@ -23,10 +25,11 @@ public class CompanionRevealer : MonoBehaviour
     {
         nextLevelButton.interactable = true;
         clickOnChestText.SetActive(true);
-        giftButton.interactable = true;
+        clickOnChestNavigationArrow.SetActive(true);
+        companionHeaderPanel.SetActive(false);
         shakeTween = DOVirtual.DelayedCall(2.5f, () =>
             {
-                giftButton.transform.DOShakePosition(2.5f, new Vector3(8, 8, 0), 10, 90, false, true);
+                chestCompanion.transform.DOShakePosition(1f, new Vector3(0.01f, 0.01f, 0.01f), 10, 90, false, true);
                 FMODUnity.RuntimeManager.PlayOneShot("event:/NewCompanionScene/GiftShake");
             })
             .SetLoops(-1, LoopType.Restart);
@@ -35,29 +38,30 @@ public class CompanionRevealer : MonoBehaviour
     public void RevealCompanion()
     {
         clickOnChestText.SetActive(false);
+        clickOnChestNavigationArrow.SetActive(false);
         shakeTween.Kill();
-        giftButton.interactable = false;
         soundController.NewCompanionMusicVolumeFade(0, 2f);
         FMODUnity.RuntimeManager.PlayOneShot("event:/NewCompanionScene/RevealDrumroll");
-        giftButton.transform.DOScale(0, 2.5f)
+        chestCompanion.transform.DOScale(0, 2.5f)
             .SetEase(Ease.InBack)
             .OnPlay(() =>
             {
-                // Rotate the giftButton during the scale tween
-                giftButton.transform.DORotate(new Vector3(0, 0, 900), 2.5f, RotateMode.FastBeyond360)
+                chestCompanion.transform.DORotate(new Vector3(0, 1800, 0), 2.5f, RotateMode.FastBeyond360)
                     .SetEase(Ease.InCubic)
                     .SetLoops(-1, LoopType.Incremental);
+                animator.SetTrigger("Open");
             })
             .OnComplete(() =>
             {
-                companion.gameObject.SetActive(true);
+                companionManager.GenerateCompanionOnPedestal();
                 FMODUnity.RuntimeManager.PlayOneShot("event:/NewCompanionScene/OnReveal");
-                companion.DOSizeDelta(new Vector2(750, 800), 2f).SetEase(Ease.OutBack).OnComplete((() =>
-                {
-                    nextLevelButton.gameObject.SetActive(true);
-                    soundController.NewCompanionMusicVolumeFade(1, 2f);
-                    companionManager.PlayCompanionSound();
-                }));
+
+                companionHeaderPanel.SetActive(true);
+                nextLevelButton.gameObject.SetActive(true);
+                soundController.NewCompanionMusicVolumeFade(1, 2f);
+                companionManager.PlayCompanionSound();
             });
+
+
     }
 }
