@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -27,6 +28,7 @@ public class LevelCompletionPopupUI : MonoBehaviour
     public GameObject statUIPrefab;
 
     public Button skipButton;
+    public TextMeshProUGUI ecoEssenceValueText;
 
     public Color achievedColor;
     public Color newlyAchievedColor;
@@ -35,8 +37,14 @@ public class LevelCompletionPopupUI : MonoBehaviour
     private Dictionary<GameObject, Vector2> originalPositions;
     private bool skipRequested = false;
 
-    private int ecoEssenseRewardedThisLevel;
+    private static int ecoEssenseRewardedThisLevel;
     private bool ecoEssenceRewarded;
+    
+    private const float updateInterval = 0.01666667f;
+    private const int speedFactor = 150;
+    
+    private DateTime lastVisualUpdate = DateTime.Now;
+    private int visualEcoEssence;
 
     private void Start()
     {
@@ -49,6 +57,13 @@ public class LevelCompletionPopupUI : MonoBehaviour
         originalPositions = new Dictionary<GameObject, Vector2>();
 
         skipButton.onClick.AddListener(OnSkipButtonClicked);
+        ecoEssenseRewardedThisLevel = 0;
+        visualEcoEssence = ecoEssenseRewardedThisLevel;
+    }
+
+    private void Update()
+    {
+        UpdateVisualEcoEssence();
     }
 
     private void OnSkipButtonClicked()
@@ -98,7 +113,7 @@ public class LevelCompletionPopupUI : MonoBehaviour
                     achievementUI.transform.DOPunchScale(new Vector2(0.1f, 0.1f), 0.7f, 8, 0.8f).SetDelay(1f + achievementDelay).SetUpdate(true);
                     if (!achievement.isEcoEssenceRewarded)
                     {
-                        ecoEssenseRewardedThisLevel += achievement.achievementReward;
+                        IncrementEcoEssenceRewardedThisLevel(achievement.achievementReward);
                         achievement.isEcoEssenceRewarded = true;
                     }
 
@@ -273,7 +288,7 @@ public class LevelCompletionPopupUI : MonoBehaviour
                     backGroundImage.color = newlyAchievedColor;
                     if (!achievement.isEcoEssenceRewarded)
                     {
-                        ecoEssenseRewardedThisLevel += achievement.achievementReward;
+                        IncrementEcoEssenceRewardedThisLevel(achievement.achievementReward);
                         achievement.isEcoEssenceRewarded = true;
                     }
 
@@ -317,5 +332,38 @@ public class LevelCompletionPopupUI : MonoBehaviour
             rectTransform.localScale = Vector3.zero;
             rectTransform.DOScale(1, 0.5f).SetEase(Ease.OutExpo).SetUpdate(true);
         }
+    }
+    
+    public void UpdateVisualEcoEssence()
+    {
+        DateTime now = DateTime.Now;
+        if ((now - lastVisualUpdate).TotalSeconds > updateInterval)
+        {
+            int difference = Math.Abs(visualEcoEssence - ecoEssenseRewardedThisLevel);
+            int changeAmount = Math.Max(1, difference / speedFactor); 
+
+            if (visualEcoEssence < ecoEssenseRewardedThisLevel) {
+                visualEcoEssence = Math.Min(visualEcoEssence + changeAmount, ecoEssenseRewardedThisLevel);
+            } else if (visualEcoEssence > ecoEssenseRewardedThisLevel) {
+                visualEcoEssence = Math.Max(visualEcoEssence - changeAmount, ecoEssenseRewardedThisLevel);
+            }
+
+            lastVisualUpdate = now;
+            UpdateEcoEssenceText();
+        }
+    }
+
+    
+    private void UpdateEcoEssenceText()
+    {
+        if (ecoEssenseRewardedThisLevel != null)
+        {
+            ecoEssenceValueText.text = visualEcoEssence.ToString();
+        }
+    }
+    
+    private void IncrementEcoEssenceRewardedThisLevel(int amount)
+    {
+        ecoEssenseRewardedThisLevel += amount;
     }
 }
