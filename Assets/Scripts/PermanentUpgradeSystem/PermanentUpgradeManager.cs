@@ -50,28 +50,28 @@ public class PermanentUpgrade
         switch (upgradeType)
         {
             case PermanentUpgradeType.increaseStartingCapitalUpgrade:
-                LeafPointManager.startingPointsBonus += (int)effectValue;
+                UpgradeVariableController.startingPointsBonus += (int)effectValue;
                 break;
 
             case PermanentUpgradeType.increaseRabbitDeathThresholdUpgrade:
-                MalbersRabbitBehaviour.deathThreshold += (int)effectValue;
+                UpgradeVariableController.deathThreshold += (int)effectValue;
                 break;
 
             case PermanentUpgradeType.increaseEggValueUpgrade:
-                LeafPointManager.gooseEggPoints += (int)effectValue;
+                UpgradeVariableController.gooseEggPoints += (int)effectValue;
                 break;
 
             case PermanentUpgradeType.increaseEggSpawnFrequencyUpgrade:
-                FerdinandBehaviour.eggDropMinWait -= effectValue;
-                FerdinandBehaviour.eggDropMaxWait -= effectValue;
+                UpgradeVariableController.eggDropMinWait -= effectValue;
+                UpgradeVariableController.eggDropMaxWait -= effectValue;
                 break;
 
             case PermanentUpgradeType.decreaseMoveSpeedLeafpointsUpgrade:
-                LeafPointsSpawner.duration += effectValue;
+                UpgradeVariableController.duration += effectValue;
                 break;
 
             case PermanentUpgradeType.increasePabloMoveSpeedUpgrade:
-                PabloBehaviour.moveSpeed += effectValue;
+                UpgradeVariableController.moveSpeed += effectValue;
                 break;
 
             case PermanentUpgradeType.increaseRabbitMoveSpeedUpgrade:
@@ -79,27 +79,28 @@ public class PermanentUpgrade
                 break;
 
             case PermanentUpgradeType.increaseLeafpointValueUpgrade:
-                LeafPointManager.lowValuePoints += (int)effectValue;
-                LeafPointManager.highValuePoints += (int)effectValue;
+                UpgradeVariableController.lowValuePoints += (int)effectValue;
+                UpgradeVariableController.highValuePoints += (int)effectValue;
                 break;
 
             case PermanentUpgradeType.increaseTobyThrowRateUpgrade:
-                TobyBehaviour.minTimeTillNextThrow -= effectValue;
-                TobyBehaviour.maxTimeTillNextThrow -= effectValue;
+                UpgradeVariableController.minTimeTillNextThrow -= effectValue;
+                UpgradeVariableController.maxTimeTillNextThrow -= effectValue;
                 break;
 
             case PermanentUpgradeType.increaseTobyFoodQualityUpgrade:
-                TobyBehaviour.foodQualityUpgrade = true;
+                UpgradeVariableController.foodQualityUpgrade = true;
                 break;
 
             case PermanentUpgradeType.decreaseFoxHungerRate:
-                MalbersFoxBehaviour.foxHungerDecrementValue = (int)effectValue;
+                UpgradeVariableController.foxHungerDecrementValue = (int)effectValue;
                 break;
 
             default:
                 Debug.LogWarning($"Upgrade {upgradeName} does not have a valid upgrade type.");
                 break;
         }
+        UpgradeVariableController.SaveVariablesToPlayerPrefs();
     }
     
     public bool IsUnlocked()
@@ -151,8 +152,8 @@ public class PermanentUpgradeManager : MonoBehaviour
         explanationPanelDescriptionText.gameObject.SetActive(false);
         explanationPanelCostText.gameObject.SetActive(false);
 
-        LoadPurchasedUpgrades();
         PopulateGrid();
+        LoadPurchasedUpgrades();
     }
 
     private void PopulateGrid()
@@ -220,7 +221,7 @@ public class PermanentUpgradeManager : MonoBehaviour
         PlayerPrefs.SetInt(key, 1);
         PlayerPrefs.Save();
     }
-
+    
     private void LoadPurchasedUpgrades()
     {
         foreach (var upgrade in availableUpgrades)
@@ -228,7 +229,7 @@ public class PermanentUpgradeManager : MonoBehaviour
             string key = $"UPGRADE_{upgrade.upgradeName}";
             if (PlayerPrefs.GetInt(key, 0) == 1)
             {
-                upgrade.ApplyUpgrade();
+                upgradeButtonDictionary[upgrade].UpgradeBought();
             }
         }
     }

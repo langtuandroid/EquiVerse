@@ -51,6 +51,8 @@ namespace Managers
         public static void LoadGameData()
         {
             firstTimePlaying = PlayerPrefs.GetInt("firstTimePlaying", 1) == 1;
+            UpgradeVariableController.LoadVariablesFromPlayerPrefs();
+            
         }
 
         private void StoreNextLevelInPlayerPrefs()

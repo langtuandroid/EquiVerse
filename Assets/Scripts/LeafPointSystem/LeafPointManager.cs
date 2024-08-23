@@ -20,12 +20,6 @@ namespace Managers {
         [Header("LevelValues")]
         private int startingPoints = 395;
         public int endOfLevelCost;
-
-        public static int lowValuePoints = 15;
-        public static int highValuePoints = 35;
-        public static int gooseEggPoints = 200;
-        private static int crystalShardPoints = 200;
-        public static int startingPointsBonus = 0;
         
         private DateTime lastVisualUpdate = DateTime.Now;
         private const float updateInterval = 0.01666667f;
@@ -35,7 +29,7 @@ namespace Managers {
         {
             originalColor = totalPointsBackground.color;
             
-            totalPoints = startingPoints + startingPointsBonus;
+            totalPoints = startingPoints + UpgradeVariableController.startingPointsBonus;
             visualPoints = totalPoints;
             UpdatePointText();
 
@@ -53,19 +47,19 @@ namespace Managers {
         }
 
         public void AddLowValuePoints() {
-            IncrementPoints(lowValuePoints);
+            IncrementPoints(UpgradeVariableController.lowValuePoints);
         }
         
         public void AddHighValuePoints() {
-            IncrementPoints(highValuePoints);
+            IncrementPoints(UpgradeVariableController.highValuePoints);
         }
 
         public void AddGooseEggPoints() {
-            IncrementPoints(gooseEggPoints);
+            IncrementPoints(UpgradeVariableController.gooseEggPoints);
         }
         
         public void AddCrystalShardPoints() {
-            IncrementPoints(crystalShardPoints);
+            IncrementPoints(UpgradeVariableController.crystalShardPoints);
         }
 
         public void UpdateVisualPoints() {

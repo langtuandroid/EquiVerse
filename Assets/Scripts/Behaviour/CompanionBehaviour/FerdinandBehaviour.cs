@@ -12,16 +12,12 @@ namespace Behaviour
 
         public float secondIdleTriggerMinWait = 5f;
         public float secondIdleTriggerMaxWait = 15f;
-
-        public static float eggDropMinWait = 45f;
-        public static float eggDropMaxWait = 60f;
-        
         
         void Start()
         {
             animator = GetComponent<Animator>();
             Invoke("TriggerSecondIdle", Random.Range(secondIdleTriggerMinWait, secondIdleTriggerMaxWait));
-            Invoke("EggDropTrigger", Random.Range(eggDropMinWait, eggDropMaxWait));
+            Invoke("EggDropTrigger", Random.Range(UpgradeVariableController.eggDropMinWait, UpgradeVariableController.eggDropMaxWait));
         }
 
         void TriggerSecondIdle()
@@ -37,7 +33,7 @@ namespace Behaviour
             featherParticles.Play();
             FMODUnity.RuntimeManager.PlayOneShot("event:/Animals/FerdinandGoose/FerdinandEggDrop");
             Instantiate(eggPrefab, eggSpawnPosition);
-            Invoke("EggDropTrigger", Random.Range(eggDropMinWait, eggDropMaxWait));
+            Invoke("EggDropTrigger", Random.Range(UpgradeVariableController.eggDropMinWait, UpgradeVariableController.eggDropMaxWait));
         }
     }
 }

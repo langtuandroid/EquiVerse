@@ -6,7 +6,6 @@ public class PabloBehaviour : MonoBehaviour
 {
     public Vector3 areaCenter;
     public Vector3 areaSize;
-    public static float moveSpeed = 1.5f;
     private Vector3 randomPosition;
     
     public float soundTriggerMinWait = 5f;
@@ -65,7 +64,7 @@ public class PabloBehaviour : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * 360f);
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, position, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, position, UpgradeVariableController.moveSpeed * Time.deltaTime);
     }
 
     Vector3 GetRandomPosition()

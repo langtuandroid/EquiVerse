@@ -20,10 +20,6 @@ public class MalbersRabbitBehaviour : MonoBehaviour
     public MAnimalBrain animal;
     public MAIState deathState;
     
-    public static float hungerThreshold = 100f;
-    public static float warningThreshold = 150f;
-    public static float deathThreshold = 250f;
-    
     private SkinnedMeshRenderer skinnedMeshRenderer;
     private Material rabbitMaterial;
     private bool localIsHungry;
@@ -52,16 +48,16 @@ public class MalbersRabbitBehaviour : MonoBehaviour
             currentHunger += 7.5f * Time.fixedDeltaTime;
         }
 
-        if (currentHunger >= deathThreshold)
+        if (currentHunger >= UpgradeVariableController.deathThreshold)
             StartCoroutine(Die());
 
-        if (currentHunger >= hungerThreshold && EntityManager.Get().GetFoods().Count >= 1)
+        if (currentHunger >= UpgradeVariableController.hungerThreshold && EntityManager.Get().GetFoods().Count >= 1)
         {
             isHungry.Value = true;
             localIsHungry = true;
             CheckFoodDistance();
         }
-        if (currentHunger >= warningThreshold && !inWarningState)
+        if (currentHunger >= UpgradeVariableController.warningThreshold && !inWarningState)
         {
             leafPointsSpawner.spawnLeafPoints = false;
             inWarningState = true;

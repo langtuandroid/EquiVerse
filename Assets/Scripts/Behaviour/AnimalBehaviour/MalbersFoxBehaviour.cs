@@ -24,8 +24,6 @@ public class MalbersFoxBehaviour : MonoBehaviour
         private bool localIsHungry;
         private bool inWarningState = false;
         private float currentHunger = 0f;
-
-        public static int foxHungerDecrementValue;
     
         private void Start()
         {
@@ -46,7 +44,7 @@ public class MalbersFoxBehaviour : MonoBehaviour
         {
             if (!EnemySpawner.enemyDanger)
             {
-                currentHunger += (5f - foxHungerDecrementValue)* Time.fixedDeltaTime;
+                currentHunger += (5f - UpgradeVariableController.foxHungerDecrementValue)* Time.fixedDeltaTime;
             }
 
             if (currentHunger >= deathThreshold)

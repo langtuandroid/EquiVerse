@@ -14,7 +14,6 @@ namespace Spawners
         private float timeBetweenLeafSpawn;
         public Vector2 timeBetweenLeafSpawnRange = new Vector2(10f, 18f);
         private float desiredHeight = 5f;
-        public static float duration = 10f;
 
         public bool spawnLeafPoints = true;
 
@@ -38,7 +37,7 @@ namespace Spawners
                         Vector3 spawnPosition = transform.position + new Vector3(0, 0.5f, 0);
                         GameObject newLeaf;
                         newLeaf = Instantiate(lowValueleafPointPrefab, spawnPosition, Quaternion.identity);
-                        newLeaf.transform.DOMoveY(desiredHeight, duration).SetEase(Ease.OutCubic)
+                        newLeaf.transform.DOMoveY(desiredHeight, UpgradeVariableController.duration).SetEase(Ease.OutCubic)
                             .OnComplete(() => FadeAndDestroy(newLeaf));
                         spawnTimer = 0f;
 
@@ -60,7 +59,7 @@ namespace Spawners
                         Vector3 spawnPosition = transform.position + new Vector3(0, 0.5f, 0);
                         GameObject newLeaf;
                         newLeaf = Instantiate(highValueleafPointPrefab, spawnPosition, Quaternion.identity);
-                        newLeaf.transform.DOMoveY(desiredHeight, duration).SetEase(Ease.OutCubic)
+                        newLeaf.transform.DOMoveY(desiredHeight, UpgradeVariableController.duration).SetEase(Ease.OutCubic)
                             .OnComplete(() => FadeAndDestroy(newLeaf));
                         spawnTimer = 0f;
                         timeBetweenLeafSpawn = Random.Range(timeBetweenLeafSpawnRange.x, timeBetweenLeafSpawnRange.y);
