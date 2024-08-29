@@ -114,6 +114,8 @@ public class PermanentUpgradeManager : MonoBehaviour
 {
     public static PermanentUpgradeManager Instance;
 
+    public TutorialManager tutorialManager;
+
     public Transform gridTransform;
     public GameObject upgradeButtonPrefab;
     public List<PermanentUpgrade> availableUpgrades;
@@ -130,6 +132,8 @@ public class PermanentUpgradeManager : MonoBehaviour
         new Dictionary<PermanentUpgrade, PermanentUpgradeButton>();
 
     private PermanentUpgrade currentlySelectedUpgrade;
+    
+    private const string TutorialShownKey = "TutorialShown";
 
     private void Awake()
     {
@@ -154,6 +158,12 @@ public class PermanentUpgradeManager : MonoBehaviour
 
         PopulateGrid();
         LoadPurchasedUpgrades();
+        
+        if (IsLevelCompleted("WORLD_1_LEVEL_1") && !HasTutorialBeenShown())
+        {
+            tutorialManager.StartTutorial();
+            SetTutorialShown();
+        }
     }
 
     private void PopulateGrid()
@@ -232,6 +242,22 @@ public class PermanentUpgradeManager : MonoBehaviour
                 upgradeButtonDictionary[upgrade].UpgradeBought();
             }
         }
+    }
+    
+    private bool IsLevelCompleted(string levelKey)
+    {
+        return AchievementManager.IsLevelPreviouslyCompleted(levelKey);
+    }
+
+    private bool HasTutorialBeenShown()
+    {
+        return PlayerPrefs.GetInt(TutorialShownKey, 0) == 1;
+    }
+
+    private void SetTutorialShown()
+    {
+        PlayerPrefs.SetInt(TutorialShownKey, 1);
+        PlayerPrefs.Save();
     }
 }
 

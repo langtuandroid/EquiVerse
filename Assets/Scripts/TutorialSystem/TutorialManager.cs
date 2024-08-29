@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class TutorialManager : MonoBehaviour {
+public class TutorialManager : MonoBehaviour
+{
     public List<TutorialStep> steps;
     private int currentStepIndex;
     public static bool pickUpLeafpointStepCompleted = false;
@@ -84,5 +85,10 @@ public class TutorialManager : MonoBehaviour {
     public void ResumeGame()
     {
         Time.timeScale = 1;
+    }
+    
+    public void StartTutorial()
+    {
+        SetStep(0);
     }
 }

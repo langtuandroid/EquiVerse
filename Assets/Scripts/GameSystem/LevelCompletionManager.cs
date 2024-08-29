@@ -46,7 +46,7 @@ public class LevelCompletionManager : MonoBehaviour
     private void Update()
     {
         #if(UNITY_EDITOR)
-        if (UnityEngine.Input.GetKeyDown(KeyCode.RightControl))
+        if (UnityEngine.Input.GetKeyDown(KeyCode.P))
         {
             LevelCompleted();
         }

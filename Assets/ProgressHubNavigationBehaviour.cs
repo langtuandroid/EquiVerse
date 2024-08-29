@@ -13,6 +13,7 @@ public class ProgressHubNavigationBehaviour : MonoBehaviour
 
     public GameObject companionSelectionMenu;
     public GameObject shopEcoEssenceMenu;
+    public GameObject navigationTutorialPopUp;
 
     public static bool companionSelectionMenuActive;
 
@@ -39,18 +40,12 @@ public class ProgressHubNavigationBehaviour : MonoBehaviour
         {
             
             companionSelectionButton.gameObject.SetActive(false);
-            
-            if (world == 1 && level == 2)
-            {
-                print("first time opening progress hub");
-                //show tuturial
-            }
         }
         else
         {
-            print("companionselectionmenuActive");
             companionSelectionButton.gameObject.SetActive(true);
             companionSelectionMenuActive = true;
+            navigationTutorialPopUp.SetActive(true);
         }
 
         if (companionSelectionMenuActive)
