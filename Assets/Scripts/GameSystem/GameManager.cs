@@ -52,6 +52,7 @@ namespace Managers
         {
             firstTimePlaying = PlayerPrefs.GetInt("firstTimePlaying", 1) == 1;
             UpgradeVariableController.LoadVariablesFromPlayerPrefs();
+            EcoEssenceRewardsManager.LoadEcoEssence();
             
         }
 
