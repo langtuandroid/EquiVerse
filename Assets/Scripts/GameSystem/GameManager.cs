@@ -77,6 +77,20 @@ namespace Managers
             return $"WORLD_{world}_LEVEL_{level}";
         } 
         
+        public static bool IsNextLevelCompleted()
+        {
+            (int nextLevel, int nextWorld) = GetNextLevelFromPlayerPrefs();
+
+            if (nextLevel == -1 || nextWorld == -1)
+            {
+                return false;
+            }
+
+            string nextLevelKey = $"WORLD_{nextWorld}_LEVEL_{nextLevel}";
+
+            return AchievementManager.IsLevelPreviouslyCompleted(nextLevelKey);
+        }
+        
         public string GetCurrentLevelKey()
         {
             return $"WORLD_{currentSceneWorldIndex}_LEVEL_{currentSceneLevelIndex}";

@@ -171,7 +171,7 @@ public class LevelCompletionPopupUI : MonoBehaviour
         }
 
         yield return new WaitForSecondsRealtime(0.25f);
-        if (AchievementChecker.firstTimeCompletion)
+        if (AchievementChecker.firstTimeCompletion || !GameManager.IsNextLevelCompleted())
         {
             PopInAnimation(nextSceneButtonObject);
         }
@@ -308,7 +308,7 @@ public class LevelCompletionPopupUI : MonoBehaviour
             ecoEssenceRewarded = true;
         }
 
-        if (AchievementChecker.firstTimeCompletion)
+        if (AchievementChecker.firstTimeCompletion || !GameManager.IsNextLevelCompleted())
         {
             nextSceneButtonObject.SetActive(true);
         }

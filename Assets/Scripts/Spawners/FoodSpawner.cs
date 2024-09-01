@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Text.RegularExpressions;
 using DG.Tweening;
 using Managers;
@@ -7,9 +8,10 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
 
-namespace Spawners {
-    public class FoodSpawner : MonoBehaviour {
-        
+namespace Spawners
+{
+    public class FoodSpawner : MonoBehaviour
+    {
         [Header("Managers")]
         public GameManager gameManager;
         public LeafPointManager leafPointManager;
@@ -30,30 +32,59 @@ namespace Spawners {
         public GameObject maxFoodPopup;
 
         private int timesPopupShown;
+        private Coroutine spawnCoroutine;
 
-        private void Start() {
+        private void Start()
+        {
             currentPlantCount = 0;
             timesPopupShown = 0;
         }
 
-        public void ClickOnGround(Vector3 point) 
+        private void Update()
         {
-            if (!CanSpawnPlants) 
+            if (UnityEngine.Input.GetMouseButtonDown(0))
+            {
+                spawnCoroutine = StartCoroutine(SpawnFoodContinuously());
+            }
+
+            if (UnityEngine.Input.GetMouseButtonUp(0) && spawnCoroutine != null)
+            {
+                StopCoroutine(spawnCoroutine);
+            }
+        }
+
+        private IEnumerator SpawnFoodContinuously()
+        {
+            yield return new WaitForSeconds(0.5f);
+            while (UnityEngine.Input.GetMouseButton(0))
+            {
+                Ray ray = Camera.main.ScreenPointToRay(UnityEngine.Input.mousePosition);
+                if (Physics.Raycast(ray, out RaycastHit hit))
+                {
+                    ClickOnGround(hit.point);
+                }
+                yield return new WaitForSeconds(0.2f);  // Adjust spawn interval as needed
+            }
+        }
+
+        public void ClickOnGround(Vector3 point)
+        {
+            if (!CanSpawnPlants)
                 return;
 
             point = new Vector3(point.x, 0.5f, point.z); // Adjust spawn height to prevent plants from spawning too high
 
-            if (IsPointOnNavMesh(point)) 
+            if (IsPointOnNavMesh(point))
             {
-                if (LeafPointManager.totalPoints >= grassCost) 
+                if (LeafPointManager.totalPoints >= grassCost)
                 {
-                    if (currentPlantCount < maxPlants) 
+                    if (currentPlantCount < maxPlants)
                     {
                         GameObject spawnedPrefab = Instantiate(foodPrefabs[foodPrefabsIndex], point, Quaternion.identity);
                         float randomYRotation = Random.Range(0f, 360f);
                         spawnedPrefab.transform.rotation = Quaternion.Euler(0f, randomYRotation, 0f);
 
-                        switch (foodPrefabsIndex) 
+                        switch (foodPrefabsIndex)
                         {
                             case 0:
                                 spawnedPrefab.transform.DOScale(0.75f, 0.75f).SetEase(Ease.OutElastic);
@@ -71,7 +102,7 @@ namespace Spawners {
                         currentPlantCount++;
                         FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerActions/GrassPlacement");
                     }
-                    else if (!maxFoodPopup.activeInHierarchy && gameManager.level1 && timesPopupShown < 2) 
+                    else if (!maxFoodPopup.activeInHierarchy && gameManager.level1 && timesPopupShown < 2)
                     {
                         maxFoodPopup.SetActive(true);
                         PopInAnimation(maxFoodPopup);
@@ -80,7 +111,7 @@ namespace Spawners {
                         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/OpeningUIElement");
                     }
                 }
-                else 
+                else
                 {
                     Debug.LogWarning("Insufficient points to buy plant.");
                     FMODUnity.RuntimeManager.PlayOneShot("event:/UI/CantBuy");
@@ -89,22 +120,26 @@ namespace Spawners {
             }
         }
 
-        bool IsPointOnNavMesh(Vector3 point) {
+        private bool IsPointOnNavMesh(Vector3 point)
+        {
             NavMeshHit hit;
-            //TODO: Make this break proof please
-            return NavMesh.SamplePosition(point, out hit, 0.1f, new NavMeshQueryFilter{agentTypeID = NavMesh.GetSettingsByIndex(3).agentTypeID, areaMask = NavMesh.AllAreas});
+            return NavMesh.SamplePosition(point, out hit, 0.1f, new NavMeshQueryFilter { agentTypeID = NavMesh.GetSettingsByIndex(3).agentTypeID, areaMask = NavMesh.AllAreas });
         }
 
-        public void RemovePlant() {
-            if (currentPlantCount > 0) {
+        public void RemovePlant()
+        {
+            if (currentPlantCount > 0)
+            {
                 currentPlantCount--;
             }
         }
 
-        private void PopInAnimation(GameObject gameObject) {
+        private void PopInAnimation(GameObject gameObject)
+        {
             RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
 
-            if (rectTransform != null) {
+            if (rectTransform != null)
+            {
                 rectTransform.localScale = new Vector3(0f, 0f, 0f);
                 rectTransform.DOScale(1, 0.5f).SetEase(Ease.OutExpo);
             }
