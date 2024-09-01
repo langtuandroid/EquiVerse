@@ -30,6 +30,8 @@ namespace Managers
 
         private void Start()
         {
+            UpgradeVariableController.LoadVariablesFromPlayerPrefs();
+            
             animalDeaths = 0;
             totalLeafPointsCollected = 0;
             animalsSpawned = 0;

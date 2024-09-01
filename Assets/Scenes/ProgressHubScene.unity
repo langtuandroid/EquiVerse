@@ -13754,14 +13754,43 @@ MonoBehaviour:
     upgradeImage: {fileID: 21300000, guid: 0cc2ac73ebe087b4f81cbd4d32f021a8, type: 3}
     requiredWorld: 1
     requiredLevel: 2
+  - upgradeName: Leaf Drift
+    upgradeDescription: Leaves take their sweet time now. Leafpoints move 15% slower,
+      giving you more chances to grab them.
+    upgradeCategory: 3
+    upgradeType: 4
+    effectValue: 5
+    upgradeCost: 40
+    upgradeImage: {fileID: 21300000, guid: cc15d8298d2b84821b81cffea71df5f9, type: 3}
+    requiredWorld: 1
+    requiredLevel: 2
+  - upgradeName: Major Cash Boost
+    upgradeDescription: Start your journe Increase your starting capital by 125 Leafpoints!
+    upgradeCategory: 3
+    upgradeType: 0
+    effectValue: 125
+    upgradeCost: 70
+    upgradeImage: {fileID: 21300000, guid: 1b0ce41f8d87d4692a08b326c8b0f471, type: 3}
+    requiredWorld: 1
+    requiredLevel: 3
   - upgradeName: Speedy Pablo
     upgradeDescription: Pablo is feeling the need for speed! Increase his movement
       speed.
     upgradeCategory: 0
     upgradeType: 5
     effectValue: 1
-    upgradeCost: 40
+    upgradeCost: 50
     upgradeImage: {fileID: 21300000, guid: cd71a213891574fe68a9c09e68f07504, type: 3}
+    requiredWorld: 1
+    requiredLevel: 3
+  - upgradeName: Leafpoint Inflation
+    upgradeDescription: Leafpoints just got a little more valuable. Increase their
+      value.
+    upgradeCategory: 3
+    upgradeType: 7
+    effectValue: 10
+    upgradeCost: 60
+    upgradeImage: {fileID: 21300000, guid: cc15d8298d2b84821b81cffea71df5f9, type: 3}
     requiredWorld: 1
     requiredLevel: 3
   - upgradeName: Blazing Pablo
@@ -13774,22 +13803,12 @@ MonoBehaviour:
     upgradeImage: {fileID: 21300000, guid: cd71a213891574fe68a9c09e68f07504, type: 3}
     requiredWorld: 1
     requiredLevel: 4
-  - upgradeName: Leafpoint Inflation
-    upgradeDescription: Leafpoints just got a little more valuable. Increase their
-      value.
-    upgradeCategory: 3
-    upgradeType: 7
-    effectValue: 10
-    upgradeCost: 70
-    upgradeImage: {fileID: 21300000, guid: cc15d8298d2b84821b81cffea71df5f9, type: 3}
-    requiredWorld: 1
-    requiredLevel: 4
   - upgradeName: Throwing Frenzy
     upgradeDescription: "Toby\u2019s arm just got a workout! Increase the throw rate
       and rain down those shots."
     upgradeCategory: 0
     upgradeType: 8
-    effectValue: 3
+    effectValue: 5
     upgradeCost: 40
     upgradeImage: {fileID: 21300000, guid: f2e57e0553c000142b288a0be011da1c, type: 3}
     requiredWorld: 1
@@ -13814,25 +13833,6 @@ MonoBehaviour:
     upgradeImage: {fileID: 21300000, guid: eddfa61de030add4c84716f10a8f1f0a, type: 3}
     requiredWorld: 1
     requiredLevel: 4
-  - upgradeName: Leaf Drift
-    upgradeDescription: Leaves take their sweet time now. Leafpoints move 15% slower,
-      giving you more chances to grab them.
-    upgradeCategory: 3
-    upgradeType: 4
-    effectValue: 5
-    upgradeCost: 60
-    upgradeImage: {fileID: 21300000, guid: cc15d8298d2b84821b81cffea71df5f9, type: 3}
-    requiredWorld: 1
-    requiredLevel: 2
-  - upgradeName: Major Cash Boost
-    upgradeDescription: Start your journe Increase your starting capital by 125 Leafpoints!
-    upgradeCategory: 3
-    upgradeType: 0
-    effectValue: 125
-    upgradeCost: 60
-    upgradeImage: {fileID: 21300000, guid: 1b0ce41f8d87d4692a08b326c8b0f471, type: 3}
-    requiredWorld: 1
-    requiredLevel: 3
   ecoEssenceValueText: {fileID: 1386757780}
   explanationPanelTitleText: {fileID: 724862590}
   explanationPanelImage: {fileID: 1995584601}

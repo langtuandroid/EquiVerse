@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using DG.Tweening;
 using UnityEngine;
 
@@ -11,9 +8,56 @@ public class EnemyHealth : Clickable
     public GameObject reward;
     public GameObject deathParticles;
     public FMODUnity.EventReference deathSound;
+
     private Tween punchTween;
+    private bool isShooting = false;
+    private float shootInterval = 0.2f;
 
     public override void OnClick(Vector3 point)
+    {
+        StartCoroutine(HoldFire()); // Start firing when clicked
+    }
+
+    public void Die()
+    {
+        transform.DOScale(0, 0.2f).SetEase(Ease.OutQuint);
+        FMODUnity.RuntimeManager.PlayOneShot(deathSound);
+        GameObject particlesInstance = Instantiate(deathParticles, gameObject.transform.position, Quaternion.identity);
+        Instantiate(reward, gameObject.transform.position + new Vector3(0, 0.3f, 0), Quaternion.identity);
+
+        EnemySpawner enemySpawner = FindObjectOfType<EnemySpawner>();
+        enemySpawner.RemoveEnemy(gameObject);
+
+        Destroy(particlesInstance, 5f);
+        Destroy(gameObject);
+    }
+
+    private IEnumerator HoldFire()
+    {
+        while (UnityEngine.Input.GetMouseButton(0))
+        {
+            // Recalculate the point where the mouse is currently pointing
+            Ray ray = Camera.main.ScreenPointToRay(UnityEngine.Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.collider.gameObject == gameObject)
+                {
+                    Vector3 point = hit.point;
+                    OnHitByGun(point); // Update the particle spawn position
+                }
+                else
+                {
+                    yield break; // Exit the coroutine if the mouse moves away from the enemy
+                }
+            }
+            
+            yield return new WaitForSeconds(shootInterval);
+        }
+    }
+
+    private void OnHitByGun(Vector3 point)
     {
         GunUpgrade currentGunUpgrade = FindObjectOfType<GunUpgradeManager>().GetCurrentGunUpgrade();
         if (enemyHealth > currentGunUpgrade.gunDamage)
@@ -25,13 +69,12 @@ public class EnemyHealth : Clickable
             }
 
             enemyHealth -= currentGunUpgrade.gunDamage;
-        
+
             punchTween = transform.DOPunchScale(Vector3.one * 0.05f, 0.5f, 8, 1);
 
             ParticleSystem particleSystem = Instantiate(currentGunUpgrade.gunParticles, point, Quaternion.identity);
             particleSystem.Play();
-            GameObject gunParticleInstance = particleSystem.gameObject;
-            Destroy(gunParticleInstance, 1f);
+            Destroy(particleSystem.gameObject, 1f);
 
             FMODUnity.RuntimeManager.PlayOneShot(currentGunUpgrade.gunImpactSoundEventPath);
 
@@ -44,18 +87,5 @@ public class EnemyHealth : Clickable
         {
             Die();
         }
-    }
-
-    public void Die()
-    {
-        transform.DOScale(0, 0.2f).SetEase(Ease.OutQuint);
-        FMODUnity.RuntimeManager.PlayOneShot(deathSound);
-        GameObject particlesInstance = Instantiate(deathParticles, gameObject.transform.position, Quaternion.identity);
-        Instantiate(reward, gameObject.transform.position + new Vector3(0, 0.3f, 0), Quaternion.identity);
-
-        EnemySpawner enemySpawner = FindObjectOfType<EnemySpawner>();
-        enemySpawner.RemoveEnemy(gameObject);
-    
-        Destroy(particlesInstance, 5f);
     }
 }
