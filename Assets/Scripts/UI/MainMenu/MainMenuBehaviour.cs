@@ -117,6 +117,7 @@ namespace MainMenu
             PlayerPrefs.DeleteAll();
             UpgradeVariableController.ResetVariables();
             UpgradeVariableController.SaveVariablesToPlayerPrefs();
+            EcoEssenceRewardsManager.totalEcoEssence = 0;
             newAdventureWarningPanel.SetActive(false);
  
             mainMenuSoundController.FadeMainMenuVolume(1.0f, 1.1f);

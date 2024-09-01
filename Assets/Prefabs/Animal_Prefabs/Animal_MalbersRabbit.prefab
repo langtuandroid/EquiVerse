@@ -1898,7 +1898,7 @@ MonoBehaviour:
   TasksVars: []
   DecisionsVars: []
   DecisionsTime: []
-  Editor_Tabs1: 0
+  Editor_Tabs1: 2
 --- !u!195 &8130667172053581064
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5144,9 +5144,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growthManager: {fileID: 1138554416925459173}
   leafPointsSpawner: {fileID: 7998059124693266919}
-  hungerThreshold: 100
-  warningThreshold: 150
-  deathThreshold: 250
   rabbitGhostParticleSystem: {fileID: 3775723201519788817}
   stoneSpikesParticleSystem: {fileID: 2256789412536763348}
   hungryMaterial: {fileID: 2100000, guid: 5122b494eeaec444b8f2170e42864f4a, type: 2}
