@@ -75,7 +75,7 @@ public class World1LevelSoundController : MonoBehaviour
         var tweener = DOTween
             .To(() => parameter.value, x => parameter.value = x, targetValue, duration)
             .SetEase(Ease.Linear)
-            .OnUpdate(() => SetParameter(audioEvent.instance, parameter.id, parameter.value));
+            .OnUpdate(() => SetParameter(audioEvent.instance, parameter.id, parameter.value)).SetUpdate(true);
     }
 
     public void StartAudioEvent(string eventName)

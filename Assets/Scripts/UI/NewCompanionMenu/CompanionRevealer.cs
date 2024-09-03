@@ -42,11 +42,11 @@ public class CompanionRevealer : MonoBehaviour
         shakeTween.Kill();
         soundController.NewCompanionMusicVolumeFade(0, 2f);
         FMODUnity.RuntimeManager.PlayOneShot("event:/NewCompanionScene/RevealDrumroll");
-        chestCompanion.transform.DOScale(0, 2.5f)
+        chestCompanion.transform.DOScale(0, 1.5f)
             .SetEase(Ease.InBack)
             .OnPlay(() =>
             {
-                chestCompanion.transform.DORotate(new Vector3(0, 1800, 0), 2.5f, RotateMode.FastBeyond360)
+                chestCompanion.transform.DORotate(new Vector3(0, 1800, 0), 1.5f, RotateMode.FastBeyond360)
                     .SetEase(Ease.InCubic)
                     .SetLoops(-1, LoopType.Incremental);
                 animator.SetTrigger("Open");
