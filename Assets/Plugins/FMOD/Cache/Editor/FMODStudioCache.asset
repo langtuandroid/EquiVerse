@@ -105,6 +105,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 4770
+--- !u!114 &-7183829832150863843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/AchievementAchieved
+  m_EditorClassIdentifier: 
+  Path: event:/UI/AchievementAchieved
+  Guid:
+    Data1: 1555352222
+    Data2: 1283641902
+    Data3: 542746557
+    Data4: -1102888331
+  Banks:
+  - {fileID: 8633037836389704477}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 940
 --- !u!114 &-7037273087787750917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,7 +576,7 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 638581278918082251
+  lastModified: 638609706113675222
   FileSizes:
   - Name: Desktop
     Value: 4484576
@@ -644,7 +671,7 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/NewCompanion.bank
   Name: NewCompanion
   StudioPath: bank:/NewCompanion
-  lastModified: 638581278918670292
+  lastModified: 638609712204136122
   FileSizes:
   - Name: Desktop
     Value: 4396128
@@ -718,10 +745,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
   Name: MainMenu.strings
   StudioPath: bank:/MainMenu.strings
-  lastModified: 638581278918102191
+  lastModified: 638609706113695223
   FileSizes:
   - Name: Desktop
-    Value: 3792
+    Value: 3958
   Exists: 1
 --- !u!114 &-1007746424766951060
 MonoBehaviour:
@@ -901,12 +928,14 @@ MonoBehaviour:
   - {fileID: -5960318942281983705}
   - {fileID: 7948511879019796319}
   - {fileID: -787976988009938688}
+  - {fileID: -7183829832150863843}
+  - {fileID: 1609277661308513152}
   EditorParameters: []
   MasterBanks:
   - {fileID: -2215770016423120457}
   StringsBanks:
   - {fileID: -1020840432151185792}
-  cacheTime: 638581278918670292
+  cacheTime: 638609712204136122
   cacheVersion: 131618
 --- !u!114 &302697091193660076
 MonoBehaviour:
@@ -965,6 +994,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 57808
+--- !u!114 &1609277661308513152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/CelebrationMusic
+  m_EditorClassIdentifier: 
+  Path: event:/Music/CelebrationMusic
+  Guid:
+    Data1: 1737791258
+    Data2: 1333389221
+    Data3: 1263610770
+    Data4: -1438638294
+  Banks:
+  - {fileID: 8633037836389704477}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 1915984874390445382}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 16065
 --- !u!114 &1864644506537815329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -992,6 +1049,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2750
+--- !u!114 &1915984874390445382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/CelebrationMusic/CelebrationMusicVolume
+  m_EditorClassIdentifier: 
+  Name: CelebrationMusicVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2865244279
+    data2: 4037174972
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &1982925463739005283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1045,7 +1126,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 2600
+  Length: 1600
 --- !u!114 &2363959011029612127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1672,10 +1753,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 638581278917484261
+  lastModified: 638609710526552039
   FileSizes:
   - Name: Desktop
-    Value: 10459744
+    Value: 10731136
   Exists: 1
 --- !u!114 &8665789776604103711
 MonoBehaviour:

@@ -512,6 +512,13 @@ MonoBehaviour:
   achievedColor: {r: 0.6509434, g: 0.56312746, b: 0.076762185, a: 1}
   newlyAchievedColor: {r: 1, g: 0.84705883, b: 0, a: 1}
   notAchievedColor: {r: 0.30588236, g: 0.42352942, b: 0.3137255, a: 1}
+  achievementAchievedSoundEffect:
+    Guid:
+      Data1: 1555352222
+      Data2: 1283641902
+      Data3: 542746557
+      Data4: -1102888331
+    Path: event:/UI/AchievementAchieved
 --- !u!114 &4108649883938382023
 MonoBehaviour:
   m_ObjectHideFlags: 0

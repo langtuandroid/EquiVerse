@@ -77,9 +77,12 @@ public class LevelCompletionManager : MonoBehaviour
 
     private void PlayCompletionSounds()
     {
-        soundController.FadeAudioParameter("Music", "World1LevelMainMusicVolume", 0f, 1.2f);
-        soundController.FadeAudioParameter("Ambience", "World1LevelAmbienceVolume", 0f, 1.2f);
-        soundController.FadeAudioParameter("BattleMusic", "EnemyMusicVolume", 0f, 1.2f);
+        soundController.FadeAudioParameter("Music", "World1LevelMainMusicVolume", 0f, 0.5f);
+        soundController.FadeAudioParameter("Ambience", "World1LevelAmbienceVolume", 0f, 0.5f);
+        soundController.FadeAudioParameter("BattleMusic", "EnemyMusicVolume", 0f, 0.5f);
+        
+        soundController.StartAudioEvent("CelebrationMusic");
+        soundController.FadeAudioParameter("CelebrationMusic", "CelebrationMusicVolume", 1f, 0.5f);
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/CompleteLevel");
     }
 
@@ -99,6 +102,8 @@ public class LevelCompletionManager : MonoBehaviour
         transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete(() => {
             soundController.StopAudioEvent("Music");
             soundController.StopAudioEvent("Ambience");
+            soundController.FadeAudioParameter("CelebrationMusic", "CelebrationMusicVolume", 0f, 1.2f);
+            soundController.StopAudioEvent("CelebrationMusic");
             LoadNextScene();
         }).SetUpdate(true);
     }

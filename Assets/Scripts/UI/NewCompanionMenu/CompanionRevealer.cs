@@ -23,6 +23,7 @@ public class CompanionRevealer : MonoBehaviour
 
     private void Start()
     {
+        soundController.StartMusic();
         nextLevelButton.interactable = true;
         clickOnChestText.SetActive(true);
         clickOnChestNavigationArrow.SetActive(true);

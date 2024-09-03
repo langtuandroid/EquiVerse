@@ -52,7 +52,7 @@ public class EcoEssenceRewardsManager : MonoBehaviour
         totalEcoEssence += amount;
 
         PlayerPrefs.SetInt("TotalEcoEssence", totalEcoEssence);
-        PlayerPrefs.Save(); // Ensure the value is saved to disk
+        PlayerPrefs.Save();
     }
 
     public static void DecrementEcoEssence(int amount)
@@ -60,7 +60,7 @@ public class EcoEssenceRewardsManager : MonoBehaviour
         totalEcoEssence -= amount;
 
         PlayerPrefs.SetInt("TotalEcoEssence", totalEcoEssence);
-        PlayerPrefs.Save(); // Ensure the value is saved to disk
+        PlayerPrefs.Save();
     }
 
     public static void LoadEcoEssence()

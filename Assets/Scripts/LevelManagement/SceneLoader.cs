@@ -21,7 +21,6 @@ public class SceneLoader : MonoBehaviour
     {
         backToMainMenuButton.gameObject.SetActive(true);
         backToMainMenuButton.interactable = true;
-        newCompanionSoundController.StartMusic();
     }
 
     public void LoadNextLevel()

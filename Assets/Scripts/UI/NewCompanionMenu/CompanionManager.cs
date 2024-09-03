@@ -22,7 +22,6 @@ public class Companion
 
 public class CompanionManager : MonoBehaviour
 {
-    public bool isNewCompanionScene;
     public SceneLoader sceneLoader;
     public List<Companion> companions;
     [HideInInspector]

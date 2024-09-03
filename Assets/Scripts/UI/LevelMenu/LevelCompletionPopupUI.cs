@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using FMOD.Studio;
+using FMODUnity;
 using Managers;
 using TMPro;
 using UnityEngine;
@@ -33,6 +35,9 @@ public class LevelCompletionPopupUI : MonoBehaviour
     public Color achievedColor;
     public Color newlyAchievedColor;
     public Color notAchievedColor;
+
+    [Header("Sound")] 
+    public EventReference achievementAchievedSoundEffect;
 
     private Dictionary<GameObject, Vector2> originalPositions;
     private bool skipRequested = false;
@@ -110,7 +115,11 @@ public class LevelCompletionPopupUI : MonoBehaviour
                 case LevelAchievement.AchievementState.NewlyAchieved:
                     backGroundImage.color = notAchievedColor;
                     backGroundImage.DOColor(newlyAchievedColor, 0.1f).SetDelay(1f + achievementDelay).SetUpdate(true);
-                    achievementUI.transform.DOPunchScale(new Vector2(0.1f, 0.1f), 0.7f, 8, 0.8f).SetDelay(1f + achievementDelay).SetUpdate(true);
+                    achievementUI.transform.DOPunchScale(new Vector2(0.1f, 0.1f), 0.7f, 8, 0.8f).SetDelay(1f + achievementDelay).SetUpdate(true).OnStart((
+                        () =>
+                        {
+                            RuntimeManager.PlayOneShot(achievementAchievedSoundEffect);
+                        }));
                     if (!achievement.isEcoEssenceRewarded)
                     {
                         IncrementEcoEssenceRewardedThisLevel(achievement.achievementReward);
