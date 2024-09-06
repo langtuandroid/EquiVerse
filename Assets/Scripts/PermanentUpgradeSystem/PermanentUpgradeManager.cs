@@ -222,6 +222,12 @@ public class PermanentUpgradeManager : MonoBehaviour
             explanationPanelCostText.gameObject.SetActive(false);
 
             currentlySelectedUpgrade = null;
+
+            PlaySound("event:/UI/Buy");
+        }
+        else
+        {
+            PlaySound("event:/UI/CantBuy");
         }
     }
 
@@ -258,6 +264,11 @@ public class PermanentUpgradeManager : MonoBehaviour
     {
         PlayerPrefs.SetInt(TutorialShownKey, 1);
         PlayerPrefs.Save();
+    }
+    
+    private void PlaySound(string eventName)
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(eventName);
     }
 }
 

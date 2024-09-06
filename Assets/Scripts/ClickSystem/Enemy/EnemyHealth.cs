@@ -11,11 +11,15 @@ public class EnemyHealth : Clickable
 
     private Tween punchTween;
     private bool isShooting = false;
+    private bool isFiring = false; // Flag to prevent multiple coroutines
     private float shootInterval = 0.2f;
 
     public override void OnClick(Vector3 point)
     {
-        StartCoroutine(HoldFire()); // Start firing when clicked
+        if (!isFiring) // Start firing only if it's not already firing
+        {
+            StartCoroutine(HoldFire());
+        }
     }
 
     public void Die()
@@ -34,6 +38,7 @@ public class EnemyHealth : Clickable
 
     private IEnumerator HoldFire()
     {
+        isFiring = true; // Mark as firing
         while (UnityEngine.Input.GetMouseButton(0))
         {
             // Recalculate the point where the mouse is currently pointing
@@ -49,12 +54,13 @@ public class EnemyHealth : Clickable
                 }
                 else
                 {
-                    yield break; // Exit the coroutine if the mouse moves away from the enemy
+                    break; // Exit the coroutine if the mouse moves away from the enemy
                 }
             }
-            
+
             yield return new WaitForSeconds(shootInterval);
         }
+        isFiring = false; // Mark as not firing after the loop ends
     }
 
     private void OnHitByGun(Vector3 point)

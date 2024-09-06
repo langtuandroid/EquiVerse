@@ -9,8 +9,6 @@ using UnityEngine.UI;
 
 public class SceneLoader : MonoBehaviour
 {
-    public NewCompanionSoundController newCompanionSoundController;
-    
     [Header("SceneTransition")]
     public Image transitionOverlay;
     public GameObject loadingScreen;
@@ -25,7 +23,7 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        newCompanionSoundController.NewCompanionMusicVolumeFade(0, 1.2f);
+        NewCompanionSoundController.StopMusic();
         transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete(() =>
         {
             (int level, int world) = GameManager.GetNextLevelFromPlayerPrefs();
@@ -51,7 +49,7 @@ public class SceneLoader : MonoBehaviour
     public void LoadMainMenu()
     {
         backToMainMenuButton.interactable = false;
-        newCompanionSoundController.NewCompanionMusicVolumeFade(0, 1.2f);
+        NewCompanionSoundController.StopMusic();
         transitionOverlay.DOFade(1f, 1.2f).SetEase(Ease.InCubic).OnComplete((() =>
         {
             backToMainMenuButton.gameObject.SetActive(false);

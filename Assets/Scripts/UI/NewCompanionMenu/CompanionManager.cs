@@ -24,7 +24,6 @@ public class CompanionManager : MonoBehaviour
 {
     public SceneLoader sceneLoader;
     public List<Companion> companions;
-    [HideInInspector]
     public Transform companionPrefabInstanceLocation;
 
     public TextMeshProUGUI companionTitleText;

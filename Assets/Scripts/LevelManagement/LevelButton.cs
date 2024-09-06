@@ -70,7 +70,7 @@ public class LevelButton : MonoBehaviour
         soundController.FadeMainMenuVolume(1.0f, 1.1f);
         if ((worldIndex == 1 && levelIndex == 5) || worldIndex > 1)
         {
-            SceneManager.LoadSceneAsync("CompanionSelectorScene", LoadSceneMode.Single);
+            SceneManager.LoadSceneAsync("ProgressHubScene", LoadSceneMode.Single);
         }
         else
         {

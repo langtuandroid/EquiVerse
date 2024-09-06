@@ -576,7 +576,7 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 638609706113675222
+  lastModified: 638610624641897593
   FileSizes:
   - Name: Desktop
     Value: 4484576
@@ -601,30 +601,6 @@ MonoBehaviour:
   ID:
     data1: 2089756497
     data2: 1512712206
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-1934905872138751844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/NewCompanionMusic/NewCompanionMusicVolume
-  m_EditorClassIdentifier: 
-  Name: NewCompanionMusicVolume
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 606373704
-    data2: 2695990297
   Type: 0
   IsGlobal: 0
   Labels: []
@@ -671,10 +647,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/NewCompanion.bank
   Name: NewCompanion
   StudioPath: bank:/NewCompanion
-  lastModified: 638609712204136122
+  lastModified: 638610624642187592
   FileSizes:
   - Name: Desktop
-    Value: 4396128
+    Value: 4395904
   Exists: 1
 --- !u!114 &-1422232744186925793
 MonoBehaviour:
@@ -745,10 +721,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
   Name: MainMenu.strings
   StudioPath: bank:/MainMenu.strings
-  lastModified: 638609706113695223
+  lastModified: 638610624641907592
   FileSizes:
   - Name: Desktop
-    Value: 3958
+    Value: 3904
   Exists: 1
 --- !u!114 &-1007746424766951060
 MonoBehaviour:
@@ -827,8 +803,7 @@ MonoBehaviour:
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
-  Parameters:
-  - {fileID: -1934905872138751844}
+  Parameters: []
   MinDistance: 1
   MaxDistance: 20
   Length: 218070
@@ -935,7 +910,7 @@ MonoBehaviour:
   - {fileID: -2215770016423120457}
   StringsBanks:
   - {fileID: -1020840432151185792}
-  cacheTime: 638609712204136122
+  cacheTime: 638610624642187592
   cacheVersion: 131618
 --- !u!114 &302697091193660076
 MonoBehaviour:

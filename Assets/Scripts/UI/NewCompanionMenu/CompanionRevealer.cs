@@ -19,11 +19,9 @@ public class CompanionRevealer : MonoBehaviour
 
     private Tween shakeTween;
 
-    [SerializeField] private NewCompanionSoundController soundController;
-
     private void Start()
     {
-        soundController.StartMusic();
+        NewCompanionSoundController.StartMusic();
         nextLevelButton.interactable = true;
         clickOnChestText.SetActive(true);
         clickOnChestNavigationArrow.SetActive(true);
@@ -41,7 +39,6 @@ public class CompanionRevealer : MonoBehaviour
         clickOnChestText.SetActive(false);
         clickOnChestNavigationArrow.SetActive(false);
         shakeTween.Kill();
-        soundController.NewCompanionMusicVolumeFade(0, 2f);
         FMODUnity.RuntimeManager.PlayOneShot("event:/NewCompanionScene/RevealDrumroll");
         chestCompanion.transform.DOScale(0, 1.5f)
             .SetEase(Ease.InBack)
@@ -59,7 +56,6 @@ public class CompanionRevealer : MonoBehaviour
 
                 companionHeaderPanel.SetActive(true);
                 nextLevelButton.gameObject.SetActive(true);
-                soundController.NewCompanionMusicVolumeFade(1, 2f);
                 companionManager.PlayCompanionSound();
             });
 

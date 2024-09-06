@@ -8,54 +8,63 @@ public class NewCompanionSoundController : MonoBehaviour
 {
     [Header("FMOD Event")]
     public FMODUnity.EventReference musicEvent;
-    public new EventInstance music;
-    
-    private PARAMETER_ID newCompanionMusicVolumeParameter;
-    private float newCompanionMusicVolumeValue = 0f;
-    private Tween newCompanionMusicVolumeTween;
+    private static EventInstance NewCompanionmusic;
 
-    private void Start()
+    private void Awake()
     {
-        music = FMODUnity.RuntimeManager.CreateInstance(musicEvent);
-        EventDescription volumeDescription;
-        music.getDescription(out volumeDescription);
-        PARAMETER_DESCRIPTION volumeParameterDescription;
-        volumeDescription.getParameterDescriptionByName("NewCompanionMusicVolume", out volumeParameterDescription);
-        newCompanionMusicVolumeParameter = volumeParameterDescription.id;
-    }
-    
-    public void NewCompanionMusicVolumeFade(float newCompanionMusicVolumeValue, float duration)
-    {
-        newCompanionMusicVolumeTween?.Kill();
-        if (duration == 0.0f)
+        DontDestroyOnLoad(gameObject); // Make sure this object persists across scenes
+
+        if (!NewCompanionmusic.isValid())
         {
-            SetNewCompanionMusicVolume(newCompanionMusicVolumeValue);
+            CreateMusicInstance(); // Only create instance if it hasn't been created yet
+        }
+    }
+
+    private void CreateMusicInstance()
+    {
+        NewCompanionmusic = FMODUnity.RuntimeManager.CreateInstance(musicEvent);
+        EventDescription volumeDescription;
+        NewCompanionmusic.getDescription(out volumeDescription);
+
+    }
+
+    public static void StartMusic()
+    {
+        if (NewCompanionmusic.isValid())
+        {
+            PLAYBACK_STATE playbackState;
+            NewCompanionmusic.getPlaybackState(out playbackState);
+
+            if (playbackState != PLAYBACK_STATE.PLAYING)
+            {
+                NewCompanionmusic.start();
+            }
         }
         else
         {
-            newCompanionMusicVolumeTween = DOTween
-                .To(() => GetNewCompanionMusicVolume(), x => SetNewCompanionMusicVolume(x), newCompanionMusicVolumeValue, duration)
-                .SetEase(Ease.Linear);
+            Debug.LogError("Music instance is not valid. Ensure it has been created.");
         }
     }
-    
-    public void SetNewCompanionMusicVolume(float volume) {
-        newCompanionMusicVolumeValue = volume;
-        music.setParameterByID(newCompanionMusicVolumeParameter, volume);
-    }
-    
-    public float GetNewCompanionMusicVolume() {
-        return newCompanionMusicVolumeValue;
+
+    public static void StopMusic()
+    {
+        if (NewCompanionmusic.isValid())
+        {
+            NewCompanionmusic.stop(STOP_MODE.ALLOWFADEOUT);
+            NewCompanionmusic.release();
+            NewCompanionmusic = default(EventInstance); // Set to default to allow recreation if needed
+        }
+        else
+        {
+            Debug.LogWarning("Attempted to stop music, but the instance was not valid.");
+        }
     }
 
-    public void StartMusic()
+    private void OnDestroy()
     {
-        music.start();
-        NewCompanionMusicVolumeFade(1.0f, 1.2f);
-    }
-
-    public void StopMusic()
-    {
-        NewCompanionMusicVolumeFade(0f, 3f);
+        if (NewCompanionmusic.isValid())
+        {
+            NewCompanionmusic.release();
+        }
     }
 }
