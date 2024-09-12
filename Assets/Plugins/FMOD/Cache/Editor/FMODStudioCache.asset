@@ -185,7 +185,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 2030
+  Length: 4144
 --- !u!114 &-6698928847532524892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,13 +476,13 @@ MonoBehaviour:
     Data4: -458802588
   Banks:
   - {fileID: 8633037836389704477}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 220
+  Length: 724
 --- !u!114 &-2715510016414030793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,10 +647,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/NewCompanion.bank
   Name: NewCompanion
   StudioPath: bank:/NewCompanion
-  lastModified: 638610624642187592
+  lastModified: 638617565450924732
   FileSizes:
   - Name: Desktop
-    Value: 4395904
+    Value: 4515040
   Exists: 1
 --- !u!114 &-1422232744186925793
 MonoBehaviour:
@@ -910,7 +910,7 @@ MonoBehaviour:
   - {fileID: -2215770016423120457}
   StringsBanks:
   - {fileID: -1020840432151185792}
-  cacheTime: 638610624642187592
+  cacheTime: 638617565450924732
   cacheVersion: 131618
 --- !u!114 &302697091193660076
 MonoBehaviour:
@@ -1637,7 +1637,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 3300
+  Length: 6000
 --- !u!114 &8168524822221652233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1728,10 +1728,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 638609710526552039
+  lastModified: 638617565118275186
   FileSizes:
   - Name: Desktop
-    Value: 10731136
+    Value: 12063456
   Exists: 1
 --- !u!114 &8665789776604103711
 MonoBehaviour:

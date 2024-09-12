@@ -20,7 +20,7 @@ namespace UI
 
         private void FadeSceneOpen()
         {
-            transitionOverlay.DOFade(0f, 4f).SetEase(Ease.InSine).OnComplete((() =>
+            transitionOverlay.DOFade(0f, 1.2f).SetEase(Ease.InSine).OnComplete((() =>
             {
                 tutorialManager.SetStep(0);
                 
