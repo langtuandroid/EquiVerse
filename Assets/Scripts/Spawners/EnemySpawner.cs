@@ -21,7 +21,7 @@ public class Enemy
 public class EnemySpawner : MonoBehaviour
 {
     public GameManager gameManager;
-    public World1LevelSoundController soundController;
+    public LevelSoundController soundController;
     public float initialSpawnDelay;
     public float minSpawnDelay;
     public float maxSpawnDelay;

@@ -13,7 +13,7 @@ using UI;
 public class LevelCompletionManager : MonoBehaviour
 {
     [Header("Sound")]
-    public World1LevelSoundController soundController;
+    public LevelSoundController soundController;
 
     public GameManager gameManager;
     

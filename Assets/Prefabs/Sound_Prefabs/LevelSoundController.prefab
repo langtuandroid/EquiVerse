@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2484444543811308925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7260702080416724648}
+  - component: {fileID: 909243848}
+  m_Layer: 0
+  m_Name: LevelSoundController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7260702080416724648
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2484444543811308925}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &909243848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2484444543811308925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6af9ab6dfee6be44292aee7238f04eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioEvents:
+  - name: Music
+    eventReference:
+      Guid:
+        Data1: 1066589528
+        Data2: 1294238846
+        Data3: -13296502
+        Data4: -291742425
+      Path: event:/World1/World1LevelMusic
+    parameters:
+    - name: World1LevelMainMusicVolume
+      value: 0
+  - name: Ambience
+    eventReference:
+      Guid:
+        Data1: 1059095620
+        Data2: 1235638006
+        Data3: -663427685
+        Data4: 1769726836
+      Path: event:/World1/World1LevelAmbience
+    parameters:
+    - name: World1LevelAmbienceVolume
+      value: 0
+  - name: BattleMusic
+    eventReference:
+      Guid:
+        Data1: 302308046
+        Data2: 1207126371
+        Data3: -1449220457
+        Data4: 963137034
+      Path: event:/World1/World1LevelBattleMusic
+    parameters:
+    - name: Suspense_Action_Transition
+      value: 0
+    - name: EnemyMusicVolume
+      value: 0
+  - name: CelebrationMusic
+    eventReference:
+      Guid:
+        Data1: 1737791258
+        Data2: 1333389221
+        Data3: 1263610770
+        Data4: -1438638294
+      Path: event:/Music/CelebrationMusic
+    parameters:
+    - name: CelebrationMusicVolume
+      value: 0

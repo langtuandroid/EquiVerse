@@ -24,7 +24,7 @@ namespace UI
         public GameObject loadingScreen;
 
         [Header("Sound")]
-        public World1LevelSoundController soundController;
+        public LevelSoundController soundController;
 
         private Tween pauseMenuAnimationTween;
 

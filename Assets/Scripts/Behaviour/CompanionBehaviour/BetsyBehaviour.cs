@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BetsyBehaviour : MonoBehaviour
 {
-    public World1LevelSoundController soundController;
+    public LevelSoundController soundController;
     public ParticleSystem hitParticles;
     public FMODUnity.EventReference betsyAttackSound;
     private string enemyTag = "Enemy";
