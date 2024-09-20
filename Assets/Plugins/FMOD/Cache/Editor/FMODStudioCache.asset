@@ -27,7 +27,31 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2700
---- !u!114 &-9076622251949178574
+--- !u!114 &-8820892380082744305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/World1LevelBattleMusic/EnemyMusicVolume
+  m_EditorClassIdentifier: 
+  Name: EnemyMusicVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 950852161
+    data2: 3164270251
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-8449532352579016746
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -37,14 +61,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/World1/GraniteGuardian/Attack
+  m_Name: event:/CragstoneRuins/SwampGolem/Attack
   m_EditorClassIdentifier: 
-  Path: event:/World1/GraniteGuardian/Attack
+  Path: event:/CragstoneRuins/SwampGolem/Attack
   Guid:
-    Data1: 1035915180
-    Data2: 1294516617
-    Data3: -579247471
-    Data4: 1065949309
+    Data1: -340100754
+    Data2: 1206472949
+    Data3: 1554831235
+    Data4: 1352869952
   Banks:
   - {fileID: 8633037836389704477}
   IsStream: 0
@@ -53,7 +77,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 4904
+  Length: 2656
 --- !u!114 &-8218489999343405145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,7 +102,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-8008478344603728866
+--- !u!114 &-7582263338401224940
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,9 +112,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/World1/SwampGolem/Spawn
+  m_Name: event:/CragstoneRuins/SwampGolem/Spawn
   m_EditorClassIdentifier: 
-  Path: event:/World1/SwampGolem/Spawn
+  Path: event:/CragstoneRuins/SwampGolem/Spawn
   Guid:
     Data1: 99103507
     Data2: 1260332523
@@ -213,6 +237,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1119
+--- !u!114 &-6634598998205975950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/CragstoneRuins/GraniteGuardian/Attack
+  m_EditorClassIdentifier: 
+  Path: event:/CragstoneRuins/GraniteGuardian/Attack
+  Guid:
+    Data1: 1035915180
+    Data2: 1294516617
+    Data3: -579247471
+    Data4: 1065949309
+  Banks:
+  - {fileID: 8633037836389704477}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4904
 --- !u!114 &-5960318942281983705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,6 +345,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 512
+--- !u!114 &-5236489097751815130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/CragStoneRuinsMainMusic/WorldMainMusicVolume
+  m_EditorClassIdentifier: 
+  Name: WorldMainMusicVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3383034797
+    data2: 1994318767
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-5042755074916369545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,6 +423,57 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 648
+--- !u!114 &-4714207314692331577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/DreamWeaverHollowBattleMusic/EnemyMusicVolume
+  m_EditorClassIdentifier: 
+  Name: EnemyMusicVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 950852161
+    data2: 3164270251
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-4358607150956365519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/CragstoneRuins/SwampGolem/Death
+  m_EditorClassIdentifier: 
+  Path: event:/CragstoneRuins/SwampGolem/Death
+  Guid:
+    Data1: 796278735
+    Data2: 1107889242
+    Data3: -748084080
+    Data4: -107233319
+  Banks:
+  - {fileID: 8633037836389704477}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2750
 --- !u!114 &-4357074142206646139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,6 +528,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1044
+--- !u!114 &-4045768357658587293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/DreamWeaverHollowMainMusic/WorldMainMusicVolume
+  m_EditorClassIdentifier: 
+  Name: WorldMainMusicVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3383034797
+    data2: 1994318767
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-3987430055830924715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,33 +579,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1312
---- !u!114 &-3930652715336187197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/World1/GraniteGuardian/FootGroundImpact
-  m_EditorClassIdentifier: 
-  Path: event:/World1/GraniteGuardian/FootGroundImpact
-  Guid:
-    Data1: -1504572830
-    Data2: 1292190128
-    Data3: -1459278963
-    Data4: -2106747049
-  Banks:
-  - {fileID: 8633037836389704477}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 560
 --- !u!114 &-3268190543285836813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,6 +630,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-2423160690187199512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/CragstoneRuins/GraniteGuardian/AttackCharge
+  m_EditorClassIdentifier: 
+  Path: event:/CragstoneRuins/GraniteGuardian/AttackCharge
+  Guid:
+    Data1: -1098992902
+    Data2: 1077148775
+    Data3: 1299137157
+    Data4: -1298146586
+  Banks:
+  - {fileID: 8633037836389704477}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4000
 --- !u!114 &-2352726963203072515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -576,7 +726,7 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 638610624641897593
+  lastModified: 638623799753684203
   FileSizes:
   - Name: Desktop
     Value: 4484576
@@ -679,33 +829,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 740
---- !u!114 &-1202339978074113513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/World1/GraniteGuardian/Death
-  m_EditorClassIdentifier: 
-  Path: event:/World1/GraniteGuardian/Death
-  Guid:
-    Data1: -699738745
-    Data2: 1248428521
-    Data3: -816286825
-    Data4: -1975022617
-  Banks:
-  - {fileID: 8633037836389704477}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1360
 --- !u!114 &-1020840432151185792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -721,38 +844,11 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/MainMenu.strings.bank
   Name: MainMenu.strings
   StudioPath: bank:/MainMenu.strings
-  lastModified: 638610624641907592
+  lastModified: 638623799753704139
   FileSizes:
   - Name: Desktop
-    Value: 3904
+    Value: 4060
   Exists: 1
---- !u!114 &-1007746424766951060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/World1/SwampGolem/WanderingVoice
-  m_EditorClassIdentifier: 
-  Path: event:/World1/SwampGolem/WanderingVoice
-  Guid:
-    Data1: -1183158531
-    Data2: 1128483395
-    Data3: -88258654
-    Data4: 1036539046
-  Banks:
-  - {fileID: 8633037836389704477}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 5209
 --- !u!114 &-860819876513619099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,6 +903,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 218070
+--- !u!114 &-691092921149017107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/CragstoneRuins/GraniteGuardian/FootGroundImpact
+  m_EditorClassIdentifier: 
+  Path: event:/CragstoneRuins/GraniteGuardian/FootGroundImpact
+  Guid:
+    Data1: -1504572830
+    Data2: 1292190128
+    Data3: -1459278963
+    Data4: -2106747049
+  Banks:
+  - {fileID: 8633037836389704477}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 560
 --- !u!114 &-526093347402021984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -834,6 +957,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 72
+--- !u!114 &-164165112861492797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/CragstoneRuins/SwampGolem/Hurt
+  m_EditorClassIdentifier: 
+  Path: event:/CragstoneRuins/SwampGolem/Hurt
+  Guid:
+    Data1: 1963421670
+    Data2: 1333214941
+    Data3: 2044905635
+    Data4: 674210787
+  Banks:
+  - {fileID: 8633037836389704477}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1716
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -855,42 +1005,29 @@ MonoBehaviour:
   - {fileID: -5042755074916369545}
   - {fileID: 3827170865052312619}
   - {fileID: -6729692724047985399}
-  - {fileID: -8008478344603728866}
   - {fileID: -3268190543285836813}
   - {fileID: -4357074142206646139}
-  - {fileID: 3405047898744231773}
-  - {fileID: 302697091193660076}
   - {fileID: -5288665071446837704}
   - {fileID: -1422232744186925793}
-  - {fileID: 6239990770636417815}
   - {fileID: 3301752180108848660}
   - {fileID: 5343717264394669058}
-  - {fileID: -3930652715336187197}
   - {fileID: 1982925463739005283}
-  - {fileID: 6125662888392671051}
   - {fileID: -4872020614559258299}
-  - {fileID: -1202339978074113513}
   - {fileID: -5941808317172959255}
   - {fileID: -6698928847532524892}
   - {fileID: 8927322698163137828}
   - {fileID: 7771547605887238984}
   - {fileID: -3987430055830924715}
   - {fileID: 3978427344802183126}
-  - {fileID: -9076622251949178574}
   - {fileID: 7802356397704235922}
   - {fileID: -2352726963203072515}
   - {fileID: -7037273087787750917}
-  - {fileID: 1038030892184452806}
-  - {fileID: 1864644506537815329}
   - {fileID: -2341400615893669410}
   - {fileID: -9209989283533678827}
   - {fileID: -860819876513619099}
   - {fileID: -4206597848623837606}
-  - {fileID: 9216990500909672709}
   - {fileID: 8628873692987562005}
   - {fileID: 6638920037272370402}
-  - {fileID: 7494083347291791670}
-  - {fileID: -1007746424766951060}
   - {fileID: -526093347402021984}
   - {fileID: 6905363098524731662}
   - {fileID: 4458848402332575526}
@@ -905,14 +1042,29 @@ MonoBehaviour:
   - {fileID: -787976988009938688}
   - {fileID: -7183829832150863843}
   - {fileID: 1609277661308513152}
+  - {fileID: 101628470667799590}
+  - {fileID: -7582263338401224940}
+  - {fileID: 6029664722097429242}
+  - {fileID: 358200766386587960}
+  - {fileID: 5565417993279021661}
+  - {fileID: -691092921149017107}
+  - {fileID: -8449532352579016746}
+  - {fileID: 913139671333401999}
+  - {fileID: -6634598998205975950}
+  - {fileID: 4770937751031133703}
+  - {fileID: -4358607150956365519}
+  - {fileID: -164165112861492797}
+  - {fileID: -2423160690187199512}
+  - {fileID: 1744510995166898277}
+  - {fileID: 1422759942908622845}
   EditorParameters: []
   MasterBanks:
   - {fileID: -2215770016423120457}
   StringsBanks:
   - {fileID: -1020840432151185792}
-  cacheTime: 638617565450924732
+  cacheTime: 638623802746181925
   cacheVersion: 131618
---- !u!114 &302697091193660076
+--- !u!114 &101628470667799590
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -922,9 +1074,61 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/World1/World1LevelAmbience
+  m_Name: event:/Dreamweaver Hollow/DreamWeaverHollowMainMusic
   m_EditorClassIdentifier: 
-  Path: event:/World1/World1LevelAmbience
+  Path: event:/Dreamweaver Hollow/DreamWeaverHollowMainMusic
+  Guid:
+    Data1: 930744206
+    Data2: 1246504571
+    Data3: 1916361385
+    Data4: -915492390
+  Banks:
+  - {fileID: 8633037836389704477}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -4045768357658587293}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 170919
+--- !u!114 &178188923272590497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/World1LevelBattleMusic/Suspense_Action_Transition
+  m_EditorClassIdentifier: 
+  Name: Suspense_Action_Transition
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1170677907
+    data2: 3236443197
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &358200766386587960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/CragstoneRuins/World1LevelAmbience
+  m_EditorClassIdentifier: 
+  Path: event:/CragstoneRuins/World1LevelAmbience
   Guid:
     Data1: 1059095620
     Data2: 1235638006
@@ -936,11 +1140,11 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 3447281526995224759}
+  - {fileID: 7660641906845204393}
   MinDistance: 1
   MaxDistance: 20
   Length: 132493
---- !u!114 &1038030892184452806
+--- !u!114 &913139671333401999
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -950,25 +1154,52 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/World1/World1LevelBattleMusic
+  m_Name: event:/CragstoneRuins/GraniteGuardian/Death
   m_EditorClassIdentifier: 
-  Path: event:/World1/World1LevelBattleMusic
+  Path: event:/CragstoneRuins/GraniteGuardian/Death
   Guid:
-    Data1: 302308046
-    Data2: 1207126371
-    Data3: -1449220457
-    Data4: 963137034
+    Data1: -699738745
+    Data2: 1248428521
+    Data3: -816286825
+    Data4: -1975022617
+  Banks:
+  - {fileID: 8633037836389704477}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1360
+--- !u!114 &1422759942908622845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Dreamweaver Hollow/DreamWeaverHollowBattleMusic
+  m_EditorClassIdentifier: 
+  Path: event:/Dreamweaver Hollow/DreamWeaverHollowBattleMusic
+  Guid:
+    Data1: 723403577
+    Data2: 1307251397
+    Data3: -62967656
+    Data4: -1083200307
   Banks:
   - {fileID: 8633037836389704477}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 8559426725760566174}
-  - {fileID: 2605918916592392933}
+  - {fileID: -4714207314692331577}
+  - {fileID: 8627927285521289357}
   MinDistance: 1
   MaxDistance: 20
-  Length: 57808
+  Length: 45000
 --- !u!114 &1609277661308513152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -997,7 +1228,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 16065
---- !u!114 &1864644506537815329
+--- !u!114 &1744510995166898277
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1007,23 +1238,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/World1/SwampGolem/Death
+  m_Name: event:/CragstoneRuins/SwampGolem/WanderingVoice
   m_EditorClassIdentifier: 
-  Path: event:/World1/SwampGolem/Death
+  Path: event:/CragstoneRuins/SwampGolem/WanderingVoice
   Guid:
-    Data1: 796278735
-    Data2: 1107889242
-    Data3: -748084080
-    Data4: -107233319
+    Data1: -1183158531
+    Data2: 1128483395
+    Data3: -88258654
+    Data4: 1036539046
   Banks:
   - {fileID: 8633037836389704477}
-  IsStream: 1
+  IsStream: 0
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 2750
+  Length: 5209
 --- !u!114 &1915984874390445382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1130,30 +1361,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 5000
---- !u!114 &2605918916592392933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/World1LevelBattleMusic/EnemyMusicVolume
-  m_EditorClassIdentifier: 
-  Name: EnemyMusicVolume
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 950852161
-    data2: 3164270251
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
 --- !u!114 &3301752180108848660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1181,57 +1388,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1000
---- !u!114 &3405047898744231773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/World1/SwampGolem/FootGroundImpact
-  m_EditorClassIdentifier: 
-  Path: event:/World1/SwampGolem/FootGroundImpact
-  Guid:
-    Data1: 2087047488
-    Data2: 1231672197
-    Data3: -213460056
-    Data4: -1399488057
-  Banks:
-  - {fileID: 8633037836389704477}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 570
---- !u!114 &3447281526995224759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/World1LevelAmbience/World1LevelAmbienceVolume
-  m_EditorClassIdentifier: 
-  Name: World1LevelAmbienceVolume
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3791231998
-    data2: 3273213767
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
 --- !u!114 &3754408585066584526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1341,6 +1497,35 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 128160
+--- !u!114 &4770937751031133703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/CragstoneRuins/World1LevelBattleMusic
+  m_EditorClassIdentifier: 
+  Path: event:/CragstoneRuins/World1LevelBattleMusic
+  Guid:
+    Data1: 302308046
+    Data2: 1207126371
+    Data3: -1449220457
+    Data4: 963137034
+  Banks:
+  - {fileID: 8633037836389704477}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 178188923272590497}
+  - {fileID: -8820892380082744305}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 57808
 --- !u!114 &5343717264394669058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1368,7 +1553,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 5000
---- !u!114 &6125662888392671051
+--- !u!114 &5565417993279021661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1378,36 +1563,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/World1/SwampGolem/Attack
+  m_Name: event:/CragstoneRuins/CragStoneRuinsMainMusic
   m_EditorClassIdentifier: 
-  Path: event:/World1/SwampGolem/Attack
-  Guid:
-    Data1: -340100754
-    Data2: 1206472949
-    Data3: 1554831235
-    Data4: 1352869952
-  Banks:
-  - {fileID: 8633037836389704477}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 2656
---- !u!114 &6239990770636417815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/World1/World1LevelMusic
-  m_EditorClassIdentifier: 
-  Path: event:/World1/World1LevelMusic
+  Path: event:/CragstoneRuins/CragStoneRuinsMainMusic
   Guid:
     Data1: 1066589528
     Data2: 1294238846
@@ -1419,10 +1577,37 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 8168524822221652233}
+  - {fileID: -5236489097751815130}
   MinDistance: 1
   MaxDistance: 20
   Length: 206053
+--- !u!114 &6029664722097429242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/CragstoneRuins/SwampGolem/FootGroundImpact
+  m_EditorClassIdentifier: 
+  Path: event:/CragstoneRuins/SwampGolem/FootGroundImpact
+  Guid:
+    Data1: 2087047488
+    Data2: 1231672197
+    Data3: -213460056
+    Data4: -1399488057
+  Banks:
+  - {fileID: 8633037836389704477}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 570
 --- !u!114 &6638920037272370402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1530,7 +1715,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &7494083347291791670
+--- !u!114 &7660641906845204393
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1539,24 +1724,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/World1/GraniteGuardian/AttackCharge
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/World1LevelAmbience/World1LevelAmbienceVolume
   m_EditorClassIdentifier: 
-  Path: event:/World1/GraniteGuardian/AttackCharge
-  Guid:
-    Data1: -1098992902
-    Data2: 1077148775
-    Data3: 1299137157
-    Data4: -1298146586
-  Banks:
-  - {fileID: 8633037836389704477}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 4000
+  Name: World1LevelAmbienceVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3791231998
+    data2: 3273213767
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &7771547605887238984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1638,7 +1820,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 6000
---- !u!114 &8168524822221652233
+--- !u!114 &8627927285521289357
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1648,31 +1830,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/World1LevelMusic/World1LevelMainMusicVolume
-  m_EditorClassIdentifier: 
-  Name: World1LevelMainMusicVolume
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3383034797
-    data2: 1994318767
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &8559426725760566174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/World1LevelBattleMusic/Suspense_Action_Transition
+  m_Name: parameter:/DreamWeaverHollowBattleMusic/Suspense_Action_Transition
   m_EditorClassIdentifier: 
   Name: Suspense_Action_Transition
   StudioPath: 
@@ -1728,10 +1886,10 @@ MonoBehaviour:
   Path: FMOD/EquiverseFMOD/Build/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 638617565118275186
+  lastModified: 638623802746181925
   FileSizes:
   - Name: Desktop
-    Value: 12063456
+    Value: 18249600
   Exists: 1
 --- !u!114 &8665789776604103711
 MonoBehaviour:
@@ -1787,30 +1945,3 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1189
---- !u!114 &9216990500909672709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/World1/SwampGolem/Hurt
-  m_EditorClassIdentifier: 
-  Path: event:/World1/SwampGolem/Hurt
-  Guid:
-    Data1: 1963421670
-    Data2: 1333214941
-    Data3: 2044905635
-    Data4: 674210787
-  Banks:
-  - {fileID: 8633037836389704477}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1716

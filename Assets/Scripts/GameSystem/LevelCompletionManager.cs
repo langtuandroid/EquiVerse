@@ -77,7 +77,7 @@ public class LevelCompletionManager : MonoBehaviour
 
     private void PlayCompletionSounds()
     {
-        soundController.FadeAudioParameter("Music", "World1LevelMainMusicVolume", 0f, 0.5f);
+        soundController.FadeAudioParameter("Music", "WorldMainMusicVolume", 0f, 0.5f);
         soundController.FadeAudioParameter("Ambience", "World1LevelAmbienceVolume", 0f, 0.5f);
         soundController.FadeAudioParameter("BattleMusic", "EnemyMusicVolume", 0f, 0.5f);
         

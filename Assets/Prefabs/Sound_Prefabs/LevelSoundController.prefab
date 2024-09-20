@@ -52,9 +52,9 @@ MonoBehaviour:
         Data2: 1294238846
         Data3: -13296502
         Data4: -291742425
-      Path: event:/World1/World1LevelMusic
+      Path: event:/CragstoneRuins/CragStoneRuinsMainMusic
     parameters:
-    - name: World1LevelMainMusicVolume
+    - name: WorldMainMusicVolume
       value: 0
   - name: Ambience
     eventReference:
@@ -63,7 +63,7 @@ MonoBehaviour:
         Data2: 1235638006
         Data3: -663427685
         Data4: 1769726836
-      Path: event:/World1/World1LevelAmbience
+      Path: event:/CragstoneRuins/World1LevelAmbience
     parameters:
     - name: World1LevelAmbienceVolume
       value: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
         Data2: 1207126371
         Data3: -1449220457
         Data4: 963137034
-      Path: event:/World1/World1LevelBattleMusic
+      Path: event:/CragstoneRuins/World1LevelBattleMusic
     parameters:
     - name: Suspense_Action_Transition
       value: 0

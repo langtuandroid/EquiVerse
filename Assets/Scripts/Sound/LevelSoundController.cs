@@ -94,7 +94,7 @@ public class LevelSoundController : MonoBehaviour
     public void StartAudioEventAndFadeIn(string eventName)
     {
         StartAudioEvent(eventName);
-        FadeAudioParameter(eventName, "World1LevelMainMusicVolume", 1.0f, 1f);
+        FadeAudioParameter(eventName, "WorldMainMusicVolume", 1.0f, 1f);
     }
 
     public void StopAudioEvent(string eventName)

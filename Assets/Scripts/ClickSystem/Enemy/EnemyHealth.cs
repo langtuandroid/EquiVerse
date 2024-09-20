@@ -11,12 +11,12 @@ public class EnemyHealth : Clickable
 
     private Tween punchTween;
     private bool isShooting = false;
-    private bool isFiring = false; // Flag to prevent multiple coroutines
+    private bool isFiring = false;
     private float shootInterval = 0.2f;
 
     public override void OnClick(Vector3 point)
     {
-        if (!isFiring) // Start firing only if it's not already firing
+        if (!isFiring)
         {
             StartCoroutine(HoldFire());
         }
@@ -38,10 +38,9 @@ public class EnemyHealth : Clickable
 
     private IEnumerator HoldFire()
     {
-        isFiring = true; // Mark as firing
+        isFiring = true;
         while (UnityEngine.Input.GetMouseButton(0))
         {
-            // Recalculate the point where the mouse is currently pointing
             Ray ray = Camera.main.ScreenPointToRay(UnityEngine.Input.mousePosition);
             RaycastHit hit;
 
@@ -50,17 +49,17 @@ public class EnemyHealth : Clickable
                 if (hit.collider.gameObject == gameObject)
                 {
                     Vector3 point = hit.point;
-                    OnHitByGun(point); // Update the particle spawn position
+                    OnHitByGun(point);
                 }
                 else
                 {
-                    break; // Exit the coroutine if the mouse moves away from the enemy
+                    break;
                 }
             }
 
             yield return new WaitForSeconds(shootInterval);
         }
-        isFiring = false; // Mark as not firing after the loop ends
+        isFiring = false;
     }
 
     private void OnHitByGun(Vector3 point)

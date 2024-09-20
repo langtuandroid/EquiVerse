@@ -67,7 +67,7 @@ public class EnemySpawner : MonoBehaviour
         newEnemyTypeWarningText.gameObject.SetActive(true);
         newEnemyTypeWarningText.text = $"ALERT! {enemyCount} <b>{enemyName}</b>(s) are about to invade!";
                     
-        soundController.FadeAudioParameter("Music", "World1LevelMainMusicVolume", 0f, 1.2f);
+        soundController.FadeAudioParameter("Music", "WorldMainMusicVolume", 0f, 1.2f);
         soundController.StartAudioEvent("BattleMusic");
         soundController.FadeAudioParameter("BattleMusic", "EnemyMusicVolume", 1f, 1.2f);
 
@@ -117,7 +117,7 @@ public class EnemySpawner : MonoBehaviour
             StartCoroutine(StartSpawnDelayCountdown());
             soundController.FadeAudioParameter("BattleMusic", "Suspense_Action_Transition", 0f, 0.5f);
             soundController.FadeAudioParameter("BattleMusic", "EnemyMusicVolume", 0f, 1.2f);
-            soundController.FadeAudioParameter("Music", "World1LevelMainMusicVolume", 1f, 1.2f);
+            soundController.FadeAudioParameter("Music", "WorldMainMusicVolume", 1f, 1.2f);
         }
     }
 

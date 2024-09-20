@@ -7,6 +7,8 @@ public class GrimwoodConjurerAttackBehaviour : MonoBehaviour
     public NavMeshAgent agent;
     public GameObject minionPrefab;
     public Animator animator;
+    public ParticleSystem chargingParticles;
+    public ParticleSystem releaseParticles;
 
     private int amountofMinionsSpawned = 2;
     private float spawnRadius = 3f;
@@ -30,8 +32,12 @@ public class GrimwoodConjurerAttackBehaviour : MonoBehaviour
         attackCooldown = true;
         agent.isStopped = true;
         animator.SetTrigger("AttackTrigger");
+        chargingParticles.Play();
 
         yield return new WaitForSeconds(1.5f);
+        
+        chargingParticles.Stop();
+        releaseParticles.Play();
 
         Vector3 conjurerPosition = transform.position;
 
